@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap');
+/* font-family: 'Prompt', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+/* font-family: 'Lobster', cursive; */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    background-color: #252525;
+}
+
+.formulario{
+    width: 500px;
+    height: 700px;
+    background-color: #252525;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 5px 1px darkorange;
+    font-family: 'Prompt', sans-serif; 
+}
+.formulario h2{
+    color: #ffc800
+}
+.formulario h3{
+    font-size: 18px;
+    color: white;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+}
+form > .campo{
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 5px 15px;
+    background-color: #181818;
+    color: white;
+}
+.imagem-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.imagem-form > img{
+    width: 200px;
+    filter: drop-shadow( 0px 0px 10px darkorange);
+   
+}
+#enviar {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #181818;
+    color: white;
+    padding: 10px;
+    border: solid 1px black;
+    border-radius: 5px;
+}
+#enviar:hover{
+    background-color: #252525;
+
+}
+.botao{
+    margin: 10px 0;
+    width: 66%;
+    height: 35px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.botao:hover{
+    background-color: rgb(255, 71, 71);
+} 
+.imagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imagem img {
+    margin: 0 auto;
+    width: 10%;
+    filter: drop-shadow( 0px 0px 10px  darkorange);
+
+    
+}
+
+.imagem-of{
+    display: none;
+}@media (max-width:650px) {
+    .formulario{
+        width: 80%;
+    }
+
+}
+@media (max-width:500px){
+    
+    .conteiner{
+        top: 75px;
+       
+    }
+
+}@media (max-width:400px){
+   .formulario{
+    padding: 15px;
+   }
+}
+
+@media (max-width:350px){
+  
+    .logo p{
+        font-size: unset;
+    }
+    .formulario{
+        padding: 5px;
+    }
+   
+}
+
