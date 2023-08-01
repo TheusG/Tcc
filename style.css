@@ -105,11 +105,6 @@ header{
     color:yellow;
 }
 
-#carrinho:hover{
-    background-color:darkorange;
-    color: black;
-}
-
 
 nav{
     display: flex;
