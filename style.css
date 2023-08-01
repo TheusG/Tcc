@@ -101,6 +101,15 @@ header{
 .imgMenuReduzido{
     display: none;
 }
+#carrinho{
+    color:yellow;
+}
+
+#carrinho:hover{
+    background-color:darkorange;
+    color: black;
+}
+
 
 nav{
     display: flex;
