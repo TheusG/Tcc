@@ -92,6 +92,12 @@ header{
     width: 40px;
     border: solid black 2px;
 }
+
+.login > a{
+    color: #ffc800;;
+    text-decoration: none;
+}
+
 .imgMenuReduzido{
     display: none;
 }
@@ -246,6 +252,9 @@ footer > h2{
     .login{
         display: none;
     }
+
+    
+    
     .imgMenuReduzido{
         display: flex;
         margin-right: 5px;
@@ -282,4 +291,3 @@ footer > h2{
    
 }
 
-@media (max-width:740px)
