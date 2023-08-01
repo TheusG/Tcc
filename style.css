@@ -79,7 +79,12 @@ header{
 }
 #carrinho{
     font-size: 25px;
-
+    transition: 0.5s;
+}
+#carrinho:hover{
+    scale: 1.2;
+    transition: 0.5s;
+   
 }
 .login{
     width: 101px;
