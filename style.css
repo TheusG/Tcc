@@ -36,7 +36,7 @@ header{
     z-index: 999;
     transition: 1s;
     position: fixed;
-    background-color: rgb(34, 32, 32);
+    background-color: rgb(0, 0, 0);
  
     top: 0;
 
@@ -79,7 +79,12 @@ header{
 }
 #carrinho{
     font-size: 25px;
-
+    transition: 0.5s;
+}
+#carrinho:hover{
+    scale: 1.2;
+    transition: 0.5s;
+   
 }
 .login{
     width: 101px;
@@ -92,9 +97,19 @@ header{
     width: 40px;
     border: solid black 2px;
 }
+
+.login > a{
+    color: #ffc800;;
+    text-decoration: none;
+}
+
 .imgMenuReduzido{
     display: none;
 }
+#carrinho{
+    color:yellow;
+}
+
 
 nav{
     display: flex;
@@ -169,7 +184,7 @@ nav{
 }
 
 footer{
-    background-color: #252525;
+    background-color: #000000;
     height: 270px;
     width: 100%;
     text-align: center;
@@ -181,7 +196,7 @@ footer > h2{
     font-size: 20px;
 }
 .rodape{
-    background-color: #252525;
+    background-color: #000000;
     display: flex;
     justify-content: space-evenly;
     
@@ -246,6 +261,9 @@ footer > h2{
     .login{
         display: none;
     }
+
+    
+    
     .imgMenuReduzido{
         display: flex;
         margin-right: 5px;
@@ -281,3 +299,4 @@ footer > h2{
     }
    
 }
+
