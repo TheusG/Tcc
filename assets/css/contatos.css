@@ -94,6 +94,7 @@ form > .campo{
     padding: 5px;
     border: solid 1px black;
     border-radius: 25px;
+    height: 45px;
 }
 #enviar:hover{
     background-color: #252525;
