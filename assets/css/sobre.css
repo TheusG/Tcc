@@ -26,6 +26,8 @@
     width: 90%;
     background-color: #000000;
     margin:  auto;
+    display: flex;
+
 
 
 }
@@ -37,6 +39,71 @@
     margin: 1px 5px 5px 10px;
     padding-top: 10px;
     line-height :35px;   
+    display: flex;
+}
+
+
+/*--------------------------------------------------------RESPANSIVIDADE-------------------------------*/
+@media (max-width:1000px) {
+    .sobre{
+        height: 400px
+    }
+   
+}
+@media (max-width:800px) {
+    .sobre{
+        height: 450px
+    }
+   
+}
+@media (max-width:680px) {
+    .sobre{
+        height: 530px
+    }
+   
+}
+@media (max-width:600px) {
+    .sobre{
+        height: 600px
+    }
+   
+}
+@media (max-width:530px) {
+    .sobre{
+        height: 700px
+    }
+   
+}
+@media (max-width:500px) {
+    .sobre{
+        height: 760px
+    }
+   
+}
+@media (max-width:460px) {
+    .sobre{
+        height: 830px
+    }
+   
+}
+@media (max-width:420px) {
+    .sobre{
+        height: 900px
+    }
+   
+}
+@media (max-width:370px) {
+    .sobre{
+        height: 1100px
+    }    
+   
+}
+
+@media (max-width:320px) {
+    .sobre{
+        height: 1300px
+    }
+   
 }
 
 
