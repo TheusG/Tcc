@@ -1,3 +1,9 @@
+<?php 
+require_once "admVerifSession.php";
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +12,7 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="../../image/terceiraImagem.jpg" alt="">
+    <h1>TESTE</h1>
     
 </body>
 </html>
