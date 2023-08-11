@@ -2,6 +2,7 @@
 //toda a vez  que for mandar um formulario para o index, antes tem que detruir da sessão
     session_start();
     
+    
     if(!isset($_SESSION["FUNC-ID"]) || empty($_SESSION["FUNC-ID"])){
 
         if(isset($_REQUEST["loginsenha"])){

@@ -1,6 +1,7 @@
 <?php 
 session_start();
 
+
 if(!isset($_SESSION["FUNC-ID"]) || empty($_SESSION["FUNC-ID"])){
     ?>  
         <form action="../index.php" name="form" id="myForm" method="post">
