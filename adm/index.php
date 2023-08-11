@@ -17,7 +17,8 @@
           <h2>Tela de login dos administradores</h2>
           <br>
         </div>
-        <form action="" method="post">
+        <form action="controller/controller.php" method="post">
+          <input type="hidden" name="loginsenha" value="1">
           <h3>Email</h3> 
           
           <input type="email" name="email" id="email" class="campo">
@@ -37,6 +38,15 @@
           background-color: #252525;
         }
       </style>
+
+<?php 
+  if(isset($_REQUEST["msg"])){
+    $cod = $_REQUEST["msg"];
+    require_once "view/msg.php";
+    echo "<script>alert('" . $MSG[$cod] . "');</script>";
+  }
+      
+?>
 
 
 </body>
