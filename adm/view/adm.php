@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-=======
 <?php 
 require_once "admVerifSession.php";
 
 
 
 ?>
->>>>>>> backend
 <!DOCTYPE html>
 <html lang="en">
 <head>
