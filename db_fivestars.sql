@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/08/2023 às 20:39
+-- Tempo de geração: 13/08/2023 às 00:58
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -37,7 +37,12 @@ CREATE TABLE `cargo` (
 --
 
 INSERT INTO `cargo` (`Id_Cargo`, `Nome_Cargo`) VALUES
-(1, 'Gerente');
+(5, 'Ajudante Geral'),
+(3, 'Balconista'),
+(2, 'Caixa'),
+(6, 'Garçom'),
+(1, 'Gerente'),
+(4, 'Pizzaiolo');
 
 -- --------------------------------------------------------
 
@@ -131,7 +136,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Numero`, `Complemento`, `Telefone`, `Email`, `Nascimento`, `Foto`) VALUES
-(1, 'Felipe Cerqueira', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', NULL, 'felipe@pizza.com', '2000-09-02', 'Foto.jpg');
+(1, 'Felipe Cerqueira', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', '11995937887', 'felipe@pizza.com', '2000-09-02', 'Foto.jpg');
 
 --
 -- Índices para tabelas despejadas
@@ -181,7 +186,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `cargo`
 --
 ALTER TABLE `cargo`
-  MODIFY `Id_Cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id_Cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `cep`
