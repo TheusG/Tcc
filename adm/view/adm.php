@@ -1,9 +1,7 @@
 <?php 
 require_once "admVerifSession.php";
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
