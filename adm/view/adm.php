@@ -35,12 +35,15 @@ require_once "admVerifSession.php";
             Nome:<?=$_SESSION["FUNC-NOME"]?><br>
             E-mail:<?=$_SESSION["FUNC-EMAIL"]?> <br>
             Cargo:<br>
-            <button onclick="ExecutaLogout();">Sair</button>
+           
         </div>
-       
+        <button class="sair" onclick="ExecutaLogout();">Sair</button>
      </header>
      <div class="conteiner">
         <div class="menu">
+            <a href="admList.php" target="screen">Funcionários</a>
+            <a href="admList.php" target="screen">Funcionários</a>
+            <a href="admList.php" target="screen">Funcionários</a>
             <a href="admList.php" target="screen">Funcionários</a>
         </div>
         <div class="ipres">

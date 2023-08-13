@@ -22,17 +22,20 @@ require_once "admVerifSession.php";
     </script>
 </head>
 <body>
+    
+    <div id="admTabela">
+        <br>
     <div id="titulo">
         <h3>Funcionarios da Five Stars</h3>
         <h4>Listagem</h4>
+        <br><br>
     </div>
 
-    <div id="admTabela">
         <?php 
             require_once "../model/Manager.php";
             $dados = listarFuncionario();
         ?>
-        <table class = "tabelaAdm">
+        <table class = "admAdd">
             <tr>
                 <td style="text-align: left;">
                 <form name="formNew" action="admNew.php" method="">
@@ -78,14 +81,14 @@ require_once "admVerifSession.php";
                     ?>
                     <form name="formEdit" action="admEdit.php" method="">
                         <input type="hidden" name="id" value="<?=$dados[$i]['Id_Usuario'];?>">
-                        <input type="submit" name="sbmt" value="Editar" style="background-color:#ffdd99;">
+                        <input class="editButton" type="submit" name="sbmt" value="Editar">
                     </form>
                     <?php
                     echo "</td>";
                     echo "<td>";
                     ?>
                     
-                    <button onclick="confirmDelete(<?=$dados[$i]['Id_Usuario']?>)" style="background-color:darkred">Deletar</button>
+                    <button class="deleteButton" onclick="confirmDelete(<?=$dados[$i]['Id_Usuario']?>)">Deletar</button>
                     
                     <?php
                     echo "</td>";
