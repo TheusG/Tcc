@@ -83,7 +83,7 @@
 
     }else{//caso tenha sessão
 
-        if($_REQUEST["adm_new"]){
+        if(isset($_REQUEST["adm_new"])){
             $dados["nome"] = $_REQUEST["nome"];
             $dados["sexo"] = $_REQUEST["sexo"];
             $dados["email"] = $_REQUEST["email"];
@@ -118,6 +118,47 @@
                  <?php
             }
             
+        }
+
+        if(isset($_REQUEST["adm_edit"])){
+            $dados["id"] = $_REQUEST["id"];
+            $dados["nome"] = $_REQUEST["nome"];
+            $dados["sexo"] = $_REQUEST["sexo"];
+            $dados["email"] = $_REQUEST["email"];
+            $dados["senha"] = "";
+            if(isset($_REQUEST["senha"]) || $_REQUEST["senha"] != ""){
+                require_once "../model/Ferramentas.php";
+                $dados["senha"] = hash256($_REQUEST["senha"]);
+            }
+            
+            $dados["telefone"] = $_REQUEST["telefone"];
+            $dados["dataNascimento"] = $_REQUEST["dataNascimento"];
+            $dados["cep"] = $_REQUEST["cep"];
+            $dados["numero"] = $_REQUEST["numero"];
+            $dados["complemento"] = $_REQUEST["complemento"];
+            $dados["foto"] = $_REQUEST["foto"];
+            require_once "../model/Manager.php";
+            $resp = editarFuncionario($dados);
+            
+            if($resp == 1){//tudo certo ao adicionar um novo funcionario
+                ?>  
+                    <form action="../view/admList.php" name="form" id="myForm" method="post">
+                        <input type="hidden" name="msg" value="BD52">
+                    </form>
+                    <script>
+                        document.getElementById('myForm').submit()
+                    </script>
+                 <?php
+            }else{//erro no insert
+                ?>  
+                    <form action="../view/admList.php" name="form" id="myForm" method="post">
+                        <input type="hidden" name="msg" value="BD02">
+                    </form>
+                    <script>
+                        document.getElementById('myForm').submit()
+                    </script>
+                 <?php
+            } 
         }
 
     }

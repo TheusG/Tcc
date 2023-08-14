@@ -11,10 +11,10 @@ require_once "admVerifSession.php";
     <title>Pizza Etec</title>
     <link rel="stylesheet" href="../view/css/adm.css">
     <script>
-        function confirmDelete(id){
+        function confirmDelete(Id_Usuario){
             var resp = confirm("Tem certeza que deseja apagar esse registro?");
             if(resp==true){
-                location.href = "admDelete";
+                location.href = "../controller/controller.php?adm_delete=1&Id_Usuario" + Id_Usuario;
             }else{
                 return null;
             }
@@ -55,6 +55,8 @@ require_once "admVerifSession.php";
                 <th class="tabelaAdmTh">Email</th>
                 <th class="tabelaAdmTh">Telefone</th>
                 <th class="tabelaAdmTh">Cep</th>
+                <th class="tabelaAdmTh">Complemento</th>
+                <th class="tabelaAdmTh">Número</th>
                 <th class="tabelaAdmTh">Data de Nascimento</th>
                 <th class="tabelaAdmTh">&nbsp;</th>
                 <th class="tabelaAdmTh">&nbsp;</th>
@@ -76,11 +78,13 @@ require_once "admVerifSession.php";
                     echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Email"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Telefone"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Cep"]."</td>";
+                    echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Complemento"]."</td>";
+                    echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Numero"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Nascimento"]."</td>";
                     echo "<td>"
                     ?>
                     <form name="formEdit" action="admEdit.php" method="">
-                        <input type="hidden" name="id" value="<?=$dados[$i]['Id_Usuario'];?>">
+                        <input type="hidden" name="Id_Usuario" value="<?=$dados[$i]["Id_Usuario"];?>">
                         <input class="editButton" type="submit" name="sbmt" value="Editar">
                     </form>
                     <?php

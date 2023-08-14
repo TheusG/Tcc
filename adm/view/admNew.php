@@ -49,11 +49,6 @@
             <input type="submit" name="sbmt" value="Enviar"><br><br>
         </form>
             <button class="" id="btnVoltar" onclick="voltar();">&larr;</button>
-            
-
-
-
-
     </div>
 
 
