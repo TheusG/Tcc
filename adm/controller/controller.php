@@ -161,6 +161,31 @@
             } 
         }
 
+        if(!isset($_REQUEST["adm_delete"])){
+            $id = $_REQUEST["Id_Usuario"];
+            require_once "../model/Manager.php";
+            $result = excluirFuncionario($id);
+            if($result == 1){//conseguir excluir
+                ?>  
+                    <form action="../view/admList.php" name="form" id="myForm" method="post">
+                        <input type="hidden" name="msg" value="BD54">
+                    </form>
+                    <script>
+                        document.getElementById('myForm').submit()
+                    </script>
+                 <?php
+            }else{//algo deu de errado na deleção
+                ?>  
+                    <form action="../view/admList.php" name="form" id="myForm" method="post">
+                        <input type="hidden" name="msg" value="BD04">
+                    </form>
+                    <script>
+                        document.getElementById('myForm').submit()
+                    </script>
+                 <?php
+            }
+        }
+
     }
 
 
