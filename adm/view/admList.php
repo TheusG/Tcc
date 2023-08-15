@@ -26,6 +26,7 @@ require_once "admVerifSession.php";
     <div id="admTabela">
         <br>
     <div id="titulo">
+        <br>
         <h3>Funcionarios da Five Stars</h3>
         <h4>Listagem</h4>
         <br><br>

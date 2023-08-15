@@ -78,7 +78,7 @@
             <input type="file" name="foto" value="<?=$dados['Foto']?>"><br>
             <input type="submit" name="sbmt" value="Enviar"><br><br>
         </form>
-            <button class="" id="btnVoltar" onclick="voltar();">&larr;</button>
+            <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
     </div>
 
   

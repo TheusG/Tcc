@@ -149,3 +149,37 @@ header> button{
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9em;
 }
+/* Aqui é só ADMNEW e ADMEDIT */
+#admForm{
+    border: solid 1px black ;
+    margin-top: 45px;
+    font-size: 22px;
+    width: 80%;
+
+}
+#admForm input{
+    padding: 5px;
+    width: 50%;
+    border-radius: 15px;
+    
+}
+#admForm .divForm1{
+    margin: 10px 0;
+}
+.voltar {
+    width: 60px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    border: solid rgb(80, 80, 80) 3px;
+}
+.voltar:hover{
+    background-color: rgb(32, 31, 31);
+    color: white;
+    border: solid rgb(80, 80, 80) 2px;
+}
+#titulo{
+    text-align: center;
+    margin: 0 auto;
+}
