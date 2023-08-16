@@ -133,12 +133,12 @@ function editarFuncionario($dados){
     return $result;
 }
 
-function excluirFuncionario($id){
-    require_once "Conexao.php";
-    $sql = "DELETE FROM usuario WHERE Id_Usuario = {$id}";
-    $result = $conn->query($sql);
-    $conn->close();
-    return $result;
-}
+// function excluirFuncionario($id){
+//     require_once "Conexao.php";
+//     $sql = "DELETE FROM usuario WHERE Id_Usuario = {$id}";
+//     $result = $conn->query($sql);
+//     $conn->close();
+//     return $result;
+// }
 
 ?>

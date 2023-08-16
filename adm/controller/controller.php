@@ -6,6 +6,7 @@
     
     
     
+    
     if(!isset($_SESSION["FUNC-ID"]) || empty($_SESSION["FUNC-ID"])){
 
         if(isset($_REQUEST["loginsenha"])){
@@ -161,7 +162,7 @@
             } 
         }
 
-        if(!isset($_REQUEST["adm_delete"])){
+        /*if(!isset($_REQUEST["adm_delete"])){
             $id = $_REQUEST["Id_Usuario"];
             require_once "../model/Manager.php";
             $result = excluirFuncionario($id);
@@ -184,7 +185,7 @@
                     </script>
                  <?php
             }
-        }
+        }*/
 
     }
 
