@@ -1,10 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap');
+/* font-family: 'Prompt', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+/* font-family: 'Lobster', cursive; */
 *{
    padding: 0;
    margin: 0;
    box-sizing: border-box;
 }
 body{
-    background-color: gainsboro;
+    background-color: rgb(116, 90, 90);
+   
+    
 }
 header{
     display: flex;
@@ -14,6 +20,9 @@ header{
     color: white;
     justify-content: space-between;
     font-size: 22px;
+}
+p{
+    font-family: 'Prompt', sans-serif;
 }
 header > .logo{
     width: 350px;
@@ -27,20 +36,150 @@ header > .logo img{
     width: 25%;
 }
 header > .dadosUsuario{
-    width: 550px;
+    width: 325px;
+}
+header> button{
+    width: 50px;
+    height: 40px;
+    margin: auto 15px;
+    border-radius: 15px;
 }
 .conteiner{
     display: flex;
     width: 100%;
     justify-content: space-between;
 }
-.conteiner > menu{
+.conteiner > .menu{
     width: 25%;
     height: 1080px;
-    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(44, 43, 43);
 }
 .conteiner > .ipres {
     width: 75%;
     height: 1080px;
     background-color: wheat;
+}
+.conteiner > .menu > a {
+    background-color: black;
+    border-radius: 15px;
+    margin: 5px;
+    width: 80%;
+    height: 35px;
+    font-size: 26px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border: solid rgb(80, 80, 80) 2px;
+}
+.conteiner > .menu > a:hover{
+    background-color: rgb(32, 31, 31);
+    color: white;
+    border: solid rgb(80, 80, 80) 2px;
+}
+
+
+.tabelaAdm{
+    margin: auto;
+    width: 80%;
+    border: #000000 1px solid ;
+}
+.tabelaAdm td{
+    border: solid 1px black;
+    padding: 5px;
+}
+
+#admTabela{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  
+}
+.admAdd{
+    width: 80%;
+    border: solid black 1px;
+    padding: 2px;
+}
+.admAdd input{
+    padding: 10px;
+    font-weight: bold;
+}
+
+.deleteButton{
+    background-color: red;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+  
+}
+.deleteButton:hover{
+    background-color: rgb(146, 0, 0); 
+}
+.editButton{
+    background-color: yellow;
+    font-weight: bold;
+    padding: 5px;
+}
+.editButton:hover{
+    background-color:rgb(255, 166, 0)
+}
+
+#admForm{
+    width: 600px;
+   
+    margin: auto;
+    padding: 30px 20px 30px 30px;
+    border-radius: 15px;
+}
+.tabelaAdmTh{
+    border: solid black 1px;
+    background-color: black;
+    color: white;
+    padding: 0 10px;
+}
+.formBasico{
+    width: 250px;
+    height: 28px;
+    border-radius: 7px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+}
+/* Aqui é só ADMNEW e ADMEDIT */
+#admForm{
+    border: solid 1px black ;
+    margin-top: 45px;
+    font-size: 22px;
+    width: 80%;
+
+}
+#admForm input{
+    padding: 5px;
+    width: 50%;
+    border-radius: 15px;
+    
+}
+#admForm .divForm1{
+    margin: 10px 0;
+}
+.voltar {
+    width: 60px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    border: solid rgb(80, 80, 80) 3px;
+}
+.voltar:hover{
+    background-color: rgb(32, 31, 31);
+    color: white;
+    border: solid rgb(80, 80, 80) 2px;
+}
+#titulo{
+    text-align: center;
+    margin: 0 auto;
 }
