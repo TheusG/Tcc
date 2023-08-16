@@ -11,10 +11,10 @@ require_once "admVerifSession.php";
     <title>Pizza Etec</title>
     <link rel="stylesheet" href="../view/css/adm.css">
     <script>
-        function confirmDelete(Id_Usuario){
+        function confirmDelete(id){
             var resp = confirm("Tem certeza que deseja apagar esse registro?");
             if(resp==true){
-                location.href = "../controller/controller.php?adm_delete=1&Id_Usuario" + Id_Usuario;
+                location.href = "../controller/controller.php?adm_delete=1&id=" + id;
             }else{
                 return null;
             }
@@ -93,7 +93,7 @@ require_once "admVerifSession.php";
                     echo "<td>";
                     ?>
                     
-                    <button class="deleteButton" onclick="confirmDelete(<?=$dados[$i]['Id_Usuario']?>)">Deletar</button>
+                    <button class="deleteButton" onclick="confirmDelete(<?=$dados[$i]['Id_Usuario'];?>)">Deletar</button>
                     
                     <?php
                     echo "</td>";

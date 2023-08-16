@@ -162,8 +162,8 @@
             } 
         }
 
-        /*if(!isset($_REQUEST["adm_delete"])){
-            $id = $_REQUEST["Id_Usuario"];
+        if(isset($_REQUEST["adm_delete"])){
+            $id = $_REQUEST["id"];
             require_once "../model/Manager.php";
             $result = excluirFuncionario($id);
             if($result == 1){//conseguir excluir
@@ -185,7 +185,7 @@
                     </script>
                  <?php
             }
-        }*/
+        }
 
     }
 
