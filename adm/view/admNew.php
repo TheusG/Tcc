@@ -42,7 +42,7 @@
             <label for="dataNascimento">Data de Nascimento</label><br>
             <input type="date" name="dataNascimento" value=""><br>
          
-            <label for="cep">cep</label><br>
+            <label for="cep">Cep</label><br>
             <input type="text" name="cep" value=""><br>
             <label for="Numero">Número</label><br>
             <input type="number" name="numero" value=""><br>
@@ -51,7 +51,7 @@
             <input type="text" name="complemento" value=""><br>
             <label for="foto">Foto</label><br>
             <input type="file" name="foto" value=""><br>
-            <input type="submit" name="sbmt" value="Enviar"><br><br>
+            <input type="submit" name="sbmt" value="Enviar" ><br><br>
         </form>
             <button class="voltar" id="btnVoltar" onclick="voltar();">Voltar</button>
     </div>

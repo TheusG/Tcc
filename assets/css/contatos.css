@@ -95,6 +95,7 @@ form > .campo{
     border: solid 1px black;
     border-radius: 25px;
     height: 45px;
+    cursor: pointer;
 }
 #enviar:hover{
     background-color: #252525;

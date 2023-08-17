@@ -24,6 +24,7 @@ require_once "admVerifSession.php";
 <body>
     <header>
         <div class="logo">
+            
             <img src="img/logo pizzaria1.png" alt="Logo">
             <p>Five Stars</p>
             <i class="fa-solid fa-pizza-slice"></i>
@@ -42,9 +43,9 @@ require_once "admVerifSession.php";
      <div class="conteiner">
         <div class="menu">
             <a href="admList.php" target="screen">Funcionários</a>
-            <a href="admList.php" target="screen">Funcionários</a>
-            <a href="admList.php" target="screen">Funcionários</a>
-            <a href="admList.php" target="screen">Funcionários</a>
+            <a href="admList.php" target="screen">Produtos</a>
+            <a href="admList.php" target="screen">Categorias</a>
+            <a href="admList.php" target="screen">Empresa</a>
         </div>
         <div class="ipres">
             <iframe name="screen" id="screen" width="100%" height="1180px" src="bemvindo.php" style="border: 0px;"></iframe> 
