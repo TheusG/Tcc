@@ -1,8 +1,0 @@
-- desenvolver o descritivo de classes, conf. tcc modelo pag. 85
-obs: 1 tabela para cada classe.
-
-- inverter o diagrama de classes com o banco de dados..
-- inserir os descritivos da classe abaixo do diagrama de classes.
-
-- trazer uma tela de cadastro (livre)
-
