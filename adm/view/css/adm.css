@@ -163,23 +163,30 @@ header> button{
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9em;
 }
-/* Aqui é só ADMNEW e ADMEDIT */
-#admForm{
-    border: solid 1px black ;
-    margin-top: 45px;
-    font-size: 22px;
-    width: 80%;
 
+
+
+
+
+/*--------------------------------------------- Aqui é só ADMNEW e ADMEDIT ------------------------------------------------*/
+
+.box{
+    display: flex;
+    flex-direction: column;
 }
-#admForm input{
-    padding: 5px;
-    width: 50%;
-    border-radius: 15px;
+.box div{
+   
+}
+.box > .div1 input{
+    width: 100%;
     
 }
-#admForm .divForm1{
-    margin: 10px 0;
+.box > .div2{
+    display: flex;
+    justify-content: space-between;
 }
+
+
 .voltar {
     width: 60px;
     height: 50px;
