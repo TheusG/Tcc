@@ -78,7 +78,7 @@
             </div>
            
             <label for="foto">Foto</label><br>
-            <input type="file" name="foto" value=""><br>
+            <input class="inputImage" type="file" name="foto" value=""><br>
             <br>
             <input type="submit" name="sbmt" value="Enviar" ><br><br>
         </form>
