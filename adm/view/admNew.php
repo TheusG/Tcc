@@ -24,50 +24,62 @@
         <form action="../controller/controller.php" method="post" name="admNew">
             <input type="hidden" name="adm_new" value="value">
             <div class="divForm1">
+                <div class="div3">
+                    <div>
             <label for="Nome">Nome</label><br>
-            <input type="text" name="nome" value="" required ><br>
-            <label for="telefone">Telefone</label><br>
-            <input type="tel" name="telefone" value=""><br>
-
+            <input class="inputnome" type="text" name="nome" value="" required ><br>
+                    </div>
+                    <div>
+            <label for="dataNascimento">Data de Nascimento</label><br>
+            <input type="date" name="dataNascimento" value=""><br>
+                    </div>
+                    <div>
             <label for="sexo">Gênero</label><br>
             <select name="sexo" id="sexo">
                 <option value="m" selected>Masculino</option>
                 <option value="f">Feminino</option>
-                <option value="n">Não-Binário</option>
             </select><br>
+                    </div>
+                </div>   
 
+                <div class="div3">
+                    <div>
             <label for="email">Email</label><br>
-            <input type="email" name="email" value="" required><br>
+            <input class="inputEmail" type="email" name="email" value="" required><br>
+                    </div>
+                    <div>
             <label for="senha">Senha</label><br>
-
-            <input type="password" name="senha" value="" required><br>
-           
+            <input  class="inputSenha" type="password" name="senha" value="" required><br>
+                    </div>
+                </div>
            
 
             <div class="box">
-                <div class="div1">
-            <label for="complemento">Complemento</label><br>
-            <input type="text" name="complemento" value=""><br>
-                </div>
-
+            
                 <div class="div2">
+                    <div>
+                    <label for="telefone">Telefone</label><br>
+            <input type="tel" name="telefone" value=""><br> 
+                    </div>
                     <div>
             <label for="cep">Cep</label><br>
             <input type="text" name="cep" value=""><br>
                     </div>
                     <div>
             <label for="Numero">Número</label><br>
-            <input type="number" name="numero" value=""><br>
+            <input class="inputNumero" type="number" name="numero" value=""><br>
                     </div>
-                    <div>
-                    <label for="dataNascimento">Data de Nascimento</label><br>
-                    <input type="date" name="dataNascimento" value=""><br>
-                    </div>
+                    
+                </div>
+                <div class="div1">
+            <label for="complemento">Complemento</label><br>
+            <input type="text" name="complemento" value=""><br>
                 </div>    
             </div>
            
             <label for="foto">Foto</label><br>
             <input type="file" name="foto" value=""><br>
+            <br>
             <input type="submit" name="sbmt" value="Enviar" ><br><br>
         </form>
             <button class="voltar" id="btnVoltar" onclick="voltar();">Voltar</button>

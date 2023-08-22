@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap');
 /* font-family: 'Prompt', sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 /* font-family: 'Lobster', cursive; */
@@ -170,13 +170,30 @@ header> button{
 
 /*--------------------------------------------- Aqui é só ADMNEW e ADMEDIT ------------------------------------------------*/
 
+#admForm input{
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+
+}
+
+#admForm .div3 #sexo{
+    height: 32px;
+    width: 100px;
+    border-radius: 15px;
+    
+}
+#admForm .div3 .inputEmail{
+  width: 300px;
+}
+#admForm .div3 .inputSenha{
+    width: 240px;
+  }
 .box{
     display: flex;
     flex-direction: column;
 }
-.box div{
-   
-}
+
 .box > .div1 input{
     width: 100%;
     
@@ -184,6 +201,16 @@ header> button{
 .box > .div2{
     display: flex;
     justify-content: space-between;
+}
+.box > .div2 .inputNumero{
+    width: 160px;
+}
+.div3{
+    display: flex;
+    justify-content: space-between;
+}
+.div3  .inputnome {
+    width: 270px;
 }
 
 
