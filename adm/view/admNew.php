@@ -23,7 +23,7 @@
     <div id="admForm"><!-- esta no adm.css -->
         <form action="../controller/controller.php" method="post" name="admNew">
             <input type="hidden" name="adm_new" value="value">
-            <div class="divForm1">
+            
                 <div class="div3">
                     <div>
             <label for="Nome">Nome</label><br>
