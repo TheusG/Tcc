@@ -110,6 +110,7 @@ function pegaFuncionario($id){
             $dados["Email"] = $row["Email"];
             $dados["Nascimento"] = $row["Nascimento"];
             $dados["Foto"] = $row["Foto"];
+            
         }
         $conn->close();
         return $dados;
@@ -122,11 +123,11 @@ function pegaFuncionario($id){
 
 function editarFuncionario($dados){
     require_once "Conexao.php";
-    $sql = "";
-    if(!isset($dados["senha"]) || $dados["senha"] == ""){
+
+    if($dados["senhaNova"] == ""){
         $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}',Foto = '{$dados["foto"]}' WHERE Id_Usuario = {$dados["id"]}";
     }else{
-        $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Senha = '{$dados["senha"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}',Foto = '{$dados["foto"]}' WHERE Id_Usuario = {$dados["id"]}";
+        $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Senha = '{$dados["senhaNova"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}',Foto = '{$dados["foto"]}' WHERE Id_Usuario = {$dados["id"]}";
     }
     $result = $conn->query($sql);
     $conn->close();

@@ -76,7 +76,7 @@
                     </div>
                     <div>
             <label for="senha"><u>Nova</u> Senha (<i>Não obrigatório</i>)</label><br>
-            <input class="inputSenha" type="password" name="senha" value=""><br>
+            <input class="inputSenha" type="password" name="senha" value="" ><br>
                     </div>
                 </div>
                 <div class="box">

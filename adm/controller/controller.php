@@ -126,12 +126,13 @@
             $dados["nome"] = $_REQUEST["nome"];
             $dados["sexo"] = $_REQUEST["sexo"];
             $dados["email"] = $_REQUEST["email"];
-            $dados["senha"] = "";
-            if(isset($_REQUEST["senha"]) || $_REQUEST["senha"] != ""){
+            $dados["senha"]= "";
+            $dados["senhaNova"]= "";
+            if($_REQUEST["senha"] != ""){
                 require_once "../model/Ferramentas.php";
-                $dados["senha"] = hash256($_REQUEST["senha"]);
+                $dados["senha"] = ($_REQUEST["senha"]);
+                $dados["senhaNova"] = hash256($dados["senha"]);
             }
-            
             $dados["telefone"] = $_REQUEST["telefone"];
             $dados["dataNascimento"] = $_REQUEST["dataNascimento"];
             $dados["cep"] = $_REQUEST["cep"];
