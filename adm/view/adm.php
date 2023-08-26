@@ -44,7 +44,7 @@ require_once "admVerifSession.php";
         <div class="menu">
             <a href="admList.php" target="screen">Funcionários</a>
             <a href="admList.php" target="screen">Produtos</a>
-            <a href="admList.php" target="screen">Categorias</a>
+            <a href="categoriaList.php" target="screen">Categorias</a>
             <a href="admList.php" target="screen">Empresa</a>
         </div>
         <div class="ipres">

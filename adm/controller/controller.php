@@ -145,7 +145,7 @@
             if($resp == 1){//tudo certo ao adicionar um novo funcionario
                 ?>  
                     <form action="../view/admList.php" name="form" id="myForm" method="post">
-                        <input type="hidden" name="msg" value="BD52">
+                        <input type="hidden" name="msg" value="BD53">
                     </form>
                     <script>
                         document.getElementById('myForm').submit()
@@ -154,7 +154,7 @@
             }else{//erro no insert
                 ?>  
                     <form action="../view/admList.php" name="form" id="myForm" method="post">
-                        <input type="hidden" name="msg" value="BD02">
+                        <input type="hidden" name="msg" value="BD03">
                     </form>
                     <script>
                         document.getElementById('myForm').submit()
@@ -190,7 +190,88 @@
 
     }
 
+    // --------------------------------------------------------------Categorias---------------------------------------------//
+    if(isset($_REQUEST["categoria_new"])){
+        $categoria["nome"] = $_REQUEST["nome"];
+        $categoria["comentario"] = $_REQUEST["comentario"];
+        $categoria["imagem"] = $_REQUEST["imagem"];
+        require_once "../model/Manager.php";
+        $resp = adicionarCategoria($categoria);
 
+        if($resp == 1){//tudo certo ao adicionar um novo funcionario
+            ?>  
+                <form action="../view/categoriaList.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD52">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+             <?php
+        }else{//erro no insert
+            ?>  
+                <form action="../view/categoriaList.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD02">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+             <?php
+        }
+    }
+
+    if(isset($_REQUEST["categoria_edit"])){
+        $categoria["id"] = $_REQUEST["id"];
+        $categoria["nome"] = $_REQUEST["nome"];
+        $categoria["comentario"] = $_REQUEST["comentario"];
+        $categoria["imagem"] = $_REQUEST["imagem"];
+        require_once "../model/Manager.php";
+        $resp = editarCategoria($categoria);
+
+        if($resp == 1){//tudo certo ao adicionar um novo funcionario
+            ?>  
+                <form action="../view/categoriaList.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD53">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+             <?php
+        }else{//erro no insert
+            ?>  
+                <form action="../view/categoriaList.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD03">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+             <?php
+        }
+    }
+
+    if(isset($_REQUEST["categoria_delete"])){
+        $id = $_REQUEST["id"];
+        require_once "../model/Manager.php";
+        $result = excluirCategoria($id);
+        if($result == 1){//conseguir excluir
+            ?>  
+                <form action="../view/categoriaList.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD54">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+             <?php
+        }else{//algo deu de errado na deleção
+            ?>  
+                <form action="../view/categoriaList.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD04">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+             <?php
+        }
+    }
 
 
 ?>

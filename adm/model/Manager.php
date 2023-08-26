@@ -124,11 +124,18 @@ function pegaFuncionario($id){
 function editarFuncionario($dados){
     require_once "Conexao.php";
 
-    if($dados["senhaNova"] == ""){
-        $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}',Foto = '{$dados["foto"]}' WHERE Id_Usuario = {$dados["id"]}";
-    }else{
-        $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Senha = '{$dados["senhaNova"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}',Foto = '{$dados["foto"]}' WHERE Id_Usuario = {$dados["id"]}";
+    if($dados["senhaNova"] == "" && $dados["foto"] == ""){
+        $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}' WHERE Id_Usuario = {$dados["id"]}";
     }
+    else if($dados["senhaNova"] == "" && $dados["foto"] != ""){
+        $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}', Foto = '{$dados["foto"]}' WHERE Id_Usuario = {$dados["id"]}";
+    } 
+    else if($dados["senhaNova"] != "" && $dados["foto"] == ""){
+        $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Senha = '{$dados["senhaNova"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}' WHERE Id_Usuario = {$dados["id"]}";
+    }else{
+        $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Senha = '{$dados["senhaNova"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}', Foto = '{$dados["foto"]}' WHERE Id_Usuario = {$dados["id"]}";
+    }
+
     $result = $conn->query($sql);
     $conn->close();
     return $result;
@@ -137,6 +144,102 @@ function editarFuncionario($dados){
 function excluirFuncionario($id){
     require_once "Conexao.php";
     $sql = "DELETE FROM usuario WHERE Id_Usuario = {$id}";
+    $result = $conn->query($sql);
+    $conn->close();
+    return $result;
+}
+
+
+// --------------------------------------------------------------Categorias---------------------------------
+function listarCategorias(){
+    require_once "Conexao.php";
+    $sql = "SELECT * FROM categoria";
+    $result= $conn->query($sql);  
+
+    if($result->num_rows > 0){
+        $num = $result->num_rows;
+        $categoria = array();
+        $categoria["result"] = 1;
+        $categoria["num"] = $num;
+        $i =1;
+        while($row = $result->fetch_assoc()){
+            $categoria[$i]["Id_Categoria"] = $row["Id_Categoria"];
+            $categoria[$i]["Nome_Categoria"] =$row["Nome_Categoria"];
+            $categoria[$i]["Comentario"] = $row["Comentario"];
+            $categoria[$i]["Imagem"] = $row["Imagem"];
+            $i++;
+        }
+        $conn->close();
+        return $categoria;
+    }else{
+        $categoria["result"] = 0;
+        $conn->close();
+        return $categoria;
+    }
+}
+
+function adicionarCategoria($categoria){
+    require_once "Conexao.php";
+    $sql = "INSERT INTO categoria (Nome_Categoria,Comentario,Imagem) VALUES ('{$categoria["nome"]}', '{$categoria["comentario"]}','{$categoria["imagem"]}')";
+    $result = $conn->query($sql);
+
+    if($result == true){
+        $conn->close();
+        return 1;
+    }else{
+        $conn->close();
+        return 0;
+    }
+
+}
+
+
+function pegaCategoria($id){
+    require_once "Conexao.php";
+    $sql = "SELECT * FROM categoria WHERE Id_Categoria = {$id}";
+    $result = $conn->query($sql);
+
+    //Se selecionou algum funcionario
+    if($result->num_rows > 0){
+        $categoria = array();
+        $categoria["result"] = 1;
+        while($row = $result->fetch_assoc()){
+            $categoria["Id_Categoria"] = $row["Id_Categoria"];
+            $categoria["Nome_Categoria"] = $row["Nome_Categoria"];
+            $categoria["Comentario"] = $row["Comentario"];
+            $categoria["Imagem"] = $row["Imagem"];
+            
+        }
+        $conn->close();
+        return $categoria;
+    }else{
+        $categoria["result"] = 0;
+        $conn->close();
+        return $categoria;
+    }
+}
+
+function editarCategoria($categoria){
+    require_once "Conexao.php";
+        if($categoria["imagem"] == ""){
+            $sql = "UPDATE categoria SET Nome_Categoria = '{$categoria["nome"]}', Comentario = '{$categoria["comentario"]}' WHERE Id_Categoria = {$categoria["id"]}";
+        }else{
+            $sql = "UPDATE categoria SET Nome_Categoria = '{$categoria["nome"]}', Comentario = '{$categoria["comentario"]}', Imagem = '{$categoria["imagem"]}' WHERE Id_Categoria = {$categoria["id"]}";
+        }
+        
+        $result = $conn->query($sql);
+        if($result == true){//tudo certo 
+            $conn->close();
+                return 1;
+        }else{
+            $conn->close();
+            return 0;
+        }
+}
+
+function excluirCategoria($id){
+    require_once "Conexao.php";
+    $sql = "DELETE FROM categoria WHERE Id_Categoria = {$id}";
     $result = $conn->query($sql);
     $conn->close();
     return $result;

@@ -38,6 +38,7 @@
             <select name="sexo" id="sexo">
                 <option value="m" selected>Masculino</option>
                 <option value="f">Feminino</option>
+                <option value="n">Não-Binário</option>
             </select><br>
                     </div>
                 </div>   

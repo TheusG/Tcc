@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17/08/2023 às 20:15
+-- Tempo de geração: 27/08/2023 às 00:52
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -43,6 +43,30 @@ INSERT INTO `cargo` (`Id_Cargo`, `Nome_Cargo`) VALUES
 (6, 'Garçom'),
 (1, 'Gerente'),
 (4, 'Pizzaiolo');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `categoria`
+--
+
+CREATE TABLE `categoria` (
+  `Id_Categoria` int(11) NOT NULL,
+  `Nome_Categoria` varchar(20) DEFAULT NULL,
+  `Comentario` varchar(100) DEFAULT NULL,
+  `Imagem` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `categoria`
+--
+
+INSERT INTO `categoria` (`Id_Categoria`, `Nome_Categoria`, `Comentario`, `Imagem`) VALUES
+(1, 'Pizza Salgada', 'Nossa finalidade e levar para nossos cliente uma boa experiência com nossas pizzas.', 'pizza.jpg'),
+(2, 'Pizza Doce', 'A pizza doce é um convite irresistível para os amantes de sabores ousados', 'pizzadoce.jpg'),
+(3, 'Esfiha', ' As esfihas são uma explosão de sabores.', 'Esfiha.jpg'),
+(4, 'Esfiha Doce', 'As esfihas doces são como abraços açucarados em forma de comida.', 'esfihadoce.png'),
+(5, 'Bebidas', 'A parceria entre bebida e pizza é um casamento delicioso.', 'bebidas.jpeg');
 
 -- --------------------------------------------------------
 
@@ -136,9 +160,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Numero`, `Complemento`, `Telefone`, `Email`, `Nascimento`, `Foto`) VALUES
-(1, 'Felipe Cerqueira', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', '11995937887', 'felipe@pizza.com', '2005-09-02', ''),
-(2, 'Theus Gomes', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'n', 1, '400', 'Escola', '11987654321', 'theus@pizza.com', '2023-05-08', ''),
-(4, 'Wilson Bezerra', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', '11987654321', 'wilson@pizza.com', '2023-08-03', '');
+(1, 'Felipe Cerqueira', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', '11995937887', 'felipe@pizza.com', '2005-09-02', 'semfoto.jpg'),
+(2, 'Theus Gomes', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'n', 1, '400', 'Escola', '11987654321', 'theus@pizza.com', '2023-05-08', 'semfoto.jpg'),
+(4, 'Wilson Bezerra', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', '11987654321', 'wilson@pizza.com', '2023-08-03', 'semfoto.jpg');
 
 --
 -- Índices para tabelas despejadas
@@ -150,6 +174,12 @@ INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Nu
 ALTER TABLE `cargo`
   ADD PRIMARY KEY (`Id_Cargo`),
   ADD UNIQUE KEY `Nome_Cargo` (`Nome_Cargo`);
+
+--
+-- Índices de tabela `categoria`
+--
+ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`Id_Categoria`);
 
 --
 -- Índices de tabela `cep`
@@ -191,6 +221,12 @@ ALTER TABLE `cargo`
   MODIFY `Id_Cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de tabela `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `Id_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT de tabela `cep`
 --
 ALTER TABLE `cep`
@@ -212,7 +248,7 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restrições para tabelas despejadas
