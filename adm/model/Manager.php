@@ -245,4 +245,48 @@ function excluirCategoria($id){
     return $result;
 }
 
+//---------------------------------------------PRODUTO----------------------------------------------------------//
+
+function listarProduto(){
+    require_once "Conexao.php";
+    $sql = "SELECT * FROM produto";
+    $result= $conn->query($sql);  
+
+    if($result->num_rows > 0){
+        $num = $result->num_rows;
+        $produto = array();
+        $produto["result"] = 1;
+        $produto["num"] = $num;
+        $i =1;
+        while($row = $result->fetch_assoc()){
+            $produto[$i]["Id_Produto"] = $row["Id_Produto"];
+            $produto[$i]["Cod_Produto"] =$row["Cod_Produto"];
+            $produto[$i]["Nome_Produto"] = $row["Nome_Produto"];
+            $produto[$i]["Desc_Produto"] = $row["Desc_Produto"];
+            $produto[$i]["Estoque"] = $row["Estoque"];
+            $produto[$i]["Estoque_Min"] =$row["Estoque_Min"];
+            $produto[$i]["Estoque_Max"] = $row["Estoque_Max"];
+            $produto[$i]["Valor"] = $row["Valor"];
+            $produto[$i]["Status_Produto"] = $row["Status_Produto"];
+            $produto[$i]["Imagem"] = $row["Imagem"];
+            $produto[$i]["Categoria"] = $row["Categoria"];
+            $i++;
+        }
+        $conn->close();
+        return $produto;
+    }else{
+        $produto["result"] = 0;
+        $conn->close();
+        return $produto;
+    }
+}
+
+
+
+
+
+
+
+
+
 ?>

@@ -41,7 +41,7 @@ require_once "admVerifSession.php";
                 <td style="text-align: left;">
                 <form name="formNew" action="admNew.php" method="">
                         <input type="hidden" name="new" value="1">
-                        <input type="submit" name="sbmt" value="Adicionar Funcionario" style="background-color:forestgreen;">
+                        <input type="submit" name="sbmt" value="Adicionar Funcionario" style="background-color:forestgreen; color:white;">
                 </form>
                 </td>
             </tr>
