@@ -273,5 +273,103 @@
         }
     }
 
+ // --------------------------------------------------------------Produtos---------------------------------------------//
+
+
+ if(isset($_REQUEST["produto_new"])){
+    $produto["nome"] = $_REQUEST["nome"];
+    $produto["codigo"] = $_REQUEST["codigo"];
+    $produto["descricao"] = $_REQUEST["descricao"];
+    $produto["estoque"] = $_REQUEST["estoque"];
+    $produto["estoque_Min"] = $_REQUEST["estoque_Min"];
+    $produto["estoque_Max"] = $_REQUEST["estoque_Max"];
+    $produto["valor"] = $_REQUEST["valor"];
+    $produto["status"] = $_REQUEST["status"];
+    $produto["imagem"] = $_REQUEST["imagem"];
+    $produto["categoria"] = $_REQUEST["categoria"];
+    require_once "../model/Manager.php";
+    $resp = adicionarProduto($produto);
+
+    if($resp == 1){//tudo certo ao adicionar um novo funcionario
+        ?>  
+            <form action="../view/produtoList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD52">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    }else{//erro no insert
+        ?>  
+            <form action="../view/produtoList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD02">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    }
+}
+
+if(isset($_REQUEST["produto_edit"])){
+    $produto["id"] = $_REQUEST["id"];
+    $produto["nome"] = $_REQUEST["nome"];
+    $produto["codigo"] = $_REQUEST["codigo"];
+    $produto["descricao"] = $_REQUEST["descricao"];
+    $produto["estoque"] = $_REQUEST["estoque"];
+    $produto["estoque_Min"] = $_REQUEST["estoque_Min"];
+    $produto["estoque_Max"] = $_REQUEST["estoque_Max"];
+    $produto["valor"] = $_REQUEST["valor"];
+    $produto["status"] = $_REQUEST["status"];
+    $produto["imagem"] = $_REQUEST["imagem"];
+    $produto["categoria"] = $_REQUEST["categoria"];
+    require_once "../model/Manager.php";
+    $resp = editarProduto($produto);
+
+    if($resp == 1){//tudo certo ao adicionar um novo funcionario
+        ?>  
+            <form action="../view/produtoList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD53">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    }else{//erro no insert
+        ?>  
+            <form action="../view/produtoList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD03">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    }
+}
+
+if(isset($_REQUEST["produto_delete"])){
+    $id = $_REQUEST["id"];
+    require_once "../model/Manager.php";
+    $result = excluirProduto($id);
+    if($result == 1){//conseguir excluir
+        ?>  
+            <form action="../view/produtoList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD54">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    }else{//algo deu de errado na deleção
+        ?>  
+            <form action="../view/produtoList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD04">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    }
+}
 
 ?>

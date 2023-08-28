@@ -36,10 +36,10 @@ require_once "admVerifSession.php";
             require_once "../model/Manager.php";
             $produto = listarProduto();
         ?>
-        <table class = "catAdd">
+        <table class = "admAdd">
             <tr>
                 <td style="text-align: left;">
-                <form name="formNew" action="categoriaNew.php" method="">
+                <form name="formNew" action="produtoNew.php" method="">
                         <input type="hidden" name="new" value="1">
                         <input type="submit" name="sbmt" value="Adicionar Produto" style="background-color:forestgreen; color:white;">
                 </form>
@@ -54,9 +54,9 @@ require_once "admVerifSession.php";
                 <th class="tabelaAdmTh">Código</th>
                 <th class="tabelaAdmTh">Nome</th>
                 <th class="tabelaAdmTh">Descrição</th>
-                <th class="tabelaAdmTh">Estoque</th>
+                <!-- <th class="tabelaAdmTh">Estoque</th>
                 <th class="tabelaAdmTh">Estoque Mínimo</th>
-                <th class="tabelaAdmTh">Estoque Maxímo</th>
+                <th class="tabelaAdmTh">Estoque Maxímo</th> -->
                 <th class="tabelaAdmTh">Valor</th>
                 <th class="tabelaAdmTh">Status</th>
                 <th class="tabelaAdmTh">Categoria</th>
@@ -71,9 +71,9 @@ require_once "admVerifSession.php";
                     echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Cod_Produto"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Nome_Produto"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Desc_Produto"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Estoque"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Estoque_Min"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Estoque_Max"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Estoque"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Estoque_Min"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Estoque_Max"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">R$".$produto[$i]["Valor"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Status_Produto"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Categoria"]."</td>";

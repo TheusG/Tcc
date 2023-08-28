@@ -30,7 +30,7 @@
         $categoria = pegaCategoria($_REQUEST["Id_Categoria"]);
         if($categoria["result"] == 0){
             ?>  
-                <form action="admList.php" name="form" id="myForm" method="post">
+                <form action="categoriaList.php" name="form" id="myForm" method="post">
                     <input type="hidden" name="msg" value="BD06">
                 </form>
                 <script>
@@ -71,3 +71,6 @@
     </div>
 
     <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
+
+</body>
+</html>

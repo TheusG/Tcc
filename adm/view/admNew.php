@@ -60,11 +60,11 @@
                 <div class="div2">
                     <div>
                     <label for="telefone">Telefone</label><br>
-            <input type="tel" name="telefone" value=""><br> 
+            <input type="tel" name="telefone" placeholder="(99)99999-9999" value=""><br> 
                     </div>
                     <div>
             <label for="cep">Cep</label><br>
-            <input type="text" name="cep" value=""><br>
+            <input type="text" name="cep" placeholder="99999-999" value=""><br>
                     </div>
                     <div>
             <label for="Numero">Número</label><br>

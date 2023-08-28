@@ -281,6 +281,79 @@ function listarProduto(){
     }
 }
 
+function adicionarProduto($produto){
+    require_once "Conexao.php";
+    $sql = "INSERT INTO produto (Cod_Produto,Nome_Produto,Desc_Produto,Estoque,Estoque_Min,Estoque_Max,Valor,Status_Produto,Imagem,Categoria) VALUES ('{$produto["codigo"]}', '{$produto["nome"]}','{$produto["descricao"]}','{$produto["estoque"]}','{$produto["estoque_Min"]}','{$produto["estoque_Max"]}','{$produto["valor"]}','{$produto["status"]}','{$produto["imagem"]}','{$produto["categoria"]}')";
+    $result = $conn->query($sql);
+
+    if($result == true){
+        $conn->close();
+        return 1;
+    }else{
+        $conn->close();
+        return 0;
+    }
+
+}
+
+function pegaProduto($id){
+    require_once "Conexao.php";
+    $sql = "SELECT * FROM produto WHERE Id_Produto = {$id}";
+    $result = $conn->query($sql);
+
+    //Se selecionou algum funcionario
+    if($result->num_rows > 0){
+        $produto = array();
+        $produto["result"] = 1;
+        while($row = $result->fetch_assoc()){
+            $produto["Id_Produto"] = $row["Id_Produto"];
+            $produto["Cod_Produto"] =$row["Cod_Produto"];
+            $produto["Nome_Produto"] = $row["Nome_Produto"];
+            $produto["Desc_Produto"] = $row["Desc_Produto"];
+            $produto["Estoque"] = $row["Estoque"];
+            $produto["Estoque_Min"] =$row["Estoque_Min"];
+            $produto["Estoque_Max"] = $row["Estoque_Max"];
+            $produto["Valor"] = $row["Valor"];
+            $produto["Status_Produto"] = $row["Status_Produto"];
+            $produto["Imagem"] = $row["Imagem"];
+            $produto["Categoria"] = $row["Categoria"];
+            
+        }
+        $conn->close();
+        return $produto;
+    }else{
+        $produto["result"] = 0;
+        $conn->close();
+        return $produto;
+    }
+}
+
+function editarProduto($produto){
+    require_once "Conexao.php";
+        if($produto["imagem"] == ""){
+            $sql = "UPDATE produto SET Cod_Produto = '{$produto["codigo"]}', Nome_Produto = '{$produto["nome"]}', Desc_Produto = '{$produto["descricao"]}', Estoque = '{$produto["estoque"]}', Estoque_Min = '{$produto["estoque_Min"]}', Estoque_Max = '{$produto["estoque_Max"]}', Valor = '{$produto["valor"]}', Status_Produto = '{$produto["status"]}' , Categoria = '{$produto["categoria"]}' WHERE Id_Produto = {$produto["id"]}";
+        }else{
+            $sql = "UPDATE produto SET Cod_Produto = '{$produto["codigo"]}', Nome_Produto = '{$produto["nome"]}', Desc_Produto = '{$produto["descricao"]}', Estoque = '{$produto["estoque"]}', Estoque_Min = '{$produto["estoque_Min"]}', Estoque_Max = '{$produto["estoque_Max"]}', Valor = '{$produto["valor"]}', Status_Produto = '{$produto["status"]}' ,Imagem = '{$produto["imagem"]}', Categoria = '{$produto["categoria"]}' WHERE Id_Produto = {$produto["id"]}";        
+        }
+        
+        $result = $conn->query($sql);
+        if($result == true){//tudo certo 
+            $conn->close();
+                return 1;
+        }else{
+            $conn->close();
+            return 0;
+        }
+}
+
+function excluirProduto($id){
+    require_once "Conexao.php";
+    $sql = "DELETE FROM produto WHERE Id_Produto = {$id}";
+    $result = $conn->query($sql);
+    $conn->close();
+    return $result;
+}
+
 
 
 

@@ -36,7 +36,7 @@ require_once "admVerifSession.php";
             require_once "../model/Manager.php";
             $categoria = listarCategorias();
         ?>
-        <table class = "catAdd">
+        <table class = "admAdd">
             <tr>
                 <td style="text-align: left;">
                 <form name="formNew" action="categoriaNew.php" method="">

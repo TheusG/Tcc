@@ -84,11 +84,11 @@
                     <div class="div2">
                         <div>
             <label for="telefone">Telefone</label><br>
-            <input type="tel" name="telefone" value="<?=$dados['Telefone']?>"><br>
+            <input type="tel" name="telefone"  value="<?=$dados['Telefone']?>"><br>
                         </div>
                         <div>    
             <label for="cep">cep</label><br>
-            <input type="text" name="cep" value="<?=$dados['Cep']?>"><br>
+            <input type="text" name="cep"  value="<?=$dados['Cep']?>"><br>
                         </div>
                         <div>
             <label for="Numero">Número</label><br>
