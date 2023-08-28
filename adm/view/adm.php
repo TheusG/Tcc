@@ -35,7 +35,7 @@ require_once "admVerifSession.php";
             <br>
             Nome:<?=$_SESSION["FUNC-NOME"]?><br>
             E-mail:<?=$_SESSION["FUNC-EMAIL"]?> <br>
-            Cargo:<br>
+            <!-- Cargo:<br> -->
            
         </div>
         <button class="sair" onclick="ExecutaLogout();">Sair</button>
