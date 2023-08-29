@@ -27,8 +27,8 @@ require_once "admVerifSession.php";
         <br>
     <div id="titulo">
         <br>
-        <h3>Produtos da Pizzaria</h3>
-        <h4>Listagem</h4>
+        <h3>Lista de Produtos Five Stars</h3>
+    
         <br><br>
     </div>
 
@@ -82,7 +82,7 @@ require_once "admVerifSession.php";
                     ?>
                     <form name="formEdit" action="produtoEdit.php" method="">
                         <input type="hidden" name="Id_Produto" value="<?=$produto[$i]["Id_Produto"];?>">
-                        <input class="editButton" type="submit" name="sbmt" value="Editar">
+                        <input class="editButton" type="submit" name="sbmt" value="Ver mais">
                     </form>
                     <?php
                     echo "</td>";
