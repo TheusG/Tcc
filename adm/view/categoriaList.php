@@ -27,8 +27,8 @@ require_once "admVerifSession.php";
         <br>
     <div id="titulo">
         <br>
-        <h3>Categorias de Produtos</h3>
-        <h4>Listagem</h4>
+        <h3>Lista de Categorias de Produtos</h3>
+        
         <br><br>
     </div>
 

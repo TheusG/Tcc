@@ -27,8 +27,8 @@ require_once "admVerifSession.php";
         <br>
     <div id="titulo">
         <br>
-        <h3>Funcionarios da Five Stars</h3>
-        <h4>Listagem</h4>
+        <h3> Lista de funcionários da Five Stars</h3>
+        
         <br><br>
     </div>
 
