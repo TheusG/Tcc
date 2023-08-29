@@ -8,9 +8,15 @@
    box-sizing: border-box;
 }
 body{
-    background-color: grey;
+    background-color: white;
+    /* background-color: rgb(218, 218, 218); */
+    font-family: 'Manrope', sans-serif;
+    /* background-color: gray; */
    
     
+}
+#titulo h3{
+    text-decoration: none;
 }
 header{
     display: flex;
@@ -62,7 +68,8 @@ header> button{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(44, 43, 43);
+    background-color: grey;
+    /* background-color: rgb(44, 43, 43); */
     font-family: 'Lucida Sans';
 
 }
@@ -75,7 +82,7 @@ header> button{
 .conteiner > .menu > a {
     background-color: black;
     border-radius: 15px;
-    margin: 5px;
+    margin: 2px;
     width: 80%;
     height: 35px;
     font-size: 26px;
@@ -233,10 +240,10 @@ header> button{
     font-size: 20px;
     font-family: 'Lucida Sans';
 }
-
-#titulo h3{
-    text-decoration: underline;
+#titulo h3, #titulo h4{
+    font-size: 30px;
 }
+
 #admForm .inputImage{
     height: 45px;
     padding: 5px;
