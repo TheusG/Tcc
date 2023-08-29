@@ -7,10 +7,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
+      
         body{
-            background-color: grey;
+            background-color: white;
         }
-
         h1{
             font-size: 36px;
             font-family: 'Lucida Sans';

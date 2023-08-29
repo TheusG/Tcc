@@ -23,16 +23,13 @@
     <div id="admForm"><!-- esta no adm.css -->
         <form action="../controller/controller.php" method="post" name="categoriaNew">
             <input type="hidden" name="categoria_new" value="value">            
-                <div class="div3">
-                    <div>
+               
             <label for="nome">Nome da Categoria</label><br>
             <input class="inputnome" type="text" name="nome" value="" required ><br>
-                    </div>
-                    <div>
+                    
             <label for="comentario">Comentário</label><br>
             <textarea name="comentario" id="comentario" cols="30" rows="10" style="resize: none;"></textarea><br>
-                    </div>
-                    <div>
+                 
             <label for="imagem">Imagem</label><br>
             <input class="inputImage" type="file" name="imagem" value=""><br>
             <br>

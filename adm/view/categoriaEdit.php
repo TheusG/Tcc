@@ -52,17 +52,13 @@
         <form action="../controller/controller.php" method="post" name="admNew">
             <input type="hidden" name="categoria_edit" value="1">
             <input type="hidden" name="id" value="<?=$categoria['Id_Categoria']?>">
-            <div class="div3">
-                <div>
+          
             <label for="nome">Nome da Categoria</label><br>
             <input class="inputnome" type="text" name="nome" value="<?=$categoria['Nome_Categoria']?>"><br>
-                </div>
-                <div>
-                    <div class="div1">
+               
             <label for="comentario">Comentário</label><br>
             <textarea name="comentario" id="comentario" cols="30" rows="10"  style="resize: none;" value=""><?=$categoria['Comentario']?></textarea><br>
-                    </div>
-                </div><br>
+                 <br>
             <label for="foto">Imagem</label><br>
             <input type="file" name="imagem" value="<?=$categoria["Imagem"]?>">
             <input type="submit" name="sbmt" value="Enviar" style="width: 50px; height: 20px;"><br><br>
