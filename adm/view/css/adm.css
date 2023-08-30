@@ -64,7 +64,7 @@ header> button{
 }
 .conteiner > .menu{
     width: 25%;
-    height: 1080px;
+    height: 1280px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -263,7 +263,22 @@ header> button{
 }
 
 /*------------------------------------------- AQUI É SÓ PRODUTONEW E PRODUTOEDIT --------------------------------*/
-
+.divFlex{
+    display: flex;
+    justify-content: space-between;
+}
+.divFlex .inputProduto{
+    width: 350px;
+}
+.divFlex .inputValor{
+    width: 100px;
+}
+.divFlex .inputCod{
+    width: 80px;
+}
+.divFlex > .estoque > input {
+    width: 180px;
+}
 
 
 
