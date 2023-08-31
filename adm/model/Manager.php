@@ -355,6 +355,82 @@ function excluirProduto($id){
 }
 
 
+// --------------------------------------------------------------EMPRESA---------------------------------------------//
+ function listarEmpresa(){
+    require_once "Conexao.php";
+    $sql = "SELECT * FROM empresa";
+    $result = $conn->query($sql);
+
+    if($result->num_rows > 0){
+        $num = $result->num_rows;
+        $empresa = array();
+        $empresa["result"] = 1;
+        $empresa["num"] = $num;
+        $i =1;
+        while($row = $result->fetch_assoc()){
+            $empresa[$i]["Id_Empresa"] = $row["Id_Empresa"];
+            $empresa[$i]["Nome_Empresa"] =$row["Nome_Empresa"];
+            $empresa[$i]["Fantasia"] = $row["Fantasia"];
+            $empresa[$i]["Cnpj"] = $row["Cnpj"];
+            $empresa[$i]["Ie"] = $row["Ie"];
+            $empresa[$i]["Cep"] =$row["Cep"];
+            $empresa[$i]["Endereco"] = $row["Endereco"];
+            $empresa[$i]["Numero"] = $row["Numero"];
+            $empresa[$i]["Bairro"] = $row["Bairro"];
+            $empresa[$i]["Cidade"] = $row["Cidade"];
+            $empresa[$i]["Uf"] = $row["Uf"];
+            $empresa[$i]["Telefone"] = $row["Telefone"];
+            $empresa[$i]["Site"] = $row["Site"];
+            $empresa[$i]["Data"] = $row["Data"];
+            $empresa[$i]["Logo"] = $row["Logo"];
+            $i++;
+        }
+        $conn->close();
+        return $empresa;
+    }else{
+        $empresa["result"] = 0;
+        $conn->close();
+        return $empresa;
+    }
+}
+
+function pegaEmpresa($id){
+    require_once "Conexao.php";
+    $sql = "SELECT * FROM empresa WHERE Id_Empresa = {$id}";
+    $result = $conn->query($sql);
+
+    //Se selecionou algum funcionario
+    if($result->num_rows > 0){
+        $empresa = array();
+        $empresa["result"] = 1;
+        while($row = $result->fetch_assoc()){
+            $empresa["Id_Empresa"] = $row["Id_Empresa"];
+            $empresa["Nome_Empresa"] =$row["Nome_Empresa"];
+            $empresa["Fantasia"] = $row["Fantasia"];
+            $empresa["Cnpj"] = $row["Cnpj"];
+            $empresa["Ie"] = $row["Ie"];
+            $empresa["Cep"] =$row["Cep"];
+            $empresa["Endereco"] = $row["Endereco"];
+            $empresa["Numero"] = $row["Numero"];
+            $empresa["Bairro"] = $row["Bairro"];
+            $empresa["Cidade"] = $row["Cidade"];
+            $empresa["Uf"] = $row["Uf"];
+            $empresa["Telefone"] = $row["Telefone"];
+            $empresa["Site"] = $row["Site"];
+            $empresa["Data"] = $row["Data"];
+            $empresa["Logo"] = $row["Logo"];
+            
+        }
+        $conn->close();
+        return $empresa;
+    }else{
+        $empresa["result"] = 0;
+        $conn->close();
+        return $empresa;
+    }
+}
+
+ 
 
 
 

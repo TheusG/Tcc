@@ -45,7 +45,7 @@ require_once "admVerifSession.php";
             <a href="admList.php" target="screen">Funcionários</a>
             <a href="produtoList.php" target="screen">Produtos</a>
             <a href="categoriaList.php" target="screen">Categorias</a>
-            <a href="admList.php" target="screen">Empresa</a>
+            <a href="empresaList.php" target="screen">Empresa</a>
         </div>
         <div class="ipres">
             <iframe name="screen" id="screen" width="100%" height="1180px" src="bemvindo.php" style="border: 0px;"></iframe> 
