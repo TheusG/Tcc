@@ -28,7 +28,7 @@
             <input class="inputnome" type="text" name="nome" value="" required ><br>
                     
             <label for="comentario">Comentário</label><br>
-            <textarea name="comentario" id="comentario" cols="30" rows="10" style="resize: none;"></textarea><br>
+            <textarea class="descricao" name="comentario" id="comentario" cols="30" rows="10" style="resize: none;"></textarea><br>
                  
             <label for="imagem">Imagem</label><br>
             <input class="inputImage" type="file" name="imagem" value=""><br>
