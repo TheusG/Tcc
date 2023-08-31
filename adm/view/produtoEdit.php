@@ -65,7 +65,7 @@
                     </div>
                     <div>
             <label for="valor">Valor</label><br>
-            <input class="inputValor" type="number" name="valor" step="0.01" value="<?=$produto["Valor"]?>" required><br>
+            <input class="inputValor" type="number" name="valor" step="0.01" value="<?=$produto["Valor"]?>" required><br><br>
                     </div>
                     </div>
                     <div class="divFlex">
