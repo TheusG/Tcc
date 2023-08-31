@@ -134,7 +134,7 @@
                     </div>
                     <br>
                              
-            <input type="submit" name="sbmt" value="Enviar" ><br><br>
+            <input class="enviar" type="submit" name="sbmt" value="Enviar" ><br><br>
             
             <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
         </form>

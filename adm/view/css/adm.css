@@ -55,6 +55,18 @@ header> button{
     font-family: 'Lucida Sans';
 }
 
+.enviar{
+    width: 60px;
+    height: 40px;
+    font-weight: bold;
+    background-color: rgb(235, 233, 233);
+    transition: 0.5s;
+}
+.enviar:hover{
+    background-color: rgb(172, 170, 170);
+    scale: 1.1;
+    transition: 0.5s;
+}
 
 
 .conteiner{
@@ -225,11 +237,14 @@ header> button{
     color: white;
     border-radius: 5px;
     border: solid rgb(80, 80, 80) 3px;
+    transition: 0.5s;
 }
 .voltar:hover{
     background-color: rgb(32, 31, 31);
     color: white;
     border: solid rgb(80, 80, 80) 2px;
+    scale: 1.1;
+    transition: 0.5s;
 }
 #titulo{
     text-align: center;

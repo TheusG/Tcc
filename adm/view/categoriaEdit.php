@@ -60,13 +60,14 @@
             <textarea name="comentario" id="comentario" cols="30" rows="10"  style="resize: none;" value=""><?=$categoria['Comentario']?></textarea><br>
                  <br>
             <label for="foto">Imagem</label><br>
-            <input type="file" name="imagem" value="<?=$categoria["Imagem"]?>">
-            <input type="submit" name="sbmt" value="Enviar" style="width: 50px; height: 20px;"><br><br>
+            <input type="file" name="imagem" value="<?=$categoria["Imagem"]?>"> <br><br>
+            <input class="enviar" type="submit" name="sbmt" value="Enviar"><br><br>
         </form>
+        <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
             
     </div>
 
-    <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
+    
 
 </body>
 </html>

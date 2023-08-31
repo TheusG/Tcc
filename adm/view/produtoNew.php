@@ -84,7 +84,7 @@
             <label for="nome">Imagem</label><br>
             <input class="inputnome" type="file" name="imagem" value=""><br>
             <br>
-            <input id="enviar" type="submit" name="sbmt" value="Enviar" ><br><br>
+            <input class="enviar" id="enviar" type="submit" name="sbmt" value="Enviar" ><br><br>
         </form>  
         
         <button class="voltar" id="btnVoltar" onclick="voltar();">Voltar</button>
