@@ -370,4 +370,43 @@ if(isset($_REQUEST["produto_delete"])){
 
 // --------------------------------------------------------------Produtos---------------------------------------------//
 
+if(isset($_REQUEST["empresa_edit"])){
+    $empresa["id"] = $_REQUEST["id"];
+    $empresa["nome"] = $_REQUEST["nome"];
+    $empresa["fantasia"] = $_REQUEST["fantasia"];
+    $empresa["cnpj"] = $_REQUEST["cnpj"];
+    $empresa["ie"] = $_REQUEST["ie"];
+    $empresa["cep"] = $_REQUEST["cep"];
+    $empresa["endereco"] = $_REQUEST["endereco"];
+    $empresa["numero"] = $_REQUEST["numero"];
+    $empresa["bairro"] = $_REQUEST["bairro"];
+    $empresa["cidade"] = $_REQUEST["cidade"];
+    $empresa["uf"] = $_REQUEST["uf"];
+    $empresa["telefone"] = $_REQUEST["telefone"];
+    $empresa["site"] = $_REQUEST["site"];
+    $empresa["data"] = $_REQUEST["data"];
+    $empresa["logo"] = $_REQUEST["logo"];
+    require_once "../model/Manager.php";
+    $resp = editarEmpresa($empresa);
+
+    if($resp == 1){//tudo certo ao adicionar um novo funcionario
+        ?>  
+            <form action="../view/empresaList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD53">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    }else{//erro no insert
+        ?>  
+            <form action="../view/empresaList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD03">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    }
+}
 ?>
