@@ -136,8 +136,9 @@
                              
             <input class="enviar" type="submit" name="sbmt" value="Enviar" ><br><br>
             
-            <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
+            
         </form>
+        <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
             
     </div>
 
