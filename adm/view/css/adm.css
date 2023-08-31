@@ -279,6 +279,17 @@ header> button{
 .divFlex > .estoque > input {
     width: 180px;
 }
+.divFlex > .divStatus{
+    display: flex;
+}
+
+.divFlex > .divStatus > div{
+   margin-right: 25px;
+}
+#admForm  .descricao{
+    width: 100%;
+}
+
 
 
 

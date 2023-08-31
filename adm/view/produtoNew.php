@@ -52,17 +52,20 @@
             <input class="inputnome" type="number" name="estoque_Max" value=""><br>
                             </div>
                     </div>
+                    <br>
          
-                   
+                   <div class="divFlex">
+                       <div class="divStatus">
+                        <div>
             <label for="status">Status</label><br>
             <select name="status" id="status">
                 <option value="1" selected>Ativo</option>
                 <option value="0">Inativo</option>
-            </select>
-                   
-            <label for="nome">Imagem</label><br>
+            </select>   
+                        </div>
+         
            
-                    
+                        <div>
             <label for="categoria">Categoria</label><br>
             <select name="categoria" id="categoria">
                 <option value="1" selected>Pizza Salgado</option>
@@ -71,12 +74,17 @@
                 <option value="4">Esfiha Doce</option>
                 <option value="5">Bebida</option>
             </select>
-            
+                        </div>
+                        </div>
+                    </div>
+                    <br>
             <label for="descricao">Descrição do Produto</label><br>
-            <textarea name="descricao" id="descricao" cols="30" rows="10" style="resize: none;" required></textarea><br>
-           
+            <textarea class="descricao"" name="descricao" id="descricao" cols="30" rows="10" style="resize: none;" required></textarea><br>
+            <br>
+            <label for="nome">Imagem</label><br>
             <input class="inputnome" type="file" name="imagem" value=""><br>
-            <input type="submit" name="sbmt" value="Enviar" ><br><br>
+            <br>
+            <input id="enviar" type="submit" name="sbmt" value="Enviar" ><br><br>
         </form>  
         <button class="voltar" id="btnVoltar" onclick="voltar();">Voltar</button>
     </div>
