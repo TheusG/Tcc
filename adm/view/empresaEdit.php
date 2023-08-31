@@ -134,7 +134,7 @@
                     </div>
                     <br>
                              
-            <input class="enviar" type="submit" name="sbmt" value="Enviar" ><br><br>
+            <input class="enviar" type="submit" name="sbmt" value="Editar" ><br><br>
             
             
         </form>

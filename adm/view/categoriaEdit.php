@@ -54,10 +54,10 @@
             <input type="hidden" name="id" value="<?=$categoria['Id_Categoria']?>">
           
             <label for="nome">Nome da Categoria</label><br>
-            <input class="inputnome" type="text" name="nome" value="<?=$categoria['Nome_Categoria']?>"><br>
+            <input class="inputnome" type="text" name="nome" value="<?=$categoria['Nome_Categoria']?>"><br><br>
                
             <label for="comentario">Comentário</label><br>
-            <textarea class="descricao" name="comentario" id="comentario" cols="30" rows="10"  style="resize: none;" value=""><?=$categoria['Comentario']?></textarea><br>
+            <textarea class="descricao" name="comentario" id="comentario" cols="30" rows="10"  style="resize: none;" value=""><?=$categoria['Comentario']?></textarea><br><br>
                  <br>
             <label for="foto">Imagem</label><br>
             <input type="file" name="imagem" value="<?=$categoria["Imagem"]?>"> <br><br>

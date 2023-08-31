@@ -433,9 +433,9 @@ function pegaEmpresa($id){
 function editarEmpresa($empresa){
     require_once "Conexao.php";
         if($empresa["logo"] == ""){
-            $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["Cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = '{$empresa["data"]}' WHERE Id_Empresa = {$empresa["id"]}";
+            $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = '{$empresa["data"]}' WHERE Id_Empresa = {$empresa["id"]}";
         }else{
-        $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["Cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = '{$empresa["data"]}', Logo = '{$empresa["logo"]}' WHERE Id_Empresa = {$empresa["id"]}";
+        $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = '{$empresa["data"]}', Logo = '{$empresa["logo"]}' WHERE Id_Empresa = {$empresa["id"]}";
         } 
         $result = $conn->query($sql);
         if($result == true){//tudo certo 
