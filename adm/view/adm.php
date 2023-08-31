@@ -25,6 +25,7 @@ require_once "admVerifSession.php";
     <header>
         <div class="logo">
             
+            
             <img src="img/logo pizzaria1.png" alt="Logo">
             <p>Five Stars</p>
             <i class="fa-solid fa-pizza-slice"></i>
