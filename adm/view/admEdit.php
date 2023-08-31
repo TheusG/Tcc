@@ -84,11 +84,11 @@
                     <div class="div2">
                         <div>
             <label for="telefone">Telefone</label><br>
-            <input type="tel" name="telefone"  value="<?=$dados['Telefone']?>"><br>
+            <input type="tel" name="telefone" id="telefone" value="<?=$dados['Telefone']?>"><br>
                         </div>
                         <div>    
             <label for="cep">cep</label><br>
-            <input type="text" name="cep"  value="<?=$dados['Cep']?>"><br>
+            <input type="text" name="cep" id="cep" value="<?=$dados['Cep']?>"><br>
                         </div>
                         <div>
             <label for="Numero">Número</label><br>
@@ -107,8 +107,15 @@
             <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
     </div>
 
-  
 
-<!-- Felipe viado -->
+
+  
+    <script src="../../assets/js/bibliotecaj/jquery-3.6.4.min.js"></script>
+    <script src="../../assets/js/bibliotecaj/jQuery-Mask-Plugin-master/src/jquery.mask.js"></script>
+
+    <script>
+          $('#telefone').mask('(00) 00000-0000');
+          $('#cep').mask('00000-000')
+    </script>
 </body>
 </html>

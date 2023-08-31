@@ -86,7 +86,7 @@
                         </div>
                                         <div>
             <label for="cep">CEP</label><br>
-            <input class="inputFantasia" type="number" name="cep" value="<?=$empresa["Cep"]?>" maxlength="8" ><br><br>
+            <input class="inputFantasia" type="text" id="cep" name="cep" value="<?=$empresa["Cep"]?>" maxlength="9" ><br><br>
                         </div>
 
                     </div>
@@ -113,7 +113,7 @@
                     <div class="divFlex">
                     <div class="estoque">
             <label for="telefone">Telefone</label><br>
-            <input class="inputnome" type="number" name="telefone" maxlength="11" value="<?=$empresa["Telefone"]?>"><br><br>
+            <input class="inputnome" type="tel" name="telefone" id="telefone" maxlength="15" value="<?=$empresa["Telefone"]?>"><br><br>
                         </div>
                  
                         <div class="estoque">
@@ -142,6 +142,14 @@
             
     </div>
 
+
+    <script src="../../assets/js/bibliotecaj/jquery-3.6.4.min.js"></script>
+    <script src="../../assets/js/bibliotecaj/jQuery-Mask-Plugin-master/src/jquery.mask.js"></script>
+
+    <script>
+          $('#telefone').mask('(00) 00000-0000');
+          $('#cep').mask('00000-000')
+    </script>
 
 </body>
 </html>

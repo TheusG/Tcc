@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31/08/2023 às 19:35
+-- Tempo de geração: 31/08/2023 às 21:36
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -102,13 +102,13 @@ CREATE TABLE `empresa` (
   `Fantasia` varchar(20) DEFAULT NULL,
   `Cnpj` varchar(14) DEFAULT NULL,
   `Ie` varchar(14) DEFAULT NULL,
-  `Cep` varchar(8) DEFAULT NULL,
+  `Cep` varchar(9) DEFAULT NULL,
   `Endereco` varchar(50) DEFAULT NULL,
   `Numero` varchar(10) DEFAULT NULL,
   `Bairro` varchar(40) DEFAULT NULL,
   `Cidade` varchar(40) DEFAULT NULL,
   `Uf` varchar(2) DEFAULT NULL,
-  `Telefone` varchar(11) DEFAULT NULL,
+  `Telefone` varchar(15) DEFAULT NULL,
   `Site` varchar(50) DEFAULT NULL,
   `Data` date DEFAULT NULL,
   `Logo` varchar(30) DEFAULT NULL
@@ -119,7 +119,7 @@ CREATE TABLE `empresa` (
 --
 
 INSERT INTO `empresa` (`Id_Empresa`, `Nome_Empresa`, `Fantasia`, `Cnpj`, `Ie`, `Cep`, `Endereco`, `Numero`, `Bairro`, `Cidade`, `Uf`, `Telefone`, `Site`, `Data`, `Logo`) VALUES
-(1, 'Pizzaria Five Stars', 'Five Stars', '34094488000185', '419405659082', '08253000', 'Rua Virgínia Ferni', '400', 'José Bonifácio', 'São Paulo', 'SP', '1122547627', 'fivestars.com.br', '2023-03-08', 'logo pizzaria1.png');
+(1, 'Pizzaria Five Stars', 'Five Stars', '34094488000185', '419405659082', '08253-000', 'Rua Virgínia Ferni', '400', 'José Bonifácio', 'São Paulo', 'SP', '(11) 22547-627', 'fivestars.com.br', '2023-03-08', 'logo pizzaria1.png');
 
 -- --------------------------------------------------------
 
@@ -175,8 +175,8 @@ INSERT INTO `perfil` (`Id_Perfil`, `Acessa_Cliente`, `Acessa_Funcionario`, `Aces
 CREATE TABLE `produto` (
   `Id_Produto` int(11) NOT NULL,
   `Cod_Produto` varchar(13) DEFAULT NULL,
-  `Nome_Produto` varchar(20) DEFAULT NULL,
-  `Desc_Produto` varchar(80) DEFAULT NULL,
+  `Nome_Produto` varchar(25) DEFAULT NULL,
+  `Desc_Produto` varchar(90) DEFAULT NULL,
   `Estoque` int(11) DEFAULT NULL,
   `Estoque_Min` int(11) DEFAULT NULL,
   `Estoque_Max` int(11) DEFAULT NULL,
@@ -230,7 +230,7 @@ INSERT INTO `produto` (`Id_Produto`, `Cod_Produto`, `Nome_Produto`, `Desc_Produt
 (37, '1037', 'Pizza M&M´s         ', 'Chocolate M&M´s                                                     ', 0, 0, 0, 35, '1', 'pizzaMM.png                  ', 2),
 (38, '1038', 'Esfiha Atum         ', 'Atum                                                                ', 0, 0, 0, 4, '1', 'esfihaAtum.png               ', 3),
 (39, '1039', 'Esfiha Atum com Quei', 'Atum com queijo                                                     ', 0, 0, 0, 4, '1', 'esfihaAtumQueijo.png         ', 3),
-(40, '1040', 'Esfih Calabresa com ', 'Calabresa moída e catupity                                          ', 0, 0, 0, 4, '1', 'espihaCalabresaCatupiry.png  ', 3),
+(40, '1040', 'Esfiha Calabresa com', 'Calabresa moída e catupity                                          ', 0, 0, 0, 4, '1', 'espihaCalabresaCatupiry.png  ', 3),
 (41, '1041', 'Esfiha Calabresa com', 'Calabresa moída e queijo                                            ', 0, 0, 0, 4, '1', 'espihaCalabresaQueijo.png    ', 3),
 (42, '1042', 'Esfiha Carne        ', 'Carne moída                                                         ', 0, 0, 0, 4, '1', 'espihaCarne.jpg              ', 3),
 (43, '1043', 'Esfiha Escarola e Qu', 'Escarola e queijo mussarela                                         ', 0, 0, 0, 4, '1', 'espihaEscarolaQueijo.png     ', 3),
@@ -276,7 +276,7 @@ CREATE TABLE `usuario` (
   `Cep` int(11) DEFAULT NULL,
   `Numero` varchar(10) DEFAULT NULL,
   `Complemento` varchar(45) DEFAULT NULL,
-  `Telefone` varchar(11) DEFAULT NULL,
+  `Telefone` varchar(15) DEFAULT NULL,
   `Email` varchar(60) DEFAULT NULL,
   `Nascimento` date DEFAULT NULL,
   `Foto` varchar(30) DEFAULT NULL
@@ -287,9 +287,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Numero`, `Complemento`, `Telefone`, `Email`, `Nascimento`, `Foto`) VALUES
-(1, 'Felipe Cerqueira', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', '11995937887', 'felipe@pizza.com', '2005-09-02', 'semfoto.jpg'),
-(2, 'Theus Gomes', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'n', 1, '400', 'Escola', '11987654321', 'theus@pizza.com', '2023-05-08', 'semfoto.jpg'),
-(4, 'Wilson Bezerra', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', '11987654321', 'wilson@pizza.com', '2023-08-03', 'semfoto.jpg');
+(1, 'Felipe Cerqueira', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', '(11) 99593-7887', 'felipe@pizza.com', '2005-09-02', 'semfoto.jpg'),
+(2, 'Theus Gomes', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'n', 1, '400', 'Escola', '(11) 98765-4321', 'theus@pizza.com', '2023-05-08', 'semfoto.jpg'),
+(4, 'Wilson Bezerra', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', '(11) 98765-7321', 'wilson@pizza.com', '2023-08-03', 'semfoto.jpg');
 
 --
 -- Índices para tabelas despejadas

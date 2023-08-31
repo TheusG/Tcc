@@ -55,13 +55,13 @@ require_once "admVerifSession.php";
                     echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Fantasia"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Cnpj"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Ie"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Cep"]."</td>";
+                    echo "<td id=\"cep\" class=\"tabelaAdmTd\">".$empresa[$i]["Cep"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Endereco"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Numero"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Bairro"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Cidade"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Uf"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Telefone"]."</td>";
+                    echo "<td id=\"telefone\" class=\"tabelaAdmTd\">".$empresa[$i]["Telefone"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Site"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Data"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Logo"]."</td>";
@@ -87,5 +87,13 @@ if(isset($_REQUEST["msg"])){
 }
       
 ?>
+
+<script src="../../assets/js/bibliotecaj/jquery-3.6.4.min.js"></script>
+    <script src="../../assets/js/bibliotecaj/jQuery-Mask-Plugin-master/src/jquery.mask.js"></script>
+
+    <script>
+          $('#telefone').mask('(00) 00000-0000');
+          $('#cep').mask('00000-000')
+    </script>
 </body>
 </html>

@@ -60,11 +60,11 @@
                 <div class="div2">
                     <div>
                     <label for="telefone">Telefone</label><br>
-            <input type="tel" name="telefone" placeholder="(99)99999-9999" value=""><br> 
+            <input type="tel" id="telefone" name="telefone" placeholder="(99)99999-9999" value=""><br> 
                     </div>
                     <div>
             <label for="cep">Cep</label><br>
-            <input type="text" name="cep" placeholder="99999-999" value=""><br>
+            <input type="text" id="cep" name="cep" placeholder="99999-999" value=""><br>
                     </div>
                     <div>
             <label for="Numero">Número</label><br>
@@ -85,6 +85,14 @@
         </form>
             <button class="voltar" id="btnVoltar" onclick="voltar();">Voltar</button>
     </div>
+
+    <script src="../../assets/js/bibliotecaj/jquery-3.6.4.min.js"></script>
+    <script src="../../assets/js/bibliotecaj/jQuery-Mask-Plugin-master/src/jquery.mask.js"></script>
+
+    <script>
+          $('#telefone').mask('(00) 00000-0000');
+          $('#cep').mask('00000-000')
+    </script>
 
 
 </body>
