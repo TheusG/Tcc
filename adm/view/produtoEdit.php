@@ -113,10 +113,11 @@
             <label for="nome">Imagem</label><br>
             <input class="inputnome" type="file" name="imagem" value="<?=$produto["Imagem"]?>"><br><br>
                    
-            <input type="submit" name="sbmt" value="Enviar" ><br><br>
+            <input class="enviar" type="submit" name="sbmt" value="Enviar" ><br><br>
             
-            <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
+          
         </form>
+        <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
             
     </div>
 

@@ -33,7 +33,7 @@
             <label for="imagem">Imagem</label><br>
             <input class="inputImage" type="file" name="imagem" value=""><br>
             <br>
-            <input type="submit" name="sbmt" value="Enviar" ><br><br>
+            <input class="enviar" type="submit" name="sbmt" value="Enviar" ><br><br>
         </form>
             <button class="voltar" id="btnVoltar" onclick="voltar();">Voltar</button>
     </div>

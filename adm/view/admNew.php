@@ -81,7 +81,7 @@
             <label for="foto">Foto</label><br>
             <input class="inputImage" type="file" name="foto" value=""><br>
             <br>
-            <input type="submit" name="sbmt" value="Enviar" ><br><br>
+            <input class="enviar" type="submit" name="sbmt" value="Enviar" ><br><br>
         </form>
             <button class="voltar" id="btnVoltar" onclick="voltar();">Voltar</button>
     </div>
