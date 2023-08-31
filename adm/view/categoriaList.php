@@ -53,7 +53,7 @@ require_once "admVerifSession.php";
                 <!-- <th class="tabelaAdmTh">Identificador</th> -->
                 <th class="tabelaAdmTh">Nome</th>
                 <th class="tabelaAdmTh">Comentário</th>
-                <th class="tabelaAdmTh">Imagem</th>
+                <!-- <th class="tabelaAdmTh">Imagem</th> -->
                 <th class="tabelaAdmTh">&nbsp;</th>
                 <th class="tabelaAdmTh">&nbsp;</th>
             </tr>
@@ -63,12 +63,12 @@ require_once "admVerifSession.php";
                     // echo "<td class=\"tabelaAdmTd\">".$categoria[$i]["Id_Categoria"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$categoria[$i]["Nome_Categoria"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$categoria[$i]["Comentario"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$categoria[$i]["Imagem"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$categoria[$i]["Imagem"]."</td>";
                     echo "<td>"
                     ?>
                     <form name="formEdit" action="categoriaEdit.php" method="">
                         <input type="hidden" name="Id_Categoria" value="<?=$categoria[$i]["Id_Categoria"];?>">
-                        <input class="editButton" type="submit" name="sbmt" value="Editar">
+                        <input class="editButton" type="submit" name="sbmt" value="Ver Mais">
                     </form>
                     <?php
                     echo "</td>";

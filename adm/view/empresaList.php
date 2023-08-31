@@ -30,41 +30,41 @@ require_once "admVerifSession.php";
         
         <table class = "tabelaAdm">
             <tr>
-                <th class="tabelaAdmTh">Identificador</th>
+                <!-- <th class="tabelaAdmTh">Identificador</th> -->
                 <th class="tabelaAdmTh">Nome</th>
                 <th class="tabelaAdmTh">Nome Fantasia</th>
                 <th class="tabelaAdmTh">Cnpj</th>
-                <th class="tabelaAdmTh">Inscrição Estadual</th>             
-                <th class="tabelaAdmTh">Cep</th>
+                <!-- <th class="tabelaAdmTh">Inscrição Estadual</th>              -->
+                <!-- <th class="tabelaAdmTh">Cep</th> -->
                 <!-- <th class="tabelaAdmTh">Endereco</th>
                 <th class="tabelaAdmTh">Numero</th>
                 <th class="tabelaAdmTh">Bairro</th>              
                 <th class="tabelaAdmTh">Cidade</th>
                 <th class="tabelaAdmTh">Uf</th>               -->
                 <th class="tabelaAdmTh">Telefone</th>
-                <th class="tabelaAdmTh">Site</th>
+                <!-- <th class="tabelaAdmTh">Site</th>
                 <th class="tabelaAdmTh">Data</th>
-                <th class="tabelaAdmTh">Logo</th>              
+                <th class="tabelaAdmTh">Logo</th>               -->
                 <th class="tabelaAdmTh">&nbsp;</th>
             </tr>
             <?php 
              for($i = 1;$i<= $empresa["num"];$i++){
                 echo "<tr>";
-                    echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Id_Empresa"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Id_Empresa"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Nome_Empresa"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Fantasia"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Cnpj"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Ie"]."</td>";
-                    echo "<td id=\"cep\" class=\"tabelaAdmTd\">".$empresa[$i]["Cep"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Ie"]."</td>";
+                    // echo "<td id=\"cep\" class=\"tabelaAdmTd\">".$empresa[$i]["Cep"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Endereco"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Numero"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Bairro"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Cidade"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Uf"]."</td>";
                     echo "<td id=\"telefone\" class=\"tabelaAdmTd\">".$empresa[$i]["Telefone"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Site"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Data"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Logo"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Site"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Data"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$empresa[$i]["Logo"]."</td>";
                     echo "<td>"
                     ?>
                     <form name="formEdit" action="empresaEdit.php" method="">
