@@ -50,7 +50,7 @@ require_once "admVerifSession.php";
 
         <table class = "tabelaAdm">
             <tr>
-                <th class="tabelaAdmTh">Identificador</th>
+                <!-- <th class="tabelaAdmTh">Identificador</th> -->
                 <th class="tabelaAdmTh">Nome</th>
                 <th class="tabelaAdmTh">Comentário</th>
                 <th class="tabelaAdmTh">Imagem</th>
@@ -60,7 +60,7 @@ require_once "admVerifSession.php";
             <?php 
              for($i = 1;$i<= $categoria["num"];$i++){
                 echo "<tr>";
-                    echo "<td class=\"tabelaAdmTd\">".$categoria[$i]["Id_Categoria"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$categoria[$i]["Id_Categoria"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$categoria[$i]["Nome_Categoria"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$categoria[$i]["Comentario"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$categoria[$i]["Imagem"]."</td>";

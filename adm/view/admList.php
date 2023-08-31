@@ -50,14 +50,14 @@ require_once "admVerifSession.php";
 
         <table class = "tabelaAdm">
             <tr>
-                <th class="tabelaAdmTh">Identificador</th>
+                <!-- <th class="tabelaAdmTh">Identificador</th> -->
                 <th class="tabelaAdmTh">Nome</th>
-                <th class="tabelaAdmTh">Gênero</th>
+                <!-- <th class="tabelaAdmTh">Gênero</th> -->
                 <th class="tabelaAdmTh">Email</th>
                 <th class="tabelaAdmTh">Telefone</th>
-                <th class="tabelaAdmTh">Cep</th>
-                <th class="tabelaAdmTh">Complemento</th>
-                <th class="tabelaAdmTh">Número</th>
+                <!-- <th class="tabelaAdmTh">Cep</th> -->
+                <!-- <th class="tabelaAdmTh">Complemento</th>
+                <th class="tabelaAdmTh">Número</th> -->
                 <th class="tabelaAdmTh">Data de Nascimento</th>
                 <th class="tabelaAdmTh">&nbsp;</th>
                 <th class="tabelaAdmTh">&nbsp;</th>
@@ -65,28 +65,28 @@ require_once "admVerifSession.php";
             <?php 
              for($i = 1;$i<= $dados["num"];$i++){
                 echo "<tr>";
-                    echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Id_Usuario"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Id_Usuario"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Nome_Usuario"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">";
-                        if($dados[$i]["Sexo"] == "m" || $dados[$i]["Sexo"] == "M"){
-                            echo "Masculino";
-                        }else if($dados[$i]["Sexo"] == "f" || $dados[$i]["Sexo"] == "F"){
-                            echo "Feminino";
-                        }else{
-                            echo "Não Binário";
-                        }
-                    "</td>";
+                    // echo "<td class=\"tabelaAdmTd\">";
+                    //     if($dados[$i]["Sexo"] == "m" || $dados[$i]["Sexo"] == "M"){
+                    //         echo "Masculino";
+                    //     }else if($dados[$i]["Sexo"] == "f" || $dados[$i]["Sexo"] == "F"){
+                    //         echo "Feminino";
+                    //     }else{
+                    //         echo "Não Binário";
+                    //     }
+                    // "</td>";
                     echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Email"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Telefone"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Cep"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Complemento"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Numero"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Cep"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Complemento"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Numero"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Nascimento"]."</td>";
                     echo "<td>"
                     ?>
                     <form name="formEdit" action="admEdit.php" method="">
                         <input type="hidden" name="Id_Usuario" value="<?=$dados[$i]["Id_Usuario"];?>">
-                        <input class="editButton" type="submit" name="sbmt" value="Editar">
+                        <input class="editButton" type="submit" name="sbmt" value="Ver Mais">
                     </form>
                     <?php
                     echo "</td>";

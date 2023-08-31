@@ -44,8 +44,8 @@
 
     ?>
     <div id="titulo">
-        <h3>Categorias de Produtos</h3>
-        <h4>Editar Categoria</h4>
+        <h3>Editar Produto</h3>
+        <h4></h4>
         <br>
     </div>
 
