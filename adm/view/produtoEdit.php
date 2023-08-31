@@ -82,6 +82,7 @@
             <input class="inputnome" type="number" name="estoque_Max" value="<?=$produto["Estoque_Max"]?>"><br>
                         </div>
                     </div>
+                    <br>
             
                     <div class="divFlex">
                         <div class="divStatus">
@@ -104,12 +105,13 @@
             </select>
             </div>
                     </div>
-                </div>     
+                </div>  
+                <br>   
             <label for="descricao">Descrição do Produto</label><br>
             <textarea class="descricao" name="descricao" id="descricao" cols="30" rows="10" style="resize: none;" required><?=$produto["Desc_Produto"]?></textarea>
-               
+               <br>
             <label for="nome">Imagem</label><br>
-            <input class="inputnome" type="file" name="imagem" value="<?=$produto["Imagem"]?>"><br>
+            <input class="inputnome" type="file" name="imagem" value="<?=$produto["Imagem"]?>"><br><br>
                    
             <input type="submit" name="sbmt" value="Enviar" ><br><br>
             
