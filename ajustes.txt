@@ -1,12 +1,8 @@
-- EM RELACAO AO SISTEMA:
+-->Telas de cadastro:
+   
++Pensar em estrutura que permita a pesquisa de registro;
 
++Verifica se o codigo do produto ele pode ser lançado de forma aleatória, ou se existe alguma regra para que o codigo seja gerado(ex:todas as pizzas começam com 1000 ou bebidas com 2000);
 
-     A) TRABALHAR AS CORES DO SISTEMA 
-
-
-     B) AJUSTAR A ORGANIZACAO DOS CAMPOS NO FORMULARIO
-
-
-     C) DESENVOLVER OUTROS CADASTROS
-
++Implementar a partes de categorias;
 
