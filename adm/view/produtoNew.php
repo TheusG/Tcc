@@ -86,9 +86,11 @@
             <br>
             <input id="enviar" type="submit" name="sbmt" value="Enviar" ><br><br>
         </form>  
+        
         <button class="voltar" id="btnVoltar" onclick="voltar();">Voltar</button>
-    </div>
 
+    </div>
+  
 
 </body>
 </html>
