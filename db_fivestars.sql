@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/08/2023 às 20:57
+-- Tempo de geração: 31/08/2023 às 19:35
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -89,6 +89,37 @@ CREATE TABLE `cep` (
 
 INSERT INTO `cep` (`Id`, `Cep`, `Cidade`, `Logradouro`, `Bairro`, `Tipo`) VALUES
 (1, '8253001', 'São Paulo', 'Virginia Ferni', 'Itaquera', 'Rua');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `empresa`
+--
+
+CREATE TABLE `empresa` (
+  `Id_Empresa` int(11) NOT NULL,
+  `Nome_Empresa` varchar(60) DEFAULT NULL,
+  `Fantasia` varchar(20) DEFAULT NULL,
+  `Cnpj` varchar(14) DEFAULT NULL,
+  `Ie` varchar(14) DEFAULT NULL,
+  `Cep` varchar(8) DEFAULT NULL,
+  `Endereco` varchar(50) DEFAULT NULL,
+  `Numero` varchar(10) DEFAULT NULL,
+  `Bairro` varchar(40) DEFAULT NULL,
+  `Cidade` varchar(40) DEFAULT NULL,
+  `Uf` varchar(2) DEFAULT NULL,
+  `Telefone` varchar(11) DEFAULT NULL,
+  `Site` varchar(50) DEFAULT NULL,
+  `Data` date DEFAULT NULL,
+  `Logo` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `empresa`
+--
+
+INSERT INTO `empresa` (`Id_Empresa`, `Nome_Empresa`, `Fantasia`, `Cnpj`, `Ie`, `Cep`, `Endereco`, `Numero`, `Bairro`, `Cidade`, `Uf`, `Telefone`, `Site`, `Data`, `Logo`) VALUES
+(1, 'Pizzaria Five Stars', 'Five Stars', '34094488000185', '419405659082', '08253000', 'Rua Virgínia Ferni', '400', 'José Bonifácio', 'São Paulo', 'SP', '1122547627', 'fivestars.com.br', '2023-03-08', 'logo pizzaria1.png');
 
 -- --------------------------------------------------------
 
@@ -284,6 +315,12 @@ ALTER TABLE `cep`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Índices de tabela `empresa`
+--
+ALTER TABLE `empresa`
+  ADD PRIMARY KEY (`Id_Empresa`);
+
+--
 -- Índices de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
@@ -335,6 +372,12 @@ ALTER TABLE `categoria`
 --
 ALTER TABLE `cep`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `empresa`
+--
+ALTER TABLE `empresa`
+  MODIFY `Id_Empresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `funcionario`
