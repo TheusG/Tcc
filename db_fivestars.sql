@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31/08/2023 às 21:36
+-- Tempo de geração: 04/09/2023 às 21:36
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -100,8 +100,8 @@ CREATE TABLE `empresa` (
   `Id_Empresa` int(11) NOT NULL,
   `Nome_Empresa` varchar(60) DEFAULT NULL,
   `Fantasia` varchar(20) DEFAULT NULL,
-  `Cnpj` varchar(14) DEFAULT NULL,
-  `Ie` varchar(14) DEFAULT NULL,
+  `Cnpj` varchar(18) DEFAULT NULL,
+  `Ie` varchar(15) DEFAULT NULL,
   `Cep` varchar(9) DEFAULT NULL,
   `Endereco` varchar(50) DEFAULT NULL,
   `Numero` varchar(10) DEFAULT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE `empresa` (
 --
 
 INSERT INTO `empresa` (`Id_Empresa`, `Nome_Empresa`, `Fantasia`, `Cnpj`, `Ie`, `Cep`, `Endereco`, `Numero`, `Bairro`, `Cidade`, `Uf`, `Telefone`, `Site`, `Data`, `Logo`) VALUES
-(1, 'Pizzaria Five Stars', 'Five Stars', '34094488000185', '419405659082', '08253-000', 'Rua Virgínia Ferni', '400', 'José Bonifácio', 'São Paulo', 'SP', '(11) 22547-627', 'fivestars.com.br', '2023-03-08', 'logo pizzaria1.png');
+(1, 'Pizzaria Five Stars', 'Five Stars', '34.094.488/0001-85', '419.405.659.082', '08253-000', 'Rua Virgínia Ferni', '400', 'José Bonifácio', 'São Paulo', 'SP', '(11) 22547-627', 'fivestars.com.br', '2023-03-08', 'logo pizzaria1.png');
 
 -- --------------------------------------------------------
 
