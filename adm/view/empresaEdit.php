@@ -70,12 +70,12 @@
              
                         <div>
             <label for="estoque">Inscrição Estadual</label><br>
-            <input class="inputProduto" type="number" name="ie" value="<?=$empresa["Ie"]?>"><br><br>
+            <input class="inputProduto" type="text" name="ie" id="ie" value="<?=$empresa["Ie"]?>"><br><br>
                         </div>
          
                                  <div>
             <label for="cnpj">Cnpj</label><br>
-            <input class="inputnome" type="number" name="cnpj" value="<?=$empresa["Cnpj"]?>" required maxlength="11" ><br><br>
+            <input class="inputnome" id="cnpj" type="text" name="cnpj" value="<?=$empresa["Cnpj"]?>" required maxlength="18" ><br><br>
                     </div>
       
                     </div>
@@ -121,17 +121,16 @@
             <input class="inputnome" type="text" name="site" maxlength="50" value="<?=$empresa["Site"]?>"><br><br>
                         </div>
                         <div class="estoque">
-            <label for="logo">Logo</label><br>
-            <input class="inputnome" type="text" name="logo" maxlength="30" value="<?=$empresa["Logo"]?>"><br><br>
-                        </div>
-                    </div>
-                    <div class="divFlex">
-                        <div class="estoque">
             <label for="data">Data</label><br>
             <input class="inputnome" type="date" name="data" value="<?=$empresa["Data"]?>"><br><br>
-                        </div>
-           
+                        </div> 
                     </div>
+                    <!-- <div class="divFlex"> -->
+                        <div class="estoque">
+                            <label for="logo">Logo</label><br>
+                            <input class="inputnome" type="file" name="logo" value="<?=$empresa["Logo"]?>"><br><br>
+                        </div>
+                    <!-- </div> -->
                     <br>
                              
             <input class="enviar" type="submit" name="sbmt" value="Editar" ><br><br>
@@ -148,7 +147,10 @@
 
     <script>
           $('#telefone').mask('(00) 00000-0000');
-          $('#cep').mask('00000-000')
+          $('#cep').mask('00000-000');
+          $('#cnpj').mask('00.000.000/0000-00');
+          $('#ie').mask('000.000.000.000');
+
     </script>
 
 </body>
