@@ -66,6 +66,7 @@
          
            
                         <div>
+                            
             <label for="categoria">Categoria</label><br>
             <select name="categoria" id="categoria">
                 <option value="1" selected>Pizza Salgado</option>
