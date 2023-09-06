@@ -7,27 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdmEdit</title>
     <link rel="stylesheet" href="css/adm.css">
-    <script>
-        function voltar(){
-            location.href = "empresaList.php";
-        }
-    </script>
 </head>
 <body>
 <?php 
-        if(!isset($_REQUEST["Id_Empresa"])){
-            ?>  
-                <form action="empresaList.php" name="form" id="myForm" method="post">
-                    <input type="hidden" name="msg" value="BD06">
-                </form>
-                <script>
-                    document.getElementById('myForm').submit()
-                </script>
-            <?php
-            exit();
-        }
         require_once "../model/Manager.php";
-        $empresa = pegaEmpresa($_REQUEST["Id_Empresa"]);
+        $empresa = pegaEmpresa();
         if($empresa["result"] == 0){
             ?>  
                 <form action="empresaList.php" name="form" id="myForm" method="post">
@@ -137,7 +121,8 @@
             
             
         </form>
-        <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
+        <button class="voltar" id="btnVoltar" onclick="javascript:history.go(-1);">&larr;</button>
+        
             
     </div>
 
@@ -152,6 +137,15 @@
           $('#ie').mask('000.000.000.000');
 
     </script>
+
+<?php 
+if(isset($_REQUEST["msg"])){
+    $cod = $_REQUEST["msg"];
+    require_once "msg.php";
+    echo "<script>alert('" . $MSG[$cod] . "');</script>";
+}
+      
+?>
 
 </body>
 </html>

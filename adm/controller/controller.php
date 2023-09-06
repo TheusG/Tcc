@@ -391,7 +391,7 @@ if(isset($_REQUEST["empresa_edit"])){
 
     if($resp == 1){//tudo certo ao adicionar um novo funcionario
         ?>  
-            <form action="../view/empresaList.php" name="form" id="myForm" method="post">
+            <form action="../view/empresaEdit.php" name="form" id="myForm" method="post">
                 <input type="hidden" name="msg" value="BD53">
             </form>
             <script>
@@ -400,7 +400,7 @@ if(isset($_REQUEST["empresa_edit"])){
          <?php
     }else{//erro no insert
         ?>  
-            <form action="../view/empresaList.php" name="form" id="myForm" method="post">
+            <form action="../view/empresaEdit.php" name="form" id="myForm" method="post">
                 <input type="hidden" name="msg" value="BD03">
             </form>
             <script>

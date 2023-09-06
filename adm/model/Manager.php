@@ -356,47 +356,9 @@ function excluirProduto($id){
 
 
 // --------------------------------------------------------------EMPRESA---------------------------------------------//
- function listarEmpresa(){
+function pegaEmpresa(){
     require_once "Conexao.php";
     $sql = "SELECT * FROM empresa";
-    $result = $conn->query($sql);
-
-    if($result->num_rows > 0){
-        $num = $result->num_rows;
-        $empresa = array();
-        $empresa["result"] = 1;
-        $empresa["num"] = $num;
-        $i =1;
-        while($row = $result->fetch_assoc()){
-            $empresa[$i]["Id_Empresa"] = $row["Id_Empresa"];
-            $empresa[$i]["Nome_Empresa"] =$row["Nome_Empresa"];
-            $empresa[$i]["Fantasia"] = $row["Fantasia"];
-            $empresa[$i]["Cnpj"] = $row["Cnpj"];
-            $empresa[$i]["Ie"] = $row["Ie"];
-            $empresa[$i]["Cep"] =$row["Cep"];
-            $empresa[$i]["Endereco"] = $row["Endereco"];
-            $empresa[$i]["Numero"] = $row["Numero"];
-            $empresa[$i]["Bairro"] = $row["Bairro"];
-            $empresa[$i]["Cidade"] = $row["Cidade"];
-            $empresa[$i]["Uf"] = $row["Uf"];
-            $empresa[$i]["Telefone"] = $row["Telefone"];
-            $empresa[$i]["Site"] = $row["Site"];
-            $empresa[$i]["Data"] = $row["Data"];
-            $empresa[$i]["Logo"] = $row["Logo"];
-            $i++;
-        }
-        $conn->close();
-        return $empresa;
-    }else{
-        $empresa["result"] = 0;
-        $conn->close();
-        return $empresa;
-    }
-}
-
-function pegaEmpresa($id){
-    require_once "Conexao.php";
-    $sql = "SELECT * FROM empresa WHERE Id_Empresa = {$id}";
     $result = $conn->query($sql);
 
     //Se selecionou algum funcionario
@@ -433,9 +395,9 @@ function pegaEmpresa($id){
 function editarEmpresa($empresa){
     require_once "Conexao.php";
         if($empresa["logo"] == ""){
-            $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = '{$empresa["data"]}' WHERE Id_Empresa = {$empresa["id"]}";
+            $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = '{$empresa["data"]}'";
         }else{
-        $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = '{$empresa["data"]}', Logo = '{$empresa["logo"]}' WHERE Id_Empresa = {$empresa["id"]}";
+        $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = '{$empresa["data"]}', Logo = '{$empresa["logo"]}'";
         } 
         $result = $conn->query($sql);
         if($result == true){//tudo certo 
