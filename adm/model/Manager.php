@@ -43,10 +43,22 @@ function dadosFuncionario($email, $senha){
 
 function listarFuncionario(){
     require_once "Conexao.php";
-    $sql = "SELECT * FROM usuario";
+    $sql = "SELECT usuario.* , funcionario.* FROM usuario INNER JOIN funcionario on usuario.Id_Usuario = funcionario.Usuario";
     $result= $conn->query($sql);
-      
 
+    // $sql = "SELECT * FROM funcionario";
+    // $resposta =$conn->query($sql);
+
+    // if($resposta->num_rows > 0){
+    //     $num1 = $resposta->num_rows;
+    //     $dadosf = array();
+    //     $dadosf["result"] = 1;
+    //     $dados["num1"] = $num1;
+    //     $ii = 1;
+    //     while($linha = $resposta->fetch_assoc()){
+    //         $dados[$ii][""]
+    //     }
+    // }
     if($result->num_rows > 0){
         $num = $result->num_rows;
         $dados = array();
@@ -64,7 +76,10 @@ function listarFuncionario(){
             $dados[$i]["Telefone"] = $row["Telefone"];
             $dados[$i]["Email"] = $row["Email"];
             $dados[$i]["Nascimento"] = $row["Nascimento"];
-
+            $dados[$i]["Cargo"] = $row["Cargo"];
+            $dados[$i]["Perfil"] = $row["Perfil"];
+            $dados[$i]["Salario"] = $row["Salario"];
+            $dados[$i]["Usuario"] = $row["Usuario"];
             $i++;
         }
         $conn->close();
@@ -101,7 +116,7 @@ function adicionarFuncionario($dados){
 
 function pegaFuncionario($id){
     require_once "Conexao.php";
-    $sql = "SELECT * FROM usuario WHERE Id_Usuario = {$id}";
+    $sql = "SELECT usuario.* , funcionario.* FROM usuario INNER JOIN funcionario on usuario.Id_Usuario = funcionario.Usuario WHERE Id_Usuario = {$id}";
     $result = $conn->query($sql);
 
     //Se selecionou algum funcionario
@@ -119,6 +134,10 @@ function pegaFuncionario($id){
             $dados["Email"] = $row["Email"];
             $dados["Nascimento"] = $row["Nascimento"];
             $dados["Foto"] = $row["Foto"];
+            $dados["Cargo"] = $row["Cargo"];
+            $dados["Perfil"] = $row["Perfil"];
+            $dados["Salario"] = $row["Salario"];
+            $dados["Usuario"] = $row["Usuario"];
             
         }
         $conn->close();

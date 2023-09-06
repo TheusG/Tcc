@@ -99,6 +99,25 @@
             <label for="complemento">Complemento</label><br>
             <input type="text" name="complemento" value="<?=$dados['Complemento']?>"><br>
                     </div>
+                    <div class="div1">
+            <label for="cargo">Salário</label><br>
+            <input type="text" name="salario" value="<?=$dados['Salario']?>"><br>
+                    </div>
+                    <div class="div1">
+            <label for="cargo">Cargo</label><br>
+            <select name="cargo" id="cargo">
+                <option value="1" <?php echo  $dados["Cargo"] == "1" ? "selected":""?>>Gerente</option>
+                <option value="2" <?php echo  $dados["Cargo"] == "2" ? "selected":""?>>Caixa</option>
+                <option value="3" <?php echo  $dados["Cargo"] == "3" ? "selected":""?>>Balconista</option>
+                <option value="4" <?php echo  $dados["Cargo"] == "4" ? "selected":""?>>Pizzaiolo</option>
+                <option value="5" <?php echo  $dados["Cargo"] == "5" ? "selected":""?>>Ajudante Geral</option>
+                <option value="6" <?php echo  $dados["Cargo"] == "6" ? "selected":""?>>Garçom</option>
+            </select>
+                    </div>
+                    <div class="div1">
+            <label for="perfil">Perfil</label><br>
+            <input type="text" name="perfil" value="<?=$dados['Perfil']?>"><br>
+                    </div>
                 </div>
             <label for="foto">Foto</label><br>
             <input type="file" name="foto" value="<?=$dados['Foto']?>"><br>

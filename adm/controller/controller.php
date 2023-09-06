@@ -136,6 +136,9 @@
             $dados["cep"] = $_REQUEST["cep"];
             $dados["numero"] = $_REQUEST["numero"];
             $dados["complemento"] = $_REQUEST["complemento"];
+            $dados["salario"] = $_REQUEST["salario"];
+            $dados["cargo"] = $_REQUEST["cargo"];
+            $dados["perfil"] = $_REQUEST["perfil"];
             $dados["foto"] = $_REQUEST["foto"];
             require_once "../model/Manager.php";
             $resp = editarFuncionario($dados);
