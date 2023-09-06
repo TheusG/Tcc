@@ -74,7 +74,8 @@ require_once "admVerifSession.php";
                     // echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Estoque"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Estoque_Min"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Estoque_Max"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">R$".$produto[$i]["Valor"]."</td>";
+                    $valor = $produto[$i]["Valor"];
+                    echo "<td class=\"tabelaAdmTd\">R$".number_format($valor,2,",",".")."</td>";
                     if($produto[$i]["Status_Produto"] == 1){
                         echo "<td class=\"tabelaAdmTd\">Ativo</td>";
                     }else{
