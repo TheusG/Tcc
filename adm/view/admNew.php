@@ -77,6 +77,26 @@
             <input type="text" name="complemento" value=""><br>
                 </div>    
             </div>
+                <div class="div1">
+            <label for="salario">Salário</label><br>
+            <input type="number" name="salario" value=""><br>
+                </div>    
+                <div class="div1">
+            <label for="perfil">Perfil</label><br>
+            <input type="number" name="perfil" value=""><br>
+                </div>    
+                <div class="div1">
+            <label for="cargo">Cargo</label><br>
+            <select name="cargo" id="cargo">
+                <option value="1">Gerente</option>
+                <option value="2">Caixa</option>
+                <option value="3">Balconista</option>
+                <option value="4">Pazzaiolo</option>
+                <option value="5">Ajudante Geral</option>
+                <option value="6">Garçom</option>
+            </select>
+                </div>    
+            </div>
            
             <label for="foto">Foto</label><br>
             <input class="inputImage" type="file" name="foto" value=""><br>

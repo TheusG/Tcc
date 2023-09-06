@@ -91,6 +91,9 @@
             $dados["numero"] = $_REQUEST["numero"];
             $dados["complemento"] = $_REQUEST["complemento"];
             $dados["foto"] = $_REQUEST["foto"];
+            $dados["salario"] = $_REQUEST["salario"];
+            $dados["perfil"] = $_REQUEST["perfil"];
+            $dados["cargo"] = $_REQUEST["cargo"];
             require_once "../model/Manager.php";
             $resp = adicionarFuncionario($dados);
             

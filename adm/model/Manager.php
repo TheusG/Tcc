@@ -44,7 +44,8 @@ function dadosFuncionario($email, $senha){
 function listarFuncionario(){
     require_once "Conexao.php";
     $sql = "SELECT * FROM usuario";
-    $result= $conn->query($sql);  
+    $result= $conn->query($sql);
+      
 
     if($result->num_rows > 0){
         $num = $result->num_rows;
@@ -79,10 +80,18 @@ function adicionarFuncionario($dados){
     require_once "Conexao.php";
     $sql = "INSERT INTO usuario (Nome_Usuario,Senha, Sexo,Cep, Numero, Complemento,Telefone, Email,Nascimento,Foto) VALUES ('{$dados["nome"]}', '{$dados["senha"]}','{$dados["sexo"]}','{$dados["cep"]}','{$dados["numero"]}','{$dados["complemento"]}','{$dados["telefone"]}','{$dados["email"]}','{$dados["dataNascimento"]}','{$dados["foto"]}')";
     $result = $conn->query($sql);
+    $ultimoid = mysqli_insert_id($conn);
+    
+    if($result == true){//tudo certo
+        $sql = "INSERT INTO funcionario (Cargo,Perfil,Salario,Usuario) VALUES ('{$dados["cargo"]}','{$dados["perfil"]}','{$dados["salario"]}',$ultimoid)";
+        $result = $conn->query($sql);
 
-    if($result == true){
-        $conn->close();
-        return 1;
+        if($result == true){
+            $conn->close();
+            return 1;
+        }else{
+            return 0;
+        }
     }else{
         $conn->close();
         return 0;
