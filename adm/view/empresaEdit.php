@@ -121,7 +121,7 @@
             
             
         </form>
-        <button class="voltar" id="btnVoltar" onclick="javascript:history.go(-1);">&larr;</button>
+        <!-- <button class="voltar" id="btnVoltar" onclick="javascript:history.go(-1);">&larr;</button> -->
         
             
     </div>
