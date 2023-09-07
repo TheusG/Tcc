@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06/09/2023 às 21:34
+-- Tempo de geração: 07/09/2023 às 19:15
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -140,9 +140,8 @@ CREATE TABLE `funcionario` (
 --
 
 INSERT INTO `funcionario` (`Id_Funcionario`, `Cargo`, `Perfil`, `Salario`, `Usuario`) VALUES
-(1, 1, 1, 10000, 1),
-(2, 1, 1, 1000, 15),
-(3, 1, 1, 2000, 16);
+(1, 1, 1, 15000, 1),
+(2, 1, 1, 2000, 15);
 
 -- --------------------------------------------------------
 
@@ -290,8 +289,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Numero`, `Complemento`, `Telefone`, `Email`, `Nascimento`, `Foto`) VALUES
 (1, 'Felipe Cerqueira', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', '(11) 99593-7887', 'felipe@pizza.com', '2005-09-02', 'semfoto.jpg'),
-(15, 'Ingrid Passos', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'f', 1, '400', 'Escola', '(11) 11111-1111', 'ingrid@pizza.com', '2023-09-06', ''),
-(16, 'Jose', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'f', 1, '400', 'Escola', '(11) 11111-1111', 'jose@pizza.com', '2023-09-04', '');
+(15, 'Ingrid Passos', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'f', 1, '400', 'Escola', '(11) 11111-1111', 'ingrid@pizza.com', '2023-09-06', '');
 
 --
 -- Índices para tabelas despejadas
@@ -385,7 +383,7 @@ ALTER TABLE `empresa`
 -- AUTO_INCREMENT de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `Id_Funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_Funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `perfil`
@@ -403,7 +401,7 @@ ALTER TABLE `produto`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Restrições para tabelas despejadas

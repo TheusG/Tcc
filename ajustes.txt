@@ -8,7 +8,7 @@
 
 -->Ajustes do Wilson
 
-+Apagar a link da imagem;
+
 
 Produto
 + O Código
