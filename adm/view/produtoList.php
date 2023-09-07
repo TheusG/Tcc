@@ -41,7 +41,7 @@ require_once "admVerifSession.php";
                 <td style="text-align: left;">
                 <form name="formNew" action="produtoNew.php" method="">
                         <input type="hidden" name="new" value="1">
-                        <input type="submit" name="sbmt" value="Adicionar Produto" style="background-color:forestgreen; color:white;">
+                        <input type="submit" name="sbmt" value="Adicionar Produto" style="cursor:pointer; background-color:forestgreen; color:white;">
                 </form>
                 </td>
             </tr>
@@ -87,14 +87,14 @@ require_once "admVerifSession.php";
                     ?>
                     <form name="formEdit" action="produtoEdit.php" method="">
                         <input type="hidden" name="Id_Produto" value="<?=$produto[$i]["Id_Produto"];?>">
-                        <input class="editButton" type="submit" name="sbmt" value="Ver mais">
+                        <input class="editButton" type="submit" name="sbmt" value="Ver mais" style="cursor:pointer">
                     </form>
                     <?php
                     echo "</td>";
                     echo "<td>";
                     ?>
                     
-                    <button class="deleteButton" onclick="confirmDelete(<?=$produto[$i]['Id_Produto'];?>)">Deletar</button>
+                    <button class="deleteButton" onclick="confirmDelete(<?=$produto[$i]['Id_Produto'];?>)" style="cursor:pointer">Deletar</button>
                     
                     <?php
                     echo "</td>";

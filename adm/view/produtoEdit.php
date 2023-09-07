@@ -113,7 +113,7 @@
             <label for="nome">Imagem</label><br>
             <input class="inputnome" type="file" name="imagem" value="<?=$produto["Imagem"]?>"><br><br>
                    
-            <input class="enviar" type="submit" name="sbmt" value="Editar" ><br><br>
+            <input class="enviar" type="submit" name="sbmt" value="Editar" style="cursor:pointer"><br><br>
             
           
         </form>
