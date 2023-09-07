@@ -458,11 +458,41 @@ function editarEmpresa($empresa){
         }
 }
  
-
-
-
-
-
-
+// -----------------------------------------Entregador------------------------------------------------------------//
+function listarEntregador(){
+    require_once "Conexao.php";
+    $sql = "SELECT usuario.* , entregador.* FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario";
+    $result= $conn->query($sql);
+    
+    if($result->num_rows > 0){
+        $num = $result->num_rows;
+        $entregador = array();
+        $entregador["result"] = 1;
+        $entregador["num"] = $num;
+        $i =1;
+        while($row = $result->fetch_assoc()){
+            $entregador[$i]["Id_Usuario"] = $row["Id_Usuario"];
+            $entregador[$i]["Nome_Usuario"] =$row["Nome_Usuario"];
+            $entregador[$i]["Senha"] = $row["Senha"];
+            $entregador[$i]["Sexo"] = $row["Sexo"];
+            $entregador[$i]["Cep"] = $row["Cep"];
+            $entregador[$i]["Complemento"] = $row["Complemento"];
+            $entregador[$i]["Numero"] = $row["Numero"];
+            $entregador[$i]["Telefone"] = $row["Telefone"];
+            $entregador[$i]["Email"] = $row["Email"];
+            $entregador[$i]["Nascimento"] = $row["Nascimento"];
+            $entregador[$i]["Veiculo"] = $row["Veiculo"];
+            $entregador[$i]["Identificacao"] = $row["Identificacao"];
+            $entregador[$i]["Usuario"] = $row["Usuario"];
+            $i++;
+        }
+        $conn->close();
+        return $entregador;
+    }else{
+        $entregador["result"] = 0;
+        $conn->close();
+        return $entregador;
+    }
+}
 
 ?>

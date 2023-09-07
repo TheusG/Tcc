@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS Entregador(
         Veiculo            VARCHAR(10),
         Identificacao      VARCHAR(45),
         Usuario            INTEGER,
-        foreign KEY(Id_Entregador)          references Usuario(Id_Usuario)
+        foreign KEY(Usuario)          references Usuario(Id_Usuario)
 );
 
 -- Tabela: Venda
