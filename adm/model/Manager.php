@@ -167,8 +167,8 @@ function editarFuncionario($dados){
     if($result == true){
         $sql = "UPDATE funcionario SET Cargo = '{$dados["cargo"]}', Perfil = '{$dados["perfil"]}', Salario = '{$dados["salario"]}' WHERE Usuario = {$dados["idFuncionario"]}";
         $result = $conn->query($sql);
-
-        
+        $conn->close();
+        return 1;
     }else{
         $conn->close();
         return 0;
