@@ -27,7 +27,7 @@ function dadosFuncionario($email, $senha){
             $dados["Senha"] = $row["Senha"];
             $dados["Email"] = $row["Email"];
             $dados["Cargo"] = $row["Cargo"];
-            $dados["Nome_Cargo"]  = $row["Nome_Cargo"];
+            // $dados["Nome_Cargo"]  = $row["Nome_Cargo"];
         }
         $conn->close();
         return $dados;//retorna dados pro controller
@@ -151,7 +151,6 @@ function pegaFuncionario($id){
 
 function editarFuncionario($dados){
     require_once "Conexao.php";
-
     if($dados["senhaNova"] == "" && $dados["foto"] == ""){
         $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}' WHERE Id_Usuario = {$dados["id"]}";
     }
@@ -163,10 +162,22 @@ function editarFuncionario($dados){
     }else{
         $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Senha = '{$dados["senhaNova"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}', Foto = '{$dados["foto"]}' WHERE Id_Usuario = {$dados["id"]}";
     }
-
     $result = $conn->query($sql);
-    $conn->close();
-    return $result;
+    
+    if($result == true){
+        $sql = "UPDATE funcionario SET Cargo = '{$dados["cargo"]}', Perfil = '{$dados["perfil"]}', Salario = '{$dados["salario"]}' WHERE Usuario = {$dados["idFuncionario"]}";
+        $result = $conn->query($sql);
+
+        if($result == true){
+            $conn->close();
+            return 1;
+        }else{
+            return 0;
+        }
+    }else{
+        $conn->close();
+        return 0;
+    }
 }
 
 function excluirFuncionario($id){

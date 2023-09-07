@@ -52,6 +52,7 @@
         <form action="../controller/controller.php" method="post" name="admNew">
             <input type="hidden" name="adm_edit" value="1">
             <input type="hidden" name="id" value="<?=$dados['Id_Usuario']?>">
+            <input type="hidden" name="idFuncionario" value="<?=$dados['Usuario']?>">
             <div class="div3">
                 <div>
             <label for="nome">Nome</label><br>

@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdmEdit</title>
     <link rel="stylesheet" href="css/adm.css">
+    <script>
+        function voltar(){
+            location.href = "bemvindo.php";
+        }
+    </script>
 </head>
 <body>
 <?php 
@@ -121,7 +126,7 @@
             
             
         </form>
-        <!-- <button class="voltar" id="btnVoltar" onclick="javascript:history.go(-1);">&larr;</button> -->
+        <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
         
             
     </div>

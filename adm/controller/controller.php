@@ -140,6 +140,7 @@
             $dados["cargo"] = $_REQUEST["cargo"];
             $dados["perfil"] = $_REQUEST["perfil"];
             $dados["foto"] = $_REQUEST["foto"];
+            $dados["idFuncionario"] = $_REQUEST["idFuncionario"];
             require_once "../model/Manager.php";
             $resp = editarFuncionario($dados);
             
