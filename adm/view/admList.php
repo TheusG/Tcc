@@ -59,9 +59,6 @@ require_once "admVerifSession.php";
                 <!-- <th class="tabelaAdmTh">Complemento</th>
                 <th class="tabelaAdmTh">Número</th> -->
                 <th class="tabelaAdmTh">Data de Nascimento</th>
-                <th class="tabelaAdmTh">Cargo</th>
-                <th class="tabelaAdmTh">Salario</th>
-                <th class="tabelaAdmTh">Perfil</th>
                 <th class="tabelaAdmTh">&nbsp;</th>
                 <th class="tabelaAdmTh">&nbsp;</th>
             </tr>
