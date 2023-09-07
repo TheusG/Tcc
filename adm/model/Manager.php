@@ -168,12 +168,7 @@ function editarFuncionario($dados){
         $sql = "UPDATE funcionario SET Cargo = '{$dados["cargo"]}', Perfil = '{$dados["perfil"]}', Salario = '{$dados["salario"]}' WHERE Usuario = {$dados["idFuncionario"]}";
         $result = $conn->query($sql);
 
-        if($result == true){
-            $conn->close();
-            return 1;
-        }else{
-            return 0;
-        }
+        
     }else{
         $conn->close();
         return 0;
@@ -182,10 +177,25 @@ function editarFuncionario($dados){
 
 function excluirFuncionario($id){
     require_once "Conexao.php";
-    $sql = "DELETE FROM usuario WHERE Id_Usuario = {$id}";
+    $sql = "DELETE FROM funcionario WHERE Usuario = {$id}";
     $result = $conn->query($sql);
-    $conn->close();
-    return $result;
+    
+    if($result == true){
+        $sql = "DELETE FROM usuario WHERE Id_Usuario = {$id}";
+        $result = $conn->query($sql);
+
+        if($result == true){
+            $conn->close();
+            return $result;
+        }else{
+            $conn->close();
+            return $result;
+        }
+
+    }else{
+        $conn->close();
+        return $result;
+    }  
 }
 
 
