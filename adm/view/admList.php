@@ -85,9 +85,9 @@ require_once "admVerifSession.php";
                     // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Complemento"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Numero"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Nascimento"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Cargo"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Salario"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Perfil"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Cargo"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Salario"]."</td>";
+                    // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Perfil"]."</td>";
                     echo "<td>"
                     ?>
                     <form name="formEdit" action="admEdit.php" method="">
