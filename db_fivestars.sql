@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07/09/2023 às 19:15
+-- Tempo de geração: 08/09/2023 às 02:04
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -124,6 +124,26 @@ INSERT INTO `empresa` (`Id_Empresa`, `Nome_Empresa`, `Fantasia`, `Cnpj`, `Ie`, `
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `entregador`
+--
+
+CREATE TABLE `entregador` (
+  `Id_Entregador` int(11) NOT NULL,
+  `Veiculo` varchar(10) DEFAULT NULL,
+  `Identificacao` varchar(45) DEFAULT NULL,
+  `Usuario` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `entregador`
+--
+
+INSERT INTO `entregador` (`Id_Entregador`, `Veiculo`, `Identificacao`, `Usuario`) VALUES
+(1, 'Carro', 'Fusca Azul 1967', 20);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `funcionario`
 --
 
@@ -141,7 +161,7 @@ CREATE TABLE `funcionario` (
 
 INSERT INTO `funcionario` (`Id_Funcionario`, `Cargo`, `Perfil`, `Salario`, `Usuario`) VALUES
 (1, 1, 1, 15000, 1),
-(2, 1, 1, 2000, 15);
+(2, 1, 1, 3000, 15);
 
 -- --------------------------------------------------------
 
@@ -289,7 +309,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Numero`, `Complemento`, `Telefone`, `Email`, `Nascimento`, `Foto`) VALUES
 (1, 'Felipe Cerqueira', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', '(11) 99593-7887', 'felipe@pizza.com', '2005-09-02', 'semfoto.jpg'),
-(15, 'Ingrid Passos', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'f', 1, '400', 'Escola', '(11) 11111-1111', 'ingrid@pizza.com', '2023-09-06', '');
+(15, 'Ingrid Passos', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'f', 1, '400', 'Escola', '(11) 11111-1111', 'ingrid@pizza.com', '2023-09-06', 'semfoto.jpg'),
+(20, 'Pedro Henrique', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'n', 1, '9', 'Escola', '(11) 11111-1111', 'pedro@pizza.com', '2023-09-07', NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -319,6 +340,13 @@ ALTER TABLE `cep`
 --
 ALTER TABLE `empresa`
   ADD PRIMARY KEY (`Id_Empresa`);
+
+--
+-- Índices de tabela `entregador`
+--
+ALTER TABLE `entregador`
+  ADD PRIMARY KEY (`Id_Entregador`),
+  ADD KEY `Usuario` (`Usuario`);
 
 --
 -- Índices de tabela `funcionario`
@@ -380,6 +408,12 @@ ALTER TABLE `empresa`
   MODIFY `Id_Empresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de tabela `entregador`
+--
+ALTER TABLE `entregador`
+  MODIFY `Id_Entregador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
@@ -401,11 +435,17 @@ ALTER TABLE `produto`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `entregador`
+--
+ALTER TABLE `entregador`
+  ADD CONSTRAINT `entregador_ibfk_1` FOREIGN KEY (`Usuario`) REFERENCES `usuario` (`Id_Usuario`);
 
 --
 -- Restrições para tabelas `funcionario`
