@@ -96,7 +96,7 @@
                 <option value="6">Garçom</option>
             </select>
                 </div>    
-            </div>
+            
            
             <label for="foto">Foto</label><br>
             <input class="inputImage" type="file" name="foto" value=""><br>
@@ -105,7 +105,7 @@
         </form>
             <button class="voltar" id="btnVoltar" onclick="voltar();">Voltar</button>
     </div>
-
+            
     <script src="../../assets/js/bibliotecaj/jquery-3.6.4.min.js"></script>
     <script src="../../assets/js/bibliotecaj/jQuery-Mask-Plugin-master/src/jquery.mask.js"></script>
 

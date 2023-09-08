@@ -84,7 +84,7 @@
             <label for="identificacao">Identificação</label><br>
             <input type="text" maxlength="45" name="identificacao" value=""><br>
                 </div>        
-            </div>
+          
            
             <label for="foto">Foto</label><br>
             <input class="inputImage" type="file" name="foto" value=""><br>
