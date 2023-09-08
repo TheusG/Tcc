@@ -375,7 +375,7 @@ if(isset($_REQUEST["produto_delete"])){
 }
 
 
-// --------------------------------------------------------------Produtos---------------------------------------------//
+// --------------------------------------------------------------EMPRESA---------------------------------------------//
 
 if(isset($_REQUEST["empresa_edit"])){
     $empresa["id"] = $_REQUEST["id"];
@@ -416,4 +416,118 @@ if(isset($_REQUEST["empresa_edit"])){
          <?php
     }
 }
+
+//----------------------------------------------------ENTREGADOR------------------------------------------------//
+
+if(isset($_REQUEST["entregador_new"])){
+    $entregador["nome"] = $_REQUEST["nome"];
+    $entregador["sexo"] = $_REQUEST["sexo"];
+    $entregador["email"] = $_REQUEST["email"];
+    require_once "../model/Ferramentas.php";
+    $entregador["senha"] = hash256($_REQUEST["senha"]);
+    $entregador["telefone"] = $_REQUEST["telefone"];
+    $entregador["dataNascimento"] = $_REQUEST["dataNascimento"];
+    $entregador["cep"] = $_REQUEST["cep"];
+    $entregador["numero"] = $_REQUEST["numero"];
+    $entregador["complemento"] = $_REQUEST["complemento"];
+    $entregador["foto"] = $_REQUEST["foto"];
+    $entregador["veiculo"] = $_REQUEST["veiculo"];
+    $entregador["identificacao"] = $_REQUEST["identificacao"];
+
+    require_once "../model/Manager.php";
+    $resp = adicionarEntregador($entregador);
+    
+    if($resp == 1){//tudo certo ao adicionar um novo funcionario
+        ?>  
+            <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD52">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    }else{//erro no insert
+        ?>  
+            <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD02">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    }
+    
+}
+
+if(isset($_REQUEST["entregador_edit"])){
+    $entregador["id"] = $_REQUEST["id"];
+    $entregador["nome"] = $_REQUEST["nome"];
+    $entregador["sexo"] = $_REQUEST["sexo"];
+    $entregador["email"] = $_REQUEST["email"];
+    $entregador["senha"]= "";
+    $entregador["senhaNova"]= "";
+    if($_REQUEST["senha"] != ""){
+        require_once "../model/Ferramentas.php";
+        $entregador["senha"] = ($_REQUEST["senha"]);
+        $entregador["senhaNova"] = hash256($entregador["senha"]);
+    }
+    $entregador["telefone"] = $_REQUEST["telefone"];
+    $entregador["dataNascimento"] = $_REQUEST["dataNascimento"];
+    $entregador["cep"] = $_REQUEST["cep"];
+    $entregador["numero"] = $_REQUEST["numero"];
+    $entregador["complemento"] = $_REQUEST["complemento"];
+    $entregador["veiculo"] = $_REQUEST["veiculo"];
+    $entregador["identificacao"] = $_REQUEST["identificacao"];
+    $entregador["foto"] = $_REQUEST["foto"];
+    $entregador["idEntregador"] = $_REQUEST["idEntregador"];
+    require_once "../model/Manager.php";
+    $resp = editarEntregador($entregador);
+    
+    if($resp == 1){//tudo certo ao adicionar um novo funcionario
+        ?>  
+            <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD53">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    }else{//erro no insert
+        ?>  
+            <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD03">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    } 
+}
+
+if(isset($_REQUEST["entregador_delete"])){
+    $id = $_REQUEST["id"];
+    require_once "../model/Manager.php";
+    $result = excluirEntregador($id);
+    if($result == 1){//conseguir excluir
+        ?>  
+            <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD54">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    }else{//algo deu de errado na deleção
+        ?>  
+            <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD04">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+         <?php
+    }
+}
+
+
 ?>

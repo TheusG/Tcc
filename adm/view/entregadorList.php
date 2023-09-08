@@ -14,7 +14,7 @@ require_once "admVerifSession.php";
         function confirmDelete(id){
             var resp = confirm("Tem certeza que deseja apagar esse registro?");
             if(resp==true){
-                location.href = "../controller/controller.php?adm_delete=1&id=" + id;
+                location.href = "../controller/controller.php?entregador_delete=1&id=" + id;
             }else{
                 return null;
             }
@@ -27,7 +27,7 @@ require_once "admVerifSession.php";
         <br>
     <div id="titulo">
         <br>
-        <h3> Lista de entregador da Five Stars</h3>
+        <h3> Lista de Entregadores da Five Stars</h3>
         
         <br><br>
     </div>
@@ -71,7 +71,7 @@ require_once "admVerifSession.php";
                     echo "<td class=\"tabelaAdmTd\">".$entregador[$i]["Identificacao"]."</td>";
                     echo "<td>"
                     ?>
-                    <form name="formEdit" action="admEdit.php" method="">
+                    <form name="formEdit" action="entregadorEdit.php" method="">
                         <input type="hidden" name="Id_Usuario" value="<?=$entregador[$i]["Id_Usuario"];?>">
                         <input class="editButton" type="submit" name="sbmt" value="Ver Mais" style="cursor:pointer">
                     </form>

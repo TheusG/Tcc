@@ -495,4 +495,110 @@ function listarEntregador(){
     }
 }
 
+function adicionarEntregador($entregador){
+    require_once "Conexao.php";
+    $sql = "INSERT INTO usuario (Nome_Usuario,Senha, Sexo,Cep, Numero, Complemento,Telefone, Email,Nascimento,Foto) VALUES ('{$entregador["nome"]}', '{$entregador["senha"]}','{$entregador["sexo"]}','{$entregador["cep"]}','{$entregador["numero"]}','{$entregador["complemento"]}','{$entregador["telefone"]}','{$entregador["email"]}','{$entregador["dataNascimento"]}','{$entregador["foto"]}')";
+    $result = $conn->query($sql);
+    $ultimoid = mysqli_insert_id($conn);
+    
+    if($result == true){//tudo certo
+        $sql = "INSERT INTO entregador (Veiculo,Identificacao,Usuario) VALUES ('{$entregador["veiculo"]}','{$entregador["identificacao"]}', $ultimoid)";
+        $result = $conn->query($sql);
+
+        if($result == true){
+            $conn->close();
+            return 1;
+        }else{
+            return 0;
+        }
+    }else{
+        $conn->close();
+        return 0;
+    }
+
+} 
+
+function pegaEntregador($id){
+    require_once "Conexao.php";
+    $sql = "SELECT usuario.* , entregador.* FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario WHERE Id_Usuario = {$id}";
+    $result = $conn->query($sql);
+
+    //Se selecionou algum funcionario
+    if($result->num_rows > 0){
+        $entregador = array();
+        $entregador["result"] = 1;
+        while($row = $result->fetch_assoc()){
+            $entregador["Id_Usuario"] = $row["Id_Usuario"];
+            $entregador["Nome_Usuario"] = $row["Nome_Usuario"];
+            $entregador["Sexo"] = $row["Sexo"];
+            $entregador["Cep"] = $row["Cep"];
+            $entregador["Numero"] = $row["Numero"];
+            $entregador["Complemento"] = $row["Complemento"];
+            $entregador["Telefone"] = $row["Telefone"];
+            $entregador["Email"] = $row["Email"];
+            $entregador["Nascimento"] = $row["Nascimento"];
+            $entregador["Foto"] = $row["Foto"];
+            $entregador["Veiculo"] = $row["Veiculo"];
+            $entregador["Identificacao"] = $row["Identificacao"];
+            $entregador["Usuario"] = $row["Usuario"];
+            
+        }
+        $conn->close();
+        return $entregador;
+    }else{
+        $entregador["result"] = 0;
+        $conn->close();
+        return $entregador;
+    }
+}
+
+function editarEntregador($entregador){
+    require_once "Conexao.php";
+    if($entregador["senhaNova"] == "" && $entregador["foto"] == ""){
+        $sql = "UPDATE usuario SET Nome_Usuario = '{$entregador["nome"]}', Sexo = '{$entregador["sexo"]}', Cep = '{$entregador["cep"]}', Numero = '{$entregador["numero"]}',Complemento = '{$entregador["complemento"]}', Telefone = '{$entregador["telefone"]}', Email = '{$entregador["email"]}', Nascimento = '{$entregador["dataNascimento"]}' WHERE Id_Usuario = {$entregador["id"]}";
+    }
+    else if($entregador["senhaNova"] == "" && $entregador["foto"] != ""){
+        $sql = "UPDATE usuario SET Nome_Usuario = '{$entregador["nome"]}', Sexo = '{$entregador["sexo"]}', Cep = '{$entregador["cep"]}', Numero = '{$entregador["numero"]}',Complemento = '{$entregador["complemento"]}', Telefone = '{$entregador["telefone"]}', Email = '{$entregador["email"]}', Nascimento = '{$entregador["dataNascimento"]}', Foto = '{$entregador["foto"]}' WHERE Id_Usuario = {$entregador["id"]}";
+    } 
+    else if($entregador["senhaNova"] != "" && $entregador["foto"] == ""){
+        $sql = "UPDATE usuario SET Nome_Usuario = '{$entregador["nome"]}', Senha = '{$entregador["senhaNova"]}', Sexo = '{$entregador["sexo"]}', Cep = '{$entregadors["cep"]}', Numero = '{$entregador["numero"]}',Complemento = '{$entregador["complemento"]}', Telefone = '{$entregador["telefone"]}', Email = '{$entregador["email"]}', Nascimento = '{$entregador["dataNascimento"]}' WHERE Id_Usuario = {$entregador["id"]}";
+    }else{
+        $sql = "UPDATE usuario SET Nome_Usuario = '{$entregador["nome"]}', Senha = '{$entregador["senhaNova"]}', Sexo = '{$entregador["sexo"]}', Cep = '{$entregador["cep"]}', Numero = '{$entregador["numero"]}',Complemento = '{$entregador["complemento"]}', Telefone = '{$entregador["telefone"]}', Email = '{$entregador["email"]}', Nascimento = '{$entregador["dataNascimento"]}', Foto = '{$entregador["foto"]}' WHERE Id_Usuario = {$entregador["id"]}";
+    }
+    $result = $conn->query($sql);
+    
+    if($result == true){
+        $sql = "UPDATE entregador SET Veiculo = '{$entregador["veiculo"]}', Identificacao = '{$entregador["identificacao"]}' WHERE Usuario = {$entregador["idEntregador"]}";
+        $result = $conn->query($sql);
+        $conn->close();
+        return 1;
+    }else{
+        $conn->close();
+        return 0;
+    }
+}
+
+function excluirEntregador($id){
+    require_once "Conexao.php";
+    $sql = "DELETE FROM entregador WHERE Usuario = {$id}";
+    $result = $conn->query($sql);
+    
+    if($result == true){
+        $sql = "DELETE FROM usuario WHERE Id_Usuario = {$id}";
+        $result = $conn->query($sql);
+
+        if($result == true){
+            $conn->close();
+            return $result;
+        }else{
+            $conn->close();
+            return $result;
+        }
+
+    }else{
+        $conn->close();
+        return $result;
+    }  
+}
+
 ?>
