@@ -18,7 +18,7 @@
         if(!isset($_REQUEST["Id_Produto"])){
             ?>  
                 <form action="produtoList.php" name="form" id="myForm" method="post">
-                    <input type="hidden" name="msg" value="BD06">
+                    <input type="hidden" name="msg" value="FR01">
                 </form>
                 <script>
                     document.getElementById('myForm').submit()
@@ -97,22 +97,28 @@
                     <div>
             <label for="categoria">Categoria</label><br>
             <select name="categoria" id="categoria">
-                                <?php 
-                        require_once "../model/Manager.php";
-                        $categoria = todasCategorias();
-                    ?>
-                        <?php 
-                            for($i = 1;$i<= $categoria["num"];$i++){
-                                $idCat = $categoria[$i]["Id_Categoria"];
-                                echo "<option value=\"$idCat\">".$categoria[$i]["Nome_Categoria"]."</option>";
-                                echo "<option value=\"$idCat\" $categoria[$i][\"Nome_Categoria\"] == \"$idCat\" ? \"selected\": \"\">".$categoria[$i]["Nome_Categoria"]. "</option>" ;
+                <?php 
+                    require_once "../model/Categoria.class.php";
+                    $categoria = new Categoria();
+                    $dados = $categoria->pegaTodasCategorias();
 
+                    for($i = 0;$i < count($dados);$i++){
+                ?>
 
+                <option value="<?=$dados[$i]["Id_Categoria"];?>" <?php if($dados[$i]["Id_Categoria"] == $produto["Categoria"]){
+                    echo "selected";
+                    }else{
+                        echo "";
+                    } ?>>
+                    <?php echo $dados[$i]["Nome_Categoria"] ?>
+                </option>
 
-
-                            }  
-                        ?>
-                     </select>
+                <?php 
+                    }
+                
+                ?>
+                        
+            </select>
 
             
             </div>
