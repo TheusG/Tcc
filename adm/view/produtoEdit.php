@@ -18,7 +18,7 @@
         if(!isset($_REQUEST["Id_Produto"])){
             ?>  
                 <form action="produtoList.php" name="form" id="myForm" method="post">
-                    <input type="hidden" name="msg" value="BD06">
+                    <input type="hidden" name="msg" value="FR01">
                 </form>
                 <script>
                     document.getElementById('myForm').submit()
@@ -97,12 +97,30 @@
                     <div>
             <label for="categoria">Categoria</label><br>
             <select name="categoria" id="categoria">
-                <option value="1" <?php  echo $produto["Categoria"] == "1" ? "selected":"" ?>>Pizza Salgado</option>
-                <option value="2" <?php  echo $produto["Categoria"] == "2" ? "selected":"" ?>>Pizza Doce</option>
-                <option value="3" <?php  echo $produto["Categoria"] == "3" ? "selected":"" ?>>Esfiha Salgado</option>
-                <option value="4" <?php  echo $produto["Categoria"] == "4" ? "selected":"" ?>>Esfiha Doce</option>
-                <option value="5" <?php  echo $produto["Categoria"] == "5" ? "selected":"" ?>>Bebida</option>
+                <?php 
+                    require_once "../model/Categoria.class.php";
+                    $categoria = new Categoria();
+                    $dados = $categoria->pegaTodasCategorias();
+
+                    for($i = 0;$i < count($dados);$i++){
+                ?>
+
+                <option value="<?=$dados[$i]["Id_Categoria"];?>" <?php if($dados[$i]["Id_Categoria"] == $produto["Categoria"]){
+                    echo "selected";
+                    }else{
+                        echo "";
+                    } ?>>
+                    <?php echo $dados[$i]["Nome_Categoria"] ?>
+                </option>
+
+                <?php 
+                    }
+                
+                ?>
+                        
             </select>
+
+            
             </div>
                     </div>
                 </div>  

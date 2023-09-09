@@ -13,12 +13,15 @@
     </script>
 </head>
 <body>
+    
     <div id="titulo">
         <br>
         <h3>Produtos da Pizzaria</h3>
         <h4>Novo Produto</h4>
         <br>
     </div>
+
+    
 
     <div id="admForm"><!-- esta no adm.css -->
         <form action="../controller/controller.php" method="post" name="produtoNew">
@@ -63,24 +66,26 @@
                 <option value="0">Inativo</option>
             </select>   
                         </div>
-         
-           
-                        <div>
-                            
+                        <div>           
             <label for="categoria">Categoria</label><br>
-            <select name="categoria" id="categoria">
-                <option value="1" selected>Pizza Salgado</option>
-                <option value="2">Pizza Doce</option>
-                <option value="3">Esfiha Salgado</option>
-                <option value="4">Esfiha Doce</option>
-                <option value="5">Bebida</option>
-            </select>
+                    <select name="categoria" id="categoria">
+                                <?php 
+                        require_once "../model/Manager.php";
+                        $categoria = todasCategorias();
+                    ?>
+                        <?php 
+                            for($i = 1;$i<= $categoria["num"];$i++){
+                                $idCat = $categoria[$i]["Id_Categoria"];
+                                echo "<option value=\"$idCat\">".$categoria[$i]["Nome_Categoria"]."</option>";
+                            }  
+                        ?>
+                     </select>
                         </div>
                         </div>
                     </div>
                     <br>
             <label for="descricao">Descrição do Produto</label><br>
-            <textarea class="descricao"" name="descricao" id="descricao" cols="30" rows="10" style="resize: none;" required></textarea><br>
+            <textarea class="descricao" name="descricao" id="descricao" cols="30" rows="10" style="resize: none;" required></textarea><br>
             <br>
             <label for="nome">Imagem</label><br>
             <input class="inputnome" type="file" name="imagem" value=""><br>

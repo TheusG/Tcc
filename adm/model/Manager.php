@@ -603,25 +603,28 @@ function excluirEntregador($id){
 
 function todasCategorias(){
     require_once "Conexao.php";
-    $sql = "SELECT Id_Categoria , Nome_Categoria FROM categoria";
+    $sql = "SELECT  Id_Categoria , Nome_Categoria FROM categoria";
     $result = $conn->query($sql);
 
-        if($result->num_rows > 0){
-            $categoria = array();
-            $categoria["result"] = 1;
-            while($row = $result->fetch_assoc()){
-                $categoria["Id_Categoria"] = $row["Id_Categoria"];
-                $categoria["Nome_Categoria"] = $row["Nome_Categoria"];
-            }
-
-            $conn->close();
-            return $categoria;
-        
-        }else{
-            $categoria["result"] = 0;
-            $conn->close();
-            return $categoria;
+    if($result->num_rows > 0){
+        $num = $result->num_rows;
+        $categoria = array();
+        $categoria["result"] = 1;
+        $categoria["num"] = $num;
+        $i =1;
+        while($row = $result->fetch_assoc()){
+            $categoria[$i]["Id_Categoria"] = $row["Id_Categoria"];
+            $categoria[$i]["Nome_Categoria"] = $row["Nome_Categoria"];
+            $i++;
+            
         }
+        $conn->close();
+        return $categoria;
+    }else{
+        $categoria["result"] = 0;
+        $conn->close();
+        return $categoria;
+    }
 }
 
 
