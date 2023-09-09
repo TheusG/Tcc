@@ -97,12 +97,24 @@
                     <div>
             <label for="categoria">Categoria</label><br>
             <select name="categoria" id="categoria">
-                <option value="1" <?php  echo $produto["Categoria"] == "1" ? "selected":"" ?>>Pizza Salgado</option>
-                <option value="2" <?php  echo $produto["Categoria"] == "2" ? "selected":"" ?>>Pizza Doce</option>
-                <option value="3" <?php  echo $produto["Categoria"] == "3" ? "selected":"" ?>>Esfiha Salgado</option>
-                <option value="4" <?php  echo $produto["Categoria"] == "4" ? "selected":"" ?>>Esfiha Doce</option>
-                <option value="5" <?php  echo $produto["Categoria"] == "5" ? "selected":"" ?>>Bebida</option>
-            </select>
+                                <?php 
+                        require_once "../model/Manager.php";
+                        $categoria = todasCategorias();
+                    ?>
+                        <?php 
+                            for($i = 1;$i<= $categoria["num"];$i++){
+                                $idCat = $categoria[$i]["Id_Categoria"];
+                                echo "<option value=\"$idCat\">".$categoria[$i]["Nome_Categoria"]."</option>";
+                                echo "<option value=\"$idCat\" $categoria[$i][\"Nome_Categoria\"] == \"$idCat\" ? \"selected\": \"\">".$categoria[$i]["Nome_Categoria"]. "</option>" ;
+
+
+
+
+                            }  
+                        ?>
+                     </select>
+
+            
             </div>
                     </div>
                 </div>  

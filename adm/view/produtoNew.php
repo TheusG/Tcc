@@ -75,7 +75,8 @@
                     ?>
                         <?php 
                             for($i = 1;$i<= $categoria["num"];$i++){
-                                echo "<option value=\"$categoria[$i]['Id_Categoria']\">".$categoria[$i]["Nome_Categoria"]."</option>";
+                                $idCat = $categoria[$i]["Id_Categoria"];
+                                echo "<option value=\"$idCat\">".$categoria[$i]["Nome_Categoria"]."</option>";
                             }  
                         ?>
                      </select>
