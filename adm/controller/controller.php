@@ -281,7 +281,6 @@
 
  if(isset($_REQUEST["produto_new"])){
     $produto["nome"] = $_REQUEST["nome"];
-    $produto["codigo"] = $_REQUEST["codigo"];
     $produto["descricao"] = $_REQUEST["descricao"];
     $produto["estoque"] = $_REQUEST["estoque"];
     $produto["estoque_Min"] = $_REQUEST["estoque_Min"];
@@ -290,6 +289,7 @@
     $produto["status"] = $_REQUEST["status"];
     $produto["imagem"] = $_REQUEST["imagem"];
     $produto["categoria"] = $_REQUEST["categoria"];
+    $produto["codigo"] = $produto["categoria"] . $_REQUEST["codigo"];
 
     require_once "../model/Produto.class.php";
     $codigo = new Produto;
