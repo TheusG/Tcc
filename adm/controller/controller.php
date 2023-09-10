@@ -290,28 +290,47 @@
     $produto["status"] = $_REQUEST["status"];
     $produto["imagem"] = $_REQUEST["imagem"];
     $produto["categoria"] = $_REQUEST["categoria"];
-    require_once "../model/Manager.php";
-    $resp = adicionarProduto($produto);
 
-    if($resp == 1){//tudo certo ao adicionar um novo funcionario
-        ?>  
-            <form action="../view/produtoList.php" name="form" id="myForm" method="post">
-                <input type="hidden" name="msg" value="BD52">
-            </form>
-            <script>
-                document.getElementById('myForm').submit()
-            </script>
-         <?php
-    }else{//erro no insert
-        ?>  
-            <form action="../view/produtoList.php" name="form" id="myForm" method="post">
-                <input type="hidden" name="msg" value="BD02">
-            </form>
-            <script>
-                document.getElementById('myForm').submit()
-            </script>
-         <?php
+    require_once "../model/Produto.class.php";
+    $codigo = new Produto;
+    $dados = $codigo->codigoProdutos();
+
+        for($i = 0;$i < count($dados);$i++){
+            if($dados[$i]["Cod_Produto"] == $produto["codigo"]){
+                ?>  
+                    <form action="../view/produtoList.php" name="form" id="myForm" method="post">
+                        <input type="hidden" name="msg" value="FR26">
+                    </form>
+                    <script>
+                        document.getElementById('myForm').submit()
+                    </script>   
+                <?php  
+        }
     }
+            require_once "../model/Manager.php";
+            $resp = adicionarProduto($produto);
+        
+            if($resp == 1){//tudo certo ao adicionar um novo funcionario
+                ?>  
+                    <form action="../view/produtoList.php" name="form" id="myForm" method="post">
+                        <input type="hidden" name="msg" value="BD52">
+                    </form>
+                    <script>
+                        document.getElementById('myForm').submit()
+                    </script>
+                 <?php
+            }else{//erro no insert
+                ?>  
+                    <form action="../view/produtoList.php" name="form" id="myForm" method="post">
+                        <input type="hidden" name="msg" value="BD02">
+                    </form>
+                    <script>
+                        document.getElementById('myForm').submit()
+                    </script>
+                 <?php
+            }
+
+
 }
 
 if(isset($_REQUEST["produto_edit"])){

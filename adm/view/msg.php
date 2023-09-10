@@ -64,6 +64,7 @@ $MSG = array(
 	"FR23" => "Formato dos dados não condiz com o objeto.",
 	"FR24" => "Caracteres não condizentes com as regras do sistema.",
 	"FR25" => "Caracteres não identificados.",
+    "FR26" => "O código informado já existe",
 
     // 50 A 99 SUCESSOS
     "FR50" => "Formulário enviado com sucesso.",
@@ -82,7 +83,5 @@ $MSG = array(
 
 );
 
-/* 
-Arquivo produzido por Celso Masotti.
-*/
+
 ?>

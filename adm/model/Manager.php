@@ -294,6 +294,32 @@ function excluirCategoria($id){
     return $result;
 }
 
+function todasCategorias(){
+    require_once "Conexao.php";
+    $sql = "SELECT  Id_Categoria , Nome_Categoria FROM categoria";
+    $result = $conn->query($sql);
+
+    if($result->num_rows > 0){
+        $num = $result->num_rows;
+        $categoria = array();
+        $categoria["result"] = 1;
+        $categoria["num"] = $num;
+        $i =1;
+        while($row = $result->fetch_assoc()){
+            $categoria[$i]["Id_Categoria"] = $row["Id_Categoria"];
+            $categoria[$i]["Nome_Categoria"] = $row["Nome_Categoria"];
+            $i++;
+            
+        }
+        $conn->close();
+        return $categoria;
+    }else{
+        $categoria["result"] = 0;
+        $conn->close();
+        return $categoria;
+    }
+}
+
 //---------------------------------------------PRODUTO----------------------------------------------------------//
 
 function listarProduto(){
@@ -402,6 +428,31 @@ function excluirProduto($id){
     $conn->close();
     return $result;
 }
+
+// function codigoProdutos(){
+//     require_once "Conexao.php";
+//     $sql = "SELECT Cod_Produto FROM produto";
+//     $result = $conn->query($sql);
+
+//     if($result->num_rows > 0){
+//         $num = $result->num_rows;
+//         $codigo = array();
+//         $codigo["result"] = 1;
+//         $codigo["num"] = $num;
+//         $i =1;
+//         while($row = $result->fetch_assoc()){
+//             $codigo[$i]["Cod_Produto"] = $row["Cod_Produto"];
+//             $i++;
+            
+//         }
+//         $conn->close();
+//         return $codigo;
+//     }else{
+//         $codigo["result"] = 0;
+//         $conn->close();
+//         return $codigo;
+//     }
+// }
 
 
 // --------------------------------------------------------------EMPRESA---------------------------------------------//
@@ -601,31 +652,7 @@ function excluirEntregador($id){
     }  
 }
 
-function todasCategorias(){
-    require_once "Conexao.php";
-    $sql = "SELECT  Id_Categoria , Nome_Categoria FROM categoria";
-    $result = $conn->query($sql);
 
-    if($result->num_rows > 0){
-        $num = $result->num_rows;
-        $categoria = array();
-        $categoria["result"] = 1;
-        $categoria["num"] = $num;
-        $i =1;
-        while($row = $result->fetch_assoc()){
-            $categoria[$i]["Id_Categoria"] = $row["Id_Categoria"];
-            $categoria[$i]["Nome_Categoria"] = $row["Nome_Categoria"];
-            $i++;
-            
-        }
-        $conn->close();
-        return $categoria;
-    }else{
-        $categoria["result"] = 0;
-        $conn->close();
-        return $categoria;
-    }
-}
 
 
 
