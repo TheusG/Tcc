@@ -16,6 +16,19 @@ body{
     height: 800px;
     
 }
+#enviar{
+    padding: 18px;
+    border-radius: 12px;
+    background-color: #181818;
+    border: solid black 1px;
+    color: white;
+    font-size: 22px;
+    transition: 0.1s;
+}
+#enviar:hover{
+    background-color: #252525;
+    transition: 0.1s;
+}
 
 .formulario{
     width: 500px;
