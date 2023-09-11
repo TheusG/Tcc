@@ -33,7 +33,7 @@
                     </div>
                     <div>
             <label for="codigo">Código</label><br>
-            <input class="inputCod" type="number" step="1" maxlength="3" name="codigo" value=""><br><br>
+            <input class="inputCod" type="number" step="1"  name="codigo" value=""><br><br>
                     </div>
                     <div>
                     <label for="valor">Valor</label><br>
