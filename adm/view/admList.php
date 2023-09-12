@@ -81,7 +81,12 @@ require_once "admVerifSession.php";
                     // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Cep"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Complemento"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Numero"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Nascimento"]."</td>";
+                    $dataAtual = date('Y-m-d'); // Obtém a data no formato padrão do PHP (ano-mês-dia)
+
+                    // Formata a data no padrão dia/mês/ano
+                    $dataFormatada = date('d/m/Y', strtotime($dados[$i]["Nascimento"]));
+ 
+                    echo "<td class=\"tabelaAdmTd\">".$dataFormatada."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Cargo"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Salario"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$dados[$i]["Perfil"]."</td>";
