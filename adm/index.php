@@ -27,7 +27,7 @@
           
           <input type="password" name="senha" id="senha" class="campo">
           <br><br><br>
-          <input type="submit" id="enviar">
+          <input type="submit" id="enviar" value="Entrar">
 
 
         </form>

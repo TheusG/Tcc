@@ -323,6 +323,7 @@ function todasCategorias(){
 //---------------------------------------------PRODUTO----------------------------------------------------------//
 
 function listarProduto(){
+    
     require_once "Conexao.php";
     $sql = "SELECT * FROM produto";
     $result= $conn->query($sql);  

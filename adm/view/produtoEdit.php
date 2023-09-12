@@ -110,7 +110,7 @@
                     }else{
                         echo "";
                     } ?>>
-                    <?php echo $dados[$i]["Id_Categoria"]. " - "  . $dados[$i]["Nome_Categoria"] ?>
+                    <?php echo $dados[$i]["Nome_Categoria"] ?>
                 </option>
 
                 <?php 
