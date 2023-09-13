@@ -1,3 +1,6 @@
+
+
+
 <?php
 //toda a vez  que for mandar um formulario para o index, antes tem que detruir da sessão
 session_start();
@@ -329,32 +332,13 @@ if (isset($_REQUEST["produto_new"])) {
     }
 }
 
-if (isset($_REQUEST["barraPesquisa"])) {
+if (isset($_REQUEST["PesquisaProd"])) {
     $campo = $_REQUEST["buscar"];
-    
+
 
     if ($campo != "") {
         require_once "../model/Manager.php";
         $result = listarProduto($campo);
-        if ($result == 1) { //conseguir excluir
-            ?>
-                <form action="../view/produtoList.php" name="form" id="myForm" method="post">
-                    <input type="hidden" name="msg" value="BD54">
-                </form>
-                <script>
-                    document.getElementById('myForm').submit()
-                </script>
-            <?php
-            } else { //algo deu de errado na deleção
-            ?>
-                <form action="../view/produtoList.php" name="form" id="myForm" method="post">
-                    <input type="hidden" name="msg" value="BD04">
-                </form>
-                <script>
-                    document.getElementById('myForm').submit()
-                </script>
-            <?php
-            }
     }
 }
 

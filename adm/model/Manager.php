@@ -1,14 +1,15 @@
-<?php 
+<?php
 
 //pegando os dados do usuario
-function dadosFuncionario($email, $senha){
+function dadosFuncionario($email, $senha)
+{
     require_once "Conexao.php";
 
     $sql = "SELECT * FROM usuario WHERE Email ='$email' AND Senha = '$senha'";
     $result = $conn->query($sql);
 
 
-    if($result->num_rows > 0){
+    if ($result->num_rows > 0) {
         //$dados pega as informaçoes vinda o comando sql
         require_once "Conexao.php";
         //  $sql = "SELECT f.Cargo from funcionario f join usuario u on u.Id_Usuario = f.Usuario";
@@ -17,34 +18,33 @@ function dadosFuncionario($email, $senha){
         //VERIFICAR ISSO
         // $sql = "SELECT f.Cargo c.Nome_Cargo, c.Id_Cargo, u.Id_Usuario from cargo c join funcionario f on f.Cargo = c.Id_Cargo join usuario u on u.Id_Usuario = f.Usuario";
         // $result = $conn->query($sql);
-        
-        
+
+
         $dados = array();
-        $dados["result"] = 1;// 1 tem dados 0 não tem dados
-        while($row = $result->fetch_assoc()){
+        $dados["result"] = 1; // 1 tem dados 0 não tem dados
+        while ($row = $result->fetch_assoc()) {
             $dados["Id_Usuario"] = $row["Id_Usuario"];
-            $dados["Nome_Usuario"] =$row["Nome_Usuario"];
+            $dados["Nome_Usuario"] = $row["Nome_Usuario"];
             $dados["Senha"] = $row["Senha"];
             $dados["Email"] = $row["Email"];
             $dados["Cargo"] = $row["Cargo"];
             // $dados["Nome_Cargo"]  = $row["Nome_Cargo"];
         }
         $conn->close();
-        return $dados;//retorna dados pro controller
-        
-    }else{
+        return $dados; //retorna dados pro controller
+
+    } else {
         $dados["result"] = 0;
         $conn->close();
         return $dados;
     }
-
-
 }
 
-function listarFuncionario(){
+function listarFuncionario()
+{
     require_once "Conexao.php";
     $sql = "SELECT usuario.* , funcionario.* FROM usuario INNER JOIN funcionario on usuario.Id_Usuario = funcionario.Usuario";
-    $result= $conn->query($sql);
+    $result = $conn->query($sql);
 
     // $sql = "SELECT * FROM funcionario";
     // $resposta =$conn->query($sql);
@@ -59,15 +59,15 @@ function listarFuncionario(){
     //         $dados[$ii][""]
     //     }
     // }
-    if($result->num_rows > 0){
+    if ($result->num_rows > 0) {
         $num = $result->num_rows;
         $dados = array();
         $dados["result"] = 1;
         $dados["num"] = $num;
-        $i =1;
-        while($row = $result->fetch_assoc()){
+        $i = 1;
+        while ($row = $result->fetch_assoc()) {
             $dados[$i]["Id_Usuario"] = $row["Id_Usuario"];
-            $dados[$i]["Nome_Usuario"] =$row["Nome_Usuario"];
+            $dados[$i]["Nome_Usuario"] = $row["Nome_Usuario"];
             $dados[$i]["Senha"] = $row["Senha"];
             $dados[$i]["Sexo"] = $row["Sexo"];
             $dados[$i]["Cep"] = $row["Cep"];
@@ -84,46 +84,47 @@ function listarFuncionario(){
         }
         $conn->close();
         return $dados;
-    }else{
+    } else {
         $dados["result"] = 0;
         $conn->close();
         return $dados;
     }
 }
 
-function adicionarFuncionario($dados){
+function adicionarFuncionario($dados)
+{
     require_once "Conexao.php";
     $sql = "INSERT INTO usuario (Nome_Usuario,Senha, Sexo,Cep, Numero, Complemento,Telefone, Email,Nascimento,Foto) VALUES ('{$dados["nome"]}', '{$dados["senha"]}','{$dados["sexo"]}','{$dados["cep"]}','{$dados["numero"]}','{$dados["complemento"]}','{$dados["telefone"]}','{$dados["email"]}','{$dados["dataNascimento"]}','{$dados["foto"]}')";
     $result = $conn->query($sql);
     $ultimoid = mysqli_insert_id($conn);
-    
-    if($result == true){//tudo certo
+
+    if ($result == true) { //tudo certo
         $sql = "INSERT INTO funcionario (Cargo,Perfil,Salario,Usuario) VALUES ('{$dados["cargo"]}','{$dados["perfil"]}','{$dados["salario"]}',$ultimoid)";
         $result = $conn->query($sql);
 
-        if($result == true){
+        if ($result == true) {
             $conn->close();
             return 1;
-        }else{
+        } else {
             return 0;
         }
-    }else{
+    } else {
         $conn->close();
         return 0;
     }
+}
 
-}   
-
-function pegaFuncionario($id){
+function pegaFuncionario($id)
+{
     require_once "Conexao.php";
     $sql = "SELECT usuario.* , funcionario.* FROM usuario INNER JOIN funcionario on usuario.Id_Usuario = funcionario.Usuario WHERE Id_Usuario = {$id}";
     $result = $conn->query($sql);
 
     //Se selecionou algum funcionario
-    if($result->num_rows > 0){
+    if ($result->num_rows > 0) {
         $dados = array();
         $dados["result"] = 1;
-        while($row = $result->fetch_assoc()){
+        while ($row = $result->fetch_assoc()) {
             $dados["Id_Usuario"] = $row["Id_Usuario"];
             $dados["Nome_Usuario"] = $row["Nome_Usuario"];
             $dados["Sexo"] = $row["Sexo"];
@@ -138,155 +139,156 @@ function pegaFuncionario($id){
             $dados["Perfil"] = $row["Perfil"];
             $dados["Salario"] = $row["Salario"];
             $dados["Usuario"] = $row["Usuario"];
-            
         }
         $conn->close();
         return $dados;
-    }else{
+    } else {
         $dados["result"] = 0;
         $conn->close();
         return $dados;
     }
 }
 
-function editarFuncionario($dados){
+function editarFuncionario($dados)
+{
     require_once "Conexao.php";
-    if($dados["senhaNova"] == "" && $dados["foto"] == ""){
+    if ($dados["senhaNova"] == "" && $dados["foto"] == "") {
         $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}' WHERE Id_Usuario = {$dados["id"]}";
-    }
-    else if($dados["senhaNova"] == "" && $dados["foto"] != ""){
+    } else if ($dados["senhaNova"] == "" && $dados["foto"] != "") {
         $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}', Foto = '{$dados["foto"]}' WHERE Id_Usuario = {$dados["id"]}";
-    } 
-    else if($dados["senhaNova"] != "" && $dados["foto"] == ""){
+    } else if ($dados["senhaNova"] != "" && $dados["foto"] == "") {
         $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Senha = '{$dados["senhaNova"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}' WHERE Id_Usuario = {$dados["id"]}";
-    }else{
+    } else {
         $sql = "UPDATE usuario SET Nome_Usuario = '{$dados["nome"]}', Senha = '{$dados["senhaNova"]}', Sexo = '{$dados["sexo"]}', Cep = '{$dados["cep"]}', Numero = '{$dados["numero"]}',Complemento = '{$dados["complemento"]}', Telefone = '{$dados["telefone"]}', Email = '{$dados["email"]}', Nascimento = '{$dados["dataNascimento"]}', Foto = '{$dados["foto"]}' WHERE Id_Usuario = {$dados["id"]}";
     }
     $result = $conn->query($sql);
-    
-    if($result == true){
+
+    if ($result == true) {
         $sql = "UPDATE funcionario SET Cargo = '{$dados["cargo"]}', Perfil = '{$dados["perfil"]}', Salario = '{$dados["salario"]}' WHERE Usuario = {$dados["idFuncionario"]}";
         $result = $conn->query($sql);
         $conn->close();
         return 1;
-    }else{
+    } else {
         $conn->close();
         return 0;
     }
 }
 
-function excluirFuncionario($id){
+function excluirFuncionario($id)
+{
     require_once "Conexao.php";
     $sql = "DELETE FROM funcionario WHERE Usuario = {$id}";
     $result = $conn->query($sql);
-    
-    if($result == true){
+
+    if ($result == true) {
         $sql = "DELETE FROM usuario WHERE Id_Usuario = {$id}";
         $result = $conn->query($sql);
 
-        if($result == true){
+        if ($result == true) {
             $conn->close();
             return $result;
-        }else{
+        } else {
             $conn->close();
             return $result;
         }
-
-    }else{
+    } else {
         $conn->close();
         return $result;
-    }  
+    }
 }
 
 
 // --------------------------------------------------------------Categorias---------------------------------
-function listarCategorias(){
+function listarCategorias()
+{
     require_once "Conexao.php";
     $sql = "SELECT * FROM categoria";
-    $result= $conn->query($sql);  
+    $result = $conn->query($sql);
 
-    if($result->num_rows > 0){
+    if ($result->num_rows > 0) {
         $num = $result->num_rows;
         $categoria = array();
         $categoria["result"] = 1;
         $categoria["num"] = $num;
-        $i =1;
-        while($row = $result->fetch_assoc()){
+        $i = 1;
+        while ($row = $result->fetch_assoc()) {
             $categoria[$i]["Id_Categoria"] = $row["Id_Categoria"];
-            $categoria[$i]["Nome_Categoria"] =$row["Nome_Categoria"];
+            $categoria[$i]["Nome_Categoria"] = $row["Nome_Categoria"];
             $categoria[$i]["Comentario"] = $row["Comentario"];
             $categoria[$i]["Imagem"] = $row["Imagem"];
             $i++;
         }
         $conn->close();
         return $categoria;
-    }else{
+    } else {
         $categoria["result"] = 0;
         $conn->close();
         return $categoria;
     }
 }
 
-function adicionarCategoria($categoria){
+function adicionarCategoria($categoria)
+{
     require_once "Conexao.php";
     $sql = "INSERT INTO categoria (Nome_Categoria,Comentario,Imagem) VALUES ('{$categoria["nome"]}', '{$categoria["comentario"]}','{$categoria["imagem"]}')";
     $result = $conn->query($sql);
 
-    if($result == true){
+    if ($result == true) {
         $conn->close();
         return 1;
-    }else{
+    } else {
         $conn->close();
         return 0;
     }
-
 }
 
 
-function pegaCategoria($id){
+function pegaCategoria($id)
+{
     require_once "Conexao.php";
     $sql = "SELECT * FROM categoria WHERE Id_Categoria = {$id}";
     $result = $conn->query($sql);
 
     //Se selecionou algum funcionario
-    if($result->num_rows > 0){
+    if ($result->num_rows > 0) {
         $categoria = array();
         $categoria["result"] = 1;
-        while($row = $result->fetch_assoc()){
+        while ($row = $result->fetch_assoc()) {
             $categoria["Id_Categoria"] = $row["Id_Categoria"];
             $categoria["Nome_Categoria"] = $row["Nome_Categoria"];
             $categoria["Comentario"] = $row["Comentario"];
             $categoria["Imagem"] = $row["Imagem"];
-            
         }
         $conn->close();
         return $categoria;
-    }else{
+    } else {
         $categoria["result"] = 0;
         $conn->close();
         return $categoria;
     }
 }
 
-function editarCategoria($categoria){
+function editarCategoria($categoria)
+{
     require_once "Conexao.php";
-        if($categoria["imagem"] == ""){
-            $sql = "UPDATE categoria SET Nome_Categoria = '{$categoria["nome"]}', Comentario = '{$categoria["comentario"]}' WHERE Id_Categoria = {$categoria["id"]}";
-        }else{
-            $sql = "UPDATE categoria SET Nome_Categoria = '{$categoria["nome"]}', Comentario = '{$categoria["comentario"]}', Imagem = '{$categoria["imagem"]}' WHERE Id_Categoria = {$categoria["id"]}";
-        }
-        
-        $result = $conn->query($sql);
-        if($result == true){//tudo certo 
-            $conn->close();
-                return 1;
-        }else{
-            $conn->close();
-            return 0;
-        }
+    if ($categoria["imagem"] == "") {
+        $sql = "UPDATE categoria SET Nome_Categoria = '{$categoria["nome"]}', Comentario = '{$categoria["comentario"]}' WHERE Id_Categoria = {$categoria["id"]}";
+    } else {
+        $sql = "UPDATE categoria SET Nome_Categoria = '{$categoria["nome"]}', Comentario = '{$categoria["comentario"]}', Imagem = '{$categoria["imagem"]}' WHERE Id_Categoria = {$categoria["id"]}";
+    }
+
+    $result = $conn->query($sql);
+    if ($result == true) { //tudo certo 
+        $conn->close();
+        return 1;
+    } else {
+        $conn->close();
+        return 0;
+    }
 }
 
-function excluirCategoria($id){
+function excluirCategoria($id)
+{
     require_once "Conexao.php";
     $sql = "DELETE FROM categoria WHERE Id_Categoria = {$id}";
     $result = $conn->query($sql);
@@ -294,26 +296,26 @@ function excluirCategoria($id){
     return $result;
 }
 
-function todasCategorias(){
+function todasCategorias()
+{
     require_once "Conexao.php";
     $sql = "SELECT  Id_Categoria , Nome_Categoria FROM categoria";
     $result = $conn->query($sql);
 
-    if($result->num_rows > 0){
+    if ($result->num_rows > 0) {
         $num = $result->num_rows;
         $categoria = array();
         $categoria["result"] = 1;
         $categoria["num"] = $num;
-        $i =1;
-        while($row = $result->fetch_assoc()){
+        $i = 1;
+        while ($row = $result->fetch_assoc()) {
             $categoria[$i]["Id_Categoria"] = $row["Id_Categoria"];
             $categoria[$i]["Nome_Categoria"] = $row["Nome_Categoria"];
             $i++;
-            
         }
         $conn->close();
         return $categoria;
-    }else{
+    } else {
         $categoria["result"] = 0;
         $conn->close();
         return $categoria;
@@ -322,146 +324,146 @@ function todasCategorias(){
 
 //---------------------------------------------PRODUTO----------------------------------------------------------//
 
-function listarProduto($campo){
+function listarProduto($campo)
+{
 
-    if($campo != ""){
-    require_once "Conexao.php";
-    $sql = "SELECT * FROM produto WHERE Cod_Produto LIKE '%$campo%' OR Nome_Produto LIKE '%$campo%'";
-    $result= $conn->query($sql);  
+    if ($campo == "333") {
+        require_once "Conexao.php";
+        $sql = "SELECT * FROM produto";
+        $result = $conn->query($sql);
 
-    if($result->num_rows > 0){
-        $num = $result->num_rows;
-        $produto = array();
-        $produto["result"] = 1;
-        $produto["num"] = $num;
-        $i =1;
-        while($row = $result->fetch_assoc()){
-            $produto[$i]["Id_Produto"] = $row["Id_Produto"];
-            $produto[$i]["Cod_Produto"] =$row["Cod_Produto"];
-            $produto[$i]["Nome_Produto"] = $row["Nome_Produto"];
-            $produto[$i]["Desc_Produto"] = $row["Desc_Produto"];
-            $produto[$i]["Estoque"] = $row["Estoque"];
-            $produto[$i]["Estoque_Min"] =$row["Estoque_Min"];
-            $produto[$i]["Estoque_Max"] = $row["Estoque_Max"];
-            $produto[$i]["Valor"] = $row["Valor"];
-            $produto[$i]["Status_Produto"] = $row["Status_Produto"];
-            $produto[$i]["Imagem"] = $row["Imagem"];
-            $produto[$i]["Categoria"] = $row["Categoria"];
-            $i++;
+        if ($result->num_rows > 0) {
+            $num = $result->num_rows;
+            $produto = array();
+            $produto["result"] = 1;
+            $produto["num"] = $num;
+            $i = 1;
+            while ($row = $result->fetch_assoc()) {
+                $produto[$i]["Id_Produto"] = $row["Id_Produto"];
+                $produto[$i]["Cod_Produto"] = $row["Cod_Produto"];
+                $produto[$i]["Nome_Produto"] = $row["Nome_Produto"];
+                $produto[$i]["Desc_Produto"] = $row["Desc_Produto"];
+                $produto[$i]["Estoque"] = $row["Estoque"];
+                $produto[$i]["Estoque_Min"] = $row["Estoque_Min"];
+                $produto[$i]["Estoque_Max"] = $row["Estoque_Max"];
+                $produto[$i]["Valor"] = $row["Valor"];
+                $produto[$i]["Status_Produto"] = $row["Status_Produto"];
+                $produto[$i]["Imagem"] = $row["Imagem"];
+                $produto[$i]["Categoria"] = $row["Categoria"];
+                $i++;
+            }
+            $conn->close();
+            return $produto;
+        } else {
+            $produto["result"] = 0;
+            $conn->close();
+            return $produto;
         }
-        $conn->close();
-        return $produto;
-    }else{
-        $produto["result"] = 0;
-        $conn->close();
-        return $produto;
-    }
+    } else{
+        require_once "Conexao.php";
+        $sql = "SELECT * FROM produto WHERE Cod_Produto LIKE '%$campo%' OR Nome_Produto LIKE '%$campo%'";
+        $result = $conn->query($sql);
 
-}else{
-    require_once "Conexao.php";
-    $sql = "SELECT * FROM produto WHERE Cod_Produto LIKE '%$campo%' OR Nome_Produto LIKE '%$campo%'";
-    $result= $conn->query($sql);  
-
-    if($result->num_rows > 0){
-        $num = $result->num_rows;
-        $produto = array();
-        $produto["result"] = 1;
-        $produto["num"] = $num;
-        $i =1;
-        while($row = $result->fetch_assoc()){
-            $produto[$i]["Id_Produto"] = $row["Id_Produto"];
-            $produto[$i]["Cod_Produto"] =$row["Cod_Produto"];
-            $produto[$i]["Nome_Produto"] = $row["Nome_Produto"];
-            $produto[$i]["Desc_Produto"] = $row["Desc_Produto"];
-            $produto[$i]["Estoque"] = $row["Estoque"];
-            $produto[$i]["Estoque_Min"] =$row["Estoque_Min"];
-            $produto[$i]["Estoque_Max"] = $row["Estoque_Max"];
-            $produto[$i]["Valor"] = $row["Valor"];
-            $produto[$i]["Status_Produto"] = $row["Status_Produto"];
-            $produto[$i]["Imagem"] = $row["Imagem"];
-            $produto[$i]["Categoria"] = $row["Categoria"];
-            $i++;
+        if ($result->num_rows > 0) {
+            $num = $result->num_rows;
+            $produto = array();
+            $produto["result"] = 1;
+            $produto["num"] = $num;
+            $i = 1;
+            while ($row = $result->fetch_assoc()) {
+                $produto[$i]["Id_Produto"] = $row["Id_Produto"];
+                $produto[$i]["Cod_Produto"] = $row["Cod_Produto"];
+                $produto[$i]["Nome_Produto"] = $row["Nome_Produto"];
+                $produto[$i]["Desc_Produto"] = $row["Desc_Produto"];
+                $produto[$i]["Estoque"] = $row["Estoque"];
+                $produto[$i]["Estoque_Min"] = $row["Estoque_Min"];
+                $produto[$i]["Estoque_Max"] = $row["Estoque_Max"];
+                $produto[$i]["Valor"] = $row["Valor"];
+                $produto[$i]["Status_Produto"] = $row["Status_Produto"];
+                $produto[$i]["Imagem"] = $row["Imagem"];
+                $produto[$i]["Categoria"] = $row["Categoria"];
+                $i++;
+            }
+            $conn->close();
+            return $produto;
+        } else {
+            $produto["result"] = 0;
+            $conn->close();
+            return $produto;
         }
-        $conn->close();
-        return $produto;
-    }else{
-        $produto["result"] = 0;
-        $conn->close();
-        return $produto;
     }
 }
-    
-    
 
 
-}
 
-function adicionarProduto($produto){
+function adicionarProduto($produto)
+{
     require_once "Conexao.php";
     $sql = "INSERT INTO produto (Cod_Produto,Nome_Produto,Desc_Produto,Estoque,Estoque_Min,Estoque_Max,Valor,Status_Produto,Imagem,Categoria) VALUES ('{$produto["codigo"]}', '{$produto["nome"]}','{$produto["descricao"]}','{$produto["estoque"]}','{$produto["estoque_Min"]}','{$produto["estoque_Max"]}','{$produto["valor"]}','{$produto["status"]}','{$produto["imagem"]}','{$produto["categoria"]}')";
     $result = $conn->query($sql);
 
-    if($result == true){
+    if ($result == true) {
         $conn->close();
         return 1;
-    }else{
+    } else {
         $conn->close();
         return 0;
     }
-
 }
 
-function pegaProduto($id){
+function pegaProduto($id)
+{
     require_once "Conexao.php";
     $sql = "SELECT * FROM produto WHERE Id_Produto = {$id}";
     $result = $conn->query($sql);
 
     //Se selecionou algum funcionario
-    if($result->num_rows > 0){
+    if ($result->num_rows > 0) {
         $produto = array();
         $produto["result"] = 1;
-        while($row = $result->fetch_assoc()){
+        while ($row = $result->fetch_assoc()) {
             $produto["Id_Produto"] = $row["Id_Produto"];
-            $produto["Cod_Produto"] =$row["Cod_Produto"];
+            $produto["Cod_Produto"] = $row["Cod_Produto"];
             $produto["Nome_Produto"] = $row["Nome_Produto"];
             $produto["Desc_Produto"] = $row["Desc_Produto"];
             $produto["Estoque"] = $row["Estoque"];
-            $produto["Estoque_Min"] =$row["Estoque_Min"];
+            $produto["Estoque_Min"] = $row["Estoque_Min"];
             $produto["Estoque_Max"] = $row["Estoque_Max"];
             $produto["Valor"] = $row["Valor"];
             $produto["Status_Produto"] = $row["Status_Produto"];
             $produto["Imagem"] = $row["Imagem"];
             $produto["Categoria"] = $row["Categoria"];
-            
         }
         $conn->close();
         return $produto;
-    }else{
+    } else {
         $produto["result"] = 0;
         $conn->close();
         return $produto;
     }
 }
 
-function editarProduto($produto){
+function editarProduto($produto)
+{
     require_once "Conexao.php";
-        if($produto["imagem"] == ""){
-            $sql = "UPDATE produto SET Cod_Produto = '{$produto["codigo"]}', Nome_Produto = '{$produto["nome"]}', Desc_Produto = '{$produto["descricao"]}', Estoque = '{$produto["estoque"]}', Estoque_Min = '{$produto["estoque_Min"]}', Estoque_Max = '{$produto["estoque_Max"]}', Valor = '{$produto["valor"]}', Status_Produto = '{$produto["status"]}' , Categoria = '{$produto["categoria"]}' WHERE Id_Produto = {$produto["id"]}";
-        }else{
-            $sql = "UPDATE produto SET Cod_Produto = '{$produto["codigo"]}', Nome_Produto = '{$produto["nome"]}', Desc_Produto = '{$produto["descricao"]}', Estoque = '{$produto["estoque"]}', Estoque_Min = '{$produto["estoque_Min"]}', Estoque_Max = '{$produto["estoque_Max"]}', Valor = '{$produto["valor"]}', Status_Produto = '{$produto["status"]}' ,Imagem = '{$produto["imagem"]}', Categoria = '{$produto["categoria"]}' WHERE Id_Produto = {$produto["id"]}";        
-        }
-        
-        $result = $conn->query($sql);
-        if($result == true){//tudo certo 
-            $conn->close();
-                return 1;
-        }else{
-            $conn->close();
-            return 0;
-        }
+    if ($produto["imagem"] == "") {
+        $sql = "UPDATE produto SET Cod_Produto = '{$produto["codigo"]}', Nome_Produto = '{$produto["nome"]}', Desc_Produto = '{$produto["descricao"]}', Estoque = '{$produto["estoque"]}', Estoque_Min = '{$produto["estoque_Min"]}', Estoque_Max = '{$produto["estoque_Max"]}', Valor = '{$produto["valor"]}', Status_Produto = '{$produto["status"]}' , Categoria = '{$produto["categoria"]}' WHERE Id_Produto = {$produto["id"]}";
+    } else {
+        $sql = "UPDATE produto SET Cod_Produto = '{$produto["codigo"]}', Nome_Produto = '{$produto["nome"]}', Desc_Produto = '{$produto["descricao"]}', Estoque = '{$produto["estoque"]}', Estoque_Min = '{$produto["estoque_Min"]}', Estoque_Max = '{$produto["estoque_Max"]}', Valor = '{$produto["valor"]}', Status_Produto = '{$produto["status"]}' ,Imagem = '{$produto["imagem"]}', Categoria = '{$produto["categoria"]}' WHERE Id_Produto = {$produto["id"]}";
+    }
+
+    $result = $conn->query($sql);
+    if ($result == true) { //tudo certo 
+        $conn->close();
+        return 1;
+    } else {
+        $conn->close();
+        return 0;
+    }
 }
 
-function excluirProduto($id){
+function excluirProduto($id)
+{
     require_once "Conexao.php";
     $sql = "DELETE FROM produto WHERE Id_Produto = {$id}";
     $result = $conn->query($sql);
@@ -483,7 +485,7 @@ function excluirProduto($id){
 //         while($row = $result->fetch_assoc()){
 //             $codigo[$i]["Cod_Produto"] = $row["Cod_Produto"];
 //             $i++;
-            
+
 //         }
 //         $conn->close();
 //         return $codigo;
@@ -496,22 +498,23 @@ function excluirProduto($id){
 
 
 // --------------------------------------------------------------EMPRESA---------------------------------------------//
-function pegaEmpresa(){
+function pegaEmpresa()
+{
     require_once "Conexao.php";
     $sql = "SELECT * FROM empresa";
     $result = $conn->query($sql);
 
     //Se selecionou algum funcionario
-    if($result->num_rows > 0){
+    if ($result->num_rows > 0) {
         $empresa = array();
         $empresa["result"] = 1;
-        while($row = $result->fetch_assoc()){
+        while ($row = $result->fetch_assoc()) {
             $empresa["Id_Empresa"] = $row["Id_Empresa"];
-            $empresa["Nome_Empresa"] =$row["Nome_Empresa"];
+            $empresa["Nome_Empresa"] = $row["Nome_Empresa"];
             $empresa["Fantasia"] = $row["Fantasia"];
             $empresa["Cnpj"] = $row["Cnpj"];
             $empresa["Ie"] = $row["Ie"];
-            $empresa["Cep"] =$row["Cep"];
+            $empresa["Cep"] = $row["Cep"];
             $empresa["Endereco"] = $row["Endereco"];
             $empresa["Numero"] = $row["Numero"];
             $empresa["Bairro"] = $row["Bairro"];
@@ -521,49 +524,50 @@ function pegaEmpresa(){
             $empresa["Site"] = $row["Site"];
             $empresa["Data"] = $row["Data"];
             $empresa["Logo"] = $row["Logo"];
-            
         }
         $conn->close();
         return $empresa;
-    }else{
+    } else {
         $empresa["result"] = 0;
         $conn->close();
         return $empresa;
     }
 }
 
-function editarEmpresa($empresa){
+function editarEmpresa($empresa)
+{
     require_once "Conexao.php";
-        if($empresa["logo"] == ""){
-            $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = '{$empresa["data"]}'";
-        }else{
+    if ($empresa["logo"] == "") {
+        $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = '{$empresa["data"]}'";
+    } else {
         $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = '{$empresa["data"]}', Logo = '{$empresa["logo"]}'";
-        } 
-        $result = $conn->query($sql);
-        if($result == true){//tudo certo 
-            $conn->close();
-                return 1;
-        }else{
-            $conn->close();
-            return 0;
-        }
+    }
+    $result = $conn->query($sql);
+    if ($result == true) { //tudo certo 
+        $conn->close();
+        return 1;
+    } else {
+        $conn->close();
+        return 0;
+    }
 }
- 
+
 // -----------------------------------------Entregador------------------------------------------------------------//
-function listarEntregador(){
+function listarEntregador()
+{
     require_once "Conexao.php";
     $sql = "SELECT usuario.* , entregador.* FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario";
-    $result= $conn->query($sql);
-    
-    if($result->num_rows > 0){
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
         $num = $result->num_rows;
         $entregador = array();
         $entregador["result"] = 1;
         $entregador["num"] = $num;
-        $i =1;
-        while($row = $result->fetch_assoc()){
+        $i = 1;
+        while ($row = $result->fetch_assoc()) {
             $entregador[$i]["Id_Usuario"] = $row["Id_Usuario"];
-            $entregador[$i]["Nome_Usuario"] =$row["Nome_Usuario"];
+            $entregador[$i]["Nome_Usuario"] = $row["Nome_Usuario"];
             $entregador[$i]["Senha"] = $row["Senha"];
             $entregador[$i]["Sexo"] = $row["Sexo"];
             $entregador[$i]["Cep"] = $row["Cep"];
@@ -579,46 +583,47 @@ function listarEntregador(){
         }
         $conn->close();
         return $entregador;
-    }else{
+    } else {
         $entregador["result"] = 0;
         $conn->close();
         return $entregador;
     }
 }
 
-function adicionarEntregador($entregador){
+function adicionarEntregador($entregador)
+{
     require_once "Conexao.php";
     $sql = "INSERT INTO usuario (Nome_Usuario,Senha, Sexo,Cep, Numero, Complemento,Telefone, Email,Nascimento,Foto) VALUES ('{$entregador["nome"]}', '{$entregador["senha"]}','{$entregador["sexo"]}','{$entregador["cep"]}','{$entregador["numero"]}','{$entregador["complemento"]}','{$entregador["telefone"]}','{$entregador["email"]}','{$entregador["dataNascimento"]}','{$entregador["foto"]}')";
     $result = $conn->query($sql);
     $ultimoid = mysqli_insert_id($conn);
-    
-    if($result == true){//tudo certo
+
+    if ($result == true) { //tudo certo
         $sql = "INSERT INTO entregador (Veiculo,Identificacao,Usuario) VALUES ('{$entregador["veiculo"]}','{$entregador["identificacao"]}', $ultimoid)";
         $result = $conn->query($sql);
 
-        if($result == true){
+        if ($result == true) {
             $conn->close();
             return 1;
-        }else{
+        } else {
             return 0;
         }
-    }else{
+    } else {
         $conn->close();
         return 0;
     }
+}
 
-} 
-
-function pegaEntregador($id){
+function pegaEntregador($id)
+{
     require_once "Conexao.php";
     $sql = "SELECT usuario.* , entregador.* FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario WHERE Id_Usuario = {$id}";
     $result = $conn->query($sql);
 
     //Se selecionou algum funcionario
-    if($result->num_rows > 0){
+    if ($result->num_rows > 0) {
         $entregador = array();
         $entregador["result"] = 1;
-        while($row = $result->fetch_assoc()){
+        while ($row = $result->fetch_assoc()) {
             $entregador["Id_Usuario"] = $row["Id_Usuario"];
             $entregador["Nome_Usuario"] = $row["Nome_Usuario"];
             $entregador["Sexo"] = $row["Sexo"];
@@ -632,62 +637,60 @@ function pegaEntregador($id){
             $entregador["Veiculo"] = $row["Veiculo"];
             $entregador["Identificacao"] = $row["Identificacao"];
             $entregador["Usuario"] = $row["Usuario"];
-            
         }
         $conn->close();
         return $entregador;
-    }else{
+    } else {
         $entregador["result"] = 0;
         $conn->close();
         return $entregador;
     }
 }
 
-function editarEntregador($entregador){
+function editarEntregador($entregador)
+{
     require_once "Conexao.php";
-    if($entregador["senhaNova"] == "" && $entregador["foto"] == ""){
+    if ($entregador["senhaNova"] == "" && $entregador["foto"] == "") {
         $sql = "UPDATE usuario SET Nome_Usuario = '{$entregador["nome"]}', Sexo = '{$entregador["sexo"]}', Cep = '{$entregador["cep"]}', Numero = '{$entregador["numero"]}',Complemento = '{$entregador["complemento"]}', Telefone = '{$entregador["telefone"]}', Email = '{$entregador["email"]}', Nascimento = '{$entregador["dataNascimento"]}' WHERE Id_Usuario = {$entregador["id"]}";
-    }
-    else if($entregador["senhaNova"] == "" && $entregador["foto"] != ""){
+    } else if ($entregador["senhaNova"] == "" && $entregador["foto"] != "") {
         $sql = "UPDATE usuario SET Nome_Usuario = '{$entregador["nome"]}', Sexo = '{$entregador["sexo"]}', Cep = '{$entregador["cep"]}', Numero = '{$entregador["numero"]}',Complemento = '{$entregador["complemento"]}', Telefone = '{$entregador["telefone"]}', Email = '{$entregador["email"]}', Nascimento = '{$entregador["dataNascimento"]}', Foto = '{$entregador["foto"]}' WHERE Id_Usuario = {$entregador["id"]}";
-    } 
-    else if($entregador["senhaNova"] != "" && $entregador["foto"] == ""){
+    } else if ($entregador["senhaNova"] != "" && $entregador["foto"] == "") {
         $sql = "UPDATE usuario SET Nome_Usuario = '{$entregador["nome"]}', Senha = '{$entregador["senhaNova"]}', Sexo = '{$entregador["sexo"]}', Cep = '{$entregadors["cep"]}', Numero = '{$entregador["numero"]}',Complemento = '{$entregador["complemento"]}', Telefone = '{$entregador["telefone"]}', Email = '{$entregador["email"]}', Nascimento = '{$entregador["dataNascimento"]}' WHERE Id_Usuario = {$entregador["id"]}";
-    }else{
+    } else {
         $sql = "UPDATE usuario SET Nome_Usuario = '{$entregador["nome"]}', Senha = '{$entregador["senhaNova"]}', Sexo = '{$entregador["sexo"]}', Cep = '{$entregador["cep"]}', Numero = '{$entregador["numero"]}',Complemento = '{$entregador["complemento"]}', Telefone = '{$entregador["telefone"]}', Email = '{$entregador["email"]}', Nascimento = '{$entregador["dataNascimento"]}', Foto = '{$entregador["foto"]}' WHERE Id_Usuario = {$entregador["id"]}";
     }
     $result = $conn->query($sql);
-    
-    if($result == true){
+
+    if ($result == true) {
         $sql = "UPDATE entregador SET Veiculo = '{$entregador["veiculo"]}', Identificacao = '{$entregador["identificacao"]}' WHERE Usuario = {$entregador["idEntregador"]}";
         $result = $conn->query($sql);
         $conn->close();
         return 1;
-    }else{
+    } else {
         $conn->close();
         return 0;
     }
 }
 
-function excluirEntregador($id){
+function excluirEntregador($id)
+{
     require_once "Conexao.php";
     $sql = "DELETE FROM entregador WHERE Usuario = {$id}";
     $result = $conn->query($sql);
-    
-    if($result == true){
+
+    if ($result == true) {
         $sql = "DELETE FROM usuario WHERE Id_Usuario = {$id}";
         $result = $conn->query($sql);
 
-        if($result == true){
+        if ($result == true) {
             $conn->close();
             return $result;
-        }else{
+        } else {
             $conn->close();
             return $result;
         }
-
-    }else{
+    } else {
         $conn->close();
         return $result;
-    }  
+    }
 }
