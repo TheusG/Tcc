@@ -66,7 +66,8 @@ require_once "admVerifSession.php";
                     echo "<td class=\"tabelaAdmTd\">".$entregador[$i]["Nome_Usuario"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$entregador[$i]["Email"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$entregador[$i]["Telefone"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$entregador[$i]["Nascimento"]."</td>";
+                    $dataFormatada = date('d/m/Y', strtotime($entregador[$i]["Nascimento"]));
+                    echo "<td class=\"tabelaAdmTd\">".$dataFormatada."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$entregador[$i]["Veiculo"]."</td>";
                     echo "<td class=\"tabelaAdmTd\">".$entregador[$i]["Identificacao"]."</td>";
                     echo "<td>"
