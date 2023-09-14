@@ -141,7 +141,16 @@ header> button{
     width: 80%;
     border: solid black 1px;
     padding: 2px;
+    display: flex;
+    justify-content: space-between;
 }
+
+.admAdd td{
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+}
+
 .admAdd input{
     padding: 10px;
     font-weight: bold;

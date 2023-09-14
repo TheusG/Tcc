@@ -51,7 +51,17 @@ require_once "admVerifSession.php";
         ?>
 
 
-        <form action="../controller/controller.php" method="post" name="PesquisaProd" id="formPesquisa">
+ 
+            
+<div id="divResultados">
+        <table class="admAdd">
+            <tr>
+                <td style="text-align: left;">
+                    <form name="formNew" action="produtoNew.php" method="" style="margin: 0 30px;">
+                        <input type="hidden" name="new" value="1">
+                        <input type="submit" name="sbmt" value="Adicionar Produto" style="cursor:pointer; background-color:forestgreen; color:white;">
+                    </form>
+                    <form action="../controller/controller.php" method="post" name="PesquisaProd" id="formPesquisa">
             <input name="buscar"  type="text" class="form-control w-25" placeholder="Pesquisar" id="pesquisar">
             <input type="submit">
         </form>
@@ -73,15 +83,6 @@ require_once "admVerifSession.php";
 
 
 </script>
-            
-<div id="divResultados">
-        <table class="admAdd">
-            <tr>
-                <td style="text-align: left;">
-                    <form name="formNew" action="produtoNew.php" method="">
-                        <input type="hidden" name="new" value="1">
-                        <input type="submit" name="sbmt" value="Adicionar Produto" style="cursor:pointer; background-color:forestgreen; color:white;">
-                    </form>
                 </td>
             </tr>
 

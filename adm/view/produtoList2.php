@@ -28,7 +28,7 @@ require_once "admVerifSession.php";
 
 <body>
 
-    <div id="admTabela">
+    <div id="admTabela2" style="width: 100%;">
         <br>
         <div id="titulo">
             <br>
@@ -69,26 +69,41 @@ require_once "admVerifSession.php";
 
 </script>
 <div id="divResultados">
-        <table class="admAdd">
+<table class="admAdd">
             <tr>
                 <td style="text-align: left;">
-                    <form name="formNew" action="produtoNew.php" method="">
+                    <form name="formNew" action="produtoNew.php" method="" style="margin: 0 30px;">
                         <input type="hidden" name="new" value="1">
                         <input type="submit" name="sbmt" value="Adicionar Produto" style="cursor:pointer; background-color:forestgreen; color:white;">
                     </form>
+                    <form action="../controller/controller.php" method="post" name="PesquisaProd" id="formPesquisa">
+            <input name="buscar"  type="text" class="form-control w-25" placeholder="Pesquisar" id="pesquisar">
+            <input type="submit">
+        </form>
+        <script>    
+            form = document.querySelector('#formPesquisa');
+            $('#formPesquisa').submit(function (e) { 
+                e.preventDefault();
+                campo = document.querySelector('#pesquisar').value;
+                console.log(campo);
+                $.ajax({
+                    type: "post",
+                    url: "produtoList2.php?campo="+campo,
+                    data: "",
+                    success: function (response) {
+                        $('#divResultados').html(response);
+                    }
+                });
+            });
+
+
+</script>
                 </td>
             </tr>
 
         </table>
 
-        <table class="tabelaAdm" style="width: :100%;">
-            <?php 
-                if($produto["result"] == 0){
-                    echo "<tr><td>Nenhum produto encontrado...</tr></td>";
-                }else{
-
-                
-            ?>
+        <table class="tabelaAdm">
             <tr>
                 <!-- <th class="tabelaAdmTh">Identificador</th> -->
                 <th class="tabelaAdmTh">Código</th>
@@ -105,9 +120,6 @@ require_once "admVerifSession.php";
                 <th class="tabelaAdmTh">&nbsp;</th>
             </tr>
             <?php
-           
-                
-
             for ($i = 1; $i <= $produto["num"]; $i++) {
                 echo "<tr>";
                 // echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Id_Produto"]."</td>";
