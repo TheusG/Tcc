@@ -143,7 +143,7 @@ require_once "admVerifSession.php";
             ?>
         </table>
     </div>
-    </div>
+    
     <?php
     if (isset($_REQUEST["msg"])) {
         $cod = $_REQUEST["msg"];

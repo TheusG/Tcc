@@ -33,8 +33,6 @@ require_once "admVerifSession.php";
         <div id="titulo">
             <br>
            
-
-            <br><br>
         </div>
 
         <?php
@@ -70,9 +68,7 @@ require_once "admVerifSession.php";
 
 
 </script>
-            
 <div id="divResultados">
-</div>
         <table class="admAdd">
             <tr>
                 <td style="text-align: left;">
@@ -85,14 +81,7 @@ require_once "admVerifSession.php";
 
         </table>
 
-        <table class="tabelaAdm">
-            <?php 
-                if($produto["num"] == null){
-                    echo "<tr><td>Nenhum produto encontrado...</tr></td>";
-                }else{
-
-                
-            ?>
+        <table class="tabelaAdm" style="width: 100%;">
             <tr>
                 <!-- <th class="tabelaAdmTh">Identificador</th> -->
                 <th class="tabelaAdmTh">Código</th>
@@ -109,9 +98,6 @@ require_once "admVerifSession.php";
                 <th class="tabelaAdmTh">&nbsp;</th>
             </tr>
             <?php
-           
-                
-
             for ($i = 1; $i <= $produto["num"]; $i++) {
                 echo "<tr>";
                 // echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Id_Produto"]."</td>";
@@ -148,13 +134,11 @@ require_once "admVerifSession.php";
 
                 echo "</tr>";
             }
-            
-        }
-        
             ?>
         </table>
     </div>
-  
+    </div>
+   
     <?php
     if (isset($_REQUEST["msg"])) {
         $cod = $_REQUEST["msg"];

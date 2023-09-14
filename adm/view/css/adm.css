@@ -109,7 +109,14 @@ header> button{
     color: white;
     border: solid rgb(80, 80, 80) 2px;
 }
+/* AQUI É A DIV QUE O JOAO CRIOU */
+#divResultados{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
+}
 
 .tabelaAdm{
     margin: auto;
