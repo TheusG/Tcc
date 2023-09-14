@@ -63,7 +63,7 @@ require_once "admVerifSession.php";
                     </form>
                     <form action="../controller/controller.php" method="post" name="PesquisaProd" id="formPesquisa">
             <input name="buscar"  type="text" class="form-control w-25" placeholder="Pesquisar" id="pesquisar">
-            <input type="submit">
+            <input type="submit" value="Pesquisar">
         </form>
         <script>    
             form = document.querySelector('#formPesquisa');
