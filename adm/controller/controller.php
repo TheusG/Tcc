@@ -335,6 +335,7 @@ if (isset($_REQUEST["produto_new"])) {
 if (isset($_REQUEST["PesquisaProd"])) {
     $campo = $_REQUEST["buscar"];
 
+    echo $campo .  "111111111111111";
 
     if ($campo != "") {
         require_once "../model/Manager.php";
