@@ -32,7 +32,7 @@ require_once "admVerifSession.php";
         <br>
         <div id="titulo">
             <br>
-            <h3>Lista de Produtos Five Stars</h3>
+           
 
             <br><br>
         </div>
