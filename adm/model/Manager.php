@@ -327,7 +327,7 @@ function todasCategorias()
 function listarProduto($campo)
 {
 
-    if ($campo == "333") {
+    if ($campo == "") {
         require_once "Conexao.php";
         $sql = "SELECT * FROM produto";
         $result = $conn->query($sql);
