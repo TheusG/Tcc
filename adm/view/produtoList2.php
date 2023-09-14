@@ -87,9 +87,11 @@ require_once "admVerifSession.php";
 
         <table class="tabelaAdm">
             <?php 
-                if($produto["num"] == 0){
+                if($produto["num"] == null){
                     echo "<tr><td>Nenhum produto encontrado...</tr></td>";
-                }
+                }else{
+
+                
             ?>
             <tr>
                 <!-- <th class="tabelaAdmTh">Identificador</th> -->
@@ -146,7 +148,8 @@ require_once "admVerifSession.php";
 
                 echo "</tr>";
             }
-        
+            
+        }
         
             ?>
         </table>
