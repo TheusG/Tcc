@@ -51,10 +51,7 @@ require_once "admVerifSession.php";
         ?>
 
 
-        <form action="../controller/controller.php" method="post" name="PesquisaProd" id="formPesquisa">
-            <input name="buscar"  type="text" class="form-control w-25" placeholder="Pesquisar" id="pesquisar">
-            <input type="submit">
-        </form>
+ 
         <script>    
             form = document.querySelector('#formPesquisa');
             $('#formPesquisa').submit(function (e) { 
@@ -75,6 +72,7 @@ require_once "admVerifSession.php";
 </script>
             
 <div id="divResultados">
+</div>
         <table class="admAdd">
             <tr>
                 <td style="text-align: left;">
@@ -143,7 +141,7 @@ require_once "admVerifSession.php";
             ?>
         </table>
     </div>
-    </div>
+  
     <?php
     if (isset($_REQUEST["msg"])) {
         $cod = $_REQUEST["msg"];

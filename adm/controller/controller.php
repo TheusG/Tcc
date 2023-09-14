@@ -332,15 +332,16 @@ if (isset($_REQUEST["produto_new"])) {
     }
 }
 
-if (isset($_REQUEST["PesquisaProd"])) {
-    $campo = $_REQUEST["buscar"];
-
-    echo $campo .  "111111111111111";
-
-    if ($campo != "") {
+if (isset($_POST["PesquisaProd"])) {
+    $campo = $_REQUEST["buscar"];    
         require_once "../model/Manager.php";
         $result = listarProduto($campo);
-    }
+    ?>
+
+    <script>console.log('teste');</script>
+    
+    <?php
+
 }
 
 if (isset($_REQUEST["produto_edit"])) {

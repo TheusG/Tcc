@@ -10,6 +10,7 @@ require_once "admVerifSession.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/adm.css">
+    <script src="../libs/jquery.min.js"></script>
     <script>
         function ExecutaLogout(){
             var resp = confirm('Deseja sair?');
