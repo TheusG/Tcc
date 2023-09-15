@@ -117,7 +117,29 @@ header> button{
     flex-direction: column;
 
 }
-
+#formPesquisa{
+    margin-left: 30px;
+    
+}
+#pesquisar{
+    border-radius: 10px;
+}
+.lupinhaBala{
+    font-size: 21px;
+    position: relative;
+    right: 34px;
+    top: 3px;
+    border: none;
+    background-color: none; 
+    background: none;
+    color: #000000;
+    transition: 0.5s;
+}
+.lupinhaBala:hover{
+    scale: 1.1;
+    color: #2b2a2a;
+    transition: 0.5s;
+}
 .tabelaAdm{
     margin: auto;
     width: 80%;

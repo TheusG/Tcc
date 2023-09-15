@@ -70,14 +70,16 @@ require_once "admVerifSession.php";
             <table class="admAdd">
                 <tr>
                     <td style="text-align: left;">
-                        <form name="formNew" action="produtoNew.php" method="" style="margin: 0 30px;">
+                    <form name="formNew" action="produtoNew.php" method="post" class="formAdicionar">
                             <input type="hidden" name="new" value="1">
                             <input type="submit" name="sbmt" value="Adicionar Produto" style="cursor:pointer; background-color:forestgreen; color:white;">
                         </form>
                         <form action="../controller/controller.php" method="post" name="PesquisaProd" id="formPesquisa">
                             <input name="buscar" type="text" class="form-control w-25" placeholder="Pesquisar" id="pesquisar">
-                            <input type="submit">
+                           <button class="lupinhaBala"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
+
+
                         <script>
                             form = document.querySelector('#formPesquisa');
                             $('#formPesquisa').submit(function(e) {
