@@ -107,12 +107,26 @@
                     <div class="div1">
             <label for="cargo">Cargo</label><br>
             <select name="cargo" id="cargo">
-                <option value="1" <?php echo  $dados["Cargo"] == "1" ? "selected":""?>>Gerente</option>
-                <option value="2" <?php echo  $dados["Cargo"] == "2" ? "selected":""?>>Caixa</option>
-                <option value="3" <?php echo  $dados["Cargo"] == "3" ? "selected":""?>>Balconista</option>
-                <option value="4" <?php echo  $dados["Cargo"] == "4" ? "selected":""?>>Pizzaiolo</option>
-                <option value="5" <?php echo  $dados["Cargo"] == "5" ? "selected":""?>>Ajudante Geral</option>
-                <option value="6" <?php echo  $dados["Cargo"] == "6" ? "selected":""?>>Garçom</option>
+            <?php 
+                    require_once "../model/Cargo.class.php";
+                    $cargo = new Cargo();
+                    $info = $cargo->pegaTodosCargos();
+
+                    for($i = 0;$i < count($info);$i++){
+                ?>
+
+                <option value="<?=$info[$i]["Id_Cargo"];?>" <?php if($info[$i]["Id_Cargo"] == $dados["Cargo"]){
+                    echo "selected";
+                    }else{
+                        echo "";
+                    } ?>>
+                    <?php echo $info[$i]["Nome_Cargo"] ?>
+                </option>
+
+                <?php 
+                    }
+                
+                ?>
             </select>
                     </div>
                     <div class="div1">

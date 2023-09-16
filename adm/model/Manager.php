@@ -471,30 +471,6 @@ function excluirProduto($id)
     return $result;
 }
 
-// function codigoProdutos(){
-//     require_once "Conexao.php";
-//     $sql = "SELECT Cod_Produto FROM produto";
-//     $result = $conn->query($sql);
-
-//     if($result->num_rows > 0){
-//         $num = $result->num_rows;
-//         $codigo = array();
-//         $codigo["result"] = 1;
-//         $codigo["num"] = $num;
-//         $i =1;
-//         while($row = $result->fetch_assoc()){
-//             $codigo[$i]["Cod_Produto"] = $row["Cod_Produto"];
-//             $i++;
-
-//         }
-//         $conn->close();
-//         return $codigo;
-//     }else{
-//         $codigo["result"] = 0;
-//         $conn->close();
-//         return $codigo;
-//     }
-// }
 
 
 // --------------------------------------------------------------EMPRESA---------------------------------------------//
@@ -692,5 +668,121 @@ function excluirEntregador($id)
     } else {
         $conn->close();
         return $result;
+    }
+}
+
+
+// --------------------------------------------CARGO-------------------------------------------------//
+
+function listarCargo(){
+    require_once "Conexao.php";
+    $sql = "SELECT * FROM cargo";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $num = $result->num_rows;
+        $cargo = array();
+        $cargo["result"] = 1;
+        $cargo["num"] = $num;
+        $i = 1;
+        while ($row = $result->fetch_assoc()) {
+            $cargo[$i]["Id_Cargo"] = $row["Id_Cargo"];
+            $cargo[$i]["Nome_Cargo"] = $row["Nome_Cargo"];
+        
+            $i++;
+        }
+        $conn->close();
+        return $cargo;
+    } else {
+        $cargo["result"] = 0;
+        $conn->close();
+        return $cargo;
+    }
+}
+
+function adicionarCargo($cargo)
+{
+    require_once "Conexao.php";
+    $sql = "INSERT INTO cargo (Nome_Cargo) VALUES ('{$cargo["nome"]}')";
+    $result = $conn->query($sql);
+
+    if ($result == true) {
+        $conn->close();
+        return 1;
+    } else {
+        $conn->close();
+        return 0;
+    }
+}
+
+function pegaCargo($id){
+    
+    require_once "Conexao.php";
+    $sql = "SELECT * FROM cargo WHERE Id_Cargo = {$id}";
+    $result = $conn->query($sql);
+
+    //Se selecionou algum funcionario
+    if ($result->num_rows > 0) {
+        $cargo = array();
+        $cargo["result"] = 1;
+        while ($row = $result->fetch_assoc()) {
+            $cargo["Id_Cargo"] = $row["Id_Cargo"];
+            $cargo["Nome_Cargo"] = $row["Nome_Cargo"];
+        }
+        $conn->close();
+        return $cargo;
+    } else {
+        $cargo["result"] = 0;
+        $conn->close();
+        return $cargo;
+    }
+}
+
+function editarCargo($cargo){
+    
+    require_once "Conexao.php";
+    $sql = "UPDATE cargo SET Nome_Cargo = '{$cargo["nome"]}' WHERE Id_Cargo = {$cargo["id"]}";
+    $result = $conn->query($sql);
+    if ($result == true) { //tudo certo 
+        $conn->close();
+        return 1;
+    } else {
+        $conn->close();
+        return 0;
+    }
+}
+
+function excluirCargo($id)
+{
+    require_once "Conexao.php";
+    $sql = "DELETE FROM cargo WHERE Id_Cargo = {$id}";
+    $result = $conn->query($sql);
+    $conn->close();
+    return $result;
+}
+
+function todosCargos()
+{
+    require_once "Conexao.php";
+    $sql = "SELECT * FROM cargo";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $num = $result->num_rows;
+        $cargo = array();
+        $cargo["result"] = 1;
+        $cargo["num"] = $num;
+        $i = 1;
+        while ($row = $result->fetch_assoc()) {
+            $cargo[$i]["Id_Cargo"] = $row["Id_Cargo"];
+            $cargo[$i]["Nome_Cargo"] = $row["Nome_Cargo"];
+            $i++;
+        }
+        $conn->close();
+        return $cargo;
+    } else {
+        $cargo["result"] = 0;
+        $conn->close();
+        return $cargo;
     }
 }

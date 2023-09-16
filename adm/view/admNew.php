@@ -88,12 +88,16 @@
                 <div class="div1">
             <label for="cargo">Cargo</label><br>
             <select name="cargo" id="cargo">
-                <option value="1">Gerente</option>
-                <option value="2">Caixa</option>
-                <option value="3">Balconista</option>
-                <option value="4">Pazzaiolo</option>
-                <option value="5">Ajudante Geral</option>
-                <option value="6">Garçom</option>
+            <?php 
+                        require_once "../model/Manager.php";
+                        $cargo = todosCargos();
+                    ?>
+                        <?php 
+                            for($i = 1;$i<= $cargo["num"];$i++){
+                                $idCargo = $cargo[$i]["Id_Cargo"];
+                                echo "<option value=\"$idCargo\">".$cargo[$i]["Nome_Cargo"]."</option>";
+                            }  
+                        ?>
             </select>
                 </div>    
             

@@ -561,4 +561,85 @@ if (isset($_REQUEST["entregador_delete"])) {
 }
 
 
+// ----------------------------------------Cargo----------------------------------------------------------//
+
+if (isset($_REQUEST["cargo_new"])) {
+    $cargo["nome"] = $_REQUEST["nome"];
+    require_once "../model/Manager.php";
+    $resp = adicionarCargo($cargo);
+
+    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+        ?>
+        <form action="../view/cargoList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD52">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    } else { //erro no insert
+    ?>
+        <form action="../view/cargoList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD02">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    }
+}
+
+
+if (isset($_REQUEST["cargo_edit"])) {
+    $cargo["id"] = $_REQUEST["id"];
+    $cargo["nome"] = $_REQUEST["nome"];
+    require_once "../model/Manager.php";
+    $resp = editarCargo($cargo);
+
+    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+    ?>
+        <form action="../view/cargoList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD53">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    } else { //erro no insert
+    ?>
+        <form action="../view/cargoList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD03">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    }
+}
+
+if (isset($_REQUEST["cargo_delete"])) {
+    $id = $_REQUEST["id"];
+    require_once "../model/Manager.php";
+    $result = excluirCargo($id);
+    if ($result == 1) { //conseguir excluir
+    ?>
+        <form action="../view/cargoList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD54">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    } else { //algo deu de errado na deleção
+    ?>
+        <form action="../view/cargoList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD04">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+        <?php
+    }
+}
+
 ?>
