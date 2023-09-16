@@ -111,30 +111,19 @@ require_once "admVerifSession.php";
 
                 ?>
                     <tr>
-                        <!-- <th class="tabelaAdmTh">Identificador</th> -->
+
                         <th class="tabelaAdmTh">Código</th>
                         <th class="tabelaAdmTh">Nome</th>
-                        <!-- <th class="tabelaAdmTh">Descrição</th> -->
-                        <!-- <th class="tabelaAdmTh">Estoque</th>
-                <th class="tabelaAdmTh">Estoque Mínimo</th>
-                <th class="tabelaAdmTh">Estoque Maxímo</th> -->
                         <th class="tabelaAdmTh">Valor</th>
-                        <th class="tabelaAdmTh">Status</th>
-                        <!-- <th class="tabelaAdmTh">Categoria</th> -->
-                        <!-- <th class="tabelaAdmTh">Imagem</th>               -->
+                        <th class="tabelaAdmTh">Status</th>   
                         <th class="tabelaAdmTh">&nbsp;</th>
                         <th class="tabelaAdmTh">&nbsp;</th>
                     </tr>
                     <?php
                     for ($i = 1; $i <= $produto["num"]; $i++) {
                         echo "<tr>";
-                        // echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Id_Produto"]."</td>";
                         echo "<td class=\"tabelaAdmTd\">" . $produto[$i]["Cod_Produto"] . "</td>";
                         echo "<td class=\"tabelaAdmTd\">" . $produto[$i]["Nome_Produto"] . "</td>";
-                        // echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Desc_Produto"]."</td>";
-                        // echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Estoque"]."</td>";
-                        // echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Estoque_Min"]."</td>";
-                        // echo "<td class=\"tabelaAdmTd\">".$produto[$i]["Estoque_Max"]."</td>";
                         $valor = $produto[$i]["Valor"];
                         echo "<td class=\"tabelaAdmTd\">R$" . number_format($valor, 2, ",", ".") . "</td>";
                         if ($produto[$i]["Status_Produto"] == 1) {
