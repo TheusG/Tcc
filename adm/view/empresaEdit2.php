@@ -11,6 +11,9 @@
         function voltar(){
             location.href = "bemvindo.php";
         }
+        function telaEditar(){
+            location.href = "empresaEdit.php";
+        }
     </script>
 </head>
 <body>
@@ -122,7 +125,7 @@
                     <!-- </div> -->
                     <br>
                              
-            <input class="enviar" type="submit" name="sbmt" value="Editar" ><br><br>
+            <input class="enviar" type="button"onclick="telaEditar();"value="Editar" ><br><br>
             
             
         </form>
