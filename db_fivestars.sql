@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 12/09/2023 às 20:56
+-- Tempo de geração: 26/09/2023 às 20:31
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -89,6 +89,28 @@ CREATE TABLE `cep` (
 
 INSERT INTO `cep` (`Id`, `Cep`, `Cidade`, `Logradouro`, `Bairro`, `Tipo`) VALUES
 (1, '8253001', 'São Paulo', 'Virginia Ferni', 'Itaquera', 'Rua');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `configuracao`
+--
+
+CREATE TABLE `configuracao` (
+  `Id_Config` int(11) NOT NULL,
+  `Data` date DEFAULT NULL,
+  `Abre` time DEFAULT NULL,
+  `Fecha` time DEFAULT NULL,
+  `NrPedido` int(11) DEFAULT NULL,
+  `Mensagem` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `configuracao`
+--
+
+INSERT INTO `configuracao` (`Id_Config`, `Data`, `Abre`, `Fecha`, `NrPedido`, `Mensagem`) VALUES
+(1, '2023-02-14', '19:00:00', '23:40:00', 1, 'Bla bl jjjjj');
 
 -- --------------------------------------------------------
 
@@ -335,6 +357,12 @@ ALTER TABLE `cep`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Índices de tabela `configuracao`
+--
+ALTER TABLE `configuracao`
+  ADD PRIMARY KEY (`Id_Config`);
+
+--
 -- Índices de tabela `empresa`
 --
 ALTER TABLE `empresa`
@@ -386,19 +414,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `cargo`
 --
 ALTER TABLE `cargo`
-  MODIFY `Id_Cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id_Cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `Id_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `Id_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `cep`
 --
 ALTER TABLE `cep`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `configuracao`
+--
+ALTER TABLE `configuracao`
+  MODIFY `Id_Config` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `empresa`
@@ -416,7 +450,7 @@ ALTER TABLE `entregador`
 -- AUTO_INCREMENT de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `Id_Funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id_Funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `perfil`
@@ -434,7 +468,7 @@ ALTER TABLE `produto`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restrições para tabelas despejadas
