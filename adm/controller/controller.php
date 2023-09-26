@@ -642,4 +642,37 @@ if (isset($_REQUEST["cargo_delete"])) {
     }
 }
 
+// ---------------------------------------------------------CONFIGURAÇÃO-------------------------------------------------------------//
+
+if (isset($_REQUEST["config_edit"])) {
+    $config["id"] = $_REQUEST["id"];
+    $config["data"] = $_REQUEST["data"];
+    $config["abre"] = $_REQUEST["abre"];
+    $config["fecha"] = $_REQUEST["fecha"];
+    $config["pedido"] = $_REQUEST["pedido"];
+    $config["mensagem"] = $_REQUEST["mensagem"];
+    require_once "../model/Manager.php";
+    $resp = atualizarConfig($config);
+
+    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+    ?>
+        <form action="../view/configEdit2.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD53">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    } else { //erro no insert
+    ?>
+        <form action="../view/configEdit2.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD03">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    }
+}
+
 ?>

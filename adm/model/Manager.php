@@ -786,3 +786,56 @@ function todosCargos()
         return $cargo;
     }
 }
+
+// --------------------------------------------------------Configuração----------------------------------------------------
+
+function pegaConfig(){
+
+    require_once "Conexao.php";
+    $sql = "SELECT * FROM configuracao";
+    $result = $conn->query($sql);
+
+    if($result ->num_rows > 0){
+        $config = array();
+        $config["result"] = 1;
+        while ($row = $result->fetch_assoc()) {
+            $config["Id_Config"] = $row["Id_Config"];
+            $config["Data"] = $row["Data"];
+            $config["Abre"] = $row["Abre"];
+            $config["Fecha"] = $row["Fecha"];
+            $config["NrPedido"] = $row["NrPedido"];
+            $config["Mensagem"] = $row["Mensagem"];
+        }
+        $conn->close();
+        return $config;
+    } else {
+        $config["result"] = 0;
+        $conn->close();
+        return $config;
+    }
+}
+
+function atualizarConfig($config){
+   
+    require_once "Conexao.php";
+    $sql = "UPDATE configuracao SET Data = '{$config["data"]}', Abre = '{$config["abre"]}', Fecha = '{$config["fecha"]}', NrPedido = '{$config["pedido"]}', Mensagem = '{$config["mensagem"]}'";
+    $result = $conn->query($sql);
+    if ($result == true) { //tudo certo 
+        $conn->close();
+        return 1;
+    } else {
+        $conn->close();
+        return 0;
+    }
+
+
+    
+}
+
+
+
+
+
+
+
+

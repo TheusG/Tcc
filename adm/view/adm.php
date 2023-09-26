@@ -64,6 +64,7 @@ require_once "admVerifSession.php";
             <a href="produtoList.php" target="screen">Produtos</a>
             <a href="categoriaList.php" target="screen">Categorias</a>
             <a href="cargoList.php" target="screen">Cargos</a>
+            <a href="configEdit2.php" target="screen">Configurações</a>
             <a href="empresaEdit2.php" target="screen">Empresa</a>
 
         </div>
