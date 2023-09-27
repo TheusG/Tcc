@@ -75,9 +75,11 @@
                     <textarea class="descricao" name="mensagem" id="mensagem" cols="30" rows="10" style="resize: none;" required><?= $config["Mensagem"] ?></textarea>
                 </div>
                 
-            <!-- </div> -->
+             </div> 
+             
+             
             <br>
-
+            
             <input class="enviar" type="submit" name="sbmt" value="Enviar"><br><br>
 
 

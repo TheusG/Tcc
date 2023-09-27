@@ -78,7 +78,7 @@
                     <textarea class="descricao fundoCinza" readonly name="mensagem" id="mensagem" cols="30" rows="10" style="resize: none;" required><?= $config["Mensagem"] ?></textarea>
                 </div>
                 
-            <!-- </div> -->
+             </div>
             <br>
 
             <input class="enviar" type="button" onclick="telaEditar();"value="Editar" ><br><br>
