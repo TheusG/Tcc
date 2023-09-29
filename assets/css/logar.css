@@ -1,12 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap');
+/* font-family: 'Prompt', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+/* font-family: 'Lobster', cursive; */
  *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
  }
 .conteiner{
     background-color:rgb(37, 33, 33);
-    width: 80%;
+    width: 100%;
     height: 750px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .conteiner > .title{
     width: 100%;
@@ -18,22 +27,47 @@
 }
 .conteiner >.title img{
     filter: drop-shadow( 0px 0px 10px darkorange);
-    width: 15%;
+    width: 200px;
 }
 .conteinerCadastro{
     display: flex;
     color: white;
     justify-content: center;
     background-color: brown;
+    height: 450px;
+    width: 80%;
 }
-.conteinerCadastro div{
-    margin: 0 30px;
-    width: ;
+.conteinerCadastro > .logar, .conteinerCadastro > .cadastrar{
+    margin:15px auto;
+    width:30%;
+    
 
 }
+.conteinerCadastro > div  button{
+    padding: 10px;
+    font-size: 18px;
+    width: 120px;
+    border-radius: 10px;
+}
+.conteinerCadastro > div  input{
+    padding: 3px;
+    font-size: 18px;
+    width: 100%;
+    border-radius: 3px;
+}
 .risco{
-    height: 320px;
+    height: 450px;
     width: 3px;
     background-color: white;
+    border-radius: 10px;
 }
+.divButton{
+    text-align: center;
+}
+
+@media (max-width:800px){
+    .conteinerCadastro{
+        flex-direction: column;
+    }
+ }
 
