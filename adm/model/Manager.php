@@ -5,21 +5,17 @@ function dadosFuncionario($email, $senha)
 {
     require_once "Conexao.php";
 
-    $sql = "SELECT * FROM usuario WHERE Email ='$email' AND Senha = '$senha'";
+    // $sql = "SELECT * FROM usuario WHERE Email ='$email' AND Senha = '$senha'";
+    $sql = "SELECT u.Id_usuario, u.Email, u.Senha, f.Perfil
+    FROM usuario AS u
+    INNER JOIN funcionario AS f ON u.Id_Usuario = f.Usuario
+    WHERE u.Email = '$email' AND u.Senha = '$senha'";
     $result = $conn->query($sql);
 
 
     if ($result->num_rows > 0) {
-        //$dados pega as informaçoes vinda o comando sql
+
         require_once "Conexao.php";
-        //  $sql = "SELECT f.Cargo from funcionario f join usuario u on u.Id_Usuario = f.Usuario";
-        // $result = $conn->query($sql);
-
-        //VERIFICAR ISSO
-        // $sql = "SELECT f.Cargo c.Nome_Cargo, c.Id_Cargo, u.Id_Usuario from cargo c join funcionario f on f.Cargo = c.Id_Cargo join usuario u on u.Id_Usuario = f.Usuario";
-        // $result = $conn->query($sql);
-
-
         $dados = array();
         $dados["result"] = 1; // 1 tem dados 0 não tem dados
         while ($row = $result->fetch_assoc()) {
@@ -27,7 +23,8 @@ function dadosFuncionario($email, $senha)
             $dados["Nome_Usuario"] = $row["Nome_Usuario"];
             $dados["Senha"] = $row["Senha"];
             $dados["Email"] = $row["Email"];
-            $dados["Cargo"] = $row["Cargo"];
+            $dados["Perfil"] = $row["Perfil"];
+            
             // $dados["Nome_Cargo"]  = $row["Nome_Cargo"];
         }
         $conn->close();

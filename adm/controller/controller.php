@@ -53,6 +53,8 @@ if (!isset($_SESSION["FUNC-ID"]) || empty($_SESSION["FUNC-ID"])) {
                 $_SESSION["FUNC-ID"] = $dados["Id_Usuario"];
                 $_SESSION["FUNC-NOME"] = $dados["Nome_Usuario"];
                 $_SESSION["FUNC-EMAIL"] = $dados["Email"];
+                ;
+                
                 // $_SESSION["FUNC-CARGO"] = $dados["Cargo"];
                 // $_SESSION["FUNC-NOME-CARGO"] = $dados["Nome_Cargo"];
                 // $_SESSION["FUNC-NOME_CARGO"] = $dados["Nome_Cargo"];

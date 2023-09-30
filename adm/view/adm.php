@@ -49,8 +49,9 @@ require_once "admVerifSession.php";
         <div class="dadosUsuario">
             <br>
 
-            Nome:<?= $_SESSION["FUNC-NOME"] ?><br>
-            E-mail:<?= $_SESSION["FUNC-EMAIL"] ?> <br>
+            Nome:<?= $_SESSION["FUNC-NOME"]; ?><br>
+            E-mail:<?= $_SESSION["FUNC-EMAIL"]; ?> <br>
+            
 
             <!-- Cargo:<br> -->
 
@@ -66,6 +67,11 @@ require_once "admVerifSession.php";
             <a href="cargoList.php" target="screen">Cargos</a>
             <a href="configEdit2.php" target="screen">Configurações</a>
             <a href="empresaEdit2.php" target="screen">Empresa</a>
+            <?php 
+              
+            ?>
+            
+            
 
         </div>
         <div class="ipres">
