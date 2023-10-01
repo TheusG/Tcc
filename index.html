@@ -55,7 +55,7 @@
 
 
     <div class="megaConteiner" id="conteinerLogin">
-      <button class="exitButton">X</button>
+      <button class="exitButton" id="exitButtonn">X</button>
       <div class="conteiner">
         <div class="title">
             <img src="image/logoPizzaria1.png" alt="">
@@ -125,7 +125,20 @@
 
 
 
+<script>
+  const loginbutton = document.querySelector('#abrirLogin');
+  const login = document.querySelector('.megaConteiner');
+  const exitbutton = document.querySelector('#exitButtonn');
 
+  loginbutton.addEventListener('click', () => {
+    login.classList.toggle('megaConteinerOn');
+  });
+
+  exitbutton.addEventListener('click', () => {
+    login.classList.remove('megaConteinerOn'); // Remova a classe megaConteinerOn
+    login.classList.add('megaConteiner'); // Adicione a classe megaConteiner
+  });
+</script>
   
 
 

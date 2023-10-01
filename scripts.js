@@ -81,11 +81,12 @@ function exibirProximaImagem() {
     proximaImagem.classList.add('imagem-ativa');
   }
 }
-
-const login = document.querySelector('#conteinerLogin');
 const loginbutton = document.querySelector('#abrirLogin');
+const login = document.querySelector('.megaConteiner');
+
 
 loginbutton.addEventListener('click',()=>{
+ 
   login.classList.toggle('megaConteinerOn');
   
 });
