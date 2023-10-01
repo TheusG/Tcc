@@ -16,7 +16,7 @@
     top: 10px;
     margin: 0 ;
     width: 100%;
-    right: -100%;
+    right: 100%;
     transition: 0.2s;  
     backdrop-filter: blur(5px); /* Altere o valor para ajustar a intensidade do desfoque */
     
