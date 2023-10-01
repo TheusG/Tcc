@@ -82,3 +82,10 @@ function exibirProximaImagem() {
   }
 }
 
+const login = document.querySelector('#conteinerLogin');
+const loginbutton = document.querySelector('#abrirLogin');
+
+loginbutton.addEventListener('click',()=>{
+  login.classList.toggle('megaConteinerOn');
+  
+});
