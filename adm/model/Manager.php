@@ -4,14 +4,11 @@
 function dadosFuncionario($email, $senha)
 {
     require_once "Conexao.php";
-
-    $sql = "SELECT * FROM usuario WHERE Email ='$email' AND Senha = '$senha'";
-
+    $sql = "SELECT usuario.* , funcionario.*
+            FROM usuario INNER JOIN funcionario on usuario.Id_Usuario = funcionario.Usuario
+            WHERE usuario.Email = '$email' AND usuario.Senha = '$senha'";
     $result = $conn->query($sql);
-
-
     if ($result->num_rows > 0) {
-
         require_once "Conexao.php";
         $dados = array();
         $dados["result"] = 1; // 1 tem dados 0 não tem dados
@@ -20,34 +17,10 @@ function dadosFuncionario($email, $senha)
             $dados["Nome_Usuario"] = $row["Nome_Usuario"];
             $dados["Senha"] = $row["Senha"];
             $dados["Email"] = $row["Email"];
-            $dados["Sexo"] = $row["Sexo"];
-
-
-
-            // $dados["Nome_Cargo"]  = $row["Nome_Cargo"];
+            $dados["Perfil"] = $row["Perfil"];
         }
         $conn->close();
-        return $dados; //retorna dados pro controller
-
-        if ($result == true) {
-            $sql = "SELECT u.Id_usuario, f.Perfil
-            FROM usuario AS u
-            INNER JOIN funcionario AS f ON u.Id_Usuario = f.Usuario
-            WHERE u.Email = '$email' AND u.Senha = '$senha'";
-            $result = $conn->query($sql);
-            while ($row = $result->fetch_assoc()) {
-                $dados["Id_Usuario"] = $row["Id_Usuario"];
-                $dados["Perfil"] = $row["Perfil"];
-
-
-            }
-            $conn->close();
-            return $dados;
-        } else {
-            $dados["result"] = 0;
-            $conn->close();
-            return $dados;
-        }
+        return $dados;
     } else {
         $dados["result"] = 0;
         $conn->close();
