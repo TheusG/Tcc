@@ -6,12 +6,17 @@
     <link href="assets/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/sobre.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="logar.css">
     <link rel="website icon" type="png"
     href="view/img/logo pizzaria1.png">
     
     <title>Sobre</title>
 </head>
 <body>
+    <?php 
+    include('logar.php');
+    ?>
+
     <header> 
         <a href="index.html">
         <div class="logo">
@@ -92,6 +97,7 @@
         linha3.classList.toggle('linha3-active')
         });
     </script>
+
 
     
 </body>
