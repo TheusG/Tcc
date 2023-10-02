@@ -25,7 +25,7 @@
                   <br>
                   <form action="">
       
-                      <h3>email</h3>
+                      <h3>Email</h3>
                       <input type="email">
                       <br><br>
                       <h3>Senha</h3>
@@ -47,13 +47,13 @@
                   <br>
                   <form action="">
       
-                      <h3>email</h3>
+                      <h3>Email</h3>
                       <input type="email">
                       <br><br>
                       <h3>Senha</h3>
                       <input type="password">
                       <br><br>
-                      <h3>Confrimar senha</h3>
+                      <h3>Confirmar senha</h3>
                       <input type="password">
                       <br><br>
                       <div class="divButton">
