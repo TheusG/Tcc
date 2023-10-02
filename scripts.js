@@ -8,6 +8,30 @@ const sobre =document.querySelector('#sobre')
 const skills =document.querySelector('#skills')
 const projetos =document.querySelector('#projetos')
 
+const loginbutton2 = document.querySelector('#abrirLogin2');
+const loginbutton = document.querySelector('#abrirLogin');
+const login = document.querySelector('.megaConteiner');
+const exitbutton = document.querySelector('#exitButtonn');
+
+loginbutton2.addEventListener('click', () => {
+  login.classList.toggle('megaConteinerOn');
+  menu.classList.toggle('nav-active');
+  linha1.classList.toggle('linha1-active')
+  linha2.classList.toggle('linha2-active')
+  linha3.classList.toggle('linha3-active')
+
+});
+
+loginbutton.addEventListener('click', () => {
+  login.classList.toggle('megaConteinerOn');
+});
+
+exitbutton.addEventListener('click', () => {
+  login.classList.remove('megaConteinerOn'); // Remova a classe megaConteinerOn
+  login.classList.add('megaConteiner'); // Adicione a classe megaConteiner
+});
+
+
 burguer.addEventListener('click',()=>{
     menu.classList.toggle('nav-active');
     linha1.classList.toggle('linha1-active')
@@ -81,4 +105,6 @@ function exibirProximaImagem() {
     proximaImagem.classList.add('imagem-ativa');
   }
 }
+
+
 

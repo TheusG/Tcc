@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="website icon" type="png"
     href="view/img/logo pizzaria1.png">
+    <link rel="stylesheet" href="assets/css/logar.css">
 
   <script src="assets/js/jquery-3.7.0.min.js"></script>
   <script src="assets/js/jquery.mask.js]"></script>
@@ -30,7 +31,7 @@
       </a>
         <nav>
           <ul class="nav-links">
-            <li class="lioff"> <img src="image/semfoto-removebg-preview.png" alt="" class="imgMenuReduzido"><a href="">Entrar </a></li>
+            <li class="lioff"> <img src="image/semfoto-removebg-preview.png" alt="" class="imgMenuReduzido"><button id="abrirLogin2">Login</button></li>
             <li><a id="home" href="index.html">Home</a></li>
             <li><a id="sobre" href="#">Cardápio</a></li>
             <li><a id="sobre" href="sobre.html">Sobre</a></li>
@@ -45,9 +46,101 @@
         </div>
         <div class="login">
           <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
-       <button>Login</button>
+       <button id="abrirLogin">Login</button>
         </div>
     </header>
+
+
+
+
+
+    <div class="megaConteiner" id="conteinerLogin">
+      <button class="exitButton" id="exitButtonn">X</button>
+      <div class="conteiner">
+        <div class="title">
+            <img src="image/logoPizzaria1.png" alt="">
+            <h1> <i class="fa-solid fa-star"></i>Five Stars <i class="fa-solid fa-star"></i></h1>
+        </div>
+        <br><br>
+        
+        <div class="conteinerCadastro">
+            <div class="logar">
+                
+                <h2>Entrar</h2>
+                
+                <br>
+                <form action="">
+    
+                    <h3>email</h3>
+                    <input type="email">
+                    <br><br>
+                    <h3>Senha</h3>
+                    <input type="password">
+                    <br><br>
+                    <div class="divButton">
+                        <button> entrar </button>
+                    </div>
+                </form>
+    
+            </div>
+            <div class="risco">
+    
+            </div>
+            <div class="cadastrar">
+                
+                <h2>Cadastrar</h2>
+                
+                <br>
+                <form action="">
+    
+                    <h3>email</h3>
+                    <input type="email">
+                    <br><br>
+                    <h3>Senha</h3>
+                    <input type="password">
+                    <br><br>
+                    <h3>Confrimar senha</h3>
+                    <input type="password">
+                    <br><br>
+                    <div class="divButton">
+                        <button>  Cadastrar </button>
+                    </div>
+                </form>
+    
+    
+    
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- <script>
+  const loginbutton = document.querySelector('#abrirLogin');
+  const login = document.querySelector('.megaConteiner');
+  const exitbutton = document.querySelector('#exitButtonn');
+
+  loginbutton.addEventListener('click', () => {
+    login.classList.toggle('megaConteinerOn');
+  });
+
+  exitbutton.addEventListener('click', () => {
+    login.classList.remove('megaConteinerOn'); // Remova a classe megaConteinerOn
+    login.classList.add('megaConteiner'); // Adicione a classe megaConteiner
+  });
+</script> -->
+  
+
 
    
     <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel" data-bs-theme="light">
