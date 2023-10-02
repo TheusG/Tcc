@@ -82,8 +82,11 @@
             <input type="number" name="salario" value=""><br>
                 </div>    
                 <div class="div1">
-            <label for="perfil">Perfil</label><br>
-            <input type="number" name="perfil" value=""><br>
+            <label for="perfil">Poder</label><br>
+            <input type="radio" name="perfil" value="1" checked>Total
+            <input type="radio" name="perfil" value="2">Parcial
+            <input type="radio" name="perfil" value="3">Mínimo
+            <br>
                 </div>    
                 <div class="div1">
             <label for="cargo">Cargo</label><br>

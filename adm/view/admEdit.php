@@ -130,8 +130,12 @@
             </select>
                     </div>
                     <div class="div1">
-            <label for="perfil">Perfil</label><br>
-            <input type="text" name="perfil" value="<?=$dados['Perfil']?>"><br>
+            <label for="perfil">Poder</label><br>
+            <input type="radio" name="perfil" <?php echo $dados['Perfil'] == 1 ? "checked":""?>>Total
+            <input type="radio" name="perfil" <?php echo $dados['Perfil'] == 2 ? "checked":""?>>Parcial
+            <input type="radio" name="perfil" <?php echo $dados['Perfil'] == 3 ? "checked":""?>>Mínimo
+   
+ 
                     </div>
                 </div>
             <label for="foto">Foto</label><br>
