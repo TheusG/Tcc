@@ -44,11 +44,19 @@ header{
 }header> a{
     text-decoration: none;
 }
+header #abrirLogin2, header #abrirLogin {
+    background-color: black;
+    color: darkorange;
+    border: solid 1px darkorange ;
+    width: 60px;
+    border-radius: 5px;
+}
 .logo {
     display: flex;
     align-items: center;
     color: yellow;
     font-size: 22px;
+    
  
 }
 .logo p{
