@@ -13,17 +13,20 @@
     justify-content: center;
     position: fixed;
     z-index: 1000;
-    top: 10px;
+    top: 65px;
     margin: 0 ;
     width: 100%;
     right: 100%;
     transition: 0.2s;  
     backdrop-filter: blur(5px); /* Altere o valor para ajustar a intensidade do desfoque */
-    
+    height: 850px;
+  
 }
 .megaConteinerOn{
     right: 0;
     transition: 0.2s;
+  
+    
 }
 .megaConteiner> .exitButton{
     width: 50px;
@@ -38,7 +41,7 @@
     color: darkorange;
     border-radius: 30px;
     transition: 1s;
-
+    
 }
 .megaConteiner> .exitButton:hover{
     border: solid 1px black;
@@ -47,7 +50,7 @@
     border-radius: 30px;
     scale: 1.2;
     transition: 0,5s;
-    overflow: auto;
+   
 
 }
 .conteiner{
@@ -59,7 +62,7 @@
     justify-content: center;
     align-items: center;
     box-shadow: black 0 0 20px 1px;
-   
+    
 }
 .conteiner > .title{
     width: 100%;
@@ -128,12 +131,22 @@
     text-align: center;
 }
 
-@media (max-width:800px){
+
+
+
+@media (max-height:900px){
 
     .megaConteiner{
         overflow: auto;
-        max-height: 800px; /* Exemplo de altura máxima */ 
+        max-height: 600px; /* Exemplo de altura máxima */ 
+        height: 800px;
     }
+
+}
+
+@media (max-width:800px){
+
+   
     .conteiner{
         height: 1300px;
         
