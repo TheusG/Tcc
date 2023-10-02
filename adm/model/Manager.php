@@ -5,11 +5,8 @@ function dadosFuncionario($email, $senha)
 {
     require_once "Conexao.php";
 
-    // $sql = "SELECT * FROM usuario WHERE Email ='$email' AND Senha = '$senha'";
-    $sql = "SELECT u.Id_usuario, u.Email, u.Senha, f.Perfil
-    FROM usuario AS u
-    INNER JOIN funcionario AS f ON u.Id_Usuario = f.Usuario
-    WHERE u.Email = '$email' AND u.Senha = '$senha'";
+    $sql = "SELECT * FROM usuario WHERE Email ='$email' AND Senha = '$senha'";
+
     $result = $conn->query($sql);
 
 
@@ -23,13 +20,34 @@ function dadosFuncionario($email, $senha)
             $dados["Nome_Usuario"] = $row["Nome_Usuario"];
             $dados["Senha"] = $row["Senha"];
             $dados["Email"] = $row["Email"];
-            $dados["Perfil"] = $row["Perfil"];
-            
+            $dados["Sexo"] = $row["Sexo"];
+
+
+
             // $dados["Nome_Cargo"]  = $row["Nome_Cargo"];
         }
         $conn->close();
         return $dados; //retorna dados pro controller
 
+        if ($result == true) {
+            $sql = "SELECT u.Id_usuario, f.Perfil
+            FROM usuario AS u
+            INNER JOIN funcionario AS f ON u.Id_Usuario = f.Usuario
+            WHERE u.Email = '$email' AND u.Senha = '$senha'";
+            $result = $conn->query($sql);
+            while ($row = $result->fetch_assoc()) {
+                $dados["Id_Usuario"] = $row["Id_Usuario"];
+                $dados["Perfil"] = $row["Perfil"];
+
+
+            }
+            $conn->close();
+            return $dados;
+        } else {
+            $dados["result"] = 0;
+            $conn->close();
+            return $dados;
+        }
     } else {
         $dados["result"] = 0;
         $conn->close();
@@ -356,7 +374,7 @@ function listarProduto($campo)
             $conn->close();
             return $produto;
         }
-    } else{
+    } else {
         require_once "Conexao.php";
         $sql = "SELECT * FROM produto WHERE Cod_Produto LIKE '%$campo%' OR Nome_Produto LIKE '%$campo%'";
         $result = $conn->query($sql);
@@ -671,7 +689,8 @@ function excluirEntregador($id)
 
 // --------------------------------------------CARGO-------------------------------------------------//
 
-function listarCargo(){
+function listarCargo()
+{
     require_once "Conexao.php";
     $sql = "SELECT * FROM cargo";
     $result = $conn->query($sql);
@@ -685,7 +704,7 @@ function listarCargo(){
         while ($row = $result->fetch_assoc()) {
             $cargo[$i]["Id_Cargo"] = $row["Id_Cargo"];
             $cargo[$i]["Nome_Cargo"] = $row["Nome_Cargo"];
-        
+
             $i++;
         }
         $conn->close();
@@ -712,8 +731,9 @@ function adicionarCargo($cargo)
     }
 }
 
-function pegaCargo($id){
-    
+function pegaCargo($id)
+{
+
     require_once "Conexao.php";
     $sql = "SELECT * FROM cargo WHERE Id_Cargo = {$id}";
     $result = $conn->query($sql);
@@ -735,8 +755,9 @@ function pegaCargo($id){
     }
 }
 
-function editarCargo($cargo){
-    
+function editarCargo($cargo)
+{
+
     require_once "Conexao.php";
     $sql = "UPDATE cargo SET Nome_Cargo = '{$cargo["nome"]}' WHERE Id_Cargo = {$cargo["id"]}";
     $result = $conn->query($sql);
@@ -786,13 +807,14 @@ function todosCargos()
 
 // --------------------------------------------------------Configuração----------------------------------------------------
 
-function pegaConfig(){
+function pegaConfig()
+{
 
     require_once "Conexao.php";
     $sql = "SELECT * FROM configuracao";
     $result = $conn->query($sql);
 
-    if($result ->num_rows > 0){
+    if ($result->num_rows > 0) {
         $config = array();
         $config["result"] = 1;
         while ($row = $result->fetch_assoc()) {
@@ -812,8 +834,9 @@ function pegaConfig(){
     }
 }
 
-function atualizarConfig($config){
-   
+function atualizarConfig($config)
+{
+
     require_once "Conexao.php";
     $sql = "UPDATE configuracao SET Data = '{$config["data"]}', Abre = '{$config["abre"]}', Fecha = '{$config["fecha"]}', NrPedido = '{$config["pedido"]}', Mensagem = '{$config["mensagem"]}'";
     $result = $conn->query($sql);
@@ -824,15 +847,4 @@ function atualizarConfig($config){
         $conn->close();
         return 0;
     }
-
-
-    
 }
-
-
-
-
-
-
-
-

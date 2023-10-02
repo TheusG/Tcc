@@ -51,7 +51,7 @@ require_once "admVerifSession.php";
 
             Nome:<?= $_SESSION["FUNC-NOME"]; ?><br>
             E-mail:<?= $_SESSION["FUNC-EMAIL"]; ?> <br>
-            
+            Poder: <?=$_SESSION["FUNC-PERFIL"];?><br>
 
             <!-- Cargo:<br> -->
 
@@ -68,7 +68,7 @@ require_once "admVerifSession.php";
             <a href="configEdit2.php" target="screen">Configurações</a>
             <a href="empresaEdit2.php" target="screen">Empresa</a>
             <?php 
-              
+              var_dump($_SESSION);
             ?>
             
             
