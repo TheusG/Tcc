@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02/10/2023 às 17:35
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
+-- Tempo de geração: 03-Out-2023 às 01:27
+-- Versão do servidor: 10.4.21-MariaDB
+-- versão do PHP: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,16 +24,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cargo`
+-- Estrutura da tabela `cargo`
 --
 
 CREATE TABLE `cargo` (
   `Id_Cargo` int(11) NOT NULL,
-  `Nome_Cargo` varchar(20) DEFAULT NULL
+  `Nome_Cargo` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `cargo`
+-- Extraindo dados da tabela `cargo`
 --
 
 INSERT INTO `cargo` (`Id_Cargo`, `Nome_Cargo`) VALUES
@@ -47,18 +47,18 @@ INSERT INTO `cargo` (`Id_Cargo`, `Nome_Cargo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `categoria`
+-- Estrutura da tabela `categoria`
 --
 
 CREATE TABLE `categoria` (
   `Id_Categoria` int(11) NOT NULL,
-  `Nome_Categoria` varchar(20) DEFAULT NULL,
-  `Comentario` varchar(100) DEFAULT NULL,
-  `Imagem` varchar(50) DEFAULT NULL
+  `Nome_Categoria` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Comentario` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Imagem` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `categoria`
+-- Extraindo dados da tabela `categoria`
 --
 
 INSERT INTO `categoria` (`Id_Categoria`, `Nome_Categoria`, `Comentario`, `Imagem`) VALUES
@@ -71,20 +71,20 @@ INSERT INTO `categoria` (`Id_Categoria`, `Nome_Categoria`, `Comentario`, `Imagem
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cep`
+-- Estrutura da tabela `cep`
 --
 
 CREATE TABLE `cep` (
   `Id` int(11) NOT NULL,
-  `Cep` varchar(9) DEFAULT NULL,
-  `Cidade` varchar(30) DEFAULT NULL,
-  `Logradouro` varchar(30) DEFAULT NULL,
-  `Bairro` varchar(30) DEFAULT NULL,
-  `Tipo` varchar(30) DEFAULT NULL
+  `Cep` varchar(9) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Cidade` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Logradouro` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Bairro` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Tipo` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `cep`
+-- Extraindo dados da tabela `cep`
 --
 
 INSERT INTO `cep` (`Id`, `Cep`, `Cidade`, `Logradouro`, `Bairro`, `Tipo`) VALUES
@@ -93,7 +93,7 @@ INSERT INTO `cep` (`Id`, `Cep`, `Cidade`, `Logradouro`, `Bairro`, `Tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `configuracao`
+-- Estrutura da tabela `configuracao`
 --
 
 CREATE TABLE `configuracao` (
@@ -102,11 +102,11 @@ CREATE TABLE `configuracao` (
   `Abre` time DEFAULT NULL,
   `Fecha` time DEFAULT NULL,
   `NrPedido` int(11) DEFAULT NULL,
-  `Mensagem` varchar(250) DEFAULT NULL
+  `Mensagem` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `configuracao`
+-- Extraindo dados da tabela `configuracao`
 --
 
 INSERT INTO `configuracao` (`Id_Config`, `Data`, `Abre`, `Fecha`, `NrPedido`, `Mensagem`) VALUES
@@ -115,29 +115,29 @@ INSERT INTO `configuracao` (`Id_Config`, `Data`, `Abre`, `Fecha`, `NrPedido`, `M
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `empresa`
+-- Estrutura da tabela `empresa`
 --
 
 CREATE TABLE `empresa` (
   `Id_Empresa` int(11) NOT NULL,
-  `Nome_Empresa` varchar(60) DEFAULT NULL,
-  `Fantasia` varchar(20) DEFAULT NULL,
-  `Cnpj` varchar(18) DEFAULT NULL,
-  `Ie` varchar(15) DEFAULT NULL,
-  `Cep` varchar(9) DEFAULT NULL,
-  `Endereco` varchar(50) DEFAULT NULL,
-  `Numero` varchar(10) DEFAULT NULL,
-  `Bairro` varchar(40) DEFAULT NULL,
-  `Cidade` varchar(40) DEFAULT NULL,
-  `Uf` varchar(2) DEFAULT NULL,
-  `Telefone` varchar(15) DEFAULT NULL,
-  `Site` varchar(50) DEFAULT NULL,
+  `Nome_Empresa` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Fantasia` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Cnpj` varchar(18) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ie` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Cep` varchar(9) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Endereco` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Numero` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Bairro` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Cidade` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Uf` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Telefone` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Site` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Data` date DEFAULT NULL,
-  `Logo` varchar(30) DEFAULT NULL
+  `Logo` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `empresa`
+-- Extraindo dados da tabela `empresa`
 --
 
 INSERT INTO `empresa` (`Id_Empresa`, `Nome_Empresa`, `Fantasia`, `Cnpj`, `Ie`, `Cep`, `Endereco`, `Numero`, `Bairro`, `Cidade`, `Uf`, `Telefone`, `Site`, `Data`, `Logo`) VALUES
@@ -146,18 +146,18 @@ INSERT INTO `empresa` (`Id_Empresa`, `Nome_Empresa`, `Fantasia`, `Cnpj`, `Ie`, `
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `entregador`
+-- Estrutura da tabela `entregador`
 --
 
 CREATE TABLE `entregador` (
   `Id_Entregador` int(11) NOT NULL,
-  `Veiculo` varchar(10) DEFAULT NULL,
-  `Identificacao` varchar(45) DEFAULT NULL,
+  `Veiculo` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Identificacao` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `entregador`
+-- Extraindo dados da tabela `entregador`
 --
 
 INSERT INTO `entregador` (`Id_Entregador`, `Veiculo`, `Identificacao`, `Usuario`) VALUES
@@ -166,7 +166,7 @@ INSERT INTO `entregador` (`Id_Entregador`, `Veiculo`, `Identificacao`, `Usuario`
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `funcionario`
+-- Estrutura da tabela `funcionario`
 --
 
 CREATE TABLE `funcionario` (
@@ -178,7 +178,7 @@ CREATE TABLE `funcionario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `funcionario`
+-- Extraindo dados da tabela `funcionario`
 --
 
 INSERT INTO `funcionario` (`Id_Funcionario`, `Cargo`, `Perfil`, `Salario`, `Usuario`) VALUES
@@ -189,7 +189,7 @@ INSERT INTO `funcionario` (`Id_Funcionario`, `Cargo`, `Perfil`, `Salario`, `Usua
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `perfil`
+-- Estrutura da tabela `perfil`
 --
 
 CREATE TABLE `perfil` (
@@ -204,7 +204,7 @@ CREATE TABLE `perfil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `perfil`
+-- Extraindo dados da tabela `perfil`
 --
 
 INSERT INTO `perfil` (`Id_Perfil`, `Acessa_Cliente`, `Acessa_Funcionario`, `Acessa_Produto`, `Acessa_Entregador`, `Acessa_Status`, `Acessa_Venda`, `Acessa_Carrinho`) VALUES
@@ -215,29 +215,29 @@ INSERT INTO `perfil` (`Id_Perfil`, `Acessa_Cliente`, `Acessa_Funcionario`, `Aces
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `produto`
+-- Estrutura da tabela `produto`
 --
 
 CREATE TABLE `produto` (
   `Id_Produto` int(11) NOT NULL,
-  `Cod_Produto` varchar(13) DEFAULT NULL,
-  `Nome_Produto` varchar(35) DEFAULT NULL,
-  `Desc_Produto` varchar(100) DEFAULT NULL,
+  `Cod_Produto` varchar(13) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Nome_Produto` varchar(35) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Desc_Produto` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Estoque` int(11) DEFAULT NULL,
   `Estoque_Min` int(11) DEFAULT NULL,
   `Estoque_Max` int(11) DEFAULT NULL,
   `Valor` float DEFAULT NULL,
-  `Status_Produto` varchar(1) DEFAULT NULL,
-  `Imagem` varchar(50) DEFAULT NULL,
+  `Status_Produto` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Imagem` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Categoria` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `produto`
+-- Extraindo dados da tabela `produto`
 --
 
 INSERT INTO `produto` (`Id_Produto`, `Cod_Produto`, `Nome_Produto`, `Desc_Produto`, `Estoque`, `Estoque_Min`, `Estoque_Max`, `Valor`, `Status_Produto`, `Imagem`, `Categoria`) VALUES
-(1, '1001', 'Pizza Alho', 'Alho, Molho de tomate e mussarela        ', 0, 0, 0, 50.99, '1', 'pizzaAtum.jpg', 1),
+(1, '1001', 'Pizza Alho', 'Alho, Molho de tomate e mussarela        ', 0, 0, 0, 34.99, '1', 'pizzaAtum.jpg', 1),
 (2, '1002', 'Pizza Atum          ', 'Atum e cebola                                                       ', 0, 0, 0, 31.99, '1', 'pizzaAtum.jpg                ', 1),
 (3, '1003', 'Pizza Bacon         ', 'Bacon e mussarela                                                   ', 0, 0, 0, 39.99, '1', 'pizzaBacon.jpg               ', 1),
 (4, '1004', 'Pizza Baiana        ', 'Calabresa moída, ovo, cebola e pimenta                              ', 0, 0, 0, 31.99, '1', 'pizzaBaiana.jpg              ', 1),
@@ -310,25 +310,25 @@ INSERT INTO `produto` (`Id_Produto`, `Cod_Produto`, `Nome_Produto`, `Desc_Produt
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuario`
+-- Estrutura da tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
   `Id_Usuario` int(11) NOT NULL,
-  `Nome_Usuario` varchar(45) DEFAULT NULL,
-  `Senha` varchar(100) DEFAULT NULL,
-  `Sexo` varchar(1) DEFAULT NULL,
+  `Nome_Usuario` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Senha` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Sexo` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Cep` int(11) DEFAULT NULL,
-  `Numero` varchar(10) DEFAULT NULL,
-  `Complemento` varchar(45) DEFAULT NULL,
-  `Telefone` varchar(15) DEFAULT NULL,
-  `Email` varchar(60) DEFAULT NULL,
+  `Numero` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Complemento` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Telefone` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Email` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Nascimento` date DEFAULT NULL,
-  `Foto` varchar(30) DEFAULT NULL
+  `Foto` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `usuario`
+-- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Numero`, `Complemento`, `Telefone`, `Email`, `Nascimento`, `Foto`) VALUES
@@ -342,45 +342,45 @@ INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Nu
 --
 
 --
--- Índices de tabela `cargo`
+-- Índices para tabela `cargo`
 --
 ALTER TABLE `cargo`
   ADD PRIMARY KEY (`Id_Cargo`),
   ADD UNIQUE KEY `Nome_Cargo` (`Nome_Cargo`);
 
 --
--- Índices de tabela `categoria`
+-- Índices para tabela `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`Id_Categoria`);
 
 --
--- Índices de tabela `cep`
+-- Índices para tabela `cep`
 --
 ALTER TABLE `cep`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Índices de tabela `configuracao`
+-- Índices para tabela `configuracao`
 --
 ALTER TABLE `configuracao`
   ADD PRIMARY KEY (`Id_Config`);
 
 --
--- Índices de tabela `empresa`
+-- Índices para tabela `empresa`
 --
 ALTER TABLE `empresa`
   ADD PRIMARY KEY (`Id_Empresa`);
 
 --
--- Índices de tabela `entregador`
+-- Índices para tabela `entregador`
 --
 ALTER TABLE `entregador`
   ADD PRIMARY KEY (`Id_Entregador`),
   ADD KEY `Usuario` (`Usuario`);
 
 --
--- Índices de tabela `funcionario`
+-- Índices para tabela `funcionario`
 --
 ALTER TABLE `funcionario`
   ADD PRIMARY KEY (`Id_Funcionario`),
@@ -389,13 +389,13 @@ ALTER TABLE `funcionario`
   ADD KEY `Usuario` (`Usuario`);
 
 --
--- Índices de tabela `perfil`
+-- Índices para tabela `perfil`
 --
 ALTER TABLE `perfil`
   ADD PRIMARY KEY (`Id_Perfil`);
 
 --
--- Índices de tabela `produto`
+-- Índices para tabela `produto`
 --
 ALTER TABLE `produto`
   ADD PRIMARY KEY (`Id_Produto`),
@@ -403,7 +403,7 @@ ALTER TABLE `produto`
   ADD KEY `Categoria` (`Categoria`);
 
 --
--- Índices de tabela `usuario`
+-- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`Id_Usuario`),
@@ -411,7 +411,7 @@ ALTER TABLE `usuario`
   ADD KEY `Cep` (`Cep`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
@@ -475,17 +475,17 @@ ALTER TABLE `usuario`
   MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- Restrições para tabelas despejadas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `entregador`
+-- Limitadores para a tabela `entregador`
 --
 ALTER TABLE `entregador`
   ADD CONSTRAINT `entregador_ibfk_1` FOREIGN KEY (`Usuario`) REFERENCES `usuario` (`Id_Usuario`);
 
 --
--- Restrições para tabelas `funcionario`
+-- Limitadores para a tabela `funcionario`
 --
 ALTER TABLE `funcionario`
   ADD CONSTRAINT `funcionario_ibfk_1` FOREIGN KEY (`Cargo`) REFERENCES `cargo` (`Id_Cargo`),
@@ -493,13 +493,13 @@ ALTER TABLE `funcionario`
   ADD CONSTRAINT `funcionario_ibfk_3` FOREIGN KEY (`Usuario`) REFERENCES `usuario` (`Id_Usuario`);
 
 --
--- Restrições para tabelas `produto`
+-- Limitadores para a tabela `produto`
 --
 ALTER TABLE `produto`
   ADD CONSTRAINT `produto_ibfk_1` FOREIGN KEY (`Categoria`) REFERENCES `categoria` (`Id_Categoria`);
 
 --
--- Restrições para tabelas `usuario`
+-- Limitadores para a tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`Cep`) REFERENCES `cep` (`Id`);
