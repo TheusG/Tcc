@@ -81,13 +81,17 @@
             <label for="salario">Salário</label><br>
             <input type="number" name="salario" value=""><br>
                 </div>    
-                <div class="div1">
-            <label for="perfil">Poder</label><br>
+                <br>
+                <div class="divRadio">
+            <label for="perfil">Poder</label><br><br>
             <input type="radio" name="perfil" value="1" checked>Total
+            <br>
             <input type="radio" name="perfil" value="2">Parcial
+            <br>
             <input type="radio" name="perfil" value="3">Mínimo
             <br>
                 </div>    
+                <br>
                 <div class="div1">
             <label for="cargo">Cargo</label><br>
             <select name="cargo" id="cargo">
@@ -102,7 +106,7 @@
                             }  
                         ?>
             </select>
-                </div>    
+                </div>    <br>
             
            
             <label for="foto">Foto</label><br>

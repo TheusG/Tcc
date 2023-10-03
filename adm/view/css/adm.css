@@ -234,6 +234,14 @@ header> button{
 
 }
 
+.divRadio{
+  
+    
+}
+.divRadio input{
+    margin-right: 10px;
+    
+}
 #admForm .div3 #sexo{
     height: 32px;
     width: 100px;

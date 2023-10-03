@@ -129,15 +129,20 @@
                 ?>
             </select>
                     </div>
-                    <div class="div1">
-            <label for="perfil">Poder</label><br>
-            <input type="radio" name="perfil" <?php echo $dados['Perfil'] == 1 ? "checked":""?>>Total
+                    <br>
+                    <div class="divRadio">
+            <label for="perfil">Poder</label><br><br>
+
+            <input type="radio" value="Total" name="perfil" <?php echo $dados['Perfil'] == 1 ? "checked":""?>>Total
+            <br>
             <input type="radio" name="perfil" <?php echo $dados['Perfil'] == 2 ? "checked":""?>>Parcial
+            <br>
             <input type="radio" name="perfil" <?php echo $dados['Perfil'] == 3 ? "checked":""?>>Mínimo
    
  
                     </div>
                 </div>
+                <br>
             <label for="foto">Foto</label><br>
             <input type="file" name="foto" value="<?=$dados['Foto']?>"><br>
             <input  class="enviar" type="submit" name="sbmt" value="Enviar"><br><br>
