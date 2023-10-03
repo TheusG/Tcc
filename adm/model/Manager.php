@@ -431,10 +431,10 @@ function pegaProduto($id)
     }
 }
 
-function puxarProduto($id)
+function puxarProduto($Cod_Produto)
 {
     require_once "Conexao.php";
-    $sql = "SELECT * FROM produto WHERE Id_Produto = {$id}";
+    $sql = "SELECT * FROM produto WHERE Cod_Produto = {$Cod_Produto}";
     $result = $conn->query($sql);
 
     //Se selecionou algum funcionario

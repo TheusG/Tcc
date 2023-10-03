@@ -44,8 +44,8 @@
 
     ?>
     <div id="titulo">
-        <h3>Editar Produto</h3>
-        <h4></h4>
+        <h3>Código já utilizado</h3>
+        <h4>Editar Produto</h4>
         <br>
     </div>
 

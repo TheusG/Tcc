@@ -280,26 +280,38 @@ if (isset($_REQUEST["categoria_delete"])) {
 
 // --------------------------------------------------------------Produtos---------------------------------------------//
 
-if (isset($_REQUEST["produto_new"])) {
-    $produto["codigo"] = $_REQUEST["codigo"];
+if (isset($_REQUEST["verificar_cod"])) {
+    $Cod_Produto = $_REQUEST["codigo"];
 
     require_once "../model/Produto.class.php";
     $codigo = new Produto;
     $dados = $codigo->codigoProdutos();
 
     for ($i = 0; $i < count($dados); $i++) {
-        if ($dados[$i]["Cod_Produto"] == $produto["codigo"]) {
+        if ($dados[$i]["Cod_Produto"] == $Cod_Produto) {
         ?>
             <form action="../view/produtoEdit2.php" name="form" id="myForm" method="post">
                 <input type="hidden" name="msg" value="FR26">
-                <input type="hidden" name="Codigo_Produto" value="<?= $produto["codigo"]; ?>">
+                <input type="hidden" name="Codigo_Produto" value="<?= $Cod_Produto; ?>">
             </form>
             <script>
                 document.getElementById('myForm').submit()
             </script>
 
-<?php
+        <?php
         }
+    }
+
+    if ($dados[$i]["Cod_Produto"] != $Cod_Produto) {
+        ?>
+        <form action="../view/produtoNew2.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="Codigo_Produto" value="<?= $Cod_Produto; ?>">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+
+        <?php
     }
 }
 
@@ -323,48 +335,48 @@ if (isset($_REQUEST["produto_new"])) {
 //         if ($dados[$i]["Cod_Produto"] == $produto["codigo"]) {
 //         
 ?>
- <form action="../view/produtoList.php" name="form" id="myForm" method="post">
-     <input type="hidden" name="msg" value="FR26">
-     </form>
+<form action="../view/produtoList.php" name="form" id="myForm" method="post">
+    <input type="hidden" name="msg" value="FR26">
+</form>
 <script>
     //                 document.getElementById('myForm').submit()
     //             
 </script>
- <?php
-    //         }
-    //     }
-    //     require_once "../model/Manager.php";
-    //     $resp = adicionarProduto($produto);
+<?php
+//         }
+//     }
+//     require_once "../model/Manager.php";
+//     $resp = adicionarProduto($produto);
 
-    //     if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
-    //         
-    ?>
+//     if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+//         
+?>
 <form action="../view/produtoList.php" name="form" id="myForm" method="post">
-     <input type="hidden" name="msg" value="BD52">
-     </form>
- <script>
-    //             document.getElementById('myForm').submit()
-    //         
-</script>
- <?php
-    //     } else { //erro no insert
-    //     
-    ?>
- <form action="../view/produtoList.php" name="form" id="myForm" method="post">
-    <input type="hidden" name="msg" value="BD02">
-     </form>
- <script>
+    <input type="hidden" name="msg" value="BD52">
+</form>
+<script>
     //             document.getElementById('myForm').submit()
     //         
 </script>
 <?php
-    
+//     } else { //erro no insert
+//     
+?>
+<form action="../view/produtoList.php" name="form" id="myForm" method="post">
+    <input type="hidden" name="msg" value="BD02">
+</form>
+<script>
+    //             document.getElementById('myForm').submit()
+    //         
+</script>
+<?php
 
-    if (isset($_POST["PesquisaProd"])) {
-        $campo = $_REQUEST["buscar"];
-        require_once "../model/Manager.php";
-        $result = listarProduto($campo);
-    ?>
+
+if (isset($_POST["PesquisaProd"])) {
+    $campo = $_REQUEST["buscar"];
+    require_once "../model/Manager.php";
+    $result = listarProduto($campo);
+?>
 
     <script>
         console.log('teste');
@@ -372,24 +384,24 @@ if (isset($_REQUEST["produto_new"])) {
 
     <?php
 
-    }
+}
 
-    if (isset($_REQUEST["produto_edit"])) {
-        $produto["id"] = $_REQUEST["id"];
-        $produto["nome"] = $_REQUEST["nome"];
-        $produto["codigo"] = $_REQUEST["codigo"];
-        $produto["descricao"] = $_REQUEST["descricao"];
-        $produto["estoque"] = $_REQUEST["estoque"];
-        $produto["estoque_Min"] = $_REQUEST["estoque_Min"];
-        $produto["estoque_Max"] = $_REQUEST["estoque_Max"];
-        $produto["valor"] = $_REQUEST["valor"];
-        $produto["status"] = $_REQUEST["status"];
-        $produto["imagem"] = $_REQUEST["imagem"];
-        $produto["categoria"] = $_REQUEST["categoria"];
-        require_once "../model/Manager.php";
-        $resp = editarProduto($produto);
+if (isset($_REQUEST["produto_edit"])) {
+    $produto["id"] = $_REQUEST["id"];
+    $produto["nome"] = $_REQUEST["nome"];
+    $produto["codigo"] = $_REQUEST["codigo"];
+    $produto["descricao"] = $_REQUEST["descricao"];
+    $produto["estoque"] = $_REQUEST["estoque"];
+    $produto["estoque_Min"] = $_REQUEST["estoque_Min"];
+    $produto["estoque_Max"] = $_REQUEST["estoque_Max"];
+    $produto["valor"] = $_REQUEST["valor"];
+    $produto["status"] = $_REQUEST["status"];
+    $produto["imagem"] = $_REQUEST["imagem"];
+    $produto["categoria"] = $_REQUEST["categoria"];
+    require_once "../model/Manager.php";
+    $resp = editarProduto($produto);
 
-        if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
     ?>
         <form action="../view/produtoList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD53">
@@ -398,7 +410,7 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        } else { //erro no insert
+    } else { //erro no insert
     ?>
         <form action="../view/produtoList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD03">
@@ -407,14 +419,14 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        }
     }
+}
 
-    if (isset($_REQUEST["produto_delete"])) {
-        $id = $_REQUEST["id"];
-        require_once "../model/Manager.php";
-        $result = excluirProduto($id);
-        if ($result == 1) { //conseguir excluir
+if (isset($_REQUEST["produto_delete"])) {
+    $id = $_REQUEST["id"];
+    require_once "../model/Manager.php";
+    $result = excluirProduto($id);
+    if ($result == 1) { //conseguir excluir
     ?>
         <form action="../view/produtoList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD54">
@@ -423,7 +435,7 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        } else { //algo deu de errado na deleção
+    } else { //algo deu de errado na deleção
     ?>
         <form action="../view/produtoList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD04">
@@ -432,32 +444,32 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        }
     }
+}
 
 
-    // --------------------------------------------------------------EMPRESA---------------------------------------------//
+// --------------------------------------------------------------EMPRESA---------------------------------------------//
 
-    if (isset($_REQUEST["empresa_edit"])) {
-        $empresa["id"] = $_REQUEST["id"];
-        $empresa["nome"] = $_REQUEST["nome"];
-        $empresa["fantasia"] = $_REQUEST["fantasia"];
-        $empresa["cnpj"] = $_REQUEST["cnpj"];
-        $empresa["ie"] = $_REQUEST["ie"];
-        $empresa["cep"] = $_REQUEST["cep"];
-        $empresa["endereco"] = $_REQUEST["endereco"];
-        $empresa["numero"] = $_REQUEST["numero"];
-        $empresa["bairro"] = $_REQUEST["bairro"];
-        $empresa["cidade"] = $_REQUEST["cidade"];
-        $empresa["uf"] = $_REQUEST["uf"];
-        $empresa["telefone"] = $_REQUEST["telefone"];
-        $empresa["site"] = $_REQUEST["site"];
-        $empresa["data"] = $_REQUEST["data"];
-        $empresa["logo"] = $_REQUEST["logo"];
-        require_once "../model/Manager.php";
-        $resp = editarEmpresa($empresa);
+if (isset($_REQUEST["empresa_edit"])) {
+    $empresa["id"] = $_REQUEST["id"];
+    $empresa["nome"] = $_REQUEST["nome"];
+    $empresa["fantasia"] = $_REQUEST["fantasia"];
+    $empresa["cnpj"] = $_REQUEST["cnpj"];
+    $empresa["ie"] = $_REQUEST["ie"];
+    $empresa["cep"] = $_REQUEST["cep"];
+    $empresa["endereco"] = $_REQUEST["endereco"];
+    $empresa["numero"] = $_REQUEST["numero"];
+    $empresa["bairro"] = $_REQUEST["bairro"];
+    $empresa["cidade"] = $_REQUEST["cidade"];
+    $empresa["uf"] = $_REQUEST["uf"];
+    $empresa["telefone"] = $_REQUEST["telefone"];
+    $empresa["site"] = $_REQUEST["site"];
+    $empresa["data"] = $_REQUEST["data"];
+    $empresa["logo"] = $_REQUEST["logo"];
+    require_once "../model/Manager.php";
+    $resp = editarEmpresa($empresa);
 
-        if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
     ?>
         <form action="../view/empresaEdit2.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD53">
@@ -466,7 +478,7 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        } else { //erro no insert
+    } else { //erro no insert
     ?>
         <form action="../view/empresaEdit2.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD03">
@@ -475,75 +487,75 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        }
     }
+}
 
-    //----------------------------------------------------ENTREGADOR------------------------------------------------//
+//----------------------------------------------------ENTREGADOR------------------------------------------------//
 
-    if (isset($_REQUEST["entregador_new"])) {
-        $entregador["nome"] = $_REQUEST["nome"];
-        $entregador["sexo"] = $_REQUEST["sexo"];
-        $entregador["email"] = $_REQUEST["email"];
+if (isset($_REQUEST["entregador_new"])) {
+    $entregador["nome"] = $_REQUEST["nome"];
+    $entregador["sexo"] = $_REQUEST["sexo"];
+    $entregador["email"] = $_REQUEST["email"];
+    require_once "../model/Ferramentas.php";
+    $entregador["senha"] = hash256($_REQUEST["senha"]);
+    $entregador["telefone"] = $_REQUEST["telefone"];
+    $entregador["dataNascimento"] = $_REQUEST["dataNascimento"];
+    $entregador["cep"] = $_REQUEST["cep"];
+    $entregador["numero"] = $_REQUEST["numero"];
+    $entregador["complemento"] = $_REQUEST["complemento"];
+    $entregador["foto"] = $_REQUEST["foto"];
+    $entregador["veiculo"] = $_REQUEST["veiculo"];
+    $entregador["identificacao"] = $_REQUEST["identificacao"];
+
+    require_once "../model/Manager.php";
+    $resp = adicionarEntregador($entregador);
+
+    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+    ?>
+        <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD52">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    } else { //erro no insert
+    ?>
+        <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD02">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    }
+}
+
+if (isset($_REQUEST["entregador_edit"])) {
+    $entregador["id"] = $_REQUEST["id"];
+    $entregador["nome"] = $_REQUEST["nome"];
+    $entregador["sexo"] = $_REQUEST["sexo"];
+    $entregador["email"] = $_REQUEST["email"];
+    $entregador["senha"] = "";
+    $entregador["senhaNova"] = "";
+    if ($_REQUEST["senha"] != "") {
         require_once "../model/Ferramentas.php";
-        $entregador["senha"] = hash256($_REQUEST["senha"]);
-        $entregador["telefone"] = $_REQUEST["telefone"];
-        $entregador["dataNascimento"] = $_REQUEST["dataNascimento"];
-        $entregador["cep"] = $_REQUEST["cep"];
-        $entregador["numero"] = $_REQUEST["numero"];
-        $entregador["complemento"] = $_REQUEST["complemento"];
-        $entregador["foto"] = $_REQUEST["foto"];
-        $entregador["veiculo"] = $_REQUEST["veiculo"];
-        $entregador["identificacao"] = $_REQUEST["identificacao"];
-
-        require_once "../model/Manager.php";
-        $resp = adicionarEntregador($entregador);
-
-        if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
-    ?>
-        <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="BD52">
-        </form>
-        <script>
-            document.getElementById('myForm').submit()
-        </script>
-    <?php
-        } else { //erro no insert
-    ?>
-        <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="BD02">
-        </form>
-        <script>
-            document.getElementById('myForm').submit()
-        </script>
-    <?php
-        }
+        $entregador["senha"] = ($_REQUEST["senha"]);
+        $entregador["senhaNova"] = hash256($entregador["senha"]);
     }
+    $entregador["telefone"] = $_REQUEST["telefone"];
+    $entregador["dataNascimento"] = $_REQUEST["dataNascimento"];
+    $entregador["cep"] = $_REQUEST["cep"];
+    $entregador["numero"] = $_REQUEST["numero"];
+    $entregador["complemento"] = $_REQUEST["complemento"];
+    $entregador["veiculo"] = $_REQUEST["veiculo"];
+    $entregador["identificacao"] = $_REQUEST["identificacao"];
+    $entregador["foto"] = $_REQUEST["foto"];
+    $entregador["idEntregador"] = $_REQUEST["idEntregador"];
+    require_once "../model/Manager.php";
+    $resp = editarEntregador($entregador);
 
-    if (isset($_REQUEST["entregador_edit"])) {
-        $entregador["id"] = $_REQUEST["id"];
-        $entregador["nome"] = $_REQUEST["nome"];
-        $entregador["sexo"] = $_REQUEST["sexo"];
-        $entregador["email"] = $_REQUEST["email"];
-        $entregador["senha"] = "";
-        $entregador["senhaNova"] = "";
-        if ($_REQUEST["senha"] != "") {
-            require_once "../model/Ferramentas.php";
-            $entregador["senha"] = ($_REQUEST["senha"]);
-            $entregador["senhaNova"] = hash256($entregador["senha"]);
-        }
-        $entregador["telefone"] = $_REQUEST["telefone"];
-        $entregador["dataNascimento"] = $_REQUEST["dataNascimento"];
-        $entregador["cep"] = $_REQUEST["cep"];
-        $entregador["numero"] = $_REQUEST["numero"];
-        $entregador["complemento"] = $_REQUEST["complemento"];
-        $entregador["veiculo"] = $_REQUEST["veiculo"];
-        $entregador["identificacao"] = $_REQUEST["identificacao"];
-        $entregador["foto"] = $_REQUEST["foto"];
-        $entregador["idEntregador"] = $_REQUEST["idEntregador"];
-        require_once "../model/Manager.php";
-        $resp = editarEntregador($entregador);
-
-        if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
     ?>
         <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD53">
@@ -552,7 +564,7 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        } else { //erro no insert
+    } else { //erro no insert
     ?>
         <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD03">
@@ -561,14 +573,14 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        }
     }
+}
 
-    if (isset($_REQUEST["entregador_delete"])) {
-        $id = $_REQUEST["id"];
-        require_once "../model/Manager.php";
-        $result = excluirEntregador($id);
-        if ($result == 1) { //conseguir excluir
+if (isset($_REQUEST["entregador_delete"])) {
+    $id = $_REQUEST["id"];
+    require_once "../model/Manager.php";
+    $result = excluirEntregador($id);
+    if ($result == 1) { //conseguir excluir
     ?>
         <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD54">
@@ -577,7 +589,7 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        } else { //algo deu de errado na deleção
+    } else { //algo deu de errado na deleção
     ?>
         <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD04">
@@ -586,18 +598,18 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        }
     }
+}
 
 
-    // ----------------------------------------Cargo----------------------------------------------------------//
+// ----------------------------------------Cargo----------------------------------------------------------//
 
-    if (isset($_REQUEST["cargo_new"])) {
-        $cargo["nome"] = $_REQUEST["nome"];
-        require_once "../model/Manager.php";
-        $resp = adicionarCargo($cargo);
+if (isset($_REQUEST["cargo_new"])) {
+    $cargo["nome"] = $_REQUEST["nome"];
+    require_once "../model/Manager.php";
+    $resp = adicionarCargo($cargo);
 
-        if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
     ?>
         <form action="../view/cargoList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD52">
@@ -606,7 +618,7 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        } else { //erro no insert
+    } else { //erro no insert
     ?>
         <form action="../view/cargoList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD02">
@@ -615,17 +627,17 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        }
     }
+}
 
 
-    if (isset($_REQUEST["cargo_edit"])) {
-        $cargo["id"] = $_REQUEST["id"];
-        $cargo["nome"] = $_REQUEST["nome"];
-        require_once "../model/Manager.php";
-        $resp = editarCargo($cargo);
+if (isset($_REQUEST["cargo_edit"])) {
+    $cargo["id"] = $_REQUEST["id"];
+    $cargo["nome"] = $_REQUEST["nome"];
+    require_once "../model/Manager.php";
+    $resp = editarCargo($cargo);
 
-        if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
     ?>
         <form action="../view/cargoList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD53">
@@ -634,7 +646,7 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        } else { //erro no insert
+    } else { //erro no insert
     ?>
         <form action="../view/cargoList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD03">
@@ -643,14 +655,14 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        }
     }
+}
 
-    if (isset($_REQUEST["cargo_delete"])) {
-        $id = $_REQUEST["id"];
-        require_once "../model/Manager.php";
-        $result = excluirCargo($id);
-        if ($result == 1) { //conseguir excluir
+if (isset($_REQUEST["cargo_delete"])) {
+    $id = $_REQUEST["id"];
+    require_once "../model/Manager.php";
+    $result = excluirCargo($id);
+    if ($result == 1) { //conseguir excluir
     ?>
         <form action="../view/cargoList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD54">
@@ -659,7 +671,7 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        } else { //algo deu de errado na deleção
+    } else { //algo deu de errado na deleção
     ?>
         <form action="../view/cargoList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD04">
@@ -668,22 +680,22 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        }
     }
+}
 
-    // ---------------------------------------------------------CONFIGURAÇÃO-------------------------------------------------------------//
+// ---------------------------------------------------------CONFIGURAÇÃO-------------------------------------------------------------//
 
-    if (isset($_REQUEST["config_edit"])) {
-        $config["id"] = $_REQUEST["id"];
-        $config["data"] = $_REQUEST["data"];
-        $config["abre"] = $_REQUEST["abre"];
-        $config["fecha"] = $_REQUEST["fecha"];
-        $config["pedido"] = $_REQUEST["pedido"];
-        $config["mensagem"] = $_REQUEST["mensagem"];
-        require_once "../model/Manager.php";
-        $resp = atualizarConfig($config);
+if (isset($_REQUEST["config_edit"])) {
+    $config["id"] = $_REQUEST["id"];
+    $config["data"] = $_REQUEST["data"];
+    $config["abre"] = $_REQUEST["abre"];
+    $config["fecha"] = $_REQUEST["fecha"];
+    $config["pedido"] = $_REQUEST["pedido"];
+    $config["mensagem"] = $_REQUEST["mensagem"];
+    require_once "../model/Manager.php";
+    $resp = atualizarConfig($config);
 
-        if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
     ?>
         <form action="../view/configEdit2.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD53">
@@ -692,7 +704,7 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
     <?php
-        } else { //erro no insert
+    } else { //erro no insert
     ?>
         <form action="../view/configEdit2.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD03">
@@ -701,7 +713,7 @@ if (isset($_REQUEST["produto_new"])) {
             document.getElementById('myForm').submit()
         </script>
 <?php
-        }
     }
+}
 
 ?>

@@ -25,7 +25,7 @@
 
     <div id="admForm"><!-- esta no adm.css -->
         <form action="../controller/controller.php" method="post" name="produtoNew">
-            <input type="hidden" name="verificar_cod" value="1">            
+            <input type="hidden" name="produto_new" value="1">            
                 <div class="divFlex">
                     <div>
             <label for="nome">Código</label><br>
