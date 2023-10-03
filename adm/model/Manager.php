@@ -431,6 +431,38 @@ function pegaProduto($id)
     }
 }
 
+function puxarProduto($id)
+{
+    require_once "Conexao.php";
+    $sql = "SELECT * FROM produto WHERE Id_Produto = {$id}";
+    $result = $conn->query($sql);
+
+    //Se selecionou algum funcionario
+    if ($result->num_rows > 0) {
+        $produto = array();
+        $produto["result"] = 1;
+        while ($row = $result->fetch_assoc()) {
+            $produto["Id_Produto"] = $row["Id_Produto"];
+            $produto["Cod_Produto"] = $row["Cod_Produto"];
+            $produto["Nome_Produto"] = $row["Nome_Produto"];
+            $produto["Desc_Produto"] = $row["Desc_Produto"];
+            $produto["Estoque"] = $row["Estoque"];
+            $produto["Estoque_Min"] = $row["Estoque_Min"];
+            $produto["Estoque_Max"] = $row["Estoque_Max"];
+            $produto["Valor"] = $row["Valor"];
+            $produto["Status_Produto"] = $row["Status_Produto"];
+            $produto["Imagem"] = $row["Imagem"];
+            $produto["Categoria"] = $row["Categoria"];
+        }
+        $conn->close();
+        return $produto;
+    } else {
+        $produto["result"] = 0;
+        $conn->close();
+        return $produto;
+    }
+}
+
 function editarProduto($produto)
 {
     require_once "Conexao.php";
