@@ -44,7 +44,7 @@
 
     ?>
     <div id="titulo">
-        <h3>Código já utilizado</h3>
+        <!-- <h3>Código já utilizado</h3> -->
         <h4>Editar Produto</h4>
         <br>
     </div>
@@ -138,6 +138,15 @@
         <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
             
     </div>
+
+    <?php
+        if (isset($_REQUEST["msg"])) {
+            $cod = $_REQUEST["msg"];
+            require_once "msg.php";
+            echo "<script>alert('" . $MSG[$cod] . "');</script>";
+        }
+
+        ?>
 
 
 </body>

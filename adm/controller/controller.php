@@ -305,13 +305,14 @@ if (isset($_REQUEST["verificar_cod"])) {
     if ($dados[$i]["Cod_Produto"] != $Cod_Produto) {
         ?>
         <form action="../view/produtoNew2.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="Codigo_Produto" value="<?= $Cod_Produto; ?>">
+            <input type="hidden" name="add_Prod" value="value">
+            <input type="hidden" name="Codigo_Produto" value="<?=$Cod_Produto?>">
         </form>
         <script>
             document.getElementById('myForm').submit()
         </script>
 
-        <?php
+    <?php
     }
 }
 
