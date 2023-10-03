@@ -316,60 +316,44 @@ if (isset($_REQUEST["verificar_cod"])) {
     }
 }
 
-// if (isset($_REQUEST["produto_new"])) {
-//     $produto["nome"] = $_REQUEST["nome"];
-//     $produto["descricao"] = $_REQUEST["descricao"];
-//     $produto["estoque"] = $_REQUEST["estoque"];
-//     $produto["estoque_Min"] = $_REQUEST["estoque_Min"];
-//     $produto["estoque_Max"] = $_REQUEST["estoque_Max"];
-//     $produto["valor"] = $_REQUEST["valor"];
-//     $produto["status"] = $_REQUEST["status"];
-//     $produto["imagem"] = $_REQUEST["imagem"];
-//     $produto["categoria"] = $_REQUEST["categoria"];
-//     $produto["codigo"] = $_REQUEST["codigo"];
+if (isset($_REQUEST["produto_new"])) {
+    $produto["nome"] = $_REQUEST["nome"];
+    $produto["descricao"] = $_REQUEST["descricao"];
+    $produto["estoque"] = $_REQUEST["estoque"];
+    $produto["estoque_Min"] = $_REQUEST["estoque_Min"];
+    $produto["estoque_Max"] = $_REQUEST["estoque_Max"];
+    $produto["valor"] = $_REQUEST["valor"];
+    $produto["status"] = $_REQUEST["status"];
+    $produto["imagem"] = $_REQUEST["imagem"];
+    $produto["categoria"] = $_REQUEST["categoria"];
+    $produto["codigo"] = $_REQUEST["codigo"];
 
-//     require_once "../model/Produto.class.php";
-//     $codigo = new Produto;
-//     $dados = $codigo->codigoProdutos();
+    require_once "../model/Manager.php";
+    $resp = adicionarProduto($produto);
 
-//     for ($i = 0; $i < count($dados); $i++) {
-//         if ($dados[$i]["Cod_Produto"] == $produto["codigo"]) {
-//         
-?>
-<form action="../view/produtoList.php" name="form" id="myForm" method="post">
-    <input type="hidden" name="msg" value="FR26">
-</form>
-<script>
-    //                 document.getElementById('myForm').submit()
-    //             
-</script>
-<?php
-//         }
-//     }
-//     require_once "../model/Manager.php";
-//     $resp = adicionarProduto($produto);
+    if ($resp == 1) { //tudo certo ao adicionar um novo produt
+        ?>
+        <form action="../view/produtoList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD52">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    } else { //erro no insert
+    ?>
+        <form action="../view/produtoList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD02">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    }
+}
 
-//     if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
-//         
 ?>
-<form action="../view/produtoList.php" name="form" id="myForm" method="post">
-    <input type="hidden" name="msg" value="BD52">
-</form>
-<script>
-    //             document.getElementById('myForm').submit()
-    //         
-</script>
-<?php
-//     } else { //erro no insert
-//     
-?>
-<form action="../view/produtoList.php" name="form" id="myForm" method="post">
-    <input type="hidden" name="msg" value="BD02">
-</form>
-<script>
-    //             document.getElementById('myForm').submit()
-    //         
-</script>
+
 <?php
 
 
@@ -399,6 +383,7 @@ if (isset($_REQUEST["produto_edit"])) {
     $produto["status"] = $_REQUEST["status"];
     $produto["imagem"] = $_REQUEST["imagem"];
     $produto["categoria"] = $_REQUEST["categoria"];
+    $produto["cod"] = $_REQUEST["cod"];
     require_once "../model/Manager.php";
     $resp = editarProduto($produto);
 

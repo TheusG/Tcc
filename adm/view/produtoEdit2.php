@@ -53,6 +53,7 @@
         <form action="../controller/controller.php" method="post" name="admNew">
             <input type="hidden" name="produto_edit" value="1">
             <input type="hidden" name="id" value="<?=$produto['Id_Produto']?>">
+            <input type="hidden" name="cod" value="1">
 
                 <div class="divFlex">
                     <div>

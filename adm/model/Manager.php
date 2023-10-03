@@ -466,6 +466,34 @@ function puxarProduto($Cod_Produto)
 function editarProduto($produto)
 {
     require_once "Conexao.php";
+    if($produto["cod"] == 0){
+        if ($produto["imagem"] == "") {
+            $sql = "UPDATE produto SET Cod_Produto = '{$produto["codigo"]}', Nome_Produto = '{$produto["nome"]}', Desc_Produto = '{$produto["descricao"]}', Estoque = '{$produto["estoque"]}', Estoque_Min = '{$produto["estoque_Min"]}', Estoque_Max = '{$produto["estoque_Max"]}', Valor = '{$produto["valor"]}', Status_Produto = '{$produto["status"]}' , Categoria = '{$produto["categoria"]}' WHERE Id_Produto = {$produto["id"]}";
+        } else {
+            $sql = "UPDATE produto SET Cod_Produto = '{$produto["codigo"]}', Nome_Produto = '{$produto["nome"]}', Desc_Produto = '{$produto["descricao"]}', Estoque = '{$produto["estoque"]}', Estoque_Min = '{$produto["estoque_Min"]}', Estoque_Max = '{$produto["estoque_Max"]}', Valor = '{$produto["valor"]}', Status_Produto = '{$produto["status"]}' ,Imagem = '{$produto["imagem"]}', Categoria = '{$produto["categoria"]}' WHERE Id_Produto = {$produto["id"]}";
+        }
+    }
+    if($produto["cod"] == 1){
+        if ($produto["imagem"] == "") {
+            $sql = "UPDATE produto SET  Nome_Produto = '{$produto["nome"]}', Desc_Produto = '{$produto["descricao"]}', Estoque = '{$produto["estoque"]}', Estoque_Min = '{$produto["estoque_Min"]}', Estoque_Max = '{$produto["estoque_Max"]}', Valor = '{$produto["valor"]}', Status_Produto = '{$produto["status"]}' , Categoria = '{$produto["categoria"]}' WHERE Cod_Produto = {$produto["codigo"]}";
+        } else {
+            $sql = "UPDATE produto SET  Nome_Produto = '{$produto["nome"]}', Desc_Produto = '{$produto["descricao"]}', Estoque = '{$produto["estoque"]}', Estoque_Min = '{$produto["estoque_Min"]}', Estoque_Max = '{$produto["estoque_Max"]}', Valor = '{$produto["valor"]}', Status_Produto = '{$produto["status"]}' ,Imagem = '{$produto["imagem"]}', Categoria = '{$produto["categoria"]}' WHERE Cod_Produto = {$produto["codigo"]}";
+        }
+    }
+
+    $result = $conn->query($sql);
+    if ($result == true) { //tudo certo 
+        $conn->close();
+        return 1;
+    } else {
+        $conn->close();
+        return 0;
+    }
+}
+
+function editProduto($produto)
+{
+    require_once "Conexao.php";
     if ($produto["imagem"] == "") {
         $sql = "UPDATE produto SET Cod_Produto = '{$produto["codigo"]}', Nome_Produto = '{$produto["nome"]}', Desc_Produto = '{$produto["descricao"]}', Estoque = '{$produto["estoque"]}', Estoque_Min = '{$produto["estoque_Min"]}', Estoque_Max = '{$produto["estoque_Max"]}', Valor = '{$produto["valor"]}', Status_Produto = '{$produto["status"]}' , Categoria = '{$produto["categoria"]}' WHERE Id_Produto = {$produto["id"]}";
     } else {

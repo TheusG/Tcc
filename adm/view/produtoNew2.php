@@ -36,7 +36,7 @@
                 <div class="divFlex">
                     <div>
             <label for="codigo">Código</label><br>
-            <input class="inputCod fundoCinza" type="text" name="codigo"readonly value="<?=$codigo?>" required ><br>
+            <input class="inputCod fundoCinza" type="number" name="codigo" readonly value="<?=$codigo?>" required ><br>
                     </div>
                     <div>
             <label for="nome">Nome do Produto</label><br>
