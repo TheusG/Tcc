@@ -97,7 +97,5 @@ require_once "admVerifSession.php";
 
     <script src="https://kit.fontawesome.com/5bb743cf48.js" crossorigin="anonymous"></script>
 
-
 </body>
-
 </html>
