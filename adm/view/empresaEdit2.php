@@ -120,7 +120,7 @@
                     <!-- <div class="divFlex"> -->
                         <div class="estoque">
                             <label for="logo">Logo</label><br>
-                            <input class="inputnome" readonly type="file" name="logo" value="<?=$empresa["Logo"]?>"><br><br>
+                            <input class="inputnome" disabled type="file" name="logo" value="<?=$empresa["Logo"]?>"><br><br>
                         </div>
                     <!-- </div> -->
                     <br>
