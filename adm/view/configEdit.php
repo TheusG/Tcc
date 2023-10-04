@@ -70,7 +70,7 @@
 
             </div>
             <div class="divFlex">
-                <div>
+                <div class="divDescricao">
                     <label for="mensagem">Mensagem</label><br>
                     <textarea class="descricao" name="mensagem" id="mensagem" cols="30" rows="10" style="resize: none;" required><?= $config["Mensagem"] ?></textarea>
                 </div>

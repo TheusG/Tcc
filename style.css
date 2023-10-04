@@ -50,6 +50,15 @@ header #abrirLogin2, header #abrirLogin {
     border: solid 1px darkorange ;
     width: 60px;
     border-radius: 5px;
+    transition: 0.5s;
+}
+header #abrirLogin2:hover, header #abrirLogin:hover {
+    background-color: darkorange;
+    color: black;
+    border: solid 1px black ;
+    transition: 0.5s;
+    scale: 1.1;
+ 
 }
 .logo {
     display: flex;
