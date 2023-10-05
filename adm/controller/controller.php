@@ -291,7 +291,7 @@ if (isset($_REQUEST["verificar_cod"])) {
         if ($dados[$i]["Cod_Produto"] == $Cod_Produto) {
         ?>
             <form action="../view/produtoEdit2.php" name="form" id="myForm" method="post">
-                <input type="hidden" name="msg" value="FR26">
+                <!-- <input type="hidden" name="msg" value="FR26"> -->
                 <input type="hidden" name="Codigo_Produto" value="<?= $Cod_Produto; ?>">
             </form>
             <script>

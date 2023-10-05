@@ -57,12 +57,12 @@
 
                 <div class="divFlex">
                     <div>
-                <label for="nome">Nome do Produto</label><br>
-            <input class="inputProduto" type="text" name="nome" value="<?=$produto["Nome_Produto"]?>" required ><br>
+                <label for="codigo">Código</label><br>
+            <input class="inputCod" type="number" name="codigo" value="<?=$produto["Cod_Produto"]?>" required ><br>
                     </div>
                     <div>
-            <label for="codigo">Código</label><br>
-            <input class="inputCod" type="number" name="codigo" value="<?=$produto["Cod_Produto"]?>"><br>
+            <label for="nome">Nome do Produto</label><br>
+            <input class="inputProduto" type="text" name="nome" value="<?=$produto["Nome_Produto"]?>"><br>
                     </div>
                     <div>
             <label for="valor">Valor</label><br>
