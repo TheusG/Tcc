@@ -64,11 +64,13 @@ $MSG = array(
 	"FR23" => "Formato dos dados não condiz com o objeto.",
 	"FR24" => "Caracteres não condizentes com as regras do sistema.",
 	"FR25" => "Caracteres não identificados.",
-    "FR26" => "O código informado já existe",
+    "FR26" => "O código informado já existe.",
 
     // 50 A 99 SUCESSOS
     "FR50" => "Formulário enviado com sucesso.",
     "FR51" => "Arquivo enviado com sucesso.",
+    "FR52" => "Preencha os campos...",
+ 
 
     // série OA: operações de Acesso / SESSÃO
     // 00 a 49 ERROS

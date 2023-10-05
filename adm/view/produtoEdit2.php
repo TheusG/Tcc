@@ -15,7 +15,7 @@
 </head>
 <body>
 <?php 
-        if(!isset($_REQUEST["Id_Produto"])){
+        if(!isset($_REQUEST["Codigo_Produto"])){
             ?>  
                 <form action="produtoList.php" name="form" id="myForm" method="post">
                     <input type="hidden" name="msg" value="FR01">
@@ -27,7 +27,7 @@
             exit();
         }
         require_once "../model/Manager.php";
-        $produto = pegaProduto($_REQUEST["Id_Produto"]);
+        $produto = puxarProduto($_REQUEST["Codigo_Produto"]);
         if($produto["result"] == 0){
             ?>  
                 <form action="produtoList.php" name="form" id="myForm" method="post">
@@ -44,8 +44,8 @@
 
     ?>
     <div id="titulo">
-        <h3>Editar Produto</h3>
-        <h4></h4>
+        <!-- <h3>Código já utilizado</h3> -->
+        <h4>Editar Produto</h4>
         <br>
     </div>
 
@@ -53,7 +53,7 @@
         <form action="../controller/controller.php" method="post" name="admNew">
             <input type="hidden" name="produto_edit" value="1">
             <input type="hidden" name="id" value="<?=$produto['Id_Produto']?>">
-            <input type="hidden" name="cod" value="0">
+            <input type="hidden" name="cod" value="1">
 
                 <div class="divFlex">
                     <div>
@@ -139,6 +139,15 @@
         <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
             
     </div>
+
+    <?php
+        if (isset($_REQUEST["msg"])) {
+            $cod = $_REQUEST["msg"];
+            require_once "msg.php";
+            echo "<script>alert('" . $MSG[$cod] . "');</script>";
+        }
+
+        ?>
 
 
 </body>

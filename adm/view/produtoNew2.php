@@ -21,38 +21,45 @@
         <br>
     </div>
 
-    
+   
+    <?php 
+        if (isset($_POST["add_Prod"])) {
+            $codigo = $_REQUEST["Codigo_Produto"];
+
+            
+        }
+    ?>
 
     <div id="admForm"><!-- esta no adm.css -->
         <form action="../controller/controller.php" method="post" name="produtoNew">
-            <input type="hidden" name="verificar_cod" value="1">            
+            <input type="hidden" name="produto_new" value="1">            
                 <div class="divFlex">
                     <div>
-            <label for="nome">Código</label><br>
-            <input class="inputCod" type="number" name="codigo" value="" required ><br>
+            <label for="codigo">Código</label><br>
+            <input class="inputCod fundoCinza" type="number" name="codigo" readonly value="<?=$codigo?>" required ><br>
                     </div>
                     <div>
-            <label for="codigo">Produto</label><br>
-            <input class="inputProduto fundoCinza" readonly type="text"   value=""><br><br>
+            <label for="nome">Nome do Produto</label><br>
+            <input class="inputProduto" type="text"   name="nome" value=""><br><br>
                     </div>
                     <div>
                     <label for="valor">Valor</label><br>
-                    <input class="inputValor fundoCinza" readonly  type="number" step="0.01"  value="" required><br>
+                    <input class="inputValor" type="number" step="0.01" name="valor" value="" required><br>
                     </div>
                 </div>   
             
                     <div class="divFlex">
                         <div class="estoque">
             <label for="estoque">Estoque</label><br>
-            <input class="inputnome fundoCinza" type="number" readonly  value=""><br>
+            <input class="inputnome" type="number" name="estoque" value=""><br>
                         </div>
                         <div class="estoque">
             <label for="estoque_Min">Estoque Mínimo</label><br>
-            <input class="inputnome fundoCinza" type="number" readonly  value=""><br>
+            <input class="inputnome" type="number" name="estoque_Min" value=""><br>
                         </div>
                         <div class="estoque">
             <label for="estoque_Max">Estoque Máximo</label><br>
-            <input class="inputnome fundoCinza" type="number" readonly  value=""><br>
+            <input class="inputnome" type="number" name="estoque_Max" value=""><br>
                             </div>
                     </div>
                     <br>
@@ -61,14 +68,14 @@
                        <div class="divStatus">
                         <div>
             <label for="status">Status</label><br>
-            <select  id="status" disabled class="fundoCinza">
-                <option value="1" selected >Ativo</option>
-                <option value="0" >Inativo</option>
+            <select name="status" id="status">
+                <option value="1" selected>Ativo</option>
+                <option value="0">Inativo</option>
             </select>   
                         </div>
                         <div>           
             <label for="categoria">Categoria</label><br>
-                    <select  id="categoria" disabled class="fundoCinza">
+                    <select name="categoria" id="categoria">
                                 <?php 
                         require_once "../model/Manager.php";
                         $categoria = todasCategorias();
@@ -85,10 +92,10 @@
                     </div>
                     <br>
             <label for="descricao">Descrição do Produto</label><br>
-            <textarea class="descricao fundoCinza"  readonly id="descricao" cols="30" rows="10" style="resize: none;" required></textarea><br>
+            <textarea class="descricao" name="descricao" id="descricao" cols="30" rows="10" style="resize: none;" required></textarea><br>
             <br>
             <label for="nome">Imagem</label><br>
-            <input class="inputnome" type="file" disabled  value=""><br>
+            <input class="inputnome" type="file" name="imagem" value=""><br>
             <br>
             <input class="enviar" id="enviar" type="submit" name="sbmt" value="Enviar" ><br><br>
         </form>  
@@ -97,6 +104,13 @@
 
     </div>
   
+    <?php
+        if (isset($_REQUEST["msg"])) {
+            $cod = $_REQUEST["msg"];
+            require_once "msg.php";
+            echo "<script>alert('" . $MSG[$cod] . "');</script>";
+        }
 
+        ?>
 </body>
 </html>

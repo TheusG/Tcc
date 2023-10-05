@@ -1,6 +1,3 @@
-
-
-
 <?php
 //toda a vez  que for mandar um formulario para o index, antes tem que detruir da sessão
 session_start();
@@ -49,14 +46,14 @@ if (!isset($_SESSION["FUNC-ID"]) || empty($_SESSION["FUNC-ID"])) {
             require_once "../model/Manager.php";
             $dados = dadosFuncionario($_REQUEST["email"], $senhaHash);
 
-            
+
             if ($dados["result"] == 1) { //email e senha certa
                 $_SESSION["FUNC-ID"] = $dados["Id_Usuario"];
                 $_SESSION["FUNC-NOME"] = $dados["Nome_Usuario"];
                 $_SESSION["FUNC-EMAIL"] = $dados["Email"];
                 $_SESSION["FUNC-PERFIL"] = $dados["Perfil"];
-                
-                
+
+
                 // $_SESSION["FUNC-CARGO"] = $dados["Cargo"];
                 // $_SESSION["FUNC-NOME-CARGO"] = $dados["Nome_Cargo"];
                 // $_SESSION["FUNC-NOME_CARGO"] = $dados["Nome_Cargo"];
@@ -283,7 +280,41 @@ if (isset($_REQUEST["categoria_delete"])) {
 
 // --------------------------------------------------------------Produtos---------------------------------------------//
 
+if (isset($_REQUEST["verificar_cod"])) {
+    $Cod_Produto = $_REQUEST["codigo"];
 
+    require_once "../model/Produto.class.php";
+    $codigo = new Produto;
+    $dados = $codigo->codigoProdutos();
+
+    for ($i = 0; $i < count($dados); $i++) {
+        if ($dados[$i]["Cod_Produto"] == $Cod_Produto) {
+        ?>
+            <form action="../view/produtoEdit2.php" name="form" id="myForm" method="post">
+                <!-- <input type="hidden" name="msg" value="FR26"> -->
+                <input type="hidden" name="Codigo_Produto" value="<?= $Cod_Produto; ?>">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+
+        <?php
+        }
+    }
+
+    if ($dados[$i]["Cod_Produto"] != $Cod_Produto) {
+        ?>
+        <form action="../view/produtoNew2.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="add_Prod" value="value">
+            <input type="hidden" name="Codigo_Produto" value="<?=$Cod_Produto?>">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+
+    <?php
+    }
+}
 
 if (isset($_REQUEST["produto_new"])) {
     $produto["nome"] = $_REQUEST["nome"];
@@ -297,26 +328,10 @@ if (isset($_REQUEST["produto_new"])) {
     $produto["categoria"] = $_REQUEST["categoria"];
     $produto["codigo"] = $_REQUEST["codigo"];
 
-    require_once "../model/Produto.class.php";
-    $codigo = new Produto;
-    $dados = $codigo->codigoProdutos();
-
-    for ($i = 0; $i < count($dados); $i++) {
-        if ($dados[$i]["Cod_Produto"] == $produto["codigo"]) {
-        ?>
-            <form action="../view/produtoList.php" name="form" id="myForm" method="post">
-                <input type="hidden" name="msg" value="FR26">
-            </form>
-            <script>
-                document.getElementById('myForm').submit()
-            </script>
-        <?php
-        }
-    }
     require_once "../model/Manager.php";
     $resp = adicionarProduto($produto);
 
-    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+    if ($resp == 1) { //tudo certo ao adicionar um novo produt
         ?>
         <form action="../view/produtoList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD52">
@@ -337,14 +352,21 @@ if (isset($_REQUEST["produto_new"])) {
     }
 }
 
-if (isset($_POST["PesquisaProd"])) {
-    $campo = $_REQUEST["buscar"];    
-        require_once "../model/Manager.php";
-        $result = listarProduto($campo);
-    ?>
+?>
 
-    <script>console.log('teste');</script>
-    
+<?php
+
+
+if (isset($_POST["PesquisaProd"])) {
+    $campo = $_REQUEST["buscar"];
+    require_once "../model/Manager.php";
+    $result = listarProduto($campo);
+?>
+
+    <script>
+        console.log('teste');
+    </script>
+
     <?php
 
 }
@@ -361,6 +383,7 @@ if (isset($_REQUEST["produto_edit"])) {
     $produto["status"] = $_REQUEST["status"];
     $produto["imagem"] = $_REQUEST["imagem"];
     $produto["categoria"] = $_REQUEST["categoria"];
+    $produto["cod"] = $_REQUEST["cod"];
     require_once "../model/Manager.php";
     $resp = editarProduto($produto);
 
@@ -560,7 +583,7 @@ if (isset($_REQUEST["entregador_delete"])) {
         <script>
             document.getElementById('myForm').submit()
         </script>
-<?php
+    <?php
     }
 }
 
@@ -573,7 +596,7 @@ if (isset($_REQUEST["cargo_new"])) {
     $resp = adicionarCargo($cargo);
 
     if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
-        ?>
+    ?>
         <form action="../view/cargoList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD52">
         </form>
@@ -642,7 +665,7 @@ if (isset($_REQUEST["cargo_delete"])) {
         <script>
             document.getElementById('myForm').submit()
         </script>
-        <?php
+    <?php
     }
 }
 
@@ -675,7 +698,7 @@ if (isset($_REQUEST["config_edit"])) {
         <script>
             document.getElementById('myForm').submit()
         </script>
-    <?php
+<?php
     }
 }
 
