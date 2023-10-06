@@ -1,6 +1,5 @@
 .divCardapio{
     width: 100%;
-   
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,6 +16,7 @@
     border: solid 1px yellow;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 .divCategoria{
     width: 100%;
@@ -41,4 +41,14 @@
 .conteinerPizza button{
     width: 50%;
     margin: 0 15px;
+}
+@media (max-width:1050px) {
+    .conteinerPizza{
+        width: 250px;
+        border: solid 1px red;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+   
 }
