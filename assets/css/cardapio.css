@@ -1,0 +1,44 @@
+.divCardapio{
+    width: 100%;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    
+}
+.conteinerCardapio{
+    width: 80%;
+    height: 100%;
+    border: solid 1px white;
+}
+.conteinerCategoria{
+    width: 100%;
+    border: solid 1px yellow;
+    display: flex;
+    flex-wrap: wrap;
+}
+.divCategoria{
+    width: 100%;
+    height: 40px;
+    background-color: white;
+    text-align: center;
+}
+.conteinerPizza{
+    width: 30%;
+    border: solid 1px red;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.conteinerPizza img{
+    width: 70%;
+}
+.conteinerPizza p{
+    width: 70%;
+    text-align: justify;
+}
+.conteinerPizza button{
+    width: 50%;
+    margin: 0 15px;
+}
