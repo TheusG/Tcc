@@ -42,8 +42,13 @@
     height: 7%;
     border: solid 1px yellow;
     display: flex;
-
-
+    justify-content: space-evenly;
+    align-items: center;
+}
+.menuHorizontal a{
+  color: darkorange;
+  font-style: none;
+  border: solid 1px darkorange;
 }
 
 @media (max-width:830px){
