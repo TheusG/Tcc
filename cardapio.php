@@ -290,7 +290,7 @@
       </div>
 
     </div>
-    <h2>©2023 copyright - Desenvolvedora CodeWave</h2>
+    <h2>©2023 Copyright - Desenvolvedora CodeWave</h2>
 
 
   </footer>
