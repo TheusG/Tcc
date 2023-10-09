@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.dadosCLiente{
+    width: 100%;
+}
+input{
+    padding: 10px;
+    font-size: 18px;
+    width: 100%;
+}
+.conteinerEndereco{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.padrão{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.bairro{
+    width: 15%;
+}
+.complemento{
+    width: 60%;
+}
+.completo{
+    width: 95%;
+}
