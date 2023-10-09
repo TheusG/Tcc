@@ -23,6 +23,11 @@
 </head>
 
 <body>
+  <?php
+  require_once "adm/model/Produto.class.php";
+  $prod = new Produto();
+  $pizza_Sal = $prod->exibirPizzaSal();
+  ?>
 
   <header>
     <a href="index.html">
@@ -34,8 +39,7 @@
     </a>
     <nav>
       <ul class="nav-links">
-        <li class="lioff"> <img src="image/semfoto-removebg-preview.png" alt="" class="imgMenuReduzido"><button
-            id="abrirLogin2">Login</button></li>
+        <li class="lioff"> <img src="image/semfoto-removebg-preview.png" alt="" class="imgMenuReduzido"><button id="abrirLogin2">Login</button></li>
         <li><a id="home" href="index.html">Home</a></li>
         <li><a id="sobre" href="#">Cardápio</a></li>
         <li><a id="sobre" href="sobre.php">Sobre</a></li>
@@ -138,48 +142,36 @@
           <h2>$Categoria$</h2>
         </div>
 
-          <!-- DIv da pizza -->
-         
-        <div class="conteinerPizza">
-          <br>
-          <h3>$Nome da Pizza$</h3>
-          <img src="image/pizza.jpeg" alt="">
-          <p>$Descricao $
-            asdasda
-            sdasd
-            dasda
-            sdasda
-            sdasdasdasd
+        <!-- DIv da pizza -->
 
-          </p>
-          <br>
-          <p>2,50</p>
-          <button>Pedir Agora</button>
-          <br>
+        <?php
+        for ($i = 0; $i < count($pizza_Sal); $i++) {
 
-        </div>
+          echo "<div class=\"conteinerPizza\">";
+          echo "<br>";
+          print_r($pizza_Sal[$i]["Nome_Produto"]);
+          echo "<img src=\"image/pizza.jpeg\">";
+          echo "<p>Descricao ";
+          echo "  asdasda";
+          echo "  sdasd";
+          echo "  dasda";
+          echo "  sdasda";
+          echo "  sdasdasdasd";
 
-           <!-- DIv da pizza -->
+          echo "</p>";
+          echo "<br>";
+          echo "<button>Pedir Agora</button>";
+          echo "<br>";
 
-        <div class="conteinerPizza">
-          <br>
-          <h3>$Nome da Pizza$</h3>
-          <img src="image/pizza.jpeg" alt="">
-          <p>$Descricao $
-            asdasda
-            sdasd
-            dasda
-            sdasda
-            sdasdasdasd
+          echo "</div>";
+        }
 
-          </p>
-          <br>
-          <button>Pedir Agora</button>
-          <br>
+        ?>
 
 
-        </div>
-        <div class="conteinerPizza">
+        <!-- DIv da pizza -->
+
+        <!-- <div class="conteinerPizza">
           <br>
           <h3>$Nome da Pizza$</h3>
           <img src="image/pizza.jpeg" alt="">
@@ -215,6 +207,24 @@
 
 
         </div>
+        <div class="conteinerPizza">
+          <br>
+          <h3>$Nome da Pizza$</h3>
+          <img src="image/pizza.jpeg" alt="">
+          <p>$Descricao $
+            asdasda
+            sdasd
+            dasda
+            sdasda
+            sdasdasdasd
+
+          </p>
+          <br>
+          <button>Pedir Agora</button>
+          <br>
+
+
+        </div> -->
 
       </div>
 
@@ -279,5 +289,7 @@
 
 
 </body>
+
+
 
 </html>
