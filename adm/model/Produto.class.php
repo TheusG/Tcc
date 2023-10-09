@@ -26,7 +26,7 @@ class Produto{
 
     public function exibirPizzaSal(){
         $result = array();
-        $cmd = $this->pdo->query("SELECT produto.*, categoria.* FROM produto INNER JOIN categoria on produto.Categoria = categoria.Id_Categoria WHERE Categoria = 1 AND Status_Produto = 1");
+        $cmd = $this->pdo->query("SELECT produto.*, categoria.Id_Categoria, categoria.Nome_Categoria FROM produto INNER JOIN categoria on produto.Categoria = categoria.Id_Categoria WHERE Categoria = 1 AND Status_Produto = 1");
         $result = $cmd->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }

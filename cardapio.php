@@ -139,7 +139,12 @@
       <div class="conteinerCategoria">
 
         <div class="divCategoria">
-          <h2>$Categoria$</h2>
+          <h2>
+          <?php 
+            print_r($pizza_Sal[0]["Nome_Categoria"]);
+            ?>
+
+          </h2>
         </div>
 
         <!-- DIv da pizza -->
@@ -149,16 +154,24 @@
 
           echo "<div class=\"conteinerPizza\">";
           echo "<br>";
-          print_r($pizza_Sal[$i]["Nome_Produto"]);
-          echo "<img src=\"image/pizza.jpeg\">";
-          echo "<p>Descricao ";
-          echo "  asdasda";
-          echo "  sdasd";
-          echo "  dasda";
-          echo "  sdasda";
-          echo "  sdasdasdasd";
-
-          echo "</p>";
+        ?>
+          <h3>
+            <?php
+            print_r($pizza_Sal[$i]["Nome_Produto"]);
+            ?>
+          </h3>
+        <?php
+          
+        ?>
+          <img src="imagensProdutos/<?php print_r($pizza_Sal[$i]["Imagem"])?>" alt="Imagem">
+          
+          
+          <p>
+            <?php 
+            print_r($pizza_Sal[$i]["Desc_Produto"]);
+            ?>
+          </p>
+          <?php
           echo "<br>";
           echo "<button>Pedir Agora</button>";
           echo "<br>";
