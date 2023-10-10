@@ -39,10 +39,11 @@
 }
 .conteinerPizza img{
     width: 70%;
+    height: 70%;
 }
 .conteinerPizza p{
     width: 70%;
-    text-align: justify;
+    text-align: left;
 }
 .conteinerPizza button{
     width: 50%;
