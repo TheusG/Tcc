@@ -23,11 +23,7 @@
 </head>
 
 <body>
-  <?php
-  require_once "adm/model/Produto.class.php";
-  $prod = new Produto();
-  $pizza_Sal = $prod->exibirPizzaSal();
-  ?>
+  
 
   <header>
     <a href="index.html">
@@ -135,13 +131,28 @@
     <div class="conteinerCardapio">
 
       <!-- Div da categoria -->
+      <?php
+        require_once "adm/model/Produto.class.php";
+        $prod = new Produto();
+        $produto = $prod->exibirProduto();
+        
+      ?>
 
       <div class="conteinerCategoria">
 
+        <?php
+        $controle = 999;
+          for ($i = 0; $i < count($produto); $i++) { 
+            
+            if($controle != $produto[$i]["Categoria"]){
+              $controle = $produto[$i]["Categoria"];
+        ?>
         <div class="divCategoria">
           <h2>
           <?php 
-            print_r($pizza_Sal[0]["Nome_Categoria"]);
+            print_r($produto[$i]["Nome_Categoria"]);
+
+            
             ?>
 
           </h2>
@@ -150,25 +161,26 @@
         <!-- DIv da pizza -->
 
         <?php
-        for ($i = 0; $i < count($pizza_Sal); $i++) {
+
+          }
 
           echo "<div class=\"conteinerPizza\">";
           echo "<br>";
         ?>
           <h3>
             <?php
-            print_r($pizza_Sal[$i]["Nome_Produto"]);
+            print_r($produto[$i]["Nome_Produto"]);
             ?>
           </h3>
         <?php
           
         ?>
-          <img src="imagensProdutos/<?php print_r($pizza_Sal[$i]["Imagem"])?>" alt="Imagem">
+          <img src="imagensProdutos/<?php print_r($produto[$i]["Imagem"])?>" alt="Imagem">
           
           
           <p>
             <?php 
-            print_r($pizza_Sal[$i]["Desc_Produto"]);
+            print_r($produto[$i]["Desc_Produto"]);
             ?>
           </p>
           <?php
@@ -240,17 +252,7 @@
         </div> -->
 
       </div>
-
-
       <!-- Div da categoria -->
-
-
-
-
-
-
-
-
     </div>
 
   </div>
