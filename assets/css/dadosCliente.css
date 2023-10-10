@@ -38,6 +38,13 @@ input{
     flex: 1 0 400px;
    
 }
+.padrão2{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 400px;
+    margin: 0 15px;
+   
+}
 .bairro{
     width: 15%;
     
