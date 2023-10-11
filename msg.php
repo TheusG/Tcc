@@ -65,11 +65,14 @@ $MSG = array(
 	"FR24" => "Caracteres não condizentes com as regras do sistema.",
 	"FR25" => "Caracteres não identificados.",
     "FR26" => "O código informado já existe.",
+    "FR27" => "Falha no cadastro de usuário.",
 
     // 50 A 99 SUCESSOS
     "FR50" => "Formulário enviado com sucesso.",
     "FR51" => "Arquivo enviado com sucesso.",
     "FR52" => "Preencha os campos...",
+    "FR53" => "Usuário cadastrado com sucesso",
+    
  
 
     // série OA: operações de Acesso / SESSÃO
