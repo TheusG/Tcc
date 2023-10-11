@@ -32,7 +32,7 @@
                       <input type="password">
                       <br><br>
                       <div class="divButton">
-                          <button> entrar </button>
+                          <button> Entrar </button>
                       </div>
                   </form>
       
