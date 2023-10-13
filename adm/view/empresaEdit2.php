@@ -113,7 +113,7 @@
             <input class="inputnome fundoCinza" readonly type="text" name="site" maxlength="50" value="<?=$empresa["Site"]?>"><br><br>
                         </div>
                         <div class="estoque">
-            <label for="data">Data</label><br>
+            <label for="data">Última modificação</label><br>
             <input class="inputnome fundoCinza" readonly type="date" name="data" value="<?=$empresa["Data"]?>"><br><br>
                         </div> 
                     </div>

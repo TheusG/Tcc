@@ -34,10 +34,7 @@ require_once "admVerifSession.php";
 
     ?>
     <header>
-        <div class="logo">
-
-
-            
+        <div class="logo">   
             <img src="../../image/<?php for ($i = 0; $i < count($info); $i++) {
                     echo $info[$i]["Logo"];
                 } ?>" alt="Logo">
@@ -86,7 +83,7 @@ require_once "admVerifSession.php";
                 echo "<a href=\"empresaEdit2.php\" target=\"screen\">Empresa</a>";
             }
 
-            var_dump($info);
+            
             ?>
 
 

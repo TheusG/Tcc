@@ -110,8 +110,8 @@
             <input class="inputnome" type="text" name="site" maxlength="50" value="<?=$empresa["Site"]?>"><br><br>
                         </div>
                         <div class="estoque">
-            <label for="data">Data</label><br>
-            <input class="inputnome" type="date" name="data" value="<?=$empresa["Data"]?>"><br><br>
+            <label for="data">Última modificação</label><br>
+            <input class="inputnome fundoCinza" type="date" name="data" value="<?=$empresa["Data"]?>"><br><br>
                         </div> 
                     </div>
                     <!-- <div class="divFlex"> -->

@@ -562,9 +562,9 @@ function editarEmpresa($empresa)
 {
     require_once "Conexao.php";
     if ($empresa["logo"] == "") {
-        $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = '{$empresa["data"]}'";
+        $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = now()";
     } else {
-        $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = '{$empresa["data"]}', Logo = '{$empresa["logo"]}'";
+        $sql = "UPDATE empresa SET Nome_Empresa = '{$empresa["nome"]}', Fantasia = '{$empresa["fantasia"]}', Cnpj = '{$empresa["cnpj"]}', Ie = '{$empresa["ie"]}', Cep = '{$empresa["cep"]}', Endereco = '{$empresa["endereco"]}', Numero = '{$empresa["numero"]}', Bairro = '{$empresa["bairro"]}' , Cidade = '{$empresa["cidade"]}', Uf = '{$empresa["uf"]}', Telefone = '{$empresa["telefone"]}', Site = '{$empresa["site"]}', Data = now(), Logo = '{$empresa["logo"]}'";
     }
     $result = $conn->query($sql);
     if ($result == true) { //tudo certo 
@@ -871,7 +871,7 @@ function atualizarConfig($config)
 {
 
     require_once "Conexao.php";
-    $sql = "UPDATE configuracao SET Data = '{$config["data"]}', Abre = '{$config["abre"]}', Fecha = '{$config["fecha"]}', NrPedido = '{$config["pedido"]}', Mensagem = '{$config["mensagem"]}'";
+    $sql = "UPDATE configuracao SET Data = now(), Abre = '{$config["abre"]}', Fecha = '{$config["fecha"]}', NrPedido = '{$config["pedido"]}', Mensagem = '{$config["mensagem"]}'";
     $result = $conn->query($sql);
     if ($result == true) { //tudo certo 
         $conn->close();
