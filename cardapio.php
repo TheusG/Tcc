@@ -23,23 +23,36 @@
 </head>
 
 <body>
-  
+  <?php
+  require_once "adm/model/Empresa.class.php";
+  $empresa = new Empresa();
+  $info = $empresa->infoEmpresa();
+
+
+  ?>
+
 
   <header>
-    <a href="index.html">
+    <a href="index.php">
       <div class="logo">
-        <img src="image/logoPizzaria1.png" alt="">
-        <p>Five Stars</p>
+
+        <img src="image/<?php for ($i = 0; $i < count($info); $i++) {
+                          echo $info[$i]["Logo"];
+                        } ?>" alt="Logo">
+
+        <p><?php for ($i = 0; $i < count($info); $i++) {
+              echo $info[$i]["Fantasia"];
+            } ?></p>
         <i class="fa-solid fa-pizza-slice"></i>
       </div>
     </a>
     <nav>
       <ul class="nav-links">
         <li class="lioff"> <img src="image/semfoto-removebg-preview.png" alt="" class="imgMenuReduzido"><button id="abrirLogin2">Login</button></li>
-        <li><a id="home" href="index.html">Home</a></li>
-        <li><a id="sobre" href="#">Cardápio</a></li>
+        <li><a id="home" href="index.php">Home</a></li>
+        <li><a id="sobre" href="cardapio.php">Cardápio</a></li>
         <li><a id="sobre" href="sobre.php">Sobre</a></li>
-        <li><a id="sobre" href="contatos.html">Contato</a></li>
+        <li><a id="sobre" href="contatos.php">Contato</a></li>
       </ul>
     </nav>
     <a href=""><i class="fa-solid fa-cart-shopping" id="carrinho"></i></a>
@@ -132,58 +145,58 @@
 
       <!-- Div da categoria -->
       <?php
-        require_once "adm/model/Produto.class.php";
-        $prod = new Produto();
-        $produto = $prod->exibirProduto();
-        
+      require_once "adm/model/Produto.class.php";
+      $prod = new Produto();
+      $produto = $prod->exibirProduto();
+
       ?>
 
       <div class="conteinerCategoria">
 
         <?php
         $controle = 999;
-          for ($i = 0; $i < count($produto); $i++) { 
-            
-            if($controle != $produto[$i]["Categoria"]){
-              $controle = $produto[$i]["Categoria"];
+        for ($i = 0; $i < count($produto); $i++) {
+
+          if ($controle != $produto[$i]["Categoria"]) {
+            $controle = $produto[$i]["Categoria"];
         ?>
-        <div class="divCategoria">
-          <h2>
-          <?php 
-            print_r($produto[$i]["Nome_Categoria"]);
+            <div class="divCategoria">
+              <h2>
+                <?php
+                print_r($produto[$i]["Nome_Categoria"]);
 
-            
-            ?>
 
-          </h2>
-        </div>
+                ?>
 
-        <!-- DIv da pizza -->
+              </h2>
+            </div>
 
-        <?php
+            <!-- DIv da pizza -->
+
+          <?php
 
           }
 
           echo "<div class=\"conteinerPizza\">";
           echo "<br>";
-        ?>
+          ?>
           <h3>
             <?php
             print_r($produto[$i]["Nome_Produto"]);
             ?>
           </h3>
-        <?php
-          
-        ?>
-          <img src="imagensProdutos/<?php print_r($produto[$i]["Imagem"])?>" alt="Imagem">
-          
-          
+          <?php
+
+          ?>
+          <img src="imagensProdutos/<?php print_r($produto[$i]["Imagem"]) ?>" alt="Imagem">
+
+
           <p>
-            <?php 
+            <?php
             print_r($produto[$i]["Desc_Produto"]);
             ?>
           </p>
-          <?php
+        <?php
           echo "<br>";
           echo "<button>Pedir Agora</button>";
           echo "<br>";

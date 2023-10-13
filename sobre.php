@@ -13,24 +13,35 @@
     <title>Sobre</title>
 </head>
 <body>
-    <?php 
-    include('logar.php');
-    ?>
+<?php
+  require_once "adm/model/Empresa.class.php";
+  $empresa = new Empresa();
+  $info = $empresa->infoEmpresa();
+
+
+  ?>
+    
 
     <header> 
-        <a href="index.html">
+        <a href="index.php">
         <div class="logo">
-            <img src="image/logoPizzaria1.png" alt="">
-            <p>Five Stars</p>
+        <img src="image/<?php for ($i = 0; $i < count($info); $i++) {
+                          echo $info[$i]["Logo"];
+                        } ?>" alt="Logo">
+
+        <p><?php for ($i = 0; $i < count($info); $i++) {
+              echo $info[$i]["Fantasia"];
+            } ?></p>
             <i class="fa-solid fa-pizza-slice"></i>
         </div>
       </a>
         <nav>
           <ul class="nav-links">
             <li class="lioff"> <img src="image/semfoto-removebg-preview.png" alt="" class="imgMenuReduzido"><a href="">Entrar </a></li>
-            <li><a id="home" href="index.html">Home</a></li>
-            <li><a id="sobre" href="#">Cardápio</a></li>
-            <li><a id="sobre" href="contatos.html">Contato</a></li>
+            <li><a id="home" href="index.php">Home</a></li>
+            <li><a id="sobre" href="cardapio.php">Cardápio</a></li>
+            <li><a id="sobre" href="sobre.php">Sobre</a></li>
+            <li><a id="sobre" href="contatos.php">Contato</a></li>
           </ul>
         </nav>
         <a href=""><i class="fa-solid fa-cart-shopping" id="carrinho"></i></a>
