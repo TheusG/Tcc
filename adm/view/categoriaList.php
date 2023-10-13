@@ -49,6 +49,14 @@ require_once "admVerifSession.php";
         </table>
 
         <table class = "tabelaAdm">
+        <?php 
+                if ($categoria["result"] == 0) {
+                    echo "<tr><td>Nenhuma categoria encontrada...</tr></td>";
+                }else{
+
+                
+            
+            ?>
             <tr>
                 <!-- <th class="tabelaAdmTh">Identificador</th> -->
                 <th class="tabelaAdmTh">Nome</th>
@@ -81,7 +89,8 @@ require_once "admVerifSession.php";
                     echo "</td>";
                 
                 echo "</tr>";
-             } 
+             }
+        } 
             ?>
         </table>
     </div>
