@@ -49,6 +49,14 @@ require_once "admVerifSession.php";
         </table>
 
         <table class = "tabelaAdm">
+        <?php 
+                if ($entregador["result"] == 0) {
+                    echo "<tr><td>Nenhum entregador encontrado...</tr></td>";
+                }else{
+
+                
+            
+            ?>
             <tr>
                 <th class="tabelaAdmTh">Nome</th>
                 <th class="tabelaAdmTh">Email</th>
@@ -87,7 +95,8 @@ require_once "admVerifSession.php";
                     echo "</td>";
                 
                 echo "</tr>";
-             } 
+             }
+        } 
             ?>
         </table>
     </div>

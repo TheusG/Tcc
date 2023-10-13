@@ -48,7 +48,20 @@ require_once "admVerifSession.php";
         
         </table>
 
+        <?php  
+     
+        ?>
+
         <table class = "tabelaAdm">
+            <?php 
+                if ($dados["result"] == 0) {
+                    echo "<tr><td>Nenhum funcionário encontrado...</tr></td>";
+                }else{
+
+                
+            
+            ?>
+
             <tr>
                 <!-- <th class="tabelaAdmTh">Identificador</th> -->
                 <th class="tabelaAdmTh">Nome</th>
@@ -108,6 +121,8 @@ require_once "admVerifSession.php";
                 
                 echo "</tr>";
              } 
+
+            }
             ?>
         </table>
     </div>

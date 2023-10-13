@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10/10/2023 às 16:43
+-- Tempo de geração: 13/10/2023 às 20:16
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -93,6 +93,18 @@ INSERT INTO `cep` (`Id`, `Cep`, `Cidade`, `Logradouro`, `Bairro`, `Tipo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `cliente`
+--
+
+CREATE TABLE `cliente` (
+  `Id_Cliente` int(11) NOT NULL,
+  `Referencia` varchar(40) DEFAULT NULL,
+  `Usuario` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `configuracao`
 --
 
@@ -110,7 +122,7 @@ CREATE TABLE `configuracao` (
 --
 
 INSERT INTO `configuracao` (`Id_Config`, `Data`, `Abre`, `Fecha`, `NrPedido`, `Mensagem`) VALUES
-(1, '2023-02-14', '19:00:00', '23:40:00', 1, 'Bla bl jjjjj');
+(1, '2023-10-13', '18:00:00', '23:40:00', 1, 'Bla bl jjjjjssddddfc');
 
 -- --------------------------------------------------------
 
@@ -141,7 +153,7 @@ CREATE TABLE `empresa` (
 --
 
 INSERT INTO `empresa` (`Id_Empresa`, `Nome_Empresa`, `Fantasia`, `Cnpj`, `Ie`, `Cep`, `Endereco`, `Numero`, `Bairro`, `Cidade`, `Uf`, `Telefone`, `Site`, `Data`, `Logo`) VALUES
-(1, 'Pizzaria Five Stars', 'Five Stars', '34.094.488/0001-85', '419.405.659.082', '08253-000', 'Rua Virgínia Ferni', '400', 'José Bonifácio', 'São Paulo', 'SP', '(11) 22547-627', 'fivestars.com.br', '2023-03-08', 'logo pizzaria1.png');
+(1, 'Pizzaria Five Stars', 'Five Stars', '34.094.488/0001-85', '419.405.659.082', '08253-000', 'Rua Virgínia Ferni', '400', 'José Bonifácio', 'São Paulo', 'SP', '(11) 22547-627', 'fivestars.com.br', '2023-10-13', 'logoPizzaria1.png');
 
 -- --------------------------------------------------------
 
@@ -361,6 +373,13 @@ ALTER TABLE `cep`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Índices de tabela `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`Id_Cliente`),
+  ADD KEY `Usuario` (`Usuario`);
+
+--
 -- Índices de tabela `configuracao`
 --
 ALTER TABLE `configuracao`
@@ -433,6 +452,12 @@ ALTER TABLE `cep`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de tabela `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `configuracao`
 --
 ALTER TABLE `configuracao`
@@ -477,6 +502,12 @@ ALTER TABLE `usuario`
 --
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `cliente`
+--
+ALTER TABLE `cliente`
+  ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`Usuario`) REFERENCES `usuario` (`Id_Usuario`);
 
 --
 -- Restrições para tabelas `entregador`

@@ -46,8 +46,8 @@
 
             <div class="divFlex">
                 <div>
-                    <label for="data">Data</label><br>
-                    <input class="inputProduto" type="date" name="data" value="<?= $config["Data"] ?>" required maxlength="5"><br><br>
+                    <label for="data">Última modificação</label><br>
+                    <input class="inputProduto fundoCinza" type="date" readonly name="data" value="<?= $config["Data"] ?>" required maxlength="5"><br><br>
                 </div>
 
                 <div>

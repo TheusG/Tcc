@@ -49,6 +49,14 @@ require_once "admVerifSession.php";
         </table>
 
         <table class = "tabelaAdm">
+        <?php 
+                if ($cargo["result"] == 0) {
+                    echo "<tr><td>Nenhum cargo encontrado...</tr></td>";
+                }else{
+
+                
+            
+            ?>
             <tr>
                 <!-- <th class="tabelaAdmTh">Identificador</th> -->
                 <th class="tabelaAdmTh">Nome</th>
@@ -76,6 +84,7 @@ require_once "admVerifSession.php";
                 
                 echo "</tr>";
              } 
+        }
             ?>
         </table>
     </div>

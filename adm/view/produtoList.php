@@ -90,6 +90,14 @@ require_once "admVerifSession.php";
             </table>
 
             <table class="tabelaAdm">
+            <?php 
+                if ($produto["result"] == 0) {
+                    echo "<tr><td>Nenhum produto encontrado...</tr></td>";
+                }else{
+
+                
+            
+            ?>
                 <tr>
                     <!-- <th class="tabelaAdmTh">Identificador</th> -->
                     <th class="tabelaAdmTh">Código</th>
@@ -142,6 +150,7 @@ require_once "admVerifSession.php";
 
                     echo "</tr>";
                 }
+            }
                 ?>
             </table>
         </div>

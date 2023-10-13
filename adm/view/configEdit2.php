@@ -42,6 +42,7 @@
         <br>
     </div>
 
+    
     <div id="admForm"><!-- esta no adm.css -->
         <form action="../controller/controller.php" method="post" name="admNew">
             <input type="hidden" name="config_edit" value="1">
@@ -49,7 +50,7 @@
 
             <div class="divFlex">
                 <div>
-                    <label for="data">Data</label><br>
+                    <label for="data">Última modificação</label><br>
                     <input class="inputProduto fundoCinza" readonly type="date" name="data" value="<?= $config["Data"] ?>" required maxlength="60"><br><br>
                 </div>
 
