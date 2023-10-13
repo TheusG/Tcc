@@ -110,6 +110,9 @@
         });
     </script>
 
+<script src="scripts.js"></script>
+  <script src="https://kit.fontawesome.com/5bb743cf48.js" crossorigin="anonymous"></script>
+
 
     
 </body>

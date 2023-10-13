@@ -38,7 +38,7 @@
     <nav>
       <ul class="nav-links">
         <li class="lioff"> <img src="image/semfoto-removebg-preview.png" alt="" class="imgMenuReduzido"><a href="">Entrar </a></li>
-        <li><a id="home" href="index.html">Home</a></li>
+        <li><a id="home" href="index.php">Home</a></li>
         <li><a id="sobre" href="cardapio.php">Cardápio</a></li>
         <li><a id="sobre" href="sobre.php">Sobre</a></li>
         <li><a id="sobre" href="contatos.php">Contato</a></li>
