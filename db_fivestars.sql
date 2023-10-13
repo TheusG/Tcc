@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13/10/2023 às 18:45
+-- Tempo de geração: 13/10/2023 às 20:16
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -122,7 +122,7 @@ CREATE TABLE `configuracao` (
 --
 
 INSERT INTO `configuracao` (`Id_Config`, `Data`, `Abre`, `Fecha`, `NrPedido`, `Mensagem`) VALUES
-(1, '2023-10-13', '19:00:00', '23:40:00', 1, 'Bla bl jjjjjssddddfc');
+(1, '2023-10-13', '18:00:00', '23:40:00', 1, 'Bla bl jjjjjssddddfc');
 
 -- --------------------------------------------------------
 
