@@ -25,11 +25,10 @@ if (isset($_REQUEST["add_cliente"])) {
         </script>
     <?php
 
-    }
-
-    require_once "../adm/model/Ferramentas.php";
+    }else{
+        require_once "../model/Ferramentas.php";
     $cliente["senha"] = hash256($_REQUEST["senha"]);
-    require_once "model/manager.php";
+    require_once "../model/manager.php";
     $resp = adicionarCliente($cliente);
 
     if ($resp == 1) {
@@ -51,6 +50,9 @@ if (isset($_REQUEST["add_cliente"])) {
         </script>
 <?php
     }
+}
+
+    
 }
 
 

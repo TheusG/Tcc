@@ -241,6 +241,14 @@
     <script src="https://kit.fontawesome.com/5bb743cf48.js" crossorigin="anonymous"></script>
     
 
+    <?php
+        if (isset($_REQUEST["msg"])) {
+            $cod = $_REQUEST["msg"];
+            require_once "msg.php";
+            echo "<script>alert('" . $MSG[$cod] . "');</script>";
+        }
+
+        ?>
 </body>
 </html>
 

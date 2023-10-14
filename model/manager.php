@@ -2,7 +2,7 @@
 
     function adicionarCliente($cliente){
     
-    require_once "adm/model/Conexao.php";
+    require_once "../adm/model/Conexao.php";
     $sql = "INSERT INTO usuario (Senha, Email) VALUES ('{$cliente["senha"]}','{$cliente["email"]}')";
     $result = $conn->query($sql);
     $ultimoid = mysqli_insert_id($conn);
