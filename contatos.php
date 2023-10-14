@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contatos</title>
+  <title>Contato</title>
   <link rel="stylesheet" href="assets/css/contatos.css">
   <link rel="stylesheet" href="style.css">
   <link rel="website icon" type="png" href="image/logoPizzaria1.png">
@@ -99,8 +99,12 @@
   <div class="sessao" id="idForm">
     <div class="formulario">
       <div class="imagem-form">
-        <img src="image/logoPizzaria1.png" alt="">
-        <h2> <i class="fa-solid fa-star"></i> Five Stars <i class="fa-solid fa-star"></i></h2>
+      <img src="image/<?php for ($i = 0; $i < count($info); $i++) {
+          echo $info[$i]["Logo"];
+        } ?>" alt="Logo">
+        <h2> <i class="fa-solid fa-star"></i> <?php for ($i = 0; $i < count($info); $i++) {
+              echo $info[$i]["Fantasia"];
+            } ?> <i class="fa-solid fa-star"></i></h2>
         <br>
       </div>
       <form action="">

@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="assets/css/sobre.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="logar.css">
-    <link rel="website icon" type="png"
-    href="view/img/logo pizzaria1.png">
+    <link rel="website icon" type="png" href="image/logoPizzaria1.png">
     
     <title>Sobre</title>
 </head>

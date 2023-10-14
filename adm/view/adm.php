@@ -9,8 +9,9 @@ require_once "admVerifSession.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Administração</title>
     <link rel="stylesheet" href="css/adm.css">
+    <link rel="website icon" type="png" href="../../image/logoPizzaria1.png">
     <script src="../libs/jquery.min.js"></script>
     <script>
         function ExecutaLogout() {

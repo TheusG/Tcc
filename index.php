@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Five Stars</title>
     
     <link href="assets/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link href="assets/css/carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="website icon" type="png"
-    href="view/img/logo pizzaria1.png">
+    <link rel="website icon" type="png" href="image/logoPizzaria1.png">
     <link rel="stylesheet" href="assets/css/logar.css">
 
   <script src="assets/js/jquery-3.7.0.min.js"></script>

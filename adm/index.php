@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Administração</title>
   <link rel="stylesheet" href="view/css/style.css">
-  <link rel="website icon" type="png" href="view/img/logo pizzaria1.png">
+  <link rel="website icon" type="png" href="../image/logoPizzaria1.png">
 </head>
 
 <body>
