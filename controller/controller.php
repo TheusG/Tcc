@@ -15,6 +15,24 @@ if (isset($_REQUEST["add_cliente"])) {
 
     }
 
+    require_once "../model/manager.php";
+    $verifEmail = todosEmails();
+
+    for ($i = 0; $i < $verifEmail["num"]; $i++){
+        
+        if($verifEmail[$i]["Email"] == $cliente["email"]){
+            ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR28">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+        <?php
+        }
+    }
+
+
     if ($_REQUEST["senha"] != $_REQUEST["confSenha"]) {
     ?>
         <form action="../index.php" name="form" id="myForm" method="post">

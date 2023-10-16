@@ -66,12 +66,14 @@ $MSG = array(
 	"FR25" => "Caracteres não identificados.",
     "FR26" => "O código informado já existe.",
     "FR27" => "Falha no cadastro de usuário.",
+    "FR28" => "Email já cadastrado.",
 
     // 50 A 99 SUCESSOS
     "FR50" => "Formulário enviado com sucesso.",
     "FR51" => "Arquivo enviado com sucesso.",
     "FR52" => "Preencha os campos...",
     "FR53" => "Usuário cadastrado com sucesso",
+    
     
  
 
