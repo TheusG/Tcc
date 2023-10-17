@@ -13,6 +13,8 @@ const loginbutton = document.querySelector('#abrirLogin');
 const login = document.querySelector('.megaConteiner');
 const exitbutton = document.querySelector('#exitButtonn');
 
+
+
 loginbutton2.addEventListener('click', () => {
   login.classList.toggle('megaConteinerOn');
   menu.classList.toggle('nav-active');
@@ -108,3 +110,16 @@ function exibirProximaImagem() {
 
 
 
+  const botaoCardapio = document.querySelector('#botaoCardapio');
+const ConteinerProduto = document.querySelector('#idConteinerProduto');
+const quitButton = document.querySelector('#quitButton');
+
+botaoCardapio.addEventListener('click', () => {
+  ConteinerProduto.classList.toggle('conteinerProdutoOn');
+});
+
+quitButton.addEventListener('click', () => {
+   
+    ConteinerProduto.classList.remove('conteinerProdutoOn'); // Remova a classe megaConteinerOn
+    ConteinerProduto.classList.add('conteinerProdutoOf'); // Adicione a classe megaConteiner
+  });

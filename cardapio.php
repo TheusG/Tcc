@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="website icon" type="png" href="image/logoPizzaria1.png">
   <link rel="stylesheet" href="assets/css/logar.css">
-
+  <link rel="stylesheet" href="assets/css/confirmarProduto.css">
 
   <script src="assets/js/jquery-3.7.0.min.js"></script>
   <script src="assets/js/jquery.mask.js]"></script>
@@ -133,9 +133,7 @@
 
 
 
-  </div>
-  </div>
-  </div>
+ 
 
   <!-- Area de ediçao -->
 
@@ -198,12 +196,12 @@
           </p>
         <?php
           echo "<br>";
-          echo "<button>Pedir Agora</button>";
+          echo "<button Id=botaoCardapio>Pedir agora</button>";
           echo "<br>";
 
           echo "</div>";
         }
-
+       
         ?>
 
 
@@ -269,14 +267,40 @@
     </div>
 
   </div>
-
-
-
-
-
-
-
   <!-- Area de ediçao -->
+
+
+
+<!-- tela de confirmar pedido -->
+
+
+
+
+<div id="idConteinerProduto" class="conteinerProdutoOf">
+      <input type="button" id="quitButton" value="X">
+
+        <div class="divBackground"><img src="image/toji.jpg" alt=""></div>
+        <div class="divImg">
+            <img src="image/pizza.jpeg" alt="">
+        </div>
+        <div class="divNome">
+            <h2>$Nome da pizza$</h2>
+            <p>$Lorem ipsum dolor sit amet. Et velit sapiente 33 perferendis neque ut aliquid similique a eaque
+                sapiente. Et repellendus deserunt ut nihil ipsam a vero dolorem. Qui ipsum iusto et delectus
+                perspiciatis et tempore deleniti.</p>
+                
+        </div>
+        <div class="divBotao">
+            <p>20,00</p>
+            <button>Adicionar ao carrinho</button>
+        </div>
+    </div>
+
+<!-- tela de confirmar pedido -->
+
+        
+
+
   <footer>
     <div class="rodape">
 
