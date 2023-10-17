@@ -16,8 +16,8 @@ body {
     width: 600px;
     height: 800px;
     background-color: #252525;
-    position: absolute;
-    top: 50%;
+    position: fixed;
+    top: 53%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -26,6 +26,7 @@ body {
     flex-direction: column;
     transition: 1s;
     color: white;
+    z-index: 99999;
 }
 #quitButton{
     width: 50px;
