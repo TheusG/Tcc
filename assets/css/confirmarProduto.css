@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap');
+/* font-family: 'Prompt', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-.conteinerProduto{
+/* font-family: 'Lobster', cursive; */
+body {
+    font-family: 'Prompt', sans-serif;
+
+}
+.conteinerProdutoOf{
+    display: none;
+    height: 2px;
+    transition: 1s;
+}
+.conteinerProdutoOn {
     width: 600px;
     height: 800px;
     background-color: #252525;
@@ -10,36 +23,59 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-direction: column; 
+    flex-direction: column;
     transition: 1s;
     color: white;
-
 }
-.divBackground{
+#quitButton{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 18px;
+    border-radius: 100px;
+    color: darkorange;
+    background-color: black;
+    border: solid 1px darkorange;
+    transition: 0.5s;
+}
+#quitButton:hover{
+    scale: 1.1;
+    transition: 0.5s;
+    color: black;
+    background-color: darkorange;
+    border: solid 1px darkorange;
+}
+.divBackground {
     width: 100%;
     height: 35%;
     background-color: red;
 }
-.divBackground img{
+
+.divBackground img {
     width: 100%;
     height: 100%;
-   
+
 }
+
 .divImg{
-    width: 50%;
-    height: 35%;
+    width: 300px;
+    height: 300px;
     background-color: red;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -90%);
 }
-.divImg img{
+
+.divImg img {
     width: 100%;
     height: 100%;
- 
+
 }
-.divNome{
+
+.divNome {
     width: 80%;
     height: 35%;
     position: absolute;
@@ -47,41 +83,71 @@
     left: 50%;
     transform: translate(-50%, 10%);
     font-size: 18px;
- 
+
 }
+
 .divBotao {
     display: flex;
     flex-direction: column;
     text-align: center;
     font-size: 22px;
-   
+    margin-top: 10px;
+
 }
 
-.divBotao button{
+.divBotao button {
     padding: 15px;
     margin-bottom: 40px;
     font-size: 22px;
     background-color: black;
     color: darkorange;
     border: solid darkorange 1px;
+    transition: 0.5s;
+}
+.divBotao button:hover{
+    scale: 1.1;
+    transition: 0.5s;
+    color: black;
+    background-color: darkorange;
+    border: solid 1px darkorange;
 }
 
 
-@media (max-width:600px){
-    .conteinerProduto{
+@media (max-width:600px) {
+    .conteinerProduto {
         width: 100%;
         height: 800px;
     }
+    .divBackground {
+        width: 100%;
+        height: 20%;
+        background-color: red;
+    }
+    .divImg{
+        width: 200px;
+        height: 200px;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -90%);
+    }
+    .divNome {
+    width: 80%;
+    height: 35%;
+    position: absolute;
+    top: 36%;
+    left: 50%;
+    transform: translate(-50%, 10%);
+    font-size: 18px;
+
+}
 
 
- }
- @media (max-width:300px){
-    .conteinerProduto{
+}
+
+@media (max-width:310px) {
+    .conteinerProduto {
         height: 1000px;
     }
 
 
- }
-
-
-
+}
