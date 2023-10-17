@@ -1,8 +1,6 @@
 <?php
 
 
-
-
 if (isset($_REQUEST["add_cliente"])) {
     $cliente["email"] = $_REQUEST["email"];
 
@@ -26,9 +24,6 @@ if (isset($_REQUEST["add_cliente"])) {
         }
     }
     
-    
-
-
     if ($_REQUEST["senha"] == "" || $_REQUEST["confSenha"] == "" || $cliente["email"] == "" && $controle !=0) {
 ?>
         <form action="../index.php" name="form" id="myForm" method="post">
