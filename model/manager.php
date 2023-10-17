@@ -38,9 +38,9 @@
             $verifEmail["num"] = $num;
             $i = 1;
             while ($row = $result->fetch_assoc()) {
-                $verifEmail[$i]["Id_Usuario"] = $row["Id_Usuario"];
+
                 $verifEmail[$i]["Email"] = $row["Email"];
-                $verifEmail[$i]["Usuario"] = $row["Usuario"];
+
                 $i++;
             }
             $conn->close();
