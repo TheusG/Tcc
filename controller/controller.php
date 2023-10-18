@@ -38,7 +38,7 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 
         require_once "../model/Ferramentas.php";
         $senhaHash = hash256($_REQUEST["senha"]);
-        
+        require_once "../model/manager.php";
         $cliente = dadosCliente($_REQUEST["email"], $senhaHash);
 
         if($cliente["result"] == 1){
