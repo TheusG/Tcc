@@ -1,13 +1,14 @@
-const botaoCardapio = document.querySelector('#botaoCardapio');
+const botoesCardapio = document.querySelectorAll('.botaodoscrias');
 const ConteinerProduto = document.querySelector('#idConteinerProduto');
 const quitButton = document.querySelector('#quitButton');
 
-botaoCardapio.addEventListener('click', () => {
-  ConteinerProduto.classList.toggle('conteinerProdutoOn');
+botoesCardapio.forEach(botao => {
+  botao.addEventListener('click', () => {
+    ConteinerProduto.classList.toggle('conteinerProdutoOn');
+  });
 });
 
 quitButton.addEventListener('click', () => {
-   
-    ConteinerProduto.classList.remove('conteinerProdutoOn'); // Remova a classe megaConteinerOn
-    ConteinerProduto.classList.add('conteinerProdutoOf'); // Adicione a classe megaConteiner
-  });
+  ConteinerProduto.classList.remove('conteinerProdutoOn');
+  ConteinerProduto.classList.add('conteinerProdutoOf');
+});

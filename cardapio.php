@@ -196,7 +196,9 @@
           </p>
         <?php
           echo "<br>";
-          echo "<button Id=botaoCardapio>Pedir agora</button>";
+         
+          echo "<button class=\"botaodoscrias\">Pedir agora</button>";
+        
           echo "<br>";
 
           echo "</div>";
@@ -297,8 +299,6 @@
     </div>
 
 <!-- tela de confirmar pedido -->
-
-        
 
 
   <footer>

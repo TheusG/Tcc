@@ -126,12 +126,6 @@
 
 
 
-      </div>
-  </div>
-</div>
-
-
-
 
 
 
@@ -242,7 +236,7 @@
         
         </footer>
         
-         <script src="scripts.js"></script>
+        <script src="assets/js/indexJs.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         
     <script src="https://kit.fontawesome.com/5bb743cf48.js" crossorigin="anonymous"></script>
