@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17/10/2023 às 21:39
+-- Tempo de geração: 18/10/2023 às 21:10
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -117,25 +117,7 @@ INSERT INTO `cliente` (`Id_Cliente`, `Referencia`, `Usuario`) VALUES
 (8, NULL, 32),
 (9, NULL, 33),
 (10, NULL, 34),
-(11, NULL, 35),
-(12, NULL, 36),
-(13, NULL, 37),
-(14, NULL, 38),
-(15, NULL, 39),
-(16, NULL, 40),
-(17, NULL, 41),
-(18, NULL, 42),
-(19, NULL, 43),
-(20, NULL, 44),
-(21, NULL, 45),
-(22, NULL, 46),
-(23, NULL, 47),
-(24, NULL, 48),
-(25, NULL, 49),
-(26, NULL, 50),
-(27, NULL, 51),
-(28, NULL, 52),
-(29, NULL, 53);
+(30, NULL, 54);
 
 -- --------------------------------------------------------
 
@@ -393,25 +375,7 @@ INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Nu
 (32, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Murilo@gmail.com', NULL, NULL),
 (33, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Lucas@gmail.com', NULL, NULL),
 (34, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'felipescerqueira2005@gmail.com', NULL, NULL),
-(35, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'felipescerqueira2005@gmail.com', NULL, NULL),
-(36, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'felipescerqueira2005@gmail.com', NULL, NULL),
-(37, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Lucas@gmail.com', NULL, NULL),
-(38, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Lucas@gmail.com', NULL, NULL),
-(39, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Murilo@gmail.com', NULL, NULL),
-(40, NULL, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', NULL, NULL, NULL, NULL, NULL, 'fsf@ffff', NULL, NULL),
-(41, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL),
-(42, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL),
-(43, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL),
-(44, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL),
-(45, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Breno@gmail.com', NULL, NULL),
-(46, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'felipescerqueira2005@gmail.com', NULL, NULL),
-(47, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Lucas@gmail.com', NULL, NULL),
-(48, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'felipescerqueira2005@gmail.com', NULL, NULL),
-(49, NULL, 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', NULL, NULL, NULL, NULL, NULL, 'felipescerqueira2005@gmail.com', NULL, NULL),
-(50, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Lucas@gmail.com', NULL, NULL),
-(51, NULL, 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', NULL, NULL, NULL, NULL, NULL, 'Murilo@gmail.com', NULL, NULL),
-(52, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Lucas@gmail.com', NULL, NULL),
-(53, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Guilherme@gmail.com', NULL, NULL);
+(54, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'rony@gmail.com', NULL, NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -519,7 +483,7 @@ ALTER TABLE `cep`
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de tabela `configuracao`
@@ -561,7 +525,7 @@ ALTER TABLE `produto`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- Restrições para tabelas despejadas
