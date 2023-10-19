@@ -95,9 +95,15 @@ header #abrirLogin2:hover, header #abrirLogin:hover {
     margin: 2px 0;
     border-radius: 3px;
 }
+#botaoCarrinho{
+   background-color: black;
+   border: none;
+   text-align: center;
+}
 #carrinho{
     font-size: 25px;
     transition: 0.5s;
+   
 }
 #carrinho:hover{
     scale: 1.2;

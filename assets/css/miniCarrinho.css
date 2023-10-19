@@ -22,8 +22,10 @@
     align-items: center;
     font-family: 'Prompt', sans-serif;
     position: absolute;
-    right: 20%;
+    right: 12%;
+    top: 65px;
     transition: 1s;
+    z-index:9;
 }
 
 .divPedido{

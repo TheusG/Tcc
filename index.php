@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="website icon" type="png" href="image/logoPizzaria1.png">
     <link rel="stylesheet" href="assets/css/logar.css">
+    <link rel="stylesheet" href="assets/css/miniCarrinho.css">
 
   <script src="assets/js/jquery-3.7.0.min.js"></script>
   <script src="assets/js/jquery.mask.js]"></script>
@@ -48,7 +49,7 @@
             <li><a id="sobre" href="contatos.php">Contato</a></li>
           </ul>
         </nav>
-        <a href=""><i class="fa-solid fa-cart-shopping" id="carrinho"></i></a>
+       <button id="botaoCarrinho"><i class="fa-solid fa-cart-shopping" id="carrinho"></i></button>
         <div class="burguer">
             <div id="linha1"></div>
             <div id="linha2"></div>
@@ -129,6 +130,7 @@
 
 
 
+
 <!-- <script>
   const loginbutton = document.querySelector('#abrirLogin');
   const login = document.querySelector('.megaConteiner');
@@ -144,7 +146,24 @@
   });
 </script> -->
   
+<div class="miniCarrinhoOf">
+    <div class="divPedido">
+        
+        <div class="divImgPedido">
+            <img src="image/toji.jpg" alt="">
+        </div>
 
+        <div class="conteinerPedido">
+            <div class="divNomeProduto">$Nome da Pizza$</div>
+            <div class="valorPedido"> $Valor$</div>
+        </div>
+    </div>
+    
+
+
+
+    <button id="botaoConfirmarCompra">Confirmar compra</button>
+</div>
 
    
     <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel" data-bs-theme="light">
@@ -197,6 +216,7 @@
   
     
 
+    <!-- <button id="BotaoBolado">Carrinho</button> -->
 
 
 

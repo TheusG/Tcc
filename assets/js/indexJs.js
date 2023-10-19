@@ -13,8 +13,14 @@ const loginbutton = document.querySelector('#abrirLogin');
 const login = document.querySelector('.megaConteiner');
 const exitbutton = document.querySelector('#exitButtonn');
 
+const botaoConfirmarCompra = document.querySelector('#botaoCarrinho');
+const miniCarrinho = document.querySelector('.miniCarrinhoOf');
 
 
+botaoConfirmarCompra.addEventListener('click', () => {
+  miniCarrinho.classList.toggle('miniCarrinhoOn');
+
+});
 
 loginbutton2.addEventListener('click', () => {
   login.classList.toggle('megaConteinerOn');
@@ -41,4 +47,7 @@ burguer.addEventListener('click', () => {
   linha2.classList.toggle('linha2-active')
   linha3.classList.toggle('linha3-active')
 });
+
+
+
 
