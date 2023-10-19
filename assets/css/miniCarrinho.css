@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.miniCarrinho{
+    width: 350px;
+    height: 500px;
+    background-color: #252525;
+    display: flex;
+    justify-content: center;
+}
+.divPedido{
+    width: 90%;
+    border: solid 1px darkorange;
+    height: 90px;
+    margin: 20px 0;
+    display: flex;
+}
+.divImgPedido{
+    width: 27%;
+    height: 90%;
+    margin: 5px 5px;
+}
+.divImgPedido img{
+    width: 100%;
+    height: 100%;
+   
+}
