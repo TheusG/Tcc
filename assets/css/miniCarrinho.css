@@ -8,15 +8,10 @@
 }
 
 .miniCarrinhoOf{
-    width: 350px;
-    background-color: #252525;
+ 
     display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Prompt', sans-serif;
-    position: absolute;
-    right: 20%;
+   
+    transition: 1s;
 }
 .miniCarrinhoOn{
     width: 350px;
@@ -28,6 +23,7 @@
     font-family: 'Prompt', sans-serif;
     position: absolute;
     right: 20%;
+    transition: 1s;
 }
 
 .divPedido{
