@@ -48,7 +48,7 @@
                 <li><a id="sobre" href="contatos.php">Contato</a></li>
             </ul>
         </nav>
-        <a href=""><i class="fa-solid fa-cart-shopping" id="carrinho"></i></a>
+        <button id="botaoCarrinho"><i class="fa-solid fa-cart-shopping" id="carrinho"></i></button>
         <div class="burguer">
             <div id="linha1"></div>
             <div id="linha2"></div>
