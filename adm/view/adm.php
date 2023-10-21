@@ -80,8 +80,10 @@ require_once "admVerifSession.php";
             <?php
             if ($_SESSION["FUNC-PERFIL"] == 1) {
                 echo "<a href=\"cargoList.php\" target=\"screen\">Cargos</a>";
+                echo "<a href=\"clienteList.php\" target=\"screen\">Clientes</a>";
                 echo "<a href=\"configEdit2.php\" target=\"screen\">Configurações</a>";
                 echo "<a href=\"empresaEdit2.php\" target=\"screen\">Empresa</a>";
+                
             }
 
             

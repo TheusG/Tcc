@@ -881,3 +881,149 @@ function atualizarConfig($config)
         return 0;
     }
 }
+
+
+// ----------------------------------------CLIENTES----------------------------------------------------------//
+
+
+function listarCliente()
+{
+    require_once "Conexao.php";
+    $sql = "SELECT usuario.* , cliente.* FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $num = $result->num_rows;
+        $cliente = array();
+        $cliente["result"] = 1;
+        $cliente["num"] = $num;
+        $i = 1;
+        while ($row = $result->fetch_assoc()) {
+            $cliente[$i]["Id_Usuario"] = $row["Id_Usuario"];
+            $cliente[$i]["Nome_Usuario"] = $row["Nome_Usuario"];
+            $cliente[$i]["Senha"] = $row["Senha"];
+            $cliente[$i]["Sexo"] = $row["Sexo"];
+            $cliente[$i]["Cep"] = $row["Cep"];
+            $cliente[$i]["Complemento"] = $row["Complemento"];
+            $cliente[$i]["Numero"] = $row["Numero"];
+            $cliente[$i]["Telefone"] = $row["Telefone"];
+            $cliente[$i]["Email"] = $row["Email"];
+            $cliente[$i]["Nascimento"] = $row["Nascimento"];;
+            $cliente[$i]["Id_Cliente"] = $row["Id_Cliente"];
+            $cliente[$i]["Referencia"] = $row["Referencia"];
+            $cliente[$i]["Usuario"] = $row["Usuario"];
+            $i++;
+        }
+        $conn->close();
+        return $cliente;
+    } else {
+        $cliente["result"] = 0;
+        $conn->close();
+        return $cliente;
+    }
+}
+
+function adicionarCliente($cliente)
+{
+    require_once "Conexao.php";
+    $sql = "INSERT INTO usuario (Nome_Usuario,Senha, Sexo,Cep, Numero, Complemento,Telefone, Email,Nascimento,Foto) VALUES ('{$cliente["nome"]}', '{$cliente["senha"]}','{$cliente["sexo"]}','{$cliente["cep"]}','{$cliente["numero"]}','{$cliente["complemento"]}','{$cliente["telefone"]}','{$cliente["email"]}','{$cliente["dataNascimento"]}','{$cliente["foto"]}')";
+    $result = $conn->query($sql);
+    $ultimoid = mysqli_insert_id($conn);
+
+    if ($result == true) { //tudo certo
+        $sql = "INSERT INTO cliente (Referencia,Usuario) VALUES ('{$cliente["referencia"]}',$ultimoid)";
+        $result = $conn->query($sql);
+
+        if ($result == true) {
+            $conn->close();
+            return 1;
+        } else {
+            return 0;
+        }
+    } else {
+        $conn->close();
+        return 0;
+    }
+}
+
+function pegaCliente($id)
+{
+    require_once "Conexao.php";
+    $sql = "SELECT usuario.* , cliente.* FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario WHERE Id_Usuario = {$id}";
+    $result = $conn->query($sql);
+
+
+    if ($result->num_rows > 0) {
+        $cliente = array();
+        $cliente["result"] = 1;
+        while ($row = $result->fetch_assoc()) {
+            $cliente["Id_Usuario"] = $row["Id_Usuario"];
+            $cliente["Nome_Usuario"] = $row["Nome_Usuario"];
+            $cliente["Sexo"] = $row["Sexo"];
+            $cliente["Cep"] = $row["Cep"];
+            $cliente["Numero"] = $row["Numero"];
+            $cliente["Complemento"] = $row["Complemento"];
+            $cliente["Telefone"] = $row["Telefone"];
+            $cliente["Email"] = $row["Email"];
+            $cliente["Nascimento"] = $row["Nascimento"];
+            $cliente["Foto"] = $row["Foto"];
+            $cliente["Referencia"] = $row["Referencia"];
+            $cliente["Usuario"] = $row["Usuario"];
+        }
+        $conn->close();
+        return $cliente;
+    } else {
+        $cliente["result"] = 0;
+        $conn->close();
+        return $cliente;
+    }
+}
+
+function editarCliente($cliente)
+{
+    require_once "Conexao.php";
+    if ($cliente["senhaNova"] == "" && $cliente["foto"] == "") {
+        $sql = "UPDATE usuario SET Nome_Usuario = '{$cliente["nome"]}', Sexo = '{$cliente["sexo"]}', Cep = '{$cliente["cep"]}', Numero = '{$cliente["numero"]}',Complemento = '{$cliente["complemento"]}', Telefone = '{$cliente["telefone"]}', Email = '{$cliente["email"]}', Nascimento = '{$cliente["dataNascimento"]}' WHERE Id_Usuario = {$cliente["id"]}";
+    } else if ($cliente["senhaNova"] == "" && $cliente["foto"] != "") {
+        $sql = "UPDATE usuario SET Nome_Usuario = '{$cliente["nome"]}', Sexo = '{$cliente["sexo"]}', Cep = '{$cliente["cep"]}', Numero = '{$cliente["numero"]}',Complemento = '{$cliente["complemento"]}', Telefone = '{$cliente["telefone"]}', Email = '{$cliente["email"]}', Nascimento = '{$cliente["dataNascimento"]}', Foto = '{$cliente["foto"]}' WHERE Id_Usuario = {$cliente["id"]}";
+    } else if ($cliente["senhaNova"] != "" && $cliente["foto"] == "") {
+        $sql = "UPDATE usuario SET Nome_Usuario = '{$cliente["nome"]}', Senha = '{$cliente["senhaNova"]}', Sexo = '{$cliente["sexo"]}', Cep = '{$cliente["cep"]}', Numero = '{$cliente["numero"]}',Complemento = '{$cliente["complemento"]}', Telefone = '{$cliente["telefone"]}', Email = '{$cliente["email"]}', Nascimento = '{$cliente["dataNascimento"]}' WHERE Id_Usuario = {$cliente["id"]}";
+    } else {
+        $sql = "UPDATE usuario SET Nome_Usuario = '{$cliente["nome"]}', Senha = '{$cliente["senhaNova"]}', Sexo = '{$cliente["sexo"]}', Cep = '{$cliente["cep"]}', Numero = '{$cliente["numero"]}',Complemento = '{$cliente["complemento"]}', Telefone = '{$cliente["telefone"]}', Email = '{$cliente["email"]}', Nascimento = '{$cliente["dataNascimento"]}', Foto = '{$cliente["foto"]}' WHERE Id_Usuario = {$cliente["id"]}";
+    }
+    $result = $conn->query($sql);
+
+    if ($result == true) {
+        $sql = "UPDATE cliente SET Referencia = '{$cliente["referencia"]}' WHERE Usuario = {$cliente["idCliente"]}";
+        $result = $conn->query($sql);
+        $conn->close();
+        return 1;
+    } else {
+        $conn->close();
+        return 0;
+    }
+}
+
+function excluirCliente($id)
+{
+    require_once "Conexao.php";
+    $sql = "DELETE FROM cliente WHERE Usuario = {$id}";
+    $result = $conn->query($sql);
+
+    if ($result == true) {
+        $sql = "DELETE FROM usuario WHERE Id_Usuario = {$id}";
+        $result = $conn->query($sql);
+
+        if ($result == true) {
+            $conn->close();
+            return $result;
+        } else {
+            $conn->close();
+            return $result;
+        }
+    } else {
+        $conn->close();
+        return $result;
+    }
+}
+

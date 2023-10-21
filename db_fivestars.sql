@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18/10/2023 às 21:10
+-- Tempo de geração: 21/10/2023 às 22:21
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -107,17 +107,10 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`Id_Cliente`, `Referencia`, `Usuario`) VALUES
-(1, NULL, 25),
-(2, NULL, 26),
 (3, NULL, 27),
-(4, NULL, 28),
-(5, NULL, 29),
-(6, NULL, 30),
 (7, NULL, 31),
 (8, NULL, 32),
-(9, NULL, 33),
-(10, NULL, 34),
-(30, NULL, 54);
+(31, 'bla bla bla', 55);
 
 -- --------------------------------------------------------
 
@@ -365,17 +358,10 @@ INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Nu
 (15, 'Ingrid Passos', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'f', 1, '400', 'Escola', '(11) 11111-1111', 'ingrid@pizza.com', '2003-02-14', 'semfoto.jpg'),
 (20, 'Pedro Henrique', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'n', 1, '9', 'Escola', '(11) 11111-1111', 'pedro@pizza.com', '2023-09-07', NULL),
 (24, 'Matheus', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '07', '505', '(11) 11111-1111', 'matheus@pizza.com', '2023-08-28', ''),
-(25, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'felipescerqueira2005@gmail.com', NULL, NULL),
-(26, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'julia@pizza.com', NULL, NULL),
 (27, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Lucas@gmail.com', NULL, NULL),
-(28, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'marcos@gmail.com', NULL, NULL),
-(29, NULL, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', NULL, NULL, NULL, NULL, NULL, 'dfsggsgs@ghh', NULL, NULL),
-(30, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Mario@gmail.com', NULL, NULL),
 (31, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Bruno@gmail.com', NULL, NULL),
 (32, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Murilo@gmail.com', NULL, NULL),
-(33, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Lucas@gmail.com', NULL, NULL),
-(34, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'felipescerqueira2005@gmail.com', NULL, NULL),
-(54, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'rony@gmail.com', NULL, NULL);
+(55, 'Leandro', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '4', 'Escola', '(22) 22222-2222', 'leandro@gmail.com', '2020-01-14', '');
 
 --
 -- Índices para tabelas despejadas
@@ -483,7 +469,7 @@ ALTER TABLE `cep`
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de tabela `configuracao`
@@ -525,7 +511,7 @@ ALTER TABLE `produto`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- Restrições para tabelas despejadas

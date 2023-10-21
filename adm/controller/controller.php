@@ -702,4 +702,113 @@ if (isset($_REQUEST["config_edit"])) {
     }
 }
 
+
+// ---------------------------------------------CLIENTES-------------------------------------//
+
+if (isset($_REQUEST["cliente_new"])) {
+    $cliente["nome"] = $_REQUEST["nome"];
+    $cliente["sexo"] = $_REQUEST["sexo"];
+    $cliente["email"] = $_REQUEST["email"];
+    require_once "../model/Ferramentas.php";
+    $cliente["senha"] = hash256($_REQUEST["senha"]);
+    $cliente["telefone"] = $_REQUEST["telefone"];
+    $cliente["dataNascimento"] = $_REQUEST["dataNascimento"];
+    $cliente["cep"] = $_REQUEST["cep"];
+    $cliente["numero"] = $_REQUEST["numero"];
+    $cliente["complemento"] = $_REQUEST["complemento"];
+    $cliente["foto"] = $_REQUEST["foto"];
+    $cliente["referencia"] = $_REQUEST["referencia"];
+    require_once "../model/Manager.php";
+    $resp = adicionarCliente($cliente);
+
+    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+        ?>
+        <form action="../view/clienteList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD52">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    } else { //erro no insert
+    ?>
+        <form action="../view/clienteList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD02">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    }
+}
+
+if (isset($_REQUEST["cliente_edit"])) {
+    $cliente["id"] = $_REQUEST["id"];
+    $cliente["nome"] = $_REQUEST["nome"];
+    $cliente["sexo"] = $_REQUEST["sexo"];
+    $cliente["email"] = $_REQUEST["email"];
+    $cliente["senha"] = "";
+    $cliente["senhaNova"] = "";
+    if ($_REQUEST["senha"] != "") {
+        require_once "../model/Ferramentas.php";
+        $cliente["senha"] = ($_REQUEST["senha"]);
+        $cliente["senhaNova"] = hash256($cliente["senha"]);
+    }
+    $cliente["telefone"] = $_REQUEST["telefone"];
+    $cliente["dataNascimento"] = $_REQUEST["dataNascimento"];
+    $cliente["cep"] = $_REQUEST["cep"];
+    $cliente["numero"] = $_REQUEST["numero"];
+    $cliente["complemento"] = $_REQUEST["complemento"];
+    $cliente["referencia"] = $_REQUEST["referencia"];
+    $cliente["foto"] = $_REQUEST["foto"];
+    $cliente["idCliente"] = $_REQUEST["idCliente"];
+    require_once "../model/Manager.php";
+    $resp = editarCliente($cliente);
+
+    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+    ?>
+        <form action="../view/clienteList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD53">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    } else { //erro no insert
+    ?>
+        <form action="../view/clienteList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD03">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    }
+}
+
+if (isset($_REQUEST["cliente_delete"])) {
+    $id = $_REQUEST["id"];
+    require_once "../model/Manager.php";
+    $result = excluirCliente($id);
+    if ($result == 1) { //conseguir excluir
+    ?>
+        <form action="../view/clienteList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD54">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    } else { //algo deu de errado na deleção
+    ?>
+        <form action="../view/clienteList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD04">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    }
+}
+
 ?>
