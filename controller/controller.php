@@ -1,5 +1,87 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
+
+    if(isset($_REQUEST["validaCliente"])){
+
+    if(empty($_REQUEST["email"]) || empty($_REQUEST["senha"])){
+        session_destroy();
+
+        ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR01">
+                <!-- Dado(s) não preenchido(s) -->
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+            <?php
+    }else{
+        require_once "../model/Ferramentas.php";
+        $respEmail = antiInjection($_REQUEST["email"]);
+        $respSenha = antiInjection($_REQUEST["senha"]);
+
+        if($respEmail == 0 || $respSenha == 0){
+            session_destroy();
+            ?>
+                <form action="../index.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="FR11">
+                    <!-- "FR11" => "Informação incorreta.", -->
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+            <?php
+        }
+
+        require_once "../model/Ferramentas.php";
+        $senhaHash = hash256($_REQUEST["senha"]);
+        require_once "../model/manager.php";
+        $cliente = dadosCliente($_REQUEST["email"], $senhaHash);
+
+        if($cliente["result"] == 1){
+            $_SESSION["CLI-ID"] = $cliente["Id_Usuario"];
+            $_SESSION["CLI-NOME"] = $cliente["Nome"];
+            $_SESSION["CLI-EMAIL"] = $cliente["Email"];
+
+
+            ?>
+            <form action="../view/adm.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="result" value="validado">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+        <?php
+        }else{
+            session_destroy();
+
+            ?>
+                <form action="../index.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="FR02">
+                    <!-- "FR02" => "Preechimento incorreto.", -->
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+            <?php
+
+        }
+    }
+
+}
+
+}
+
+
+
+
+
+
+
+
 
 if (isset($_REQUEST["add_cliente"])) {
     $cliente["email"] = $_REQUEST["email"];
