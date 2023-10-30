@@ -81,3 +81,10 @@
     transition: 0.5s;
     scale: 1.1;
 }
+.divValorTotal{
+    border: solid 1px darkorange;
+    width: 90%;
+    color: darkorange;
+    text-align: center;
+    padding: 10px 0;
+}

@@ -152,12 +152,15 @@
         <div class="divImgPedido">
             <img src="image/toji.jpg" alt="">
         </div>
-
+    
         <div class="conteinerPedido">
             <div class="divNomeProduto">$Nome da Pizza$</div>
             <div class="valorPedido"> $Valor$</div>
         </div>
     </div>
+    <div class="divValorTotal">
+          <p>Valor Total$</p>
+      </div>
     
 
 
