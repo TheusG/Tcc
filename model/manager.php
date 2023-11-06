@@ -2,13 +2,13 @@
 
 function dadosCliente($email, $senha)
 {
-    require_once "Conexao.php";
+    require_once "../adm/model/Conexao.php";
     $sql = "SELECT usuario.* , cliente.*
             FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario
             WHERE usuario.Email = '$email' AND usuario.Senha = '$senha'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-        require_once "Conexao.php";
+        require_once "../adm/model/Conexao.php";
         $cliente = array();
         $cliente["result"] = 1; // 1 tem dados 0 não tem dados
         while ($row = $result->fetch_assoc()) {

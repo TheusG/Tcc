@@ -65,7 +65,16 @@
         </div>
         <div class="login">
           <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
-       <button id="abrirLogin">Login</button>
+          <?php 
+            if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])){
+              echo "<button id=\"abrirLogin\">Login</button>";
+            }else{
+              echo "<button id=\"abrirLogin\">Banana</button>";
+            }
+          
+          
+          ?>
+       
         </div>
     </header>
 
@@ -88,13 +97,13 @@
                 <h2>Entrar</h2>
                 
                 <br>
-                <form action="">
-    
+                <form action="controller/controller.php">
+                <input type="hidden" name="validaCliente" value="1">
                     <h3>Email</h3>
-                    <input type="email">
+                    <input type="email" name="email">
                     <br><br>
                     <h3>Senha</h3>
-                    <input type="password">
+                    <input type="password" name="senha">
                     <br><br>
                     <div class="divButton">
                         <button> Entrar </button>
