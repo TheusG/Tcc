@@ -73,6 +73,7 @@ $MSG = array(
     "FR51" => "Arquivo enviado com sucesso.",
     "FR52" => "Preencha os campos...",
     "FR53" => "Usuário cadastrado com sucesso",
+    "FR54" => "Seja bem-vindo(a) a Five Stars",
     
     
  

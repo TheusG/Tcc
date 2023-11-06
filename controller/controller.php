@@ -48,8 +48,8 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 
 
             ?>
-            <form action="../view/adm.php" name="form" id="myForm" method="post">
-                <input type="hidden" name="result" value="validado">
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR54">
             </form>
             <script>
                 document.getElementById('myForm').submit()
