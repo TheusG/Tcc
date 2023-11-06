@@ -41,10 +41,22 @@
       <br><br>
       <h3>Senha</h3>
 
+
       <input type="password" name="senha" id="senha" class="campo">
+      <input type="checkbox" id="check" >
       <br><br><br>
       <input type="submit" id="enviar" value="Entrar">
 
+        <script>
+          check.onclick = togglePassword;
+
+          function togglePassword(){
+            if(check.checked) senha.type = "text";
+            else senha.type = "password";
+          }
+
+
+        </script>
 
     </form>
 

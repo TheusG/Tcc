@@ -74,16 +74,15 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
     }
 
 }
-
 }else{
-    ?>
+ ?>
                 <form action="../index.php" name="form" id="myForm" method="post">
-                    <input type="hidden" name="msg" value="FR28">
-                    <!-- "FR02" => "Preechimento incorreto.", -->
-                </form>
-                <script>
-                    document.getElementById('myForm').submit()
-                </script>
+                                   <input type="hidden" name="msg" value="FR28">
+                   <!-- "FR02" => "Preechimento incorreto.", -->
+               </form>
+<script>
+                     document.getElementById('myForm').submit()
+               </script>
             <?php 
 }
 
