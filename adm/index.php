@@ -34,31 +34,60 @@
       <br>
     </div>
     <form action="controller/controller.php" method="post">
-      <input type="hidden" name="loginsenha" value="1">
-      <h3>Email</h3>
+  <input type="hidden" name="loginsenha" value="1">
+  <h3>Email</h3>
+  <input type="email" name="email" id="email" class="campo">
+  <br><br>
+  <h3>Senha</h3>
+  <div class="divCampo">
+    <input type="password" name="senha" id="senha" class="campo">
+    <button type="button" id="check"><i id="checkIcon" class="fa-solid fa-eye-slash"></i></button>
+  </div>
+  <br><br><br>
+  <input type="submit" id="enviar" value="Entrar">
 
-      <input type="email" name="email" id="email" class="campo">
-      <br><br>
-      <h3>Senha</h3>
+  <script>
+    const checkButton = document.querySelector('#check');
+    const checkIcon = document.querySelector('#checkIcon');
+    const senhaInput = document.querySelector('#senha');
+
+    checkButton.addEventListener('click', () => {
+      if (senhaInput.type === "password") {
+        senhaInput.type = "text";
+        checkIcon.classList.remove('fa-eye-slash');
+        checkIcon.classList.add('fa-eye');
+      } else {
+        senhaInput.type = "password";
+        checkIcon.classList.remove('fa-eye');
+        checkIcon.classList.add('fa-eye-slash');
+      }
+    });
+  </script>
+</form>
 
 
-      <input type="password" name="senha" id="senha" class="campo">
-      <input type="checkbox" id="check" >
-      <br><br><br>
-      <input type="submit" id="enviar" value="Entrar">
+        <!-- <script>
 
-        <script>
-          check.onclick = togglePassword;
+          const checkButton = document.querySelector('#check');
+          const senhaInput = document.querySelector('#senha');
+          checkButton.addEventListener('click', () => {
+            senha.type = "text";
+           });
+        
+        
 
-          function togglePassword(){
-            if(check.checked) senha.type = "text";
-            else senha.type = "password";
-          }
+          // check.onclick = togglePassword;
+          // function togglePassword(){
+          //   if(check.checked) senha.type = "text";
+          //   else senha.type = "password";
+          // }
 
 
-        </script>
+        </script> -->
 
     </form>
+    
+ 
 
   </div>
   <style>
@@ -76,7 +105,7 @@
 
   ?>
 
-
+<script src="https://kit.fontawesome.com/5bb743cf48.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

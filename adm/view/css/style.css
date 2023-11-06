@@ -54,12 +54,32 @@ form{
     justify-content: center;
     width: 80%;
 }
-form > .campo{
+form  .campo{
     border: solid 1px black;
     border-radius: 5px;
     padding: 5px 15px;
     background-color: #181818;
     color: white;
+    width: 100%;
+}
+.divCampo{
+    width: 100%;
+}
+#check{
+    font-size: 10px;
+    background: none;
+    border: none;
+    color: white;
+    position: relative;
+    left: 370px;
+    top: -26px;
+    transition: 0.5s;
+    cursor: pointer;
+    
+}
+#check:hover{
+ scale: 1.1;
+ transition: 0.5s;
 }
 .imagem-form{
     display: flex;
@@ -70,7 +90,6 @@ form > .campo{
 .imagem-form > img{
     width: 200px;
     filter: drop-shadow( 0px 0px 10px darkorange);
-   
 }
 
 .botao{
