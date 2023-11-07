@@ -43,7 +43,7 @@
     <input type="password" name="senha" id="senha" class="campo">
     <button type="button" id="check"><i id="checkIcon" class="fa-solid fa-eye-slash"></i></button>
   </div>
-  <br><br><br>
+  <br><br><br> 
   <input type="submit" id="enviar" value="Entrar">
 
   <script>

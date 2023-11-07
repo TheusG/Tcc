@@ -6,12 +6,12 @@ session_start();
 
 if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 
-    if(isset($_REQUEST["validaCliente"])){
+    if (isset($_REQUEST["validaCliente"])) {
 
-    if(empty($_REQUEST["email"]) || empty($_REQUEST["senha"])){
-        session_destroy();
+        if (empty($_REQUEST["email"]) || empty($_REQUEST["senha"])) {
+            session_destroy();
 
-        ?>
+?>
             <form action="../index.php" name="form" id="myForm" method="post">
                 <input type="hidden" name="msg" value="FR01">
                 <!-- Dado(s) não preenchido(s) -->
@@ -20,13 +20,13 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
                 document.getElementById('myForm').submit()
             </script>
             <?php
-    }else{
-        require_once "../model/Ferramentas.php";
-        $respEmail = antiInjection($_REQUEST["email"]);
-        $respSenha = antiInjection($_REQUEST["senha"]);
+        } else {
+            require_once "../model/Ferramentas.php";
+            $respEmail = antiInjection($_REQUEST["email"]);
+            $respSenha = antiInjection($_REQUEST["senha"]);
 
-        if($respEmail == 0 || $respSenha == 0){
-            session_destroy();
+            if ($respEmail == 0 || $respSenha == 0) {
+                session_destroy();
             ?>
                 <form action="../index.php" name="form" id="myForm" method="post">
                     <input type="hidden" name="msg" value="FR11">
@@ -36,29 +36,29 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
                     document.getElementById('myForm').submit()
                 </script>
             <?php
-        }
+            }
 
-        require_once "../model/Ferramentas.php";
-        $senhaHash = hash256($_REQUEST["senha"]);
-        require_once "../model/manager.php";
-        $cliente = dadosCliente($_REQUEST["email"], $senhaHash);
+            require_once "../model/Ferramentas.php";
+            $senhaHash = hash256($_REQUEST["senha"]);
+            require_once "../model/manager.php";
+            $cliente = dadosCliente($_REQUEST["email"], $senhaHash);
 
-        if($cliente["result"] == 1){
-            $_SESSION["CLI-ID"] = $cliente["Id_Usuario"];
-            $_SESSION["CLI-NOME"] = $cliente["Nome"];
-            $_SESSION["CLI-EMAIL"] = $cliente["Email"];
+            if ($cliente["result"] == 1) {
+                $_SESSION["CLI-ID"] = $cliente["Id_Usuario"];
+                $_SESSION["CLI-NOME"] = $cliente["Nome"];
+                $_SESSION["CLI-EMAIL"] = $cliente["Email"];
 
 
             ?>
-            <form action="../index.php" name="form" id="myForm" method="post">
-                <input type="hidden" name="msg" value="FR54">
-            </form>
-            <script>
-                document.getElementById('myForm').submit()
-            </script>
-        <?php
-        }else{
-            session_destroy();
+                <form action="../index.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="FR54">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+            <?php
+            } else {
+                session_destroy();
 
             ?>
                 <form action="../index.php" name="form" id="myForm" method="post">
@@ -68,22 +68,21 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
                 <script>
                     document.getElementById('myForm').submit()
                 </script>
-            <?php
+    <?php
 
+            }
         }
     }
-
-}
-}else{
- ?>
-                <form action="../index.php" name="form" id="myForm" method="post">
-                                   <input type="hidden" name="msg" value="FR28">
-                   <!-- "FR02" => "Preechimento incorreto.", -->
-               </form>
-<script>
-                     document.getElementById('myForm').submit()
-               </script>
-            <?php 
+} else {
+    ?>
+        <form action="../index.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="FR28">
+            <!-- "FR02" => "Preechimento incorreto.", -->
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
 }
 
 
@@ -100,25 +99,25 @@ if (isset($_REQUEST["add_cliente"])) {
     require_once "../model/Cliente.class.php";
     $dados = new Cliente;
     $EmailCliente = $dados->EmailCliente();
-    $controle =1;
+    $controle = 1;
 
     for ($i = 0; $i < count($EmailCliente); $i++) {
         if ($EmailCliente[$i]["Email"] == $cliente["email"]) {
-        ?>
+    ?>
             <form action="../index.php" name="form" id="myForm" method="post">
                 <input type="hidden" name="msg" value="FR28">
             </form>
             <script>
                 document.getElementById('myForm').submit()
             </script>
-           
+
         <?php
-         $controle = 0;
+            $controle = 0;
         }
     }
-    
-    if ($_REQUEST["senha"] == "" || $_REQUEST["confSenha"] == "" || $cliente["email"] == "" && $controle !=0) {
-?>
+
+    if ($_REQUEST["senha"] == "" || $_REQUEST["confSenha"] == "" || $cliente["email"] == "" && $controle != 0) {
+        ?>
         <form action="../index.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="FR01">
         </form>
@@ -127,7 +126,7 @@ if (isset($_REQUEST["add_cliente"])) {
         </script>
     <?php
 
-    }else if($_REQUEST["senha"] != $_REQUEST["confSenha"] && $controle != 0) {
+    } else if ($_REQUEST["senha"] != $_REQUEST["confSenha"] && $controle != 0) {
     ?>
         <form action="../index.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="FR04">
@@ -135,35 +134,34 @@ if (isset($_REQUEST["add_cliente"])) {
         <script>
             document.getElementById('myForm').submit()
         </script>
-    <?php
+        <?php
 
-    }else if($controle !=0){
+    } else if ($controle != 0) {
         require_once "../model/Ferramentas.php";
-    $cliente["senha"] = hash256($_REQUEST["senha"]);
-    require_once "../model/manager.php";
-    $resp = adicionarCliente($cliente);
+        $cliente["senha"] = hash256($_REQUEST["senha"]);
+        require_once "../model/manager.php";
+        $resp = adicionarCliente($cliente);
 
-    if ($resp == 1) {
-    ?>
-        <form action="../index.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="FR53">
-        </form>
-        <script>
-            document.getElementById('myForm').submit()
-        </script>
-    <?php
-    }else{ //erro no insert
-    ?>
-        <form action="../index.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="FR27">
-        </form>
-        <script>
-            document.getElementById('myForm').submit()
-        </script>
+        if ($resp == 1) {
+        ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR53">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+        <?php
+        } else { //erro no insert
+        ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR27">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
 <?php
+        }
     }
-}
-   
 }
 
 

@@ -1,7 +1,11 @@
 <?php 
-// require_once "clienteVerifSession.php";
+    require_once "controller/controller.php";
+    
+    
 
 ?>
+
+
 
 
 
@@ -24,6 +28,17 @@
   <script src="assets/js/jquery-3.7.0.min.js"></script>
   <script src="assets/js/jquery.mask.js]"></script>
   <script src="assets/js/jquery.mask.min.js"></script>
+
+  <script>
+        function ExecutaLogout() {
+            var resp = confirm('Deseja sair?');
+            if (resp == true) {
+                location.href = "clienteLogout.php";
+            } else {
+                return null;
+            }
+        }
+    </script>
 
  
 </head>
@@ -63,13 +78,15 @@
             <div id="linha2"></div>
             <div id="linha3"></div>
         </div>
+        <!-- <button class="sair" onclick="ExecutaLogout();">Sair</button> -->
         <div class="login">
           <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
+          
           <?php 
-            if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])){
+            if (isset($_SESSION["CLI-ID"]) && $_SESSION["CLI-ID"] === true){
               echo "<button id=\"abrirLogin\">Login</button>";
             }else{
-              echo "<button id=\"abrirLogin\">Banana</button>";
+              echo "<button id=\"abrirLogin\">Convidado</button>";
             }
           
           
