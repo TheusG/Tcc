@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/adm.css">
     <script>
         function voltar(){
-            location.href = "admList.php";
+            location.href = "clienteList.php";
         }
     </script>
 </head>
@@ -110,7 +110,7 @@
             <input type="file" name="foto" value="<?=$cliente['Foto']?>"><br>
             <input  class="enviar" type="submit" name="sbmt" value="Enviar"><br><br>
         </form>
-            <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
+            <button class="voltar" id="btnVoltar" onclick="voltar()">&larr;</button>
     </div>
 
 
