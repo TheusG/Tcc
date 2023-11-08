@@ -78,7 +78,7 @@
             <div id="linha2"></div>
             <div id="linha3"></div>
         </div>
-        <button class="sair" onclick="ExecutaLogout();">Sair</button>
+        
         <div class="login">
           <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
           
@@ -93,7 +93,7 @@
           
           
           ?>
-       
+          <button class="sair" onclick="ExecutaLogout();">Sair</button>
         </div>
     </header>
 

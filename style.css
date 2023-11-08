@@ -103,8 +103,23 @@ header #abrirLogin2:hover, header #abrirLogin:hover {
 }
 #carrinho{
     font-size: 25px;
+    transition: 0.5s;  
+}
+header .sair{
+    background-color: black;
+    padding: 3px;
+    color: darkorange;
+    border: solid 1px darkorange;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+header .sair:hover{
+    background-color: darkorange;
+    color: black;
+    border: solid 1px black ;
     transition: 0.5s;
-   
+    scale: 1.1;
+
 }
 #carrinho:hover{
     scale: 1.2;
