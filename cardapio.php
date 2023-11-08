@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,7 +70,17 @@
     </div>
     <div class="login">
       <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
-      <button id="abrirLogin">Login</button>
+      <?php
+
+      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+        // echo "<a href=\"perfil.php\">".print_r($_SESSION["CLI-EMAIL"]). "</a>";
+        echo "<a href=\"perfil.php\">Convidado</a>";
+      } else {
+        echo "<button id=\"abrirLogin\">Login</button>";
+      }
+
+
+      ?>
     </div>
   </header>
 
@@ -134,24 +150,24 @@
 
   <div class="miniCarrinhoOf">
     <div class="divPedido">
-        
-        <div class="divImgPedido">
-            <img src="image/toji.jpg" alt="">
-        </div>
 
-        <div class="conteinerPedido">
-            <div class="divNomeProduto">$Nome da Pizza$</div>
-            <div class="valorPedido"> $Valor$</div>
-        </div>
+      <div class="divImgPedido">
+        <img src="image/toji.jpg" alt="">
+      </div>
+
+      <div class="conteinerPedido">
+        <div class="divNomeProduto">$Nome da Pizza$</div>
+        <div class="valorPedido"> $Valor$</div>
+      </div>
     </div>
-    
+
 
 
 
     <button id="botaoConfirmarCompra">Confirmar compra</button>
-</div>
+  </div>
 
- 
+
 
   <!-- Area de ediçao -->
 
@@ -214,14 +230,14 @@
           </p>
         <?php
           echo "<br>";
-         
+
           echo "<button class=\"botaodoscrias\">Pedir agora</button>";
-        
+
           echo "<br>";
 
           echo "</div>";
         }
-       
+
         ?>
 
 
@@ -291,32 +307,32 @@
 
 
 
-<!-- tela de confirmar pedido -->
+  <!-- tela de confirmar pedido -->
 
 
 
 
-<div id="idConteinerProduto" class="conteinerProdutoOf">
-      <input type="button" id="quitButton" value="X">
+  <div id="idConteinerProduto" class="conteinerProdutoOf">
+    <input type="button" id="quitButton" value="X">
 
-        <div class="divBackground"><img src="image/toji.jpg" alt=""></div>
-        <div class="divImg">
-            <img src="image/pizza.jpeg" alt="">
-        </div>
-        <div class="divNome">
-            <h2>$Nome da pizza$</h2>
-            <p>$Lorem ipsum dolor sit amet. Et velit sapiente 33 perferendis neque ut aliquid similique a eaque
-                sapiente. Et repellendus deserunt ut nihil ipsam a vero dolorem. Qui ipsum iusto et delectus
-                perspiciatis et tempore deleniti.</p>
-                
-        </div>
-        <div class="divBotao">
-            <p>20,00</p>
-            <button>Adicionar ao carrinho</button>
-        </div>
+    <div class="divBackground"><img src="image/toji.jpg" alt=""></div>
+    <div class="divImg">
+      <img src="image/pizza.jpeg" alt="">
     </div>
+    <div class="divNome">
+      <h2>$Nome da pizza$</h2>
+      <p>$Lorem ipsum dolor sit amet. Et velit sapiente 33 perferendis neque ut aliquid similique a eaque
+        sapiente. Et repellendus deserunt ut nihil ipsam a vero dolorem. Qui ipsum iusto et delectus
+        perspiciatis et tempore deleniti.</p>
 
-<!-- tela de confirmar pedido -->
+    </div>
+    <div class="divBotao">
+      <p>20,00</p>
+      <button>Adicionar ao carrinho</button>
+    </div>
+  </div>
+
+  <!-- tela de confirmar pedido -->
 
 
   <footer>

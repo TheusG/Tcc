@@ -1,4 +1,13 @@
+<?php 
+session_start();
+
+
+?>
+
+
 <!DOCTYPE html>
+
+
 <html lang="en">
 
 <head>
@@ -52,7 +61,17 @@
     </div>
     <div class="login">
       <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
-      <a href="">Entrar</a>
+      <?php 
+
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
+              // echo "<a href=\"perfil.php\">".print_r($_SESSION["CLI-EMAIL"]). "</a>";
+              echo "<a href=\"perfil.php\">Convidado</a>";
+            }else{
+              echo "<button id=\"abrirLogin\">Login</button>";
+            }
+          
+          
+          ?>
     </div>
   </header>
   <!-- Para mudar o estilo do Header e no css principal -->

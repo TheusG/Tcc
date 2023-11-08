@@ -1,4 +1,11 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
+
+
 <html lang="en">
 
 <head>
@@ -16,32 +23,31 @@
 
 <body>
     <?php
-  require_once "adm/model/Empresa.class.php";
-  $empresa = new Empresa();
-  $info = $empresa->infoEmpresa();
+    require_once "adm/model/Empresa.class.php";
+    $empresa = new Empresa();
+    $info = $empresa->infoEmpresa();
 
 
 
-  ?>
+    ?>
 
 
     <header>
         <a href="index.php">
             <div class="logo">
                 <img src="image/<?php for ($i = 0; $i < count($info); $i++) {
-                          echo $info[$i]["Logo"];
-                        } ?>" alt="Logo">
+                                    echo $info[$i]["Logo"];
+                                } ?>" alt="Logo">
 
                 <p><?php for ($i = 0; $i < count($info); $i++) {
-              echo $info[$i]["Fantasia"];
-            } ?></p>
+                        echo $info[$i]["Fantasia"];
+                    } ?></p>
                 <i class="fa-solid fa-pizza-slice"></i>
             </div>
         </a>
         <nav>
             <ul class="nav-links">
-                <li class="lioff"> <img src="image/semfoto-removebg-preview.png" alt="" class="imgMenuReduzido"><a
-                        href="">Entrar </a></li>
+                <li class="lioff"> <img src="image/semfoto-removebg-preview.png" alt="" class="imgMenuReduzido"><a href="">Entrar </a></li>
                 <li><a id="home" href="index.php">Home</a></li>
                 <li><a id="sobre" href="cardapio.php">Cardápio</a></li>
                 <li><a id="sobre" href="sobre.php">Sobre</a></li>
@@ -56,7 +62,17 @@
         </div>
         <div class="login">
             <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
-            <button id="abrirLogin">Login</button>
+            <?php
+
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                // echo "<a href=\"perfil.php\">".print_r($_SESSION["CLI-EMAIL"]). "</a>";
+                echo "<a href=\"perfil.php\">Convidado</a>";
+            } else {
+                echo "<button id=\"abrirLogin\">Login</button>";
+            }
+
+
+            ?>
         </div>
     </header>
 
