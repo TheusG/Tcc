@@ -82,7 +82,6 @@
         php_check_synt
 
 
-        <button class="sair" onclick="ExecutaLogout();">Sair</button>
         <div class="login">
           <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
           
