@@ -79,7 +79,7 @@
             <div id="linha3"></div>
         </div>
 
-        php
+        php_check_synt
 
 
         <button class="sair" onclick="ExecutaLogout();">Sair</button>
@@ -97,7 +97,7 @@
           
           
           ?>
-       
+          <button class="sair" onclick="ExecutaLogout();">Sair</button>
         </div>
     </header>
 
