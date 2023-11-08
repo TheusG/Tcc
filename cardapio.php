@@ -79,8 +79,7 @@ session_start();
       } else {
         echo "<button id=\"abrirLogin\">Login</button>";
       }
-
-
+      
       ?>
     </div>
   </header>
