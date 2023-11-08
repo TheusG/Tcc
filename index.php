@@ -99,7 +99,7 @@
           ?>
 
         
-          ?>
+          
           
           </div>
     </header>
@@ -169,7 +169,23 @@
     </div>
 
 
+    <!-- <script>
+    const checkButton = document.querySelector('#check');
+    const checkIcon = document.querySelector('#checkIcon');
+    const senhaInput = document.querySelector('#senha');
 
+    checkButton.addEventListener('click', () => {
+      if (senhaInput.type === "password") {
+        senhaInput.type = "text";
+        checkIcon.classList.remove('fa-eye-slash');
+        checkIcon.classList.add('fa-eye');
+      } else {
+        senhaInput.type = "password";
+        checkIcon.classList.remove('fa-eye');
+        checkIcon.classList.add('fa-eye-slash');
+      }
+    });
+  </script> -->
 
 
 
