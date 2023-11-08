@@ -1,6 +1,6 @@
 <?php 
    
-    
+ session_start();   
     
 
 ?>
@@ -78,15 +78,16 @@
             <div id="linha2"></div>
             <div id="linha3"></div>
         </div>
-        <!-- <button class="sair" onclick="ExecutaLogout();">Sair</button> -->
+        <button class="sair" onclick="ExecutaLogout();">Sair</button>
         <div class="login">
           <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
           
           <?php 
-            if (isset($_SESSION["CLI-ID"]) && $_SESSION["CLI-ID"] === true){
-              echo "<button id=\"abrirLogin\">Login</button>";
+
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
+              echo "<a href=\"perfil.php\">Convidado</a>";
             }else{
-              echo "<button id=\"abrirLogin\">Convidado</button>";
+              echo "<button id=\"abrirLogin\">Login</button>";
             }
           
           

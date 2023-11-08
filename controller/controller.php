@@ -10,6 +10,7 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 
         if (empty($_REQUEST["email"]) || empty($_REQUEST["senha"])) {
             session_destroy();
+            $_SESSION["LOGADO"] = 0;
 
 ?>
             <form action="../index.php" name="form" id="myForm" method="post">
@@ -27,6 +28,7 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 
             if ($respEmail == 0 || $respSenha == 0) {
                 session_destroy();
+                $_SESSION["LOGADO"] = 0;
             ?>
                 <form action="../index.php" name="form" id="myForm" method="post">
                     <input type="hidden" name="msg" value="FR11">
@@ -45,8 +47,9 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 
             if ($cliente["result"] == 1) {
                 $_SESSION["CLI-ID"] = $cliente["Id_Usuario"];
-                $_SESSION["CLI-NOME"] = $cliente["Nome"];
+                // $_SESSION["CLI-NOME"] = $cliente["Nome"];
                 $_SESSION["CLI-EMAIL"] = $cliente["Email"];
+                $_SESSION["LOGADO"] = 1;
 
 
             ?>
@@ -59,7 +62,7 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
             <?php
             } else {
                 session_destroy();
-
+                $_SESSION["LOGADO"] = 0;
             ?>
                 <form action="../index.php" name="form" id="myForm" method="post">
                     <input type="hidden" name="msg" value="FR02">
@@ -74,10 +77,11 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
         }
     }
 } else {
-    
+    $_SESSION["LOGADO"] = 1;
     ?>
+    
         <form action="../index.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="FR28">
+            <input type="hidden" name="msg" value="FR29">
         </form>
         <script>
              document.getElementById('myForm').submit()

@@ -32,10 +32,10 @@
         <nav>
           <ul class="nav-links">
             <li class="lioff"> <img src="image/semfoto-removebg-preview.png" alt="" class="imgMenuReduzido"><button id="abrirLogin2">Login</button></li>
-            <li><a id="home" href="index.html">Home</a></li>
-            <li><a id="sobre" href="cardapio.html">Cardápio</a></li>
+            <li><a id="home" href="index.php">Home</a></li>
+            <li><a id="sobre" href="cardapio.php">Cardápio</a></li>
             <li><a id="sobre" href="sobre.php">Sobre</a></li>
-            <li><a id="sobre" href="contatos.html">Contato</a></li>
+            <li><a id="sobre" href="contatos.php">Contato</a></li>
           </ul>
         </nav>
         <a href=""><i class="fa-solid fa-cart-shopping" id="carrinho"></i></a>
