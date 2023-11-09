@@ -380,7 +380,7 @@ session_start();
 
 
   </footer>
-
+    
   <script src="assets/js/cardapio.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
 
@@ -397,7 +397,7 @@ session_start();
             $('#exibirProd').html(response);    
           }
         });
-        
+      
 
 
       }
