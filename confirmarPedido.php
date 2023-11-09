@@ -35,7 +35,7 @@
       
 
       ?>
-
+ 
     <div id="idConteinerProduto" class="conteinerProdutoOn">
       <input type="button" onclick="javascript:history.go(-1)"  id="quitButton" value="X">
 

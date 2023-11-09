@@ -28,12 +28,16 @@ session_start();
 
   <style>
     #exibirProd{
-      position:absolute;
-      width:100vw;
-      height:100vh;
-      background-color:white;
+      position:fixed;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(5px); /* Altere o valor para ajustar a intensidade do desfoque */
       cursor:pointer;
+      top: 65px;
+      
+      z-index: 999;
     }
+
     
   </style>
 
@@ -41,6 +45,7 @@ session_start();
 
 <body>
 <div id="exibirProd">
+  
     
 </div>
   <?php
