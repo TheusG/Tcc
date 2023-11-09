@@ -19,194 +19,386 @@ session_start();
     <link rel="stylesheet" href="assets/css/miniCarrinho.css">
 
     <title>Sobre</title>
+   <style>
+    #exibirProd{
+      position:absolute;
+      width:100vw;
+      height:100vh;
+      background-color:white;
+      cursor:pointer;
+    }
+    
+  </style>
+
 </head>
 
 <body>
-    <?php
-    require_once "adm/model/Empresa.class.php";
-    $empresa = new Empresa();
-    $info = $empresa->infoEmpresa();
+<div id="exibirProd">
+    
+</div>
+  <?php
+  require_once "adm/model/Empresa.class.php";
+  $empresa = new Empresa();
+  $info = $empresa->infoEmpresa();
+  ?>
+
+
+  <header>
+    <a href="index.php">
+      <div class="logo">
+
+        <img src="image/<?php for ($i = 0; $i < count($info); $i++) {
+                          echo $info[$i]["Logo"];
+                        } ?>" alt="Logo">
+
+        <p><?php for ($i = 0; $i < count($info); $i++) {
+              echo $info[$i]["Fantasia"];
+            } ?></p>
+        <i class="fa-solid fa-pizza-slice"></i>
+      </div>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li class="lioff"> <img src="image/semfoto-removebg-preview.png" alt="" class="imgMenuReduzido"><button id="abrirLogin2">Login</button></li>
+        <li><a id="home" href="index.php">Home</a></li>
+        <li><a id="sobre" href="cardapio.php">Cardápio</a></li>
+        <li><a id="sobre" href="sobre.php">Sobre</a></li>
+        <li><a id="sobre" href="contatos.php">Contato</a></li>
+      </ul>
+    </nav>
+    <button id="botaoCarrinho"><i class="fa-solid fa-cart-shopping" id="carrinho"></i></button>
+    <div class="burguer">
+      <div id="linha1"></div>
+      <div id="linha2"></div>
+      <div id="linha3"></div>
+    </div>
+    <div class="login">
+      <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
+      <button id="abrirLogin">Login</button>
+    </div>
+  </header>
 
 
 
-    ?>
 
 
-    <header>
-        <a href="index.php">
-            <div class="logo">
-                <img src="image/<?php for ($i = 0; $i < count($info); $i++) {
-                                    echo $info[$i]["Logo"];
-                                } ?>" alt="Logo">
+  <div class="megaConteiner" id="conteinerLogin">
+    <button class="exitButton" id="exitButtonn">X</button>
+    <div class="conteiner">
+      <div class="title">
+        <img src="image/logoPizzaria1.png" alt="">
+        <h1> <i class="fa-solid fa-star"></i>Five Stars <i class="fa-solid fa-star"></i></h1>
+      </div>
+      <br><br>
 
-                <p><?php for ($i = 0; $i < count($info); $i++) {
-                        echo $info[$i]["Fantasia"];
-                    } ?></p>
-                <i class="fa-solid fa-pizza-slice"></i>
+      <div class="conteinerCadastro">
+        <div class="logar">
+
+          <h2>Entrar</h2>
+
+          <br>
+          <form action="">
+
+            <h3>Email</h3>
+            <input type="email">
+            <br><br>
+            <h3>Senha</h3>
+            <input type="password">
+            <br><br>
+            <div class="divButton">
+              <button> Entrar </button>
             </div>
-        </a>
-        <nav>
-            <ul class="nav-links">
-                <li class="lioff"> <img src="image/semfoto-removebg-preview.png" alt="" class="imgMenuReduzido"><a href="">Entrar </a></li>
-                <li><a id="home" href="index.php">Home</a></li>
-                <li><a id="sobre" href="cardapio.php">Cardápio</a></li>
-                <li><a id="sobre" href="sobre.php">Sobre</a></li>
-                <li><a id="sobre" href="contatos.php">Contato</a></li>
-            </ul>
-        </nav>
-        <button id="botaoCarrinho"><i class="fa-solid fa-cart-shopping" id="carrinho"></i></button>
-        <div class="burguer">
-            <div id="linha1"></div>
-            <div id="linha2"></div>
-            <div id="linha3"></div>
+          </form>
+
         </div>
-        <div class="login">
-            <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
+        <div class="risco">
+
+        </div>
+        <div class="cadastrar">
+
+          <h2>Cadastrar</h2>
+
+          <br>
+          <form action="">
+
+            <h3>Email</h3>
+            <input type="email">
+            <br><br>
+            <h3>Senha</h3>
+            <input type="password">
+            <br><br>
+            <h3>Confirmar senha</h3>
+            <input type="password">
+            <br><br>
+            <div class="divButton">
+              <button> Cadastrar </button>
+            </div>
+          </form>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="miniCarrinhoOf">
+    <div class="divPedido">
+
+      <div class="divImgPedido">
+        <img src="image/toji.jpg" alt="">
+      </div>
+
+      <div class="conteinerPedido">
+        <div class="divNomeProduto">$Nome da Pizza$</div>
+        <div class="valorPedido"> $Valor$</div>
+      </div>
+    </div>
+
+
+
+
+    <button id="botaoConfirmarCompra">Confirmar compra</button>
+  </div>
+
+
+
+  <!-- Area de ediçao -->
+
+
+  <div class="divCardapio">
+    <div class="conteinerCardapio">
+
+      <!-- Div da categoria -->
+      <?php
+      require_once "adm/model/Produto.class.php";
+      $prod = new Produto();
+      $produto = $prod->exibirProduto();
+
+      ?>
+
+      <div class="conteinerCategoria">
+
+        <?php
+        $controle = 999;
+        for ($i = 0; $i < count($produto); $i++) {
+
+          if ($controle != $produto[$i]["Categoria"]) {
+            $controle = $produto[$i]["Categoria"];
+        ?>
+            <div class="divCategoria">
+              <h2>
+                <?php
+
+                print_r($produto[$i]["Nome_Categoria"]);
+
+
+                ?>
+
+              </h2>
+            </div>
+
+            <!-- DIv da pizza -->
+
+          <?php
+
+          }
+
+          echo "<div class=\"conteinerPizza\">";
+          echo "<br>";
+
+          ?>
+          <h3 id="nomeOrigem">
             <?php
 
-            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-                // echo "<a href=\"perfil.php\">".print_r($_SESSION["CLI-EMAIL"]). "</a>";
-                echo "<a href=\"perfil.php\">Convidado</a>";
-                echo  "<button class=\"sair\" onclick=\"ExecutaLogout();\">Sair</button>";
-            } else {
-                echo "<button id=\"abrirLogin\">Login</button>";
-            }
-
-
+            print_r($produto[$i]["Nome_Produto"]);
             ?>
-        </div>
-    </header>
+          </h3>
+          <?php
+
+          ?>
+          <img id="pizzaImage" src="imagensProdutos/<?php print_r($produto[$i]["Imagem"]) ?>" alt="Imagem">
 
 
-    <div class="megaConteiner" id="conteinerLogin">
-        <button class="exitButton" id="exitButtonn">X</button>
-        <div class="conteiner">
-            <div class="title">
-                <img src="image/logoPizzaria1.png" alt="">
-                <h1> <i class="fa-solid fa-star"></i>Five Stars <i class="fa-solid fa-star"></i></h1>
-            </div>
-            <br><br>
+          <p id="prodDesc">
+            <?php
+            print_r($produto[$i]["Desc_Produto"]);
+            ?>
+          </p>
+          <?php
+          echo "<br>";
 
-            <div class="conteinerCadastro">
-                <div class="logar">
+          ?>
 
-                    <h2>Entrar</h2>
+          <form name="formEdit" onsubmit="return false" >
+            <input type="hidden" name="Id_Produto" value="<?= $produto[$i]["Id_Produto"]; ?>">
+            <button class="botaodoscrias" onclick="exibirProduto(<?= $produto[$i]["Id_Produto"]; ?>)" type="submit" name="sbmt" value="Pedir agora" style="cursor:pointer">Pedir agora</button>
 
-                    <br>
-                    <form action="">
+          </form>
+         
 
-                        <h3>Email</h3>
-                        <input type="email">
-                        <br><br>
-                        <h3>Senha</h3>
-                        <input type="password">
-                        <br><br>
-                        <div class="divButton">
-                            <button> Entrar </button>
-                        </div>
-                    </form>
 
-                </div>
-                <div class="risco">
+          <!-- <button  class="botaodoscrias">Pedir agora</button> -->
+        <?php
+          echo "<br>";
 
-                </div>
-                <div class="cadastrar">
+          echo "</div>";
+        }
+        ?>
 
-                    <h2>Cadastrar</h2>
 
-                    <br>
-                    <form action="controller/controller.php" method="post">
-                        <input type="hidden" name="add_cliente" value="">
-                        <h3>Email</h3>
-                        <input type="email" name="email">
-                        <br><br>
-                        <h3>Senha</h3>
-                        <input type="password" name="senha">
-                        <br><br>
-                        <h3>Confirmar senha </h3>
-                        <input type="password" name="confSenha">
-                        <br><br>
-                        <div class="divButton">
-                            <button> Cadastrar </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <!-- DIv da pizza -->
+      </div>
+      <!-- Div da categoria -->
     </div>
 
-
-
-    <div class="miniCarrinhoOf">
-        <div class="divPedido">
-
-            <div class="divImgPedido">
-                <img src="image/toji.jpg" alt="">
-            </div>
-
-            <div class="conteinerPedido">
-                <div class="divNomeProduto">$Nome da Pizza$</div>
-                <div class="valorPedido"> $Valor$</div>
-            </div>
-        </div>
+  </div>
+  <!-- Area de ediçao -->
 
 
 
-        <button id="botaoConfirmarCompra">Confirmar compra</button>
+
+
+
+
+  <!------------------------------------------------------------ tela de confirmar pedido------------------------------------------------ -->
+
+
+
+
+  <!-- <div id="idConteinerProduto" class="conteinerProdutoOf pizza-details">
+    <input type="button" id="quitButton" value="X">
+
+    <div class="divBackground"><img src="image/toji.jpg" alt=""></div>
+    <div class="divImg">
+      <img src="" alt="Imagem" id="imagemProd">
     </div>
+    <div class="divNome">
+      <h2 id="pizzaName"></h2>
+      <p id="desc"></p>
 
-
-
-    <div class="title">
-        <h1>Saiba mais sobre a Pizzaria Five Stars</h1>
-        <br><br>
-        <h2>Nossa História</i></h2>
     </div>
-
-    <div class="sobre">
-        <h3>
-            Fundada em 2023 por 6 estudantes, a Pizzaria Five Stars tem como objetivo que cada mordida seja uma viagem
-            culinária única e memorável. Nossa pizzaria é muito mais do que apenas um restaurante, é um refúgio
-            gastronômico para todos os amantes de uma boa pizza.<br>
-            Nossa variedade de sabores é verdadeiramente vasta e criativa. Desde as clássicas Mussarela e Calabresa até
-            as inovadoras combinações de sabores como a "Brasileira", além dos nossos talentosos pizzaiolos, que
-            combinam ingredientes frescos e de alta qualidade para oferecer uma experiência única de sabor em cada
-            fatia. Para completar sua experiência, não deixe de experimentar nossas deliciosas e irresistíveis esfihas.
-        </h3>
+    <div class="divBotao">
+      <p id="valorAqui"></p>
+      <button id="botaoAqui"></button>
     </div>
-
-    <footer>
-        <div class="rodape">
-
-            <div>
-                <h5> Informações</h5>
-                <a href="" target="_blank">Politica de privacidade</a>
-                <a href="https://theusg.github.io/CodeWave/" target="_blank">Empresa desenvolvedora</a>
-            </div>
-
-            <div>
-                <h5> Trabalhe conosco</h5>
-                <a href="">Parceiras</a>
-            </div>
-
-            <div>
-                <h5>Conheça mais</h5>
-                <a href="">Redes Sociais</a>
-            </div>
-
-        </div>
-
-        <h2>©2023 copyright - Desenvolvedora CodeWave</h2>
-
-    </footer>
+  </div> -->
 
 
 
-    <script src="assets/js/sobre.js"></script>
-    <script src="https://kit.fontawesome.com/5bb743cf48.js" crossorigin="anonymous"></script>
+
+  <!-- <script>
+    function mostrarInfo(id) {
 
 
+      //-------------------------------Nome-----------------------------------------//
+      var tagNome = document.getElementById('nomeOrigem');
+
+      var NomeOrigem = tagNome.textContent;
+
+      var NomeDestino = document.getElementById('pizzaName');
+
+      NomeDestino.textContent = NomeOrigem;
+
+      //-----------------------------Descrição-------------------------------//
+
+      var tagDesc = document.getElementById('prodDesc');
+
+      var DescOrigem = tagDesc.textContent;
+
+      var DescDestino = document.getElementById('desc');
+
+      DescDestino.textContent = DescOrigem;
+
+      //--------------------------- IMAGEM -------------------------------//
+
+      var imgOrigem = document.getElementById('pizzaImage');
+
+      var imagemSrc = imgOrigem.src;
+
+      var imgDestino = document.getElementById('imagemProd');
+
+      imgDestino.src = imagemSrc;
+      //--------------------------- VALOR -------------------------------//
+
+      var campoOculto = document.getElementById('valorProduto');
+
+      var valorOculto = campoOculto.value;
+
+      // var pElement = document.getElementById('valorAqui');
+      var botaoExibirValor = document.getElementById('botaoAqui');
+
+      botaoExibirValor.textContent = "R$" + valorOculto;
+      //pElement.textContent = valorOculto;
+
+    }
+  </script> -->
+  <!---------------------------------------------- tela de confirmar pedido ----------------------------------------------------------------------->
+
+
+  <footer>
+    <div class="rodape">
+
+      <div>
+
+        <h5> Informações</h5>
+
+        <a href="" target="_blank">Politica de privacidade</a>
+        <a href="https://theusg.github.io/CodeWave/" target="_blank">Empresa desenvolvedora</a>
+
+
+      </div>
+      <div>
+        <h5> Trabalhe conosco</h5>
+
+        <a href="">Parceiras</a>
+
+      </div>
+
+      <div>
+        <h5>Conheça mais</h5>
+
+        <a href="">Redes Sociais</a>
+
+
+      </div>
+
+    </div>
+    <h2>©2023 Copyright - Desenvolvedora CodeWave</h2>
+
+
+  </footer>
+
+  <script src="assets/js/cardapio.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://kit.fontawesome.com/5bb743cf48.js" crossorigin="anonymous"></script>
+
+    <script>
+      $('#exibirProd').fadeOut(0);
+      function exibirProduto(codigo){
+        $('#exibirProd').fadeIn(500);
+        $.ajax({
+          type: "post",
+          url: "confirmarPedido.php?Id_Produto="+codigo,
+          success: function (response) {
+            $('#exibirProd').html(response);    
+          }
+        });
+        
+
+
+      }
+
+      exibir = document.querySelector('#exibirProd');
+      $('#exibirProd').click(function (e) { 
+        e.preventDefault();
+        $(this).fadeOut(500);
+      });
+    </script>
 
 </body>
+
+
 
 </html>

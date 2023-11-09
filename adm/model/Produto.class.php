@@ -31,7 +31,12 @@ class Produto{
         return $result;
     }
 
-    
+    public function mostrarInfo($id){
+        $result = array();
+        $cmd = $this->pdo->query("SELECT * FROM produto WHERE Id_Produto = $id");
+        $result = $cmd->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
 }
 
