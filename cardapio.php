@@ -44,10 +44,10 @@ session_start();
 </head>
 
 <body>
-<div id="exibirProd">
+ <div id="exibirProd">
   
     
-</div>
+</div> 
   <?php
   require_once "adm/model/Empresa.class.php";
   $empresa = new Empresa();
@@ -407,7 +407,7 @@ session_start();
         e.preventDefault();
         $(this).fadeOut(500);
       });
-    </script>
+    </script> 
 
 </body>
 
