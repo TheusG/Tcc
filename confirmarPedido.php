@@ -39,7 +39,7 @@
     <div id="idConteinerProduto" class="conteinerProdutoOn">
       <input type="button" onclick="javascript:history.go(-1)"  id="quitButton" value="X">
 
-        <div class="divBackground"><img src="image/imagemFundo.jpg" alt=""></div>
+        <div class="divBackground"><img src="image/" alt=""></div>
         <div class="divImg">
             <!-- <img src="ImagensProdutos/Pizza_Toscana.png" alt=""> -->
             <img src="ImagensProdutos/<?php for ($i = 0; $i < count($produto); $i++) {
