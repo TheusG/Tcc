@@ -26,20 +26,17 @@ session_start();
   <script src="assets/js/jquery.mask.js]"></script>
   <script src="assets/js/jquery.mask.min.js"></script>
 
-  <style>
-    #exibirProd{
-      position:fixed;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(5px); /* Altere o valor para ajustar a intensidade do desfoque */
-      cursor:pointer;
-      top: 65px;
-      
-      z-index: 999;
-    }
-
-    
-  </style>
+  <!-- <style>
+#exibirProd{
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px); /* Altere o valor para ajustar a intensidade do desfoque */
+    cursor:pointer;
+    top: 65px;
+    z-index: 999;
+  }
+  </style> -->
 
 </head>
 
@@ -47,7 +44,7 @@ session_start();
  <div id="exibirProd">
   
     
-</div> 
+</div>  
   <?php
   require_once "adm/model/Empresa.class.php";
   $empresa = new Empresa();
@@ -381,12 +378,8 @@ session_start();
 
   </footer>
     
-  <script src="assets/js/cardapio.js"></script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-
-  <script src="https://kit.fontawesome.com/5bb743cf48.js" crossorigin="anonymous"></script>
-
-    <script>
+  <!-- <script>
+      
       $('#exibirProd').fadeOut(0);
       function exibirProduto(codigo){
         $('#exibirProd').fadeIn(500);
@@ -407,7 +400,14 @@ session_start();
         e.preventDefault();
         $(this).fadeOut(500);
       });
-    </script> 
+
+      
+    </script>   -->
+  <script src="assets/js/cardapio.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://kit.fontawesome.com/5bb743cf48.js" crossorigin="anonymous"></script>
+
 
 </body>
 
