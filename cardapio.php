@@ -152,6 +152,7 @@ session_start();
   </div>
 
   <div class="miniCarrinhoOf">
+            <!-- Pedido -->
     <div class="divPedido">
 
       <div class="divImgPedido">
@@ -163,7 +164,8 @@ session_start();
         <div class="valorPedido"> $Valor$</div>
       </div>
     </div>
-
+    
+<!-- asdasdsadasd -->
 
 
 
