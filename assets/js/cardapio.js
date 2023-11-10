@@ -20,6 +20,25 @@ const quitButton = document.querySelector('#quitButton');
 const botaoConfirmarCompra = document.querySelector('#botaoCarrinho');
 const miniCarrinho = document.querySelector('.miniCarrinhoOf');
 
+$('#exibirProd').fadeOut(0);
+function exibirProduto(codigo){
+  $('#exibirProd').fadeIn(500);
+  $.ajax({
+    // Type tava post antes 
+    type: "post",
+    url: "confirmarPedido.php?Id_Produto="+codigo,
+    success: function (response) {
+      $('#exibirProd').html(response);    
+    }
+  });
+
+}
+
+exibir = document.querySelector('#exibirProd');
+$('#exibirProd').click(function (e) { 
+  e.preventDefault();
+  $(this).fadeOut(500);
+});
 
 
 
@@ -60,7 +79,6 @@ burguer.addEventListener('click', () => {
   linha1.classList.toggle('linha1-active')
   linha2.classList.toggle('linha2-active')
   linha3.classList.toggle('linha3-active')
-
 });
 
 
@@ -68,23 +86,3 @@ botaoConfirmarCompra.addEventListener('click', () => {
     miniCarrinho.classList.toggle('miniCarrinhoOn');
   });
   
-  $('#exibirProd').fadeOut(0);
-  function exibirProduto(codigo){
-    $('#exibirProd').fadeIn(500);
-    $.ajax({
-      type: "post",
-      url: "confirmarPedido.php?Id_Produto="+codigo,
-      success: function (response) {
-        $('#exibirProd').html(response);    
-      }
-    });
-  
-
-
-  }
-
-  exibir = document.querySelector('#exibirProd');
-  $('#exibirProd').click(function (e) { 
-    e.preventDefault();
-    $(this).fadeOut(500);
-  });

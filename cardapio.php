@@ -41,10 +41,10 @@ session_start();
 </head>
 
 <body>
- <div id="exibirProd">
+  <div id="exibirProd">
   
     
-</div>  
+</div>   
   <?php
   require_once "adm/model/Empresa.class.php";
   $empresa = new Empresa();
@@ -378,7 +378,7 @@ session_start();
 
   </footer>
     
-   <script>
+   <!-- <script>
       
       $('#exibirProd').fadeOut(0);
       function exibirProduto(codigo){
@@ -402,7 +402,7 @@ session_start();
       });
 
       
-    </script>   
+    </script>    -->
   <script src="assets/js/cardapio.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
 
