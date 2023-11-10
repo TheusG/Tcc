@@ -67,4 +67,23 @@ botaoConfirmarCompra.addEventListener('click', () => {
     miniCarrinho.classList.toggle('miniCarrinhoOn');
   });
   
+  $('#exibirProd').fadeOut(0);
+  function exibirProduto(codigo){
+    $('#exibirProd').fadeIn(500);
+    $.ajax({
+      type: "post",
+      url: "confirmarPedido.php?Id_Produto="+codigo,
+      success: function (response) {
+        $('#exibirProd').html(response);    
+      }
+    });
   
+
+
+  }
+
+  exibir = document.querySelector('#exibirProd');
+  $('#exibirProd').click(function (e) { 
+    e.preventDefault();
+    $(this).fadeOut(500);
+  });
