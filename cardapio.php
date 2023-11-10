@@ -26,7 +26,7 @@ session_start();
   <script src="assets/js/jquery.mask.js]"></script>
   <script src="assets/js/jquery.mask.min.js"></script>
 
- <style>
+ <!-- <style>
 #exibirProd{
     position:fixed;
     width: 100%;
@@ -36,7 +36,7 @@ session_start();
     top: 65px;
     z-index: 999;
   }
-  </style> 
+  </style>  -->
 
 </head>
 
