@@ -31,7 +31,7 @@
 .divPedido{
     width: 90%;
     border: solid 1px darkorange;
-    height: 90px;
+    height: 110px;
     margin: 20px 0;
     display: flex;
     align-items: center;
@@ -49,7 +49,7 @@
 .conteinerPedido{
     display: flex;
     width: 68%;
-    height: 90%;
+   
     
     flex-direction: column;
     justify-content: space-evenly;
@@ -62,6 +62,13 @@
 .valorPedido{
     font-size: 25px;
     color: darkorange;
+}
+.quantidade{
+    width: 100%;
+    display: flex;
+    color: orange;
+    justify-content: space-evenly;
+    align-items: center;
 }
 #botaoConfirmarCompra{
     width: 90%;

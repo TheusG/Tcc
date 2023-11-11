@@ -215,6 +215,12 @@
         <div class="conteinerPedido">
             <div class="divNomeProduto">$Nome da Pizza$</div>
             <div class="valorPedido"> $Valor$</div>
+            <div class="quantidade">
+            <i class="fa-solid fa-minus"></i>
+            <p>0</p>
+            <i class="fa-solid fa-plus"></i>
+            </div>
+          
         </div>
     </div>
     
