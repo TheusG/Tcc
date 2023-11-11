@@ -217,6 +217,7 @@
             <div class="valorPedido"> $Valor$</div>
         </div>
     </div>
+    
     <div class="divValorTotal">
           <p>Valor Total$</p>
       </div>
