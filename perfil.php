@@ -144,15 +144,19 @@ session_start();
 
         <div class="conteinerNome">
           <h2><?php 
-          
-          print_r($_SESSION["CLI-EMAIL"])
+          if($_SESSION["CLI-NOME"] == ""){
+            print_r($_SESSION["CLI-EMAIL"]);
+          }else{
+            print_r($_SESSION["CLI-NOME"]);
+          }
+         
           
           ?></h2>
         </div>
       </div>
       <div class="menuHorizontal">
         <a href="" target="screen">Pedidos</a>
-        <a href="dadosCliente.html" target="screen">Configurações</a>
+        <a href="dadosCliente.php" target="screen">Configurações</a>
         <a href="" target="screen">Ajuda</a>
 
       </div>

@@ -3,9 +3,12 @@
 function dadosCliente($email, $senha)
 {
     require_once "../adm/model/Conexao.php";
-    $sql = "SELECT usuario.* , cliente.*
+    // $sql = "SELECT usuario.* , cliente.*
+    //         FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario
+    //         WHERE usuario.Email = '$email' AND usuario.Senha = '$senha'";
+    $sql = "SELECT usuario.* , cliente.*,cep.* 
             FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario
-            WHERE usuario.Email = '$email' AND usuario.Senha = '$senha'";
+            INNER JOIN Cep on usuario.Cep = Cep.id WHERE usuario.Email = '$email' AND usuario.Senha = '$senha'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         require_once "../adm/model/Conexao.php";
@@ -16,6 +19,13 @@ function dadosCliente($email, $senha)
             $cliente["Nome_Usuario"] = $row["Nome_Usuario"];
             $cliente["Senha"] = $row["Senha"];
             $cliente["Email"] = $row["Email"];
+            $cliente["Id"] = $row["Id"];
+            $cliente["Bairro"] = $row["Bairro"];
+            $cliente["Logradouro"] = $row["Logradouro"];
+            $cliente["Cidade"] = $row["Cidade"];
+            $cliente["Numero"] = $row["Numero"];
+            $cliente["Complemento"] = $row["Complemento"];
+           
         }
         $conn->close();
         return $cliente;
@@ -29,7 +39,7 @@ function dadosCliente($email, $senha)
     function adicionarCliente($cliente){
     
     require_once "../adm/model/Conexao.php";
-    $sql = "INSERT INTO usuario (Senha, Email) VALUES ('{$cliente["senha"]}','{$cliente["email"]}')";
+    $sql = "INSERT INTO usuario (Senha,Cep, Email) VALUES ('{$cliente["senha"]}',2,'{$cliente["email"]}')";
     $result = $conn->query($sql);
     $ultimoid = mysqli_insert_id($conn);
 
