@@ -93,13 +93,13 @@ session_start();
                     <h2>Entrar</h2>
 
                     <br>
-                    <form action="">
-
+                    <form action="controller/controller.php">
+                        <input type="hidden" name="validaCliente" value="1">
                         <h3>Email</h3>
-                        <input type="email">
+                        <input type="email" name="email">
                         <br><br>
                         <h3>Senha</h3>
-                        <input type="password">
+                        <input type="password" name="senha">
                         <br><br>
                         <div class="divButton">
                             <button> Entrar </button>

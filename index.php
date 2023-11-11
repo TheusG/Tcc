@@ -94,13 +94,8 @@
             }else{
               echo "<button id=\"abrirLogin\">Login</button>";
             }
-          
-          
+               
           ?>
-
-        
-          
-          
           </div>
     </header>
 

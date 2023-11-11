@@ -79,7 +79,7 @@ session_start();
       } else {
         echo "<button id=\"abrirLogin\">Login</button>";
       }
-      
+
       ?>
     </div>
   </header>
@@ -103,13 +103,13 @@ session_start();
           <h2>Entrar</h2>
 
           <br>
-          <form action="">
-
+          <form action="controller/controller.php">
+            <input type="hidden" name="validaCliente" value="1">
             <h3>Email</h3>
-            <input type="email">
+            <input type="email" name="email">
             <br><br>
             <h3>Senha</h3>
-            <input type="password">
+            <input type="password" name="senha">
             <br><br>
             <div class="divButton">
               <button> Entrar </button>
@@ -125,16 +125,16 @@ session_start();
           <h2>Cadastrar</h2>
 
           <br>
-          <form action="">
-
+          <form action="controller/controller.php" method="post">
+            <input type="hidden" name="add_cliente" value="">
             <h3>Email</h3>
-            <input type="email">
+            <input type="email" name="email">
             <br><br>
             <h3>Senha</h3>
-            <input type="password">
+            <input type="password" name="senha">
             <br><br>
-            <h3>Confirmar senha</h3>
-            <input type="password">
+            <h3>Confirmar senha </h3>
+            <input type="password" name="confSenha">
             <br><br>
             <div class="divButton">
               <button> Cadastrar </button>
