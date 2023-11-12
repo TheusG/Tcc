@@ -72,100 +72,112 @@ session_start();
             <div id="linha3"></div>
         </div>
         <div class="login">
-            <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
-            <?php
+          <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
+          
+          <?php 
 
-            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-                // echo "<a href=\"perfil.php\">".print_r($_SESSION["CLI-EMAIL"]). "</a>";
-                echo "<a href=\"perfil.php\">Convidado</a>";
-                echo  "<button class=\"sair\" onclick=\"ExecutaLogout();\">Sair</button>";
-            } else {
-                echo "<button id=\"abrirLogin\">Login</button>";
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
+              // echo "<a href=\"perfil.php\">".print_r($_SESSION["CLI-EMAIL"]). "</a>";
+              echo "<a href=\"perfil.php\">Convidado</a>";
+              echo  "<button class=\"sair\" onclick=\"ExecutaLogout();\">Sair</button>";
+            }else{
+              echo "<button id=\"abrirLogin\">Login</button>";
             }
-
-
-            ?>
-        </div>
+               
+          ?>
+          </div>
     </header>
 
 
     <div class="megaConteiner" id="conteinerLogin">
-        <button class="exitButton" id="exitButtonn">X</button>
-        <div class="conteiner">
-            <div class="title">
-                <img src="image/logoPizzaria1.png" alt="">
-                <h1> <i class="fa-solid fa-star"></i>Five Stars <i class="fa-solid fa-star"></i></h1>
+      <button class="exitButton" id="exitButtonn">X</button>
+      <div class="conteiner">
+        <div class="title">
+            <img src="image/logoPizzaria1.png" alt="">
+            <h1> <i class="fa-solid fa-star"></i>Five Stars <i class="fa-solid fa-star"></i></h1>
+        </div>
+        <br><br>
+        
+        <div class="conteinerCadastro">
+            <div class="logar">
+                
+                <h2>Entrar</h2>
+                
+                <br>
+                <form action="controller/controller.php">
+                <input type="hidden" name="validaCliente" value="1">
+                    <h3>Email</h3>
+                    <input type="email" name="email">
+                    <br><br>
+                    <h3>Senha</h3>
+                    <input type="password" name="senha">
+                    <br><br>
+                    <div class="divButton">
+                        <button> Entrar </button>
+                    </div>
+                </form>
+    
             </div>
-            <br><br>
-
-            <div class="conteinerCadastro">
-                <div class="logar">
-
-                    <h2>Entrar</h2>
-
-                    <br>
-                    <form action="controller/controller.php">
-                        <input type="hidden" name="validaCliente" value="1">
-                        <h3>Email</h3>
-                        <input type="email" name="email">
-                        <br><br>
-                        <h3>Senha</h3>
-                        <input type="password" name="senha">
-                        <br><br>
-                        <div class="divButton">
-                            <button> Entrar </button>
-                        </div>
-                    </form>
-
-                </div>
-                <div class="risco">
-
-                </div>
-                <div class="cadastrar">
-
-                    <h2>Cadastrar</h2>
-
-                    <br>
-                    <form action="controller/controller.php" method="post">
-                        <input type="hidden" name="add_cliente" value="">
-                        <h3>Email</h3>
-                        <input type="email" name="email">
-                        <br><br>
-                        <h3>Senha</h3>
-                        <input type="password" name="senha">
-                        <br><br>
-                        <h3>Confirmar senha </h3>
-                        <input type="password" name="confSenha">
-                        <br><br>
-                        <div class="divButton">
-                            <button> Cadastrar </button>
-                        </div>
-                    </form>
-                </div>
+            <div class="risco">
+    
+            </div>
+            <div class="cadastrar">
+                
+                <h2>Cadastrar</h2>
+                
+                <br>
+                <form action="controller/controller.php" method="post">
+                <input type="hidden" name="add_cliente" value="">
+                    <h3>Email</h3>
+                    <input type="email" name="email">
+                    <br><br>
+                    <h3>Senha</h3>
+                    <input type="password" name="senha">
+                    <br><br>
+                    <h3>Confirmar senha </h3>
+                    <input type="password" name="confSenha">
+                    <br><br>
+                    <div class="divButton">
+                        <button>  Cadastrar </button>
+                    </div>
+                </form>
+    
+    
+    
             </div>
         </div>
+      </div>
     </div>
-
-
 
     <div class="miniCarrinhoOf">
-        <div class="divPedido">
-
-            <div class="divImgPedido">
-                <img src="image/toji.jpg" alt="">
-            </div>
-
-            <div class="conteinerPedido">
-                <div class="divNomeProduto">$Nome da Pizza$</div>
-                <div class="valorPedido"> $Valor$</div>
-            </div>
+    <div class="divPedido">
+        
+        <div class="divImgPedido">
+            <img src="image/toji.jpg" alt="">
         </div>
-
-
-
-        <button id="botaoConfirmarCompra">Confirmar compra</button>
+    
+        <div class="conteinerPedido">
+          <button id="botaoFecharCarrinho">X</button>
+            <div class="divNomeProduto">$Nome da Pizza$</div>
+            <div class="valorPedido"> $Valor$</div>
+            <div class="quantidade">
+            <button><i class="fa-solid fa-minus"></i> </button>
+            <p>0</p>
+            <button><i class="fa-solid fa-plus"></i> </button>
+            </div>
+          
+        </div>
     </div>
+    
+    <div class="divValorTotal">
+          <p>Valor Total$</p>
+      </div>
+    
 
+
+
+    <button id="botaoConfirmarCompra">Confirmar compra</button>
+</div>
 
 
     <div class="title">

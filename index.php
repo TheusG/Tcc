@@ -208,12 +208,13 @@
         </div>
     
         <div class="conteinerPedido">
+          <button id="botaoFecharCarrinho">X</button>
             <div class="divNomeProduto">$Nome da Pizza$</div>
             <div class="valorPedido"> $Valor$</div>
             <div class="quantidade">
-            <i class="fa-solid fa-minus"></i>
+            <button><i class="fa-solid fa-minus"></i> </button>
             <p>0</p>
-            <i class="fa-solid fa-plus"></i>
+            <button><i class="fa-solid fa-plus"></i> </button>
             </div>
           
         </div>

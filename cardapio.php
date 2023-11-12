@@ -173,26 +173,34 @@ session_start();
   </div>
 
   <div class="miniCarrinhoOf">
-            <!-- Pedido -->
     <div class="divPedido">
-
-      <div class="divImgPedido">
-        <img src="image/toji.jpg" alt="">
-      </div>
-
-      <div class="conteinerPedido">
-        <div class="divNomeProduto">$Nome da Pizza$</div>
-        <div class="valorPedido"> $Valor$</div>
-      </div>
+        
+        <div class="divImgPedido">
+            <img src="image/toji.jpg" alt="">
+        </div>
+    
+        <div class="conteinerPedido">
+          <button id="botaoFecharCarrinho">X</button>
+            <div class="divNomeProduto">$Nome da Pizza$</div>
+            <div class="valorPedido"> $Valor$</div>
+            <div class="quantidade">
+            <button><i class="fa-solid fa-minus"></i> </button>
+            <p>0</p>
+            <button><i class="fa-solid fa-plus"></i> </button>
+            </div>
+          
+        </div>
     </div>
     
-<!-- asdasdsadasd -->
+    <div class="divValorTotal">
+          <p>Valor Total$</p>
+      </div>
+    
 
 
 
     <button id="botaoConfirmarCompra">Confirmar compra</button>
-  </div>
-
+</div>
 
 
   <!-- Area de ediçao -->
