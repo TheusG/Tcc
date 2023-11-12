@@ -37,7 +37,7 @@
       ?>
  
     <div id="idConteinerProduto" class="conteinerProdutoOn">
-      <input type="button" onclick="javascript:history.go(-1)"  id="quitButton" value="X">
+      <input type="button" onclick="javascript:window.location.href='cardapio.php'"  id="quitButton" value="X">
    
 
         <div class="divBackground"><img src="image/fundoPizza.jpg" alt=""></div>
