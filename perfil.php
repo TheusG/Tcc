@@ -26,6 +26,17 @@ session_start();
   <script src="assets/js/jquery.mask.js]"></script>
   <script src="assets/js/jquery.mask.min.js"></script>
 
+  <script>
+        function ExecutaLogout() {
+            var resp = confirm('Deseja sair?');
+            if (resp == true) {
+                location.href = "clienteLogout.php";
+            } else {
+                return null;
+            }
+        }
+    </script>
+
 
 </head>
 

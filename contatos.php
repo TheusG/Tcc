@@ -18,6 +18,17 @@ session_start();
   <link rel="stylesheet" href="style.css">
   <link rel="website icon" type="png" href="image/logoPizzaria1.png">
 
+  <script>
+        function ExecutaLogout() {
+            var resp = confirm('Deseja sair?');
+            if (resp == true) {
+                location.href = "clienteLogout.php";
+            } else {
+                return null;
+            }
+        }
+    </script>
+
 </head>
 
 <body>
