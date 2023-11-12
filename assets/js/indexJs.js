@@ -3,10 +3,12 @@ const burguer = document.querySelector('.burguer');
 const linha1 = document.querySelector('#linha1');
 const linha2 = document.querySelector('#linha2');
 const linha3 = document.querySelector('#linha3');
-const home = document.querySelector('#home')
-const sobre = document.querySelector('#sobre')
-const skills = document.querySelector('#skills')
-const projetos = document.querySelector('#projetos')
+
+
+// const home = document.querySelector('#home')
+// const sobre = document.querySelector('#sobre')
+// const skills = document.querySelector('#skills')
+// const projetos = document.querySelector('#projetos')
 
 const loginbutton2 = document.querySelector('#abrirLogin2');
 const loginbutton = document.querySelector('#abrirLogin');
@@ -47,6 +49,7 @@ burguer.addEventListener('click', () => {
   linha2.classList.toggle('linha2-active')
   linha3.classList.toggle('linha3-active')
 });
+
 
 
 

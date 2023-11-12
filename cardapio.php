@@ -26,16 +26,29 @@ session_start();
   <script src="assets/js/jquery.mask.js]"></script>
   <script src="assets/js/jquery.mask.min.js"></script>
 
+ <!-- <style>
+#exibirProd{
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px); /* Altere o valor para ajustar a intensidade do desfoque */
+    cursor:pointer;
+    top: 65px;
+    z-index: 999;
+  }
+  </style>  -->
 
 </head>
 
 <body>
+  <div id="exibirProd">
+  
+    
+</div>   
   <?php
   require_once "adm/model/Empresa.class.php";
   $empresa = new Empresa();
   $info = $empresa->infoEmpresa();
-
-
   ?>
 
 
@@ -149,6 +162,7 @@ session_start();
   </div>
 
   <div class="miniCarrinhoOf">
+            <!-- Pedido -->
     <div class="divPedido">
 
       <div class="divImgPedido">
@@ -160,7 +174,8 @@ session_start();
         <div class="valorPedido"> $Valor$</div>
       </div>
     </div>
-
+    
+<!-- asdasdsadasd -->
 
 
 
@@ -195,6 +210,7 @@ session_start();
             <div class="divCategoria">
               <h2>
                 <?php
+
                 print_r($produto[$i]["Nome_Categoria"]);
 
 
@@ -211,93 +227,48 @@ session_start();
 
           echo "<div class=\"conteinerPizza\">";
           echo "<br>";
+
           ?>
-          <h3>
+          <h3 id="nomeOrigem">
             <?php
+
             print_r($produto[$i]["Nome_Produto"]);
             ?>
           </h3>
           <?php
 
           ?>
-          <img src="imagensProdutos/<?php print_r($produto[$i]["Imagem"]) ?>" alt="Imagem">
+          <img id="pizzaImage" src="imagensProdutos/<?php print_r($produto[$i]["Imagem"]) ?>" alt="Imagem">
 
 
-          <p>
+          <p id="prodDesc">
             <?php
             print_r($produto[$i]["Desc_Produto"]);
             ?>
           </p>
-        <?php
+          <?php
           echo "<br>";
 
-          echo "<button class=\"botaodoscrias\">Pedir agora</button>";
+          ?>
 
+          <form name="formEdit" onsubmit="return false" >
+            <input type="hidden" name="Id_Produto" value="<?= $produto[$i]["Id_Produto"]; ?>">
+            <button class="botaodoscrias" onclick="exibirProduto(<?= $produto[$i]["Id_Produto"]; ?>)" type="submit" name="sbmt" value="Pedir agora" style="cursor:pointer">Pedir agora</button>
+
+          </form>
+         
+
+
+          <!-- <button  class="botaodoscrias">Pedir agora</button> -->
+        <?php
           echo "<br>";
 
           echo "</div>";
         }
-
         ?>
 
 
         <!-- DIv da pizza -->
-
-        <!-- <div class="conteinerPizza">
-          <br>
-          <h3>$Nome da Pizza$</h3>
-          <img src="image/pizza.jpeg" alt="">
-          <p>$Descricao $
-            asdasda
-            sdasd
-            dasda
-            sdasda
-            sdasdasdasd
-
-          </p>
-          <br>
-          <button>Pedir Agora</button>
-          <br>
-
-
-        </div>
-        <div class="conteinerPizza">
-          <br>
-          <h3>$Nome da Pizza$</h3>
-          <img src="image/pizza.jpeg" alt="">
-          <p>$Descricao $
-            asdasda
-            sdasd
-            dasda
-            sdasda
-            sdasdasdasd
-
-          </p>
-          <br>
-          <button>Pedir Agora</button>
-          <br>
-
-
-        </div>
-        <div class="conteinerPizza">
-          <br>
-          <h3>$Nome da Pizza$</h3>
-          <img src="image/pizza.jpeg" alt="">
-          <p>$Descricao $
-            asdasda
-            sdasd
-            dasda
-            sdasda
-            sdasdasdasd
-
-          </p>
-          <br>
-          <button>Pedir Agora</button>
-          <br>
-
-
-        </div> -->
-
       </div>
       <!-- Div da categoria -->
     </div>
@@ -307,32 +278,83 @@ session_start();
 
 
 
-  <!-- tela de confirmar pedido -->
 
 
 
 
-  <div id="idConteinerProduto" class="conteinerProdutoOf">
+  <!------------------------------------------------------------ tela de confirmar pedido------------------------------------------------ -->
+
+
+
+
+  <!-- <div id="idConteinerProduto" class="conteinerProdutoOf pizza-details">
     <input type="button" id="quitButton" value="X">
 
     <div class="divBackground"><img src="image/toji.jpg" alt=""></div>
     <div class="divImg">
-      <img src="image/pizza.jpeg" alt="">
+      <img src="" alt="Imagem" id="imagemProd">
     </div>
     <div class="divNome">
-      <h2>$Nome da pizza$</h2>
-      <p>$Lorem ipsum dolor sit amet. Et velit sapiente 33 perferendis neque ut aliquid similique a eaque
-        sapiente. Et repellendus deserunt ut nihil ipsam a vero dolorem. Qui ipsum iusto et delectus
-        perspiciatis et tempore deleniti.</p>
+      <h2 id="pizzaName"></h2>
+      <p id="desc"></p>
 
     </div>
     <div class="divBotao">
-      <p>20,00</p>
-      <button>Adicionar ao carrinho</button>
+      <p id="valorAqui"></p>
+      <button id="botaoAqui"></button>
     </div>
-  </div>
+  </div> -->
 
-  <!-- tela de confirmar pedido -->
+
+
+
+  <!-- <script>
+    function mostrarInfo(id) {
+
+
+      //-------------------------------Nome-----------------------------------------//
+      var tagNome = document.getElementById('nomeOrigem');
+
+      var NomeOrigem = tagNome.textContent;
+
+      var NomeDestino = document.getElementById('pizzaName');
+
+      NomeDestino.textContent = NomeOrigem;
+
+      //-----------------------------Descrição-------------------------------//
+
+      var tagDesc = document.getElementById('prodDesc');
+
+      var DescOrigem = tagDesc.textContent;
+
+      var DescDestino = document.getElementById('desc');
+
+      DescDestino.textContent = DescOrigem;
+
+      //--------------------------- IMAGEM -------------------------------//
+
+      var imgOrigem = document.getElementById('pizzaImage');
+
+      var imagemSrc = imgOrigem.src;
+
+      var imgDestino = document.getElementById('imagemProd');
+
+      imgDestino.src = imagemSrc;
+      //--------------------------- VALOR -------------------------------//
+
+      var campoOculto = document.getElementById('valorProduto');
+
+      var valorOculto = campoOculto.value;
+
+      // var pElement = document.getElementById('valorAqui');
+      var botaoExibirValor = document.getElementById('botaoAqui');
+
+      botaoExibirValor.textContent = "R$" + valorOculto;
+      //pElement.textContent = valorOculto;
+
+    }
+  </script> -->
+  <!---------------------------------------------- tela de confirmar pedido ----------------------------------------------------------------------->
 
 
   <footer>
@@ -367,7 +389,32 @@ session_start();
 
 
   </footer>
+    
+   <!-- <script>
+      
+      $('#exibirProd').fadeOut(0);
+      function exibirProduto(codigo){
+        $('#exibirProd').fadeIn(500);
+        $.ajax({
+          type: "post",
+          url: "confirmarPedido.php?Id_Produto="+codigo,
+          success: function (response) {
+            $('#exibirProd').html(response);    
+          }
+        });
+      
 
+
+      }
+
+      exibir = document.querySelector('#exibirProd');
+      $('#exibirProd').click(function (e) { 
+        e.preventDefault();
+        $(this).fadeOut(500);
+      });
+
+      
+    </script>    -->
   <script src="assets/js/cardapio.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
 

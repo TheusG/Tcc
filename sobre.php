@@ -187,7 +187,7 @@ session_start();
             <div>
                 <h5> Trabalhe conosco</h5>
                 <a href="">Parceiras</a>
-            </div>
+            </div>  
 
             <div>
                 <h5>Conheça mais</h5>
