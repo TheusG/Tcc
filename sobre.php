@@ -150,13 +150,18 @@ session_start();
     </div>
 
     <div class="miniCarrinhoOf">
-    <div class="divPedido">
+<?php 
+
+if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
+?>
+  <div class="divPedido">
         
         <div class="divImgPedido">
             <img src="image/toji.jpg" alt="">
         </div>
     
         <div class="conteinerPedido">
+          
           <button id="botaoFecharCarrinho">X</button>
             <div class="divNomeProduto">$Nome da Pizza$</div>
             <div class="valorPedido"> $Valor$</div>
@@ -172,11 +177,15 @@ session_start();
     <div class="divValorTotal">
           <p>Valor Total$</p>
       </div>
-    
-
-
-
     <button id="botaoConfirmarCompra">Confirmar compra</button>
+
+    <?php 
+}else{
+  echo "<button id=\"botaoConfirmarCompra\">Carrinho Vazio</button>";
+
+}
+    ?>
+
 </div>
 
 

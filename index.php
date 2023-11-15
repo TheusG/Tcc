@@ -5,11 +5,6 @@
 
 ?>
 
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -164,50 +159,21 @@
     </div>
 
 
-    <!-- <script>
-    const checkButton = document.querySelector('#check');
-    const checkIcon = document.querySelector('#checkIcon');
-    const senhaInput = document.querySelector('#senha');
-
-    checkButton.addEventListener('click', () => {
-      if (senhaInput.type === "password") {
-        senhaInput.type = "text";
-        checkIcon.classList.remove('fa-eye-slash');
-        checkIcon.classList.add('fa-eye');
-      } else {
-        senhaInput.type = "password";
-        checkIcon.classList.remove('fa-eye');
-        checkIcon.classList.add('fa-eye-slash');
-      }
-    });
-  </script> -->
-
-
-
-
-<!-- <script>
-  const loginbutton = document.querySelector('#abrirLogin');
-  const login = document.querySelector('.megaConteiner');
-  const exitbutton = document.querySelector('#exitButtonn');
-
-  loginbutton.addEventListener('click', () => {
-    login.classList.toggle('megaConteinerOn');
-  });
-
-  exitbutton.addEventListener('click', () => {
-    login.classList.remove('megaConteinerOn'); // Remova a classe megaConteinerOn
-    login.classList.add('megaConteiner'); // Adicione a classe megaConteiner
-  });
-</script> -->
+  
   
 <div class="miniCarrinhoOf">
-    <div class="divPedido">
+<?php 
+
+if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
+?>
+  <div class="divPedido">
         
         <div class="divImgPedido">
             <img src="image/toji.jpg" alt="">
         </div>
     
         <div class="conteinerPedido">
+          
           <button id="botaoFecharCarrinho">X</button>
             <div class="divNomeProduto">$Nome da Pizza$</div>
             <div class="valorPedido"> $Valor$</div>
@@ -223,11 +189,15 @@
     <div class="divValorTotal">
           <p>Valor Total$</p>
       </div>
-    
-
-
-
     <button id="botaoConfirmarCompra">Confirmar compra</button>
+
+    <?php 
+}else{
+  echo "<button id=\"botaoConfirmarCompra\">Carrinho vazio</button>";
+
+}
+    ?>
+
 </div>
 
    

@@ -46,7 +46,7 @@
             <img src="ImagensProdutos/<?php for ($i = 0; $i < count($produto); $i++) {
                     echo $produto[$i]["Imagem"];
                 } ?>" alt="Logo">
-  
+            
         </div>
         <div class="divNome">
             <h2><?php for ($i = 0; $i < count($produto); $i++) {
