@@ -201,7 +201,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
             culinária única e memorável. Nossa pizzaria é muito mais do que apenas um restaurante, é um refúgio
             gastronômico para todos os amantes de uma boa pizza.<br>
             Nossa variedade de sabores é verdadeiramente vasta e criativa. Desde as clássicas Mussarela e Calabresa até
-            as inovadoras combinações de sabores como a "Brasileira", além dos nossos talentosos pizzaiolos, que
+            as inovadoras combinações de sabores como a "Vegetariana", além dos nossos talentosos pizzaiolos, que
             combinam ingredientes frescos e de alta qualidade para oferecer uma experiência única de sabor em cada
             fatia. Para completar sua experiência, não deixe de experimentar nossas deliciosas e irresistíveis esfihas.
         </h3>

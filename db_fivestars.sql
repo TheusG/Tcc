@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21/10/2023 às 22:21
+-- Tempo de geração: 15/11/2023 às 21:27
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -43,6 +43,25 @@ INSERT INTO `cargo` (`Id_Cargo`, `Nome_Cargo`) VALUES
 (6, 'Garçom'),
 (1, 'Gerente'),
 (4, 'Pizzaiolo');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `carrinho`
+--
+
+CREATE TABLE `carrinho` (
+  `Id_Carrinho` int(11) NOT NULL,
+  `Cliente` int(11) DEFAULT NULL,
+  `Cod_Produto` int(11) DEFAULT NULL,
+  `Quantidade` int(11) DEFAULT NULL,
+  `Valor_Unitario` float DEFAULT NULL,
+  `SubTotal` float DEFAULT NULL,
+  `Total` float DEFAULT NULL,
+  `Desconto` float DEFAULT NULL,
+  `Adicional` float DEFAULT NULL,
+  `Pagamento` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -88,7 +107,8 @@ CREATE TABLE `cep` (
 --
 
 INSERT INTO `cep` (`Id`, `Cep`, `Cidade`, `Logradouro`, `Bairro`, `Tipo`) VALUES
-(1, '8253001', 'São Paulo', 'Virginia Ferni', 'Itaquera', 'Rua');
+(1, '8253001', 'São Paulo', 'Virginia Ferni', 'Itaquera', 'Rua'),
+(2, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -110,7 +130,9 @@ INSERT INTO `cliente` (`Id_Cliente`, `Referencia`, `Usuario`) VALUES
 (3, NULL, 27),
 (7, NULL, 31),
 (8, NULL, 32),
-(31, 'bla bla bla', 55);
+(31, 'bla bla bla', 55),
+(34, NULL, 59),
+(35, NULL, 60);
 
 -- --------------------------------------------------------
 
@@ -211,6 +233,26 @@ INSERT INTO `funcionario` (`Id_Funcionario`, `Cargo`, `Perfil`, `Salario`, `Usua
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `pagamento`
+--
+
+CREATE TABLE `pagamento` (
+  `Id_Pagamento` int(11) NOT NULL,
+  `Nome_Pagamento` varchar(20) DEFAULT NULL,
+  `Troco` tinyint(1) DEFAULT NULL,
+  `Foto` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `pagamento`
+--
+
+INSERT INTO `pagamento` (`Id_Pagamento`, `Nome_Pagamento`, `Troco`, `Foto`) VALUES
+(1, 'Di0nheiro', 0, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `perfil`
 --
 
@@ -259,12 +301,12 @@ CREATE TABLE `produto` (
 --
 
 INSERT INTO `produto` (`Id_Produto`, `Cod_Produto`, `Nome_Produto`, `Desc_Produto`, `Estoque`, `Estoque_Min`, `Estoque_Max`, `Valor`, `Status_Produto`, `Imagem`, `Categoria`) VALUES
-(1, '1001', 'Pizza Alho', 'Alho, Molho de tomate e mussarela        ', 0, 0, 0, 50.99, '1', 'pizzaAtum.jpg', 1),
+(1, '1001', 'Pizza Alho', 'Alho, Molho de tomate e mussarela        ', 0, 0, 0, 50.99, '1', 'pizzaAlho.png', 1),
 (2, '1002', 'Pizza Atum          ', 'Atum e cebola                                                       ', 0, 0, 0, 31.99, '1', 'pizzaAtum.jpg                ', 1),
 (3, '1003', 'Pizza Bacon         ', 'Bacon e mussarela                                                   ', 0, 0, 0, 39.99, '1', 'pizzaBacon.png', 1),
 (4, '1004', 'Pizza Baiana        ', 'Calabresa moída, ovo, cebola e pimenta                              ', 0, 0, 0, 31.99, '1', 'pizzaBaiana.png', 1),
-(5, '1005', 'Pizza Bauru         ', 'Presunto, mussarela e rodelas de tomate                             ', 0, 0, 0, 29.99, '1', 'pizzaBauru.png               ', 1),
-(6, '1006', 'Pizza Brasileira    ', 'Atum, ovo, palmito, mussarela, bacon e camarão                      ', 0, 0, 0, 41, '1', 'pizzaBrasileira.png          ', 1),
+(5, '1005', 'Pizza Bauru         ', 'Presunto, mussarela e rodelas de tomate                             ', 0, 0, 0, 29.99, '1', 'PizzaBauru.png', 1),
+(6, '1006', 'Pizza Brasileira    ', 'Atum, ovo, palmito, mussarela, bacon e camarão                      ', 0, 0, 0, 41, '0', 'pizzaBrasileira.png          ', 1),
 (7, '1007', 'Pizza Brócolis      ', 'Brócolis, ovo, cebola, bacon e mussarela                            ', 0, 0, 0, 41.99, '1', 'pizzaBrocolis.png', 1),
 (8, '1008', 'Pizza Caipira       ', 'Frango desfiado,milho verde com cobertura de catupiry               ', 0, 0, 0, 39.99, '1', 'pizzaCaipira.png             ', 1),
 (9, '1009', 'Pizza Calabacon     ', 'Calabresa fatiada, catupiry e bacon                                 ', 0, 0, 0, 39.99, '1', 'pizzaCalabacon.png', 1),
@@ -274,7 +316,7 @@ INSERT INTO `produto` (`Id_Produto`, `Cod_Produto`, `Nome_Produto`, `Desc_Produt
 (13, '1013', 'Pizza Carne Seca    ', 'Carne seca,catupiry e mussarela                                     ', 0, 0, 0, 57.99, '1', 'pizzaCarneSeca.png', 1),
 (14, '1014', 'Pizza Champignom    ', 'Champignom coberto com mussarela                                    ', 0, 0, 0, 39.99, '1', 'pizzaChampignon.png', 1),
 (15, '1015', 'Pizza Dois Queijos  ', 'Mussarela e catupiry                                                ', 0, 0, 0, 37.99, '1', 'pizzaDoisQueijos.png', 1),
-(16, '1016', 'Pizza Escarola      ', 'Escarola, mussarela e bacon                                         ', 0, 0, 0, 29.99, '1', 'pizzaEscarola.png            ', 1),
+(16, '1016', 'Pizza Escarola      ', 'Escarola, mussarela e bacon                                         ', 0, 0, 0, 29.99, '0', 'pizzaEscarola.png', 1),
 (17, '1017', 'Pizza Frango        ', 'Frango desfiado temperado e cheddar                                 ', 0, 0, 0, 35, '1', 'pizzaFrango.png              ', 1),
 (18, '1018', 'Pizza Frango com Catupiry', 'Frango desfiado temperado com catupiry                              ', 0, 0, 0, 41.99, '1', 'pizzaFrangoCatupiry.png', 1),
 (19, '1019', 'Pizza Italiana      ', 'Calabresa, Salame, Pimentão Verde e Azeitonas Pretas Fatiadas       ', 0, 0, 0, 35.99, '1', 'pizzaItaliana.png', 1),
@@ -320,7 +362,7 @@ INSERT INTO `produto` (`Id_Produto`, `Cod_Produto`, `Nome_Produto`, `Desc_Produt
 (60, '5060', 'Fanta Uva 2 litros  ', 'Fanta Uva 2 litros                                                  ', 0, 0, 0, 15, '1', 'FantaUva2litros.png          ', 5),
 (61, '5061', 'Guaraná Antartica 350ml ', 'Guaraná Antartica 350ml                                             ', 0, 0, 0, 9, '1', 'Guarana350ml.png', 5),
 (62, '5062', 'Guaraná Antártica 2 litros     ', 'Guaraná Antártica 2 litros                                          ', 0, 0, 0, 15, '1', 'Guarana2litros.png', 5),
-(63, '5063', 'Sprite 350ml        ', 'Sprite 350ml                                                        ', 0, 0, 0, 9, '1', 'Sprite350ml.png', 5),
+(63, '5063', 'Sprite 350ml        ', 'Sprite 350ml                                                        ', 0, 0, 0, 9, '0', 'Sprite350ml (2).png', 5),
 (64, '5064', 'Sprite 2 litros     ', 'Sprite 2 litros                                                     ', 0, 0, 0, 15, '1', 'sprite2litros.png', 5),
 (65, '5065', 'Pepsi 350ml         ', 'Pepsi 350ml                                                         ', 0, 0, 0, 9, '1', 'pepsi350ml.png', 5),
 (66, '5066', 'Pepsi 2 litros      ', 'Pepsi 2 litros                                                      ', 0, 0, 0, 15, '1', 'Pepsi2litros.png', 5),
@@ -358,10 +400,13 @@ INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Nu
 (15, 'Ingrid Passos', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'f', 1, '400', 'Escola', '(11) 11111-1111', 'ingrid@pizza.com', '2003-02-14', 'semfoto.jpg'),
 (20, 'Pedro Henrique', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'n', 1, '9', 'Escola', '(11) 11111-1111', 'pedro@pizza.com', '2023-09-07', NULL),
 (24, 'Matheus', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '07', '505', '(11) 11111-1111', 'matheus@pizza.com', '2023-08-28', ''),
-(27, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Lucas@gmail.com', NULL, NULL),
-(31, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Bruno@gmail.com', NULL, NULL),
-(32, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, NULL, NULL, NULL, NULL, 'Murilo@gmail.com', NULL, NULL),
-(55, 'Leandro', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '4', 'Escola', '(22) 22222-2222', 'leandro@gmail.com', '2020-01-14', '');
+(27, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, NULL, NULL, NULL, 'Lucas@gmail.com', NULL, NULL),
+(31, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, NULL, NULL, NULL, 'Bruno@gmail.com', NULL, NULL),
+(32, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, NULL, NULL, NULL, 'Murilo@gmail.com', NULL, NULL),
+(55, 'Leandro', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '4', 'Escola', '(22) 22222-2222', 'leandro@gmail.com', '2020-01-14', ''),
+(58, 'Julia', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'f', 1, '1', '1', '(11) 11111-1111', 'julia@pizza.com', '2023-10-10', ''),
+(59, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 2, NULL, NULL, NULL, 'Pericles@gmail.com', NULL, NULL),
+(60, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 2, NULL, NULL, NULL, 'Jonas@gmail.com', NULL, NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -373,6 +418,15 @@ INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Nu
 ALTER TABLE `cargo`
   ADD PRIMARY KEY (`Id_Cargo`),
   ADD UNIQUE KEY `Nome_Cargo` (`Nome_Cargo`);
+
+--
+-- Índices de tabela `carrinho`
+--
+ALTER TABLE `carrinho`
+  ADD PRIMARY KEY (`Id_Carrinho`),
+  ADD KEY `Cliente` (`Cliente`),
+  ADD KEY `Pagamento` (`Pagamento`),
+  ADD KEY `Cod_Produto` (`Cod_Produto`);
 
 --
 -- Índices de tabela `categoria`
@@ -422,6 +476,12 @@ ALTER TABLE `funcionario`
   ADD KEY `Usuario` (`Usuario`);
 
 --
+-- Índices de tabela `pagamento`
+--
+ALTER TABLE `pagamento`
+  ADD PRIMARY KEY (`Id_Pagamento`);
+
+--
 -- Índices de tabela `perfil`
 --
 ALTER TABLE `perfil`
@@ -451,25 +511,31 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `cargo`
 --
 ALTER TABLE `cargo`
-  MODIFY `Id_Cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Id_Cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de tabela `carrinho`
+--
+ALTER TABLE `carrinho`
+  MODIFY `Id_Carrinho` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `Id_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Id_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `cep`
 --
 ALTER TABLE `cep`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de tabela `configuracao`
@@ -493,7 +559,13 @@ ALTER TABLE `entregador`
 -- AUTO_INCREMENT de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `Id_Funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Id_Funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de tabela `pagamento`
+--
+ALTER TABLE `pagamento`
+  MODIFY `Id_Pagamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `perfil`
@@ -505,17 +577,25 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `Id_Produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `Id_Produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `carrinho`
+--
+ALTER TABLE `carrinho`
+  ADD CONSTRAINT `carrinho_ibfk_1` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Id_Cliente`),
+  ADD CONSTRAINT `carrinho_ibfk_2` FOREIGN KEY (`Pagamento`) REFERENCES `pagamento` (`Id_Pagamento`),
+  ADD CONSTRAINT `carrinho_ibfk_3` FOREIGN KEY (`Cod_Produto`) REFERENCES `produto` (`Id_Produto`);
 
 --
 -- Restrições para tabelas `cliente`
