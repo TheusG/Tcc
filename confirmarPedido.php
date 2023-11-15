@@ -61,11 +61,12 @@
                 
         </div>
         <div class="divBotao">
-            <!-- <p>20,00</p> -->
+
                 <?php for ($i = 0; $i < count($produto); $i++) {
                     $valor =  $produto[$i]["Valor"];
-                    echo "<button>R$" . number_format($valor, 2, ",", ".") . "</button>";
-                } ?> 
+                    echo "<button type=\"submit\">R$" . number_format($valor, 2, ",", ".") . "</button>";
+                } ?>
+
         </div>
     </div>
 

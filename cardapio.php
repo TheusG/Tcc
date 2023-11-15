@@ -240,17 +240,13 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
                 <?php
 
                 print_r($produto[$i]["Nome_Categoria"]);
-
-
                 ?>
-
               </h2>
             </div>
 
             <!-- DIv da pizza -->
 
           <?php
-
           }
 
           echo "<div class=\"conteinerPizza\">";
@@ -310,79 +306,6 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
 
 
 
-  <!------------------------------------------------------------ tela de confirmar pedido------------------------------------------------ -->
-
-
-
-
-  <!-- <div id="idConteinerProduto" class="conteinerProdutoOf pizza-details">
-    <input type="button" id="quitButton" value="X">
-
-    <div class="divBackground"><img src="image/toji.jpg" alt=""></div>
-    <div class="divImg">
-      <img src="" alt="Imagem" id="imagemProd">
-    </div>
-    <div class="divNome">
-      <h2 id="pizzaName"></h2>
-      <p id="desc"></p>
-
-    </div>
-    <div class="divBotao">
-      <p id="valorAqui"></p>
-      <button id="botaoAqui"></button>
-    </div>
-  </div> -->
-
-
-
-
-  <!-- <script>
-    function mostrarInfo(id) {
-
-
-      //-------------------------------Nome-----------------------------------------//
-      var tagNome = document.getElementById('nomeOrigem');
-
-      var NomeOrigem = tagNome.textContent;
-
-      var NomeDestino = document.getElementById('pizzaName');
-
-      NomeDestino.textContent = NomeOrigem;
-
-      //-----------------------------Descrição-------------------------------//
-
-      var tagDesc = document.getElementById('prodDesc');
-
-      var DescOrigem = tagDesc.textContent;
-
-      var DescDestino = document.getElementById('desc');
-
-      DescDestino.textContent = DescOrigem;
-
-      //--------------------------- IMAGEM -------------------------------//
-
-      var imgOrigem = document.getElementById('pizzaImage');
-
-      var imagemSrc = imgOrigem.src;
-
-      var imgDestino = document.getElementById('imagemProd');
-
-      imgDestino.src = imagemSrc;
-      //--------------------------- VALOR -------------------------------//
-
-      var campoOculto = document.getElementById('valorProduto');
-
-      var valorOculto = campoOculto.value;
-
-      // var pElement = document.getElementById('valorAqui');
-      var botaoExibirValor = document.getElementById('botaoAqui');
-
-      botaoExibirValor.textContent = "R$" + valorOculto;
-      //pElement.textContent = valorOculto;
-
-    }
-  </script> -->
-  <!---------------------------------------------- tela de confirmar pedido ----------------------------------------------------------------------->
 
 
   <footer>
