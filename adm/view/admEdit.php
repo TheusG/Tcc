@@ -133,11 +133,11 @@
                     <div class="divRadio">
             <label for="perfil">Poder</label><br><br>
 
-            <input type="radio" value="Total" name="perfil" <?php echo $dados['Perfil'] == 1 ? "checked":""?>>Total
+            <input type="radio" value="1" name="perfil" <?php echo $dados['Perfil'] == 1 ? "checked":""?>>Total
             <br>
-            <input type="radio" name="perfil" <?php echo $dados['Perfil'] == 2 ? "checked":""?>>Parcial
+            <input type="radio" value="2"name="perfil" <?php echo $dados['Perfil'] == 2 ? "checked":""?>>Parcial
             <br>
-            <input type="radio" name="perfil" <?php echo $dados['Perfil'] == 3 ? "checked":""?>>Mínimo
+            <input type="radio" value="3 "name="perfil" <?php echo $dados['Perfil'] == 3 ? "checked":""?>>Mínimo
    
  
                     </div>

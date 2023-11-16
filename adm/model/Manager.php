@@ -278,10 +278,24 @@ function editarCategoria($categoria)
 function excluirCategoria($id)
 {
     require_once "Conexao.php";
-    $sql = "DELETE FROM categoria WHERE Id_Categoria = {$id}";
+    $sql = "DELETE FROM produto WHERE Categoria = {$id}";
     $result = $conn->query($sql);
-    $conn->close();
-    return $result;
+
+   if ($result == true) {
+        $sql = "DELETE FROM categoria WHERE Id_Categoria = {$id}";
+        $result = $conn->query($sql);
+
+        if ($result == true) {
+            $conn->close();
+            return $result;
+        } else {
+            $conn->close();
+            return $result;
+        }
+    } else {
+        $conn->close();
+        return $result;
+    }
 }
 
 function todasCategorias()

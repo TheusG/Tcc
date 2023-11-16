@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15/11/2023 às 21:27
+-- Tempo de geração: 16/11/2023 às 03:13
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -85,7 +85,8 @@ INSERT INTO `categoria` (`Id_Categoria`, `Nome_Categoria`, `Comentario`, `Imagem
 (2, 'Pizza Doce', 'A pizza doce é um convite irresistível para os amantes de sabores ousados', 'pizzadoce.jpg'),
 (3, 'Esfiha', ' As esfihas são uma explosão de sabores.', 'Esfiha.jpg'),
 (4, 'Esfiha Doce', 'As esfihas doces são como abraços açucarados em forma de comida.', 'esfihadoce.png'),
-(5, 'Bebidas', 'A parceria entre bebida e pizza é um casamento delicioso.', 'bebidas.jpeg');
+(5, 'Bebidas', 'A parceria entre bebida e pizza é um casamento delicioso.', 'bebidas.jpeg'),
+(15, 'Doce', ',,,,,,', '');
 
 -- --------------------------------------------------------
 
@@ -227,8 +228,8 @@ CREATE TABLE `funcionario` (
 
 INSERT INTO `funcionario` (`Id_Funcionario`, `Cargo`, `Perfil`, `Salario`, `Usuario`) VALUES
 (1, 1, 1, 15000, 1),
-(2, 1, 1, 3000, 15),
-(8, 5, 2, 110, 24);
+(2, 1, 2, 3000, 15),
+(8, 5, 3, 110, 24);
 
 -- --------------------------------------------------------
 
@@ -369,7 +370,8 @@ INSERT INTO `produto` (`Id_Produto`, `Cod_Produto`, `Nome_Produto`, `Desc_Produt
 (67, '5067', 'Pepsi Zero 350ml    ', 'Pepsi Zero 350ml                                                    ', 0, 0, 0, 9, '1', 'PepsiZero.png', 5),
 (68, '5068', 'Água Mineral 350ml  ', 'Água Mineral 350ml                                                  ', 0, 0, 0, 5, '1', 'aguaMineral.png', 5),
 (69, '5069', 'Água com Gás 350ml  ', 'Água com Gás 350ml                                                  ', 0, 0, 0, 6, '1', 'AguacomGas.png               ', 5),
-(70, '5070', 'Água Tônica Schweppes 350ml       ', 'Água Tônica Schweppes 350ml                                         ', 0, 0, 0, 7, '1', 'AguaTonica.jpg               ', 5);
+(70, '5070', 'Água Tônica Schweppes 350ml       ', 'Água Tônica Schweppes 350ml                                         ', 0, 0, 0, 7, '1', 'AguaTonica.jpg               ', 5),
+(121, '5003', 'Doce de Coco', 'Doce bem gostoso', 0, 0, 0, 12, '1', '10202584-removebg-preview.png', 15);
 
 -- --------------------------------------------------------
 
@@ -396,10 +398,10 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Numero`, `Complemento`, `Telefone`, `Email`, `Nascimento`, `Foto`) VALUES
-(1, 'Felipe Cerqueira', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', '(11) 99593-7887', 'felipe@pizza.com', '2005-09-02', 'semfoto.jpg'),
-(15, 'Ingrid Passos', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'f', 1, '400', 'Escola', '(11) 11111-1111', 'ingrid@pizza.com', '2003-02-14', 'semfoto.jpg'),
+(1, 'Felipe Cerqueira', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '400', 'Escola', '(11) 99593-7887', 'felipe@fivestars.com', '2005-09-02', 'semfoto.jpg'),
+(15, 'Ingrid Passos', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'f', 1, '400', 'Escola', '(11) 11111-1111', 'ingrid@fivestars.com', '2003-02-14', 'semfoto.jpg'),
 (20, 'Pedro Henrique', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'n', 1, '9', 'Escola', '(11) 11111-1111', 'pedro@pizza.com', '2023-09-07', NULL),
-(24, 'Matheus', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '07', '505', '(11) 11111-1111', 'matheus@pizza.com', '2023-08-28', ''),
+(24, 'Matheus', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '07', '505', '(11) 11111-1111', 'matheus@fivestars.com', '2023-08-28', ''),
 (27, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, NULL, NULL, NULL, 'Lucas@gmail.com', NULL, NULL),
 (31, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, NULL, NULL, NULL, 'Bruno@gmail.com', NULL, NULL),
 (32, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, NULL, NULL, NULL, 'Murilo@gmail.com', NULL, NULL),
@@ -523,7 +525,7 @@ ALTER TABLE `carrinho`
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `Id_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `Id_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `cep`
@@ -577,7 +579,7 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `Id_Produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `Id_Produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
