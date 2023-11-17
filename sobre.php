@@ -191,48 +191,60 @@ session_start();
             <div>
                 <h2>Fivestars</h2>
                 <br>
-                <p>Fundada em 2023 por 6 estudantes, a Pizzaria Five Stars tem como objetivo que cada mordida seja uma viagem
-                    culinária única e memorável. Nossa pizzaria é muito mais do que apenas um restaurante, é um refúgio
-                    gastronômico para todos os amantes de uma boas esfihas.</p>
+                <p>
+                    Bem-vindo à Five Stars Pizzaria, onde cada pedaço é uma experiência extraordinária!
+                    Com ingredientes frescos e combinações únicas, nossas pizzas são verdadeiramente especiais. Desde a crocância da massa até o 
+                    sabor inigualável do molho caseiro, cada detalhe é cuidadosamente planejado para proporcionar uma experiência única.
+                    <br>
+                    Em nosso cardápio diversificado, você encontrará desde as clássicas favoritas 
+                    até combinações exclusivas que desafiam as expectativas. Seja um amante da simplicidade da Margherita ou um aventureiro 
+                    em busca de novos sabores, na Five Stars, temos algo para todos os paladares.
+                    <br>
+
+                    Acreditamos que a qualidade é a chave para conquistar o coração de nossos clientes, 
+                    e é por isso que escolhemos ingredientes frescos e locais sempre que possível. Cada pizza é uma celebração de 
+                    sabores autênticos, criando uma experiência gastronômica que vai além das expectativas.</p>
             </div>
             <div class="divHistoria">
                 <h2>historia</h2>
                 <br>
                 <p>Fundada em 2023 por 6 estudantes, a Pizzaria Five Stars tem como objetivo que cada mordida seja uma viagem
                     culinária única e memorável. Nossa pizzaria é muito mais do que apenas um restaurante, é um refúgio
-                    gastronômico para todos os amantes de uma boa pizza.<br>
+                    gastronômico para todos os amantes de uma boa pizza.
+                    <br>
                     Nossa variedade de sabores é verdadeiramente vasta e criativa. Desde as clássicas Mussarela e Calabresa até
                     as inovadoras combinações de sabores como a "Vegetariana", além dos nossos talentosos pizzaiolos, que
                     combinam ingredientes frescos e de alta qualidade para oferecer uma experiência única de sabor em cada
-                    fatia. Para completar sua experiência, não deixe de experimentar nossas deliciosas e irresistíveis esfihas.</p>
+                    fatia. Para completar sua experiência, não deixe de experimentar nossas deliciosas e irresistíveis esfihas.
+                </p>
             </div>
         </div>
         <div class="conteinerValores">
             <div class="missao">
-            <i class="fa-solid fa-bullseye"></i>
-            <br><br>
-            <h3>missao</h3>
-            <br>
+                <i class="fa-solid fa-bullseye"></i>
+                <br><br>
+                <h3>missao</h3>
+                <br>
                 <p>Fazer valer a experiência do consumidor, através da qualidade e agilidade
-                     de nossos serviços, demonstrando sempre nossos valores e princípios. </p>
+                    de nossos serviços, demonstrando sempre nossos valores e princípios. </p>
             </div>
             <div class="visao">
-                
+
                 <i class="fa-solid fa-binoculars"></i>
                 <br><br>
                 <h3>visao</h3>
                 <br>
-                <p>Pessoas buscam praticidade, é necessário lhe oferecer o serviço mais prático 
+                <p>Pessoas buscam praticidade, é necessário lhe oferecer o serviço mais prático
                     possível, sempre dando lugar a novas ideias.</p>
 
             </div>
             <div class="valores">
-            <i class="fa-solid fa-anchor"></i>
-            <br><br>
-            
-            <h3>valores</h3>
-            <br>
-                <p>Além de valores éticos e morais, nossa empresa visa administrar de forma consciente 
+                <i class="fa-solid fa-anchor"></i>
+                <br><br>
+
+                <h3>valores</h3>
+                <br>
+                <p>Além de valores éticos e morais, nossa empresa visa administrar de forma consciente
                     nosso contato com o público</p>
 
             </div>

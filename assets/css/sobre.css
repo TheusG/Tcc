@@ -1,8 +1,10 @@
+  
+
 .conteinerSobre{
     width: 100%;
-    height: 1900px;
+    
     color: black;
-    transform: translateY(65px);
+    margin-top: 65px;
     display: flex;
    
     flex-direction: column;
@@ -20,6 +22,7 @@
 .divHistoria{
     background-color: darkorange;
 }
+
 .divHistoria h2{
     color: white;
 }  
@@ -37,10 +40,16 @@
     display: flex;
     text-align: center;
     background-color: rgb(241, 241, 241);
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+    
 }
 .conteinerValores>div{
      margin: 50px 20px;
      padding: 20px;
+     width: 300px;
+
 }
 .conteinerValores i{
    font-size: 50px;
@@ -48,7 +57,7 @@
 }
 .conteinerValores p{
     display: flex;
-    text-align: justify;  
+    text-align: left;  
 }  
 .visao{
     background-color: darkorange;
@@ -63,7 +72,21 @@
     }
     .conteinerSobre>.ConteinerHistoria >div{
         width: 100%;
-     
-    } 
+    
+}
+
+@media (max-width:700px){
+
+    .conteinerValores{
+        flex-direction: column;
+        align-items: center;
+     }
+     .conteinerValores>div{
+       
+        width: 100%;
+   
+   }
 
 }
+
+
