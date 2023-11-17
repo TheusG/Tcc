@@ -1,10 +1,11 @@
 .conteinerSobre{
     width: 100%;
-    height: 900px;
+    height: 1900px;
     color: black;
     transform: translateY(65px);
     display: flex;
-    justify-content: space-evenly;
+   
+    flex-direction: column;
    
 }
 .conteinerSobre> .ConteinerHistoria{
@@ -14,6 +15,7 @@
 } 
 .conteinerSobre>.ConteinerHistoria >div{
     width: 50%;
+    border: solid 1px rgb(77, 73, 73);
 } 
 .divHistoria{
     background-color: darkorange;
@@ -30,4 +32,38 @@
 }
 .conteinerSobre > .ConteinerHistoria>div p{
     margin-bottom: 80px;
-}    
+} 
+.conteinerValores{
+    display: flex;
+    text-align: center;
+    background-color: rgb(241, 241, 241);
+}
+.conteinerValores>div{
+     margin: 50px 20px;
+     padding: 20px;
+}
+.conteinerValores i{
+   font-size: 50px;
+  
+}
+.conteinerValores p{
+    display: flex;
+    text-align: justify;  
+}  
+.visao{
+    background-color: darkorange;
+}
+.visao i, .visao h3 {
+    color: white;
+}   
+@media (max-width:900px){
+
+    .ConteinerHistoria{
+        flex-direction: column;
+    }
+    .conteinerSobre>.ConteinerHistoria >div{
+        width: 100%;
+     
+    } 
+
+}
