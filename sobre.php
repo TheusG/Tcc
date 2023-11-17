@@ -187,9 +187,42 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
     ?>
 
 </div>
+    <div class="conteinerSobre">
+        <div class="ConteinerHistoria">
+        <div>
+            <h2>Fivestars</h2>
+            <br>
+            <p>Fundada em 2023 por 6 estudantes, a Pizzaria Five Stars tem como objetivo que cada mordida seja uma viagem
+            culinária única e memorável. Nossa pizzaria é muito mais do que apenas um restaurante, é um refúgio
+            gastronômico para todos os amantes de uma boas esfihas.</p>
+        </div>
+        <div class="divHistoria">
+            <h2>historia</h2>
+            <br>
+            <p>Fundada em 2023 por 6 estudantes, a Pizzaria Five Stars tem como objetivo que cada mordida seja uma viagem
+            culinária única e memorável. Nossa pizzaria é muito mais do que apenas um restaurante, é um refúgio
+            gastronômico para todos os amantes de uma boa pizza.<br>
+            Nossa variedade de sabores é verdadeiramente vasta e criativa. Desde as clássicas Mussarela e Calabresa até
+            as inovadoras combinações de sabores como a "Vegetariana", além dos nossos talentosos pizzaiolos, que
+            combinam ingredientes frescos e de alta qualidade para oferecer uma experiência única de sabor em cada
+            fatia. Para completar sua experiência, não deixe de experimentar nossas deliciosas e irresistíveis esfihas.</p>
+        </div>
+        </div>
+        <div class="conteinerValores">
+            <div class="missao">
 
+            </div>
+            <div class="visao">
 
-    <div class="title">
+            </div>
+            <div class="valores">
+                
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <div class="title">
         <h1>Saiba mais sobre a Pizzaria Five Stars</h1>
         <br><br>
         <h2>Nossa História</i></h2>
@@ -205,7 +238,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
             combinam ingredientes frescos e de alta qualidade para oferecer uma experiência única de sabor em cada
             fatia. Para completar sua experiência, não deixe de experimentar nossas deliciosas e irresistíveis esfihas.
         </h3>
-    </div>
+    </div> -->
 
     <footer>
         <div class="rodape">
