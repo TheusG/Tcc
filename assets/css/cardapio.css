@@ -50,11 +50,14 @@
 .conteinerPizza img{
     width: 70%;
     height: 70%;
+    filter: drop-shadow( 0px 15px 10px  gray);
+    margin-bottom: 10px;
 }
 .conteinerPizza p{
     width: 70%;
     text-align: left;
     color: black;
+    height: 120px;
 }
 .conteinerPizza button{
  
