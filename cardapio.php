@@ -268,10 +268,16 @@ session_start();
 
           ?>
 
-          <form name="formEdit">
+          <form method="post" action="controller/controller.php" >
+          <input type="hidden" name="addCarrinho" value="">
             <input type="hidden" name="Id_Produto" value="<?= $produto[$i]["Id_Produto"]; ?>">
+            <input type="hidden" name="Usuario" value="<?php 
+              if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0){
+                echo "1";
+              }else{
+                echo "0";
+              }  ?>">
             <button class="botaodoscrias">Adicionar ao carrinho</button>
-
           </form>
          
 
@@ -359,6 +365,15 @@ session_start();
 
       
     </script>    -->
+
+    <?php
+  if (isset($_REQUEST["msg"])) {
+    $cod = $_REQUEST["msg"];
+    require_once "view/msg.php";
+    echo "<script>alert('" . $MSG[$cod] . "');</script>";
+  }
+
+  ?>
   <script src="assets/js/cardapio.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
 

@@ -4,6 +4,34 @@ session_start();
 // session_destroy();
 // exit();
 
+if(isset($_REQUEST["addCarrinho"])){
+    $id = $_REQUEST["Id_Produto"];
+    $login = $_REQUEST["Usuario"];
+
+    if($login == 0 ){
+        ?>
+        <form action="../index.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="FR30">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+<?php 
+    }else{
+        ?>
+        <form action="../index.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="FR31">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+<?php  
+    }
+}
+
+
+
+
 if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 
     if (isset($_REQUEST["validaCliente"])) {
@@ -98,12 +126,6 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 
 
 
-
-
-
-
-
-
 if (isset($_REQUEST["add_cliente"])) {
     $cliente["email"] = $_REQUEST["email"];
 
@@ -175,5 +197,3 @@ if (isset($_REQUEST["add_cliente"])) {
     }
 }
 
-
-?>
