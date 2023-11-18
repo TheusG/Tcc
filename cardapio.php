@@ -173,10 +173,7 @@ session_start();
   </div>
 
   <div class="miniCarrinhoOf">
-<?php 
 
-if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
-?>
   <div class="divPedido">
         
         <div class="divImgPedido">
@@ -202,12 +199,8 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
       </div>
     <button id="botaoConfirmarCompra">Confirmar compra</button>
 
-    <?php 
-}else{
-  echo "<button id=\"botaoConfirmarCompra\">Carrinho Vazio</button>";
+    
 
-}
-    ?>
 
 </div>
 
@@ -275,9 +268,9 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
 
           ?>
 
-          <form name="formEdit" onsubmit="return false" >
+          <form name="formEdit">
             <input type="hidden" name="Id_Produto" value="<?= $produto[$i]["Id_Produto"]; ?>">
-            <button class="botaodoscrias" onclick="exibirProduto(<?= $produto[$i]["Id_Produto"]; ?>)" type="submit" name="sbmt" value="Pedir agora" style="cursor:pointer">Pedir agora</button>
+            <button class="botaodoscrias">Adicionar ao carrinho</button>
 
           </form>
          
