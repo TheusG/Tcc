@@ -1,12 +1,8 @@
-  
-
 .conteinerSobre{
     width: 100%;
-    
     color: black;
     margin-top: 65px;
     display: flex;
-   
     flex-direction: column;
    
 }
@@ -22,7 +18,6 @@
 .divHistoria{
     background-color: darkorange;
 }
-
 .divHistoria h2{
     color: white;
 }  
@@ -42,8 +37,6 @@
     background-color: rgb(241, 241, 241);
     flex-wrap: wrap;
     justify-content: space-evenly;
-    
-    
 }
 .conteinerValores>div{
      margin: 50px 20px;
