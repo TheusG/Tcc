@@ -277,6 +277,12 @@ session_start();
               }else{
                 echo "0";
               }  ?>">
+            <input type="hidden" name="Id_Cliente" value="<?php 
+              if (isset($_SESSION["ID-CLIENTE"]) && $_SESSION["ID-CLIENTE"] =! ""){
+                echo $_SESSION["ID-CLIENTE"];
+              }else{
+                echo "0";
+              }  ?>">
             <button class="botaodoscrias">Adicionar ao carrinho</button>
           </form>
          

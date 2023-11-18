@@ -7,7 +7,7 @@ session_start();
 if(isset($_REQUEST["addCarrinho"])){
     $id = $_REQUEST["Id_Produto"];
     $login = $_REQUEST["Usuario"];
-
+    $Id_Cliente = $_REQUEST["Id_Cliente"];
     if($login == 0 ){
         ?>
         <form action="../index.php" name="form" id="myForm" method="post">
@@ -84,6 +84,7 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
                 $_SESSION["CLI-COMPLEMENTO"] = $cliente["Complemento"];
                 $_SESSION["CLI-LOGRADOURO"] = $cliente["Logradouro"];
                 $_SESSION["CLI-CEP"] = $cliente["Id"];
+                $_SESSION["ID-CLIENTE"] = $cliente["Id_Cliente"];
                 $_SESSION["LOGADO"] = 1;
 
 

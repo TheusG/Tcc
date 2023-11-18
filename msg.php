@@ -68,7 +68,7 @@ $MSG = array(
     "FR27" => "Falha no cadastro de usuário.",
     "FR28" => "Email já cadastrado.",
     "FR29" => "Você já está logado",
-    "FR30" => "Faça login para continuar...",
+    "FR30" => "Faça login para adicionar itens ao carrinho",
     "FR31" => "Com sessão",
     
 

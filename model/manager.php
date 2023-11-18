@@ -25,6 +25,7 @@ function dadosCliente($email, $senha)
             $cliente["Cidade"] = $row["Cidade"];
             $cliente["Numero"] = $row["Numero"];
             $cliente["Complemento"] = $row["Complemento"];
+            $cliente["Id_Cliente"] = $row["Id_Cliente"];
            
         }
         $conn->close();
