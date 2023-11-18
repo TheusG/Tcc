@@ -186,16 +186,15 @@ session_start();
                 <br>
                 <p>
                     Bem-vindo à Five Stars Pizzaria, onde cada pedaço é uma experiência extraordinária!
-                    Com ingredientes frescos e combinações únicas, nossas pizzas são verdadeiramente especiais. Desde a crocância da massa até o 
-                    sabor inigualável do molho caseiro, cada detalhe é cuidadosamente planejado para proporcionar uma experiência única.
+                    Com ingredientes frescos e combinações únicas, nossas pizzas são verdadeiramente especiais.Aqui cada detalhe é cuidadosamente planejado para proporcionar uma experiência única.
                     <br>
                     Em nosso cardápio diversificado, você encontrará desde as clássicas favoritas 
-                    até combinações exclusivas que desafiam as expectativas. Seja um amante da simplicidade da Margherita ou um aventureiro 
+                    até combinações exclusivas. Seja um amante da simplicidade da Portuguesa ou um aventureiro 
                     em busca de novos sabores, na Five Stars, temos algo para todos os paladares.
                     <br>
 
                     Acreditamos que a qualidade é a chave para conquistar o coração de nossos clientes, 
-                    e é por isso que escolhemos ingredientes frescos e locais sempre que possível. Cada pizza é uma celebração de 
+                    e é por isso que escolhemos ingredientes frescos. Na Five Stars cada pizza é uma celebração de 
                     sabores autênticos, criando uma experiência gastronômica que vai além das expectativas.</p>
             </div>
             <div class="divHistoria">

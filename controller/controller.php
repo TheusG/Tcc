@@ -9,6 +9,8 @@ if(isset($_REQUEST["addCarrinho"])){
     $login = $_REQUEST["Usuario"];
     $Id_Cliente = $_REQUEST["Id_Cliente"];
     $Valor = $_REQUEST["Valor"];
+
+    
     if($login == 0 ){
         ?>
         <form action="../index.php" name="form" id="myForm" method="post">
