@@ -5,9 +5,10 @@ session_start();
 // exit();
 
 if(isset($_REQUEST["addCarrinho"])){
-    $id = $_REQUEST["Id_Produto"];
+    $id = $_REQUEST["Cod_Produto"];
     $login = $_REQUEST["Usuario"];
     $Id_Cliente = $_REQUEST["Id_Cliente"];
+    $Valor = $_REQUEST["Valor"];
     if($login == 0 ){
         ?>
         <form action="../index.php" name="form" id="myForm" method="post">

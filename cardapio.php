@@ -270,7 +270,7 @@ session_start();
 
           <form method="post" action="controller/controller.php" >
           <input type="hidden" name="addCarrinho" value="">
-            <input type="hidden" name="Id_Produto" value="<?= $produto[$i]["Id_Produto"]; ?>">
+            <input type="hidden" name="Cod_Produto" value="<?= $produto[$i]["Cod_Produto"]; ?>">
             <input type="hidden" name="Usuario" value="<?php 
               if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0){
                 echo "1";
@@ -283,6 +283,7 @@ session_start();
               }else{
                 echo "0";
               }  ?>">
+              <input type="hidden" name="Valor" value="<?= $produto[$i]["Valor"]; ?>">
             <button class="botaodoscrias">Adicionar ao carrinho</button>
           </form>
          
