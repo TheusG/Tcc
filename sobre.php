@@ -189,7 +189,7 @@ session_start();
     <div class="conteinerSobre">
         <div class="ConteinerHistoria">
             <div>
-                <h2>Fivestars</h2>
+                <h2>Five Stars</h2>
                 <br>
                 <p>
                     Bem-vindo à Five Stars Pizzaria, onde cada pedaço é uma experiência extraordinária!
@@ -206,7 +206,7 @@ session_start();
                     sabores autênticos, criando uma experiência gastronômica que vai além das expectativas.</p>
             </div>
             <div class="divHistoria">
-                <h2>historia</h2>
+                <h2>História</h2>
                 <br>
                 <p>Fundada em 2023 por 6 estudantes, a Pizzaria Five Stars tem como objetivo que cada mordida seja uma viagem
                     culinária única e memorável. Nossa pizzaria é muito mais do que apenas um restaurante, é um refúgio
