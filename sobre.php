@@ -239,7 +239,7 @@ session_start();
 
             </div>
             <div class="valores">
-                <i class="fa-solid fa-anchor"></i>
+                <i class="fa-solid fa-handshake"></i>
                 <br><br>
 
                 <h3>valores</h3>
