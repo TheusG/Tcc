@@ -182,6 +182,7 @@ session_start();
   require_once "model/Carrinho.class.php";
   $carrinho = new Carrinho();
 $infoProduto = $carrinho->mostrarCarrinho();
+$total = 0;
 
 ?>
 
@@ -194,32 +195,37 @@ $infoProduto = $carrinho->mostrarCarrinho();
   <div class="divPedido">
         
         <div class="divImgPedido">
-            <img src="image/toji.jpg" alt="">
+            <img src="imagensProdutos/<?php print_r($infoProduto[$i]["Imagem"]) ?>" alt="imagemProd">
         </div>
     
         <div class="conteinerPedido">
-          
+
           <button id="botaoFecharCarrinho">X</button>
             <div class="divNomeProduto"><?php
-              print_r($infoProduto[$i]["Cod_Produto"]);
+              print_r($infoProduto[$i]["Nome_Produto"]);
             ?></div>
             <div class="valorPedido">R$<?php
               print_r($infoProduto[$i]["Valor_Unitario"]);
             ?></div>
             <div class="quantidade">
             <button><i class="fa-solid fa-minus"></i> </button>
-            <p>0</p>
+            <p><?php
+              print_r($infoProduto[$i]["Quantidade"]);
+            ?></p>
             <button><i class="fa-solid fa-plus"></i> </button>
             </div>
           
         </div>
     </div>
     <?php 
-       }
+     
+      $total = $total + $infoProduto[$i]["Valor_Unitario"];
+      
+      }
     ?>
     
     <div class="divValorTotal">
-          <p>Valor Total$</p>
+          <p>R$<?=$total?></p>
       </div>
     <button id="botaoConfirmarCompra">Confirmar compra</button>
 
