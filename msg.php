@@ -11,9 +11,11 @@ $MSG = array(
     "OP05" => "Identificador de dados não localizado.",
 	"OP06" => "Solicitação não pode ser realizada.",
 	"OP07" => "Operação não realizada: informações ausentes.",
+	"OP08" => "Erro ao adicionar ao carrinho.",
     
     // 50 A 99 SUCESSOS
     "OP50" => "Operação realizada com sucesso.",
+    
 
     /* série BD: operações com banco de dados  */
     // 00 a 49 ERROS
@@ -69,7 +71,7 @@ $MSG = array(
     "FR28" => "Email já cadastrado.",
     "FR29" => "Você já está logado",
     "FR30" => "Faça login para adicionar itens ao carrinho",
-    "FR31" => "Com sessão",
+    
     
 
 
@@ -92,7 +94,8 @@ $MSG = array(
     
     // 50 A 99 SUCESSOS
     "OP50" => "Acesso permitido",
-	"OP51" => "Sessão finalizada com sucesso."
+	"OP51" => "Sessão finalizada com sucesso.",
+    "OP52" => "Item adiciona ao carrinho."
 
 );
 

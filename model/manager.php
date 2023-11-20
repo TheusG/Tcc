@@ -91,7 +91,52 @@ function dadosCliente($email, $senha)
     }
 
 
+    function adicionarCarrinho($Id_Cliente,$id,$Valor){
+        require_once "../adm/model/Conexao.php";
+        $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(3,{$id}', 1,'{$Valor}','{$Valor}','{$Valor}',0,0,1)";
+        $result = $conn->query($sql);
 
+        if ($result == true) {
+            $conn->close();
+            return 1;
+        } else {
+            $conn->close();
+            return 0;
+        }   
+    }
 
+    // function mostrarCarrinho(){
+    //     require_once "../adm/model/Conexao.php";
+    //     $sql = "SELECT * FROM carrinho WHERE Cliente = 3";
+    //     $result = $conn->query($sql);
+
+    //     if ($result->num_rows > 0) {
+    //         $num = $result->num_rows;
+    //         $carrinho = array();
+    //         $carrinho["result"] = 1;
+    //         $carrinho["num"] = $num;
+
+    //         $i = 1;
+    //         while ($row = $result->fetch_assoc()) {
+    //             $carrinho[$i]["Id_Carrinho"] = $row["Id_Carrinho"];
+    //             $carrinho[$i]["Cliente"] = $row["Cliente"];
+    //             $carrinho[$i]["Cod_Produto"] = $row["Cod_Produto"];
+    //             $carrinho[$i]["Quantidade"] = $row["Quantidade"];
+    //             $carrinho[$i]["Valor_Unitario"] = $row["Valor_Unitario"];
+    //             $carrinho[$i]["SubTotal"] = $row["SubTotal"];
+    //             $carrinho[$i]["Total"] = $row["Total"];
+    //             $carrinho[$i]["Desconto"] = $row["Desconto"];
+    //             $carrinho[$i]["Adicional"] = $row["Adicional"];
+    //             $carrinho[$i]["Pagamento"] = $row["Pagamento"];
+    //         } 
+    //         $conn->close();
+    //         return $carrinho;
+    //     } else {
+    //         $carrinho["result"] = 0;
+    //         $conn->close();
+    //         return $carrinho;
+        
+    //     }
+    // }
 
 ?>
