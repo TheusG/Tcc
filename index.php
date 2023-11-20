@@ -161,34 +161,68 @@
 
   
   
+    <?php 
+
+    
+require_once "model/Carrinho.class.php";
+$carrinho = new Carrinho();
+$infoProduto = $carrinho->mostrarCarrinho();
+$total = 0;
+
+?>
+
 <div class="miniCarrinhoOf">
+<?php 
+if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+  for ($i = 0; $i < count($infoProduto); $i++){
 
-  <div class="divPedido">
-        
-        <div class="divImgPedido">
-            <img src="image/toji.jpg" alt="">
-        </div>
-    
-        <div class="conteinerPedido">
+    ?>
+    <div class="divPedido">
           
-          <button id="botaoFecharCarrinho">X</button>
-            <div class="divNomeProduto">$Nome da Pizza$</div>
-            <div class="valorPedido"> $Valor$</div>
-            <div class="quantidade">
-            <button><i class="fa-solid fa-minus"></i> </button>
-            <p>0</p>
-            <button><i class="fa-solid fa-plus"></i> </button>
-            </div>
-          
-        </div>
-    </div>
-    
-    <div class="divValorTotal">
-          <p>Valor Total$</p>
+          <div class="divImgPedido">
+              <img src="imagensProdutos/<?php print_r($infoProduto[$i]["Imagem"]) ?>" alt="imagemProd">
+          </div>
+      
+          <div class="conteinerPedido">
+  
+            <button id="botaoFecharCarrinho">X</button>
+              <div class="divNomeProduto"><?php
+                print_r($infoProduto[$i]["Nome_Produto"]);
+              ?></div>
+              <div class="valorPedido">R$<?php
+                print_r($infoProduto[$i]["Valor_Unitario"]);
+              ?></div>
+              <div class="quantidade">
+              <button><i class="fa-solid fa-minus"></i> </button>
+              <p><?php
+                print_r($infoProduto[$i]["Quantidade"]);
+              ?></p>
+              <button><i class="fa-solid fa-plus"></i> </button>
+              </div>
+            
+          </div>
       </div>
-    <button id="botaoConfirmarCompra">Confirmar compra</button>
+      <?php 
+       
+        $total = $total + $infoProduto[$i]["Valor_Unitario"];
+        
+        }
+      ?>
+      
+      <div class="divValorTotal">
+            <p>R$<?=$total?></p>
+        </div>
+      <button id="botaoConfirmarCompra">Confirmar compra</button>
+  <?php 
+  }else {
+  echo "<button id=\"botaoConfirmarCompra\">Fazer Login</button>";
+}
 
-    
+?>
+
+ 
+  
+
 
 </div>
 
