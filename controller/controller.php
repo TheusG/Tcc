@@ -24,7 +24,7 @@ if(isset($_REQUEST["addCarrinho"])){
     }else{
         
         require_once "../model/manager.php";
-        $resp = adicionarCarrinho($Id_Cliente,$id,$Valor);
+        $resp = adicionarCarrinho($id,$Valor);
 
         if($resp == 1){
         ?>

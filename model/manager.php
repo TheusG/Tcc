@@ -91,9 +91,9 @@ function dadosCliente($email, $senha)
     }
 
 
-    function adicionarCarrinho($Id_Cliente,$id,$Valor){
+    function adicionarCarrinho($id,$Valor){
         require_once "../adm/model/Conexao.php";
-        $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(3,{$id}', 1,'{$Valor}','{$Valor}','{$Valor}',0,0,1)";
+        $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(3,'{$id}', 1,'{$Valor}','{$Valor}','{$Valor}',0,0,1)";
         $result = $conn->query($sql);
 
         if ($result == true) {
