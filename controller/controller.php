@@ -4,6 +4,8 @@ session_start();
 // session_destroy();
 // exit();
 
+
+
 if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 
     if (isset($_REQUEST["validaCliente"])) {
@@ -56,6 +58,7 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
                 $_SESSION["CLI-COMPLEMENTO"] = $cliente["Complemento"];
                 $_SESSION["CLI-LOGRADOURO"] = $cliente["Logradouro"];
                 $_SESSION["CLI-CEP"] = $cliente["Id"];
+                $_SESSION["ID-CLIENTE"] = $cliente["Id_Cliente"];
                 $_SESSION["LOGADO"] = 1;
 
 
@@ -95,12 +98,6 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
         </script>
     <?php
 }
-
-
-
-
-
-
 
 
 
@@ -175,5 +172,3 @@ if (isset($_REQUEST["add_cliente"])) {
     }
 }
 
-
-?>
