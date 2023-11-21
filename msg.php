@@ -95,7 +95,7 @@ $MSG = array(
     // 50 A 99 SUCESSOS
     "OP50" => "Acesso permitido",
 	"OP51" => "Sessão finalizada com sucesso.",
-    "OP52" => "Item adiciona ao carrinho."
+    "OP52" => "Item adicionado ao carrinho."
 
 );
 
