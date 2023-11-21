@@ -300,8 +300,18 @@ $total = 0;
             print_r($produto[$i]["Desc_Produto"]);
             ?>
           </p>
+
+          <p id="prodDesc">R$
+            <?php
+            
+            $valor = $produto[$i]["Valor"];
+            print_r(number_format($valor, 2, ",", "."));
+            ?>
+          </p>
           <?php
           echo "<br>";
+
+          
 
           ?>
 
