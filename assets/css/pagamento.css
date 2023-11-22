@@ -1,0 +1,17 @@
+.conteinerPagamento{
+    width: 100%;
+    height: max-content;
+   display: flex;
+   justify-content: space-evenly;
+   margin-top: 65px;
+}
+.informacoes{
+    width: 60%;
+    height: 900px;
+    border: solid 1px rgb(128, 128, 128);
+}
+.pedidos{
+    width: 20%;
+    height: 900px;
+    border: solid 1px rgb(128, 128, 128);
+}
