@@ -250,7 +250,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
             <div class="missao">
                 <i class="fa-solid fa-bullseye"></i>
                 <br><br>
-                <h3>missao</h3>
+                <h3>Missão</h3>
                 <br>
                 <p>Fazer valer a experiência do consumidor, através da qualidade e agilidade
                     de nossos serviços, demonstrando sempre nossos valores e princípios. </p>
@@ -259,7 +259,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
 
                 <i class="fa-solid fa-binoculars"></i>
                 <br><br>
-                <h3>visao</h3>
+                <h3>Visão</h3>
                 <br>
                 <p>Pessoas buscam praticidade, é necessário lhe oferecer o serviço mais prático
                     possível, sempre dando lugar a novas ideias.</p>
@@ -269,7 +269,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                 <i class="fa-solid fa-handshake"></i>
                 <br><br>
 
-                <h3>valores</h3>
+                <h3>Valores</h3>
                 <br>
                 <p>Além de valores éticos e morais, nossa empresa visa administrar de forma consciente
                     nosso contato com o público</p>
