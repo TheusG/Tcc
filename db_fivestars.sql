@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/11/2023 às 20:34
+-- Tempo de geração: 22/11/2023 às 04:17
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -517,7 +517,7 @@ ALTER TABLE `cargo`
 -- AUTO_INCREMENT de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
-  MODIFY `Id_Carrinho` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Carrinho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de tabela `categoria`
