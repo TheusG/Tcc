@@ -102,7 +102,7 @@ session_start();
 
       if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
         // echo "<a href=\"perfil.php\">".print_r($_SESSION["CLI-EMAIL"]). "</a>";
-        echo "<a href=\"perfil.php\">". $_SESSION["ID-CLIENTE"] ."</a>";
+        echo "<a href=\"perfil.php\">Convidado</a>";
         echo  "<button class=\"sair\" onclick=\"ExecutaLogout();\">Sair</button>";
       } else {
         echo "<button id=\"abrirLogin\">Login</button>";
