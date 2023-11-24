@@ -35,11 +35,7 @@ h4{
     flex-direction: column;
 
 }
-.pedidos{
-    width: 20%;
-    height: 900px;
-    border: solid 1px rgb(128, 128, 128);
-}
+
  .nome{
      width: 98%;
      height: max-content;
@@ -105,8 +101,34 @@ input{
     
 }
 
-  
-    
+.pedidos{
+    width: 20%;
+    height: 900px;
+    border: solid 1px rgb(128, 128, 128);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pizzaInfo{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+} 
+.botaoComprar{
+    margin-top: 25px;
+    width: 60%;
+    height: 40px;
+    border-radius: 15px;
+    border: solid 1px black;
+    background-color: rgb(254 203 0);
+    font-size: 17px;
+    transition: 0.5s;
+} 
+.botaoComprar:hover{
+    background-color: rgb(236, 195, 31);
+    transition: 0.5s;
+    scale: 1.1;
+}       
  
 @media (max-width:1250px){
     .conteinerPagamento{
