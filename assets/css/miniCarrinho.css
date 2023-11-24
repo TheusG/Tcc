@@ -28,9 +28,8 @@
     z-index:9;
 }
 #botaoFecharCarrinho{
-    position: absolute;
-    top: 18px ;
-    right: 18px;
+   position: relative;
+    left: 110px;
     padding: 2px;
     background: none;
     color: darkorange;
