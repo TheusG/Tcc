@@ -47,45 +47,78 @@ h4{
      display: flex;
 
 }
+.nome >div{
+ 
+    margin-left: 25px;
 
+
+}
 input{
     width: 100%;
     height: 40px;
     padding: 10px;
     font-size: 18px;
     border-radius: 30px;
-}
+}/*
 .endereco{
     width: 100%;
     height: max-content;
     border: solid 1px black;
     margin-top: 60px;
     display: flex;
-    flex-direction: column;
+
 }
-.endereco >div {
+
+.dadosCLiente{
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    color: darkorange;
 }
-.campos{
-    margin-left: 25px;
+
+.conteinerGlobal{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.conteinerEndereco{
+   
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+ 
+}
+.padrao{
     display: flex;
     flex-direction: column;
     flex: 1 0 200px;
     justify-content: space-evenly;
     
 }
-.camposRua{
-    margin-left: 25px;
+.padrao2{
     display: flex;
     flex-direction: column;
-    flex: 1 0 400px;
-    justify-content: space-evenly;
+    flex: 1 0 200px;
+   
+   
 }
 
+.completo{
+    width: 100%;
+   
+} */
+/* @media (max-width:470px) {
+    .padrão{
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 200px;
+        justify-content: space-evenly;
+   
+    }
+  
   
     
- 
+} */
 @media (max-width:1250px){
     .conteinerPagamento{
         flex-direction: column;
@@ -103,22 +136,7 @@ input{
     .nome{
         flex-direction: column;
     }
-    .campos{
-        width: 60%;
-    }
    
-    
-
-}
-@media (max-width:510px){
-    .camposRua{
-        margin-left: 25px;
-        display: flex;
-        flex-direction: column;
-        flex: 1 0 200px;
-        justify-content: space-evenly;
-    }
-    
     
 
 }
