@@ -29,7 +29,7 @@ h4{
 }
 .informacoes{
     width: 60%;
-    height: 900px;
+   padding: 10px;
     border: solid 1px rgb(128, 128, 128);
     display: flex;
     flex-direction: column;
@@ -103,16 +103,22 @@ input{
 
 .pedidos{
     width: 20%;
-    height: 900px;
+   height: max-content;
     border: solid 1px rgb(128, 128, 128);
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 10px;
+}
+.pizzaName{
+    text-align: center;
 }
 .pizzaInfo{
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+    border-bottom: solid 1px black;
+    margin: 15px 0;
 } 
 .botaoComprar{
     margin-top: 25px;
@@ -125,7 +131,7 @@ input{
     transition: 0.5s;
 } 
 .botaoComprar:hover{
-    background-color: rgb(236, 195, 31);
+    background-color: rgb(255, 165, 31);
     transition: 0.5s;
     scale: 1.1;
 }       
