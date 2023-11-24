@@ -6,6 +6,7 @@ header{
 }
 h3{
     font-size: 30px;
+    margin-left: 15px;
 }
 h4{
     font-size: 25px;
@@ -31,8 +32,8 @@ h4{
     height: 900px;
     border: solid 1px rgb(128, 128, 128);
     display: flex;
-
     flex-direction: column;
+
 }
 .pedidos{
     width: 20%;
@@ -40,12 +41,17 @@ h4{
     border: solid 1px rgb(128, 128, 128);
 }
  .nome{
-     width: 100%;
+     width: 98%;
      height: max-content;
-     border: solid 1px black;
-     margin-top: 60px;
-     display: flex;
 
+     margin-top: 30px;
+     display: flex;
+     flex-direction: column;
+
+}
+.nome>div{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 input{
@@ -56,10 +62,10 @@ input{
     border-radius: 30px;
 }
 .endereco{
-    width: 100%;
+    width: 98%;
     height: max-content;
-    border: solid 1px black;
-    margin-top: 60px;
+   
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
 }
@@ -81,6 +87,22 @@ input{
     flex-direction: column;
     flex: 1 0 400px;
     justify-content: space-evenly;
+}
+.inputBox{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.opcoesPagamento{
+    display: flex;
+    align-items: center;
+
+}
+.inputPagamento{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px ;
+    
 }
 
   
