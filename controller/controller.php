@@ -27,17 +27,13 @@ if(isset($_REQUEST["addCarrinho"])){
         $resp = adicionarCarrinho($id,$Valor);
 
         if($resp == 1){
-        ?>
-            <form action="../index.php" name="form" id="myForm" method="post">
-                <input type="hidden" name="msg" value="OP52">
-            </form>
-            <script>
-                document.getElementById('myForm').submit()
-            </script>
-        <?php 
+            header('Location:../cardapio.php');
+            exit;
+            
+         
         }else{
             ?>
-            <form action="../index.php" name="form" id="myForm" method="post">
+            <form action="../cardapio.php" name="form" id="myForm" method="post">
                 <input type="hidden" name="msg" value="OP08">
             </form>
             <script>
@@ -46,8 +42,32 @@ if(isset($_REQUEST["addCarrinho"])){
         <?php 
         }
 
+        
+
 
     }
+}
+
+if (isset($_REQUEST["item_delete"])) {
+    $id = $_REQUEST["id"];
+    require_once "../model/manager.php";
+    $result = itemDelete($id);
+
+    if ($result == 1) { //conseguir excluir
+        header('Location:../cardapio.php');
+        exit;
+        
+        } else { //algo deu de errado na deleção
+        ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD04">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+        <?php
+        }
+
 }
 
 

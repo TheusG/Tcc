@@ -105,38 +105,39 @@ function dadosCliente($email, $senha)
         }   
     }
 
-    // function mostrarCarrinho(){
-    //     require_once "../adm/model/Conexao.php";
-    //     $sql = "SELECT * FROM carrinho WHERE Cliente = 3";
-    //     $result = $conn->query($sql);
+    function itemDelete($id){
+    
+    require_once "../adm/model/Conexao.php";
+    $sql = "DELETE FROM carrinho WHERE Cod_Produto = {$id}";
+    $result = $conn->query($sql);
+    $conn->close();
+    return $result;
+}
 
-    //     if ($result->num_rows > 0) {
-    //         $num = $result->num_rows;
-    //         $carrinho = array();
-    //         $carrinho["result"] = 1;
-    //         $carrinho["num"] = $num;
+   function formasPagamento(){
+    
+    require_once "../adm/model/Conexao.php";
+    $sql = "SELECT * FROM pagamento";
+    $result = $conn->query($sql);
 
-    //         $i = 1;
-    //         while ($row = $result->fetch_assoc()) {
-    //             $carrinho[$i]["Id_Carrinho"] = $row["Id_Carrinho"];
-    //             $carrinho[$i]["Cliente"] = $row["Cliente"];
-    //             $carrinho[$i]["Cod_Produto"] = $row["Cod_Produto"];
-    //             $carrinho[$i]["Quantidade"] = $row["Quantidade"];
-    //             $carrinho[$i]["Valor_Unitario"] = $row["Valor_Unitario"];
-    //             $carrinho[$i]["SubTotal"] = $row["SubTotal"];
-    //             $carrinho[$i]["Total"] = $row["Total"];
-    //             $carrinho[$i]["Desconto"] = $row["Desconto"];
-    //             $carrinho[$i]["Adicional"] = $row["Adicional"];
-    //             $carrinho[$i]["Pagamento"] = $row["Pagamento"];
-    //         } 
-    //         $conn->close();
-    //         return $carrinho;
-    //     } else {
-    //         $carrinho["result"] = 0;
-    //         $conn->close();
-    //         return $carrinho;
-        
-    //     }
-    // }
+    if ($result->num_rows > 0) {
+        $num = $result->num_rows;
+        $pagamento = array();
+        $pagamento["result"] = 1;
+        $pagamento["num"] = $num;
+        $i = 1;
+        while ($row = $result->fetch_assoc()) {
+            $pagamento[$i]["Id_Pagamento"] = $row["Id_Pagamento"];
+            $pagamento[$i]["Nome_Pagamento"] = $row["Nome_Pagamento"];
+            $i++;
+        }
+        $conn->close();
+        return $pagamento;
+    } else {
+        $pagamento["result"] = 0;
+        $conn->close();
+        return $pagamento;
+    }
+   }
 
 ?>

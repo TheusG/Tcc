@@ -35,6 +35,17 @@
         }
     </script>
 
+<script>
+        function confirmDelete(id){
+            var resp = confirm("Tem certeza que deseja tirar esse item do carrinho?");
+            if(resp==true){
+                location.href = "controller/controller.php?item_delete=1&id=" + id;
+            }else{
+                return null;
+            }
+        }
+    </script>
+
  
 </head>
 <body>
@@ -185,7 +196,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
       
           <div class="conteinerPedido">
   
-            <button id="botaoFecharCarrinho">X</button>
+            <button id="botaoFecharCarrinho" onclick="confirmDelete(<?=$infoProduto[$i]['Id_Produto'];?>)">X</button>
               <div class="divNomeProduto"><?php
                 print_r($infoProduto[$i]["Nome_Produto"]);
               ?></div>
