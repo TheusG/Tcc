@@ -4,6 +4,51 @@ session_start();
 // session_destroy();
 // exit();
 
+if(isset($_REQUEST["addCarrinho"])){
+    $login = $_REQUEST["Usuario"];
+    $Valor = $_REQUEST["Valor"];
+    $id = $_REQUEST["Cod_Produto"];
+    $Id_Cliente = $_REQUEST["Id_Cliente"];
+    
+
+    
+    if($login == 0 ){
+        ?>
+        <form action="../index.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="FR30">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+<?php 
+    }else{
+        
+        require_once "../model/manager.php";
+        $resp = adicionarCarrinho($id,$Valor);
+
+        if($resp == 1){
+        ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="OP52">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+        <?php 
+        }else{
+            ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="OP08">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+        <?php 
+        }
+
+
+    }
+}
 
 
 if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
