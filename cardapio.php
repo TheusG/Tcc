@@ -241,7 +241,7 @@ $total = 0;
         <button id="botaoConfirmarCompra">Confirmar compra</button>
     <?php 
     }else {
-    echo "<button id=\"botaoConfirmarCompra\">Fazer Login</button>";
+    echo "<button id=\"botaoConfirmarCompra\">Faça Login</button>";
   }
   
   ?>
