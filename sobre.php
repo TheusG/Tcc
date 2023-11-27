@@ -149,64 +149,91 @@ session_start();
         </div>
     </div>
 
-    <div class="miniCarrinhoOf">
-        <?php
+    <?php 
 
-        if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-        ?>
-            <div class="divPedido">
+    
+require_once "model/Carrinho.class.php";
+$carrinho = new Carrinho();
+$infoProduto = $carrinho->mostrarCarrinho();
+$total = 0;
 
-                <div class="divImgPedido">
-                    <img src="image/toji.jpg" alt="">
-                </div>
+?>
 
-                <div class="conteinerPedido">
+<div class="miniCarrinhoOf">
+<?php 
+if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+  for ($i = 0; $i < count($infoProduto); $i++){
 
-                    <button id="botaoFecharCarrinho">X</button>
-                    <div class="divNomeProduto">$Nome da Pizza$</div>
-                    <div class="valorPedido"> $Valor$</div>
-                    <div class="quantidade">
-                        <button><i class="fa-solid fa-minus"></i> </button>
-                        <p>0</p>
-                        <button><i class="fa-solid fa-plus"></i> </button>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="divValorTotal">
-                <p>Valor Total$</p>
-            </div>
-            <button id="botaoConfirmarCompra">Confirmar compra</button>
-
-        <?php
-        } else {
-            echo "<button id=\"botaoConfirmarCompra\">Carrinho Vazio</button>";
+    ?>
+    <div class="divPedido">
+          
+          <div class="divImgPedido">
+              <img src="imagensProdutos/<?php print_r($infoProduto[$i]["Imagem"]) ?>" alt="imagemProd">
+          </div>
+      
+          <div class="conteinerPedido">
+  
+            <button id="botaoFecharCarrinho">X</button>
+              <div class="divNomeProduto"><?php
+                print_r($infoProduto[$i]["Nome_Produto"]);
+              ?></div>
+              <div class="valorPedido">R$<?php
+                print_r($infoProduto[$i]["Valor_Unitario"]);
+              ?></div>
+              <div class="quantidade">
+              <button><i class="fa-solid fa-minus"></i> </button>
+              <p><?php
+                print_r($infoProduto[$i]["Quantidade"]);
+              ?></p>
+              <button><i class="fa-solid fa-plus"></i> </button>
+              </div>
+            
+          </div>
+      </div>
+      <?php 
+       
+        $total = $total + $infoProduto[$i]["Valor_Unitario"];
+        
         }
-        ?>
+      ?>
+      
+      <div class="divValorTotal">
+            <p>R$<?=$total?></p>
+        </div>
+      <button id="botaoConfirmarCompra">Confirmar compra</button>
+  <?php 
+  }else {
+  echo "<button id=\"botaoConfirmarCompra\">Fazer Login</button>";
+}
 
-    </div>
+?>
+
+ 
+  
+
+
+</div>
+
     <div class="conteinerSobre">
         <div class="ConteinerHistoria">
             <div>
-                <h2>Fivestars</h2>
+                <h2>Five Stars</h2>
                 <br>
                 <p>
                     Bem-vindo à Five Stars Pizzaria, onde cada pedaço é uma experiência extraordinária!
-                    Com ingredientes frescos e combinações únicas, nossas pizzas são verdadeiramente especiais. Desde a crocância da massa até o 
-                    sabor inigualável do molho caseiro, cada detalhe é cuidadosamente planejado para proporcionar uma experiência única.
+                    Com ingredientes frescos e combinações únicas, nossas pizzas são verdadeiramente especiais.Aqui cada detalhe é cuidadosamente planejado para proporcionar uma experiência única.
                     <br>
                     Em nosso cardápio diversificado, você encontrará desde as clássicas favoritas 
-                    até combinações exclusivas que desafiam as expectativas. Seja um amante da simplicidade da Margherita ou um aventureiro 
+                    até combinações exclusivas. Seja um amante da simplicidade da Portuguesa ou um aventureiro 
                     em busca de novos sabores, na Five Stars, temos algo para todos os paladares.
                     <br>
 
                     Acreditamos que a qualidade é a chave para conquistar o coração de nossos clientes, 
-                    e é por isso que escolhemos ingredientes frescos e locais sempre que possível. Cada pizza é uma celebração de 
+                    e é por isso que escolhemos ingredientes frescos. Na Five Stars cada pizza é uma celebração de 
                     sabores autênticos, criando uma experiência gastronômica que vai além das expectativas.</p>
             </div>
             <div class="divHistoria">
-                <h2>historia</h2>
+                <h2>História</h2>
                 <br>
                 <p>Fundada em 2023 por 6 estudantes, a Pizzaria Five Stars tem como objetivo que cada mordida seja uma viagem
                     culinária única e memorável. Nossa pizzaria é muito mais do que apenas um restaurante, é um refúgio
@@ -223,7 +250,7 @@ session_start();
             <div class="missao">
                 <i class="fa-solid fa-bullseye"></i>
                 <br><br>
-                <h3>missao</h3>
+                <h3>Missão</h3>
                 <br>
                 <p>Fazer valer a experiência do consumidor, através da qualidade e agilidade
                     de nossos serviços, demonstrando sempre nossos valores e princípios. </p>
@@ -232,7 +259,7 @@ session_start();
 
                 <i class="fa-solid fa-binoculars"></i>
                 <br><br>
-                <h3>visao</h3>
+                <h3>Visão</h3>
                 <br>
                 <p>Pessoas buscam praticidade, é necessário lhe oferecer o serviço mais prático
                     possível, sempre dando lugar a novas ideias.</p>
@@ -242,7 +269,7 @@ session_start();
                 <i class="fa-solid fa-handshake"></i>
                 <br><br>
 
-                <h3>valores</h3>
+                <h3>Valores</h3>
                 <br>
                 <p>Além de valores éticos e morais, nossa empresa visa administrar de forma consciente
                     nosso contato com o público</p>
