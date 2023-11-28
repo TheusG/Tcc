@@ -116,6 +116,7 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
                 $_SESSION["CLI-ID"] = $cliente["Id_Usuario"];
                 $_SESSION["CLI-NOME"] = $cliente["Nome_Usuario"];
                 $_SESSION["CLI-EMAIL"] = $cliente["Email"];
+                $_SESSION["CLI-TEL"] = $cliente["Telefone"];
                 $_SESSION["CLI-CEP"] = $cliente["Id"];
                 $_SESSION["CLI-NUMERO"] = $cliente["Numero"];
                 $_SESSION["CLI-BAIRRO"] = $cliente["Bairro"];

@@ -1,3 +1,9 @@
+<?php 
+  session_start();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="assets/css/pagamento.css">
+  <link rel="website icon" type="png" href="image/logoPizzaria1.png">
 
   <title>Pagamento</title>
 </head>
@@ -27,11 +34,21 @@
         <div>
           <div class="campos">
             <h4>Nome</h4>
-            <input type="text">
+            <input type="text" name="nome" required value="<?php 
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+              print_r($_SESSION["CLI-NOME"]);
+            }else{
+              echo "";
+            }?>" >
           </div>
           <div class="campos">
             <h4>Telefone</h4>
-            <input type="text">
+            <input placeholder="(99)99999-9999" id="telefone" name="telefone" type="tel" required value="<?php 
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+              print_r($_SESSION["CLI-TEL"]);
+            }else{
+              echo "";
+            }?>" >
           </div>
         </div>
       </div>
@@ -41,30 +58,60 @@
         <div>
           <div class="campos">
             <h4>CEP</h4>
-            <input type="text">
+            <input type="text" value="<?php 
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+              print_r($_SESSION["CLI-CEP"]);
+            }else{
+              echo "";
+            }?>" >
           </div>
           <div class="campos">
             <h4>Cidade</h4>
-            <input type="text">
+            <input type="text" value="<?php 
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+              print_r($_SESSION["CLI-CIDADE"]);
+            }else{
+              echo "";
+            }?>">
           </div>
           <div class="campos">
             <h4>Bairro</h4>
-            <input type="text">
+            <input type="text" value="<?php 
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+              print_r($_SESSION["CLI-BAIRRO"]);
+            }else{
+              echo "";
+            }?>">
           </div>
         </div>
 
         <div>
           <div class="campos">
             <h4>Número</h4>
-            <input type="text">
+            <input type="text" value="<?php 
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+              print_r($_SESSION["CLI-NUMERO"]);
+            }else{
+              echo "";
+            }?>" >
           </div>
           <div class="camposRua">
             <h4>Rua</h4>
-            <input type="text">
+            <input type="text" value="<?php 
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+              print_r($_SESSION["CLI-LOGRADOURO"]);
+            }else{
+              echo "";
+            }?>">
           </div>
           <div class="camposRua">
             <h4>Complemento</h4>
-            <input type="text">
+            <input type="text" value="<?php 
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+              print_r($_SESSION["CLI-COMPLEMENTO"]);
+            }else{
+              echo "";
+            }?>">
           </div>
         </div>
       </div>
@@ -107,6 +154,7 @@
           <p>$quantidade$</p>
           <p>$valor$</p>
         </div>
+
 
 
 
@@ -192,6 +240,16 @@
 
 </div>
 </div> -->
+
+<script src="assets/js/bibliotecaj/jquery-3.6.4.min.js"></script>
+    <script src="assets/js/bibliotecaj/jQuery-Mask-Plugin-master/src/jquery.mask.js"></script>
+  
+
+
+<script>
+          $('#telefone').mask('(00) 00000-0000');
+          $('#cep').mask('00000-000')
+    </script>
 
 </body>
 

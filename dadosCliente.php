@@ -106,7 +106,7 @@ session_start();
           <input type="text" name="" id="" value="<?=$_SESSION["CLI-COMPLEMENTO"]?>">
         </div>
         <div class="padrao">
-          <h3>logradouro</h3>
+          <h3>Logradouro</h3>
 
           <input type="text" name="" id="" value="<?=$_SESSION["CLI-LOGRADOURO"]?>">
         </div>

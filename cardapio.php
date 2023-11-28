@@ -238,7 +238,7 @@ $total = 0;
         <div class="divValorTotal">
               <p>R$<?=$total?></p>
           </div>
-        <button id="botaoConfirmarCompra">Confirmar compra</button>
+       <a href="pagamento.php"><button id="botaoConfirmarCompra">Confirmar compra</button></a>
     <?php 
     }else {
     echo "<button id=\"botaoConfirmarCompra\">Faça Login</button>";
