@@ -170,49 +170,60 @@ $total = 0;
 
 ?>
 
+<?php 
+  require_once "model/Carrinho.class.php";
+  $qtde = new Carrinho();
+  $qtdeProduto = $qtde->quantidadeProduto();
+  
+  ?>
+
 <div class="miniCarrinhoOf">
 <?php 
 if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-  for ($i = 0; $i < count($infoProduto); $i++){
-
-    ?>
-    <div class="divPedido">
-          
-          <div class="divImgPedido">
-              <img src="imagensProdutos/<?php print_r($infoProduto[$i]["Imagem"]) ?>" alt="imagemProd">
-          </div>
-      
-          <div class="conteinerPedido">
-  
-            <button id="botaoFecharCarrinho" onclick="confirmDelete(<?=$infoProduto[$i]['Id_Produto'];?>)">X</button>
-              <div class="divNomeProduto"><?php
-                print_r($infoProduto[$i]["Nome_Produto"]);
-              ?></div>
-              <div class="valorPedido">R$<?php
-                print_r($infoProduto[$i]["Valor_Unitario"]);
-              ?></div>
-              <div class="quantidade">
-              <button><i class="fa-solid fa-minus"></i> </button>
-              <p><?php
-                print_r($infoProduto[$i]["Quantidade"]);
-              ?></p>
-              <button><i class="fa-solid fa-plus"></i> </button>
-              </div>
+    if($qtdeProduto[0]["total_linhas"] == 0){
+        echo "<button id=\"botaoConfirmarCompra\">Carrinho vazio</button>";
+      }else{
+        for ($i = 0; $i < count($infoProduto); $i++){
+   
+          ?>
+          <div class="divPedido">
+                
+                <div class="divImgPedido">
+                    <img src="imagensProdutos/<?php print_r($infoProduto[$i]["Imagem"]) ?>" alt="imagemProd">
+                </div>
             
-          </div>
-      </div>
-      <?php 
-       
-        $total = $total + $infoProduto[$i]["Valor_Unitario"];
+                <div class="conteinerPedido">
         
-        }
-      ?>
-      
-      <div class="divValorTotal">
-            <p>R$<?=$total?></p>
-        </div>
-      <button id="botaoConfirmarCompra">Confirmar compra</button>
-  <?php 
+                  <button id="botaoFecharCarrinho" onclick="confirmDelete(<?=$infoProduto[$i]['Id_Produto'];?>)">X</button>
+                    <div class="divNomeProduto"><?php
+                      print_r($infoProduto[$i]["Nome_Produto"]);
+                    ?></div>
+                    <div class="valorPedido">R$<?php
+                      print_r($infoProduto[$i]["Valor_Unitario"]);
+                    ?></div>
+                    <div class="quantidade">
+                    <button><i class="fa-solid fa-minus"></i> </button>
+                    <p><?php
+                      print_r($infoProduto[$i]["Quantidade"]);
+                    ?></p>
+                    <button><i class="fa-solid fa-plus"></i> </button>
+                    </div>
+                  
+                </div>
+            </div>
+            <?php 
+             
+              $total = $total + $infoProduto[$i]["Valor_Unitario"];
+              
+              }
+            ?>
+            
+            <div class="divValorTotal">
+                  <p>R$<?=$total?></p>
+              </div>
+           <a href="pagamento.php"><button id="botaoConfirmarCompra">Confirmar compra</button></a>
+        <?php 
+      } 
   }else {
   echo "<button id=\"botaoConfirmarCompra\">Faça Login</button>";
 }

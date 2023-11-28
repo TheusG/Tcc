@@ -25,15 +25,29 @@ session_start();
   $carrinho = new Carrinho();
   $infoProduto = $carrinho->mostrarCarrinho();
   $total = 0;
-
+ 
   ?>
+
+  <?php 
+  require_once "model/Carrinho.class.php";
+  $qtde = new Carrinho();
+  $qtdeProduto = $qtde->quantidadeProduto();
+  ?>
+
 
   <header>
     <div class="logo">
       <img src="image/logoPizzaria1.png" alt="">
     </div>
     <div class="quantidadeItem">
-      <h2>Quantidade de item ($item$)</h2>
+      <h2>Quantidade de itens ( <?php 
+      for ($i = 0; $i < count($qtdeProduto); $i++) {
+        print_r($qtdeProduto[$i]["total_linhas"]);
+      
+      }?>
+
+      
+    )</h2>
     </div>
   </header>
   <div class="conteinerPagamento">

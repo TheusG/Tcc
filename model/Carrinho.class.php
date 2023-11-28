@@ -24,4 +24,11 @@ class Carrinho{
         return $result;
     }
 
+    public function quantidadeProduto(){
+        $result = array();
+        $cmd = $this->pdo->query("SELECT COUNT(*) AS total_linhas FROM carrinho WHERE Cliente = 3");
+        $result = $cmd->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 }
