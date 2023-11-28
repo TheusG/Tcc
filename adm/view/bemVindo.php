@@ -32,7 +32,7 @@ require_once "admVerifSession.php";
 <body>
  
 <div id="titulo">
-        <h1>Olá, <?=$_SESSION["FUNC-NOME"]?></h1>.<br>
+        <h1>Olá, administrador</h1>.<br>
         <h2>Seja bem-vindo!</h2>
     </div>
 
