@@ -38,7 +38,7 @@
 .divPedido{
     width: 90%;
     border: solid 1px darkorange;
-    height: 110px;
+    
     margin: 20px 0;
     display: flex;
     align-items: center;
@@ -84,7 +84,7 @@
 }
 
 #botaoConfirmarCompra{
-    width: 90%;
+  
     height: 90px;
     background-color: darkorange;
     color: black ;
