@@ -1,5 +1,5 @@
-<?php 
-  session_start();
+<?php
+session_start();
 ?>
 
 
@@ -19,6 +19,15 @@
 </head>
 
 <body>
+  <?php
+
+  require_once "model/Carrinho.class.php";
+  $carrinho = new Carrinho();
+  $infoProduto = $carrinho->mostrarCarrinho();
+  $total = 0;
+
+  ?>
+
   <header>
     <div class="logo">
       <img src="image/logoPizzaria1.png" alt="">
@@ -34,21 +43,21 @@
         <div>
           <div class="campos">
             <h4>Nome</h4>
-            <input type="text" name="nome" required value="<?php 
-            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-              print_r($_SESSION["CLI-NOME"]);
-            }else{
-              echo "";
-            }?>" >
+            <input type="text" name="nome" required value="<?php
+                                                            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                                              print_r($_SESSION["CLI-NOME"]);
+                                                            } else {
+                                                              echo "";
+                                                            } ?>">
           </div>
           <div class="campos">
             <h4>Telefone</h4>
-            <input placeholder="(99)99999-9999" id="telefone" name="telefone" type="tel" required value="<?php 
-            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-              print_r($_SESSION["CLI-TEL"]);
-            }else{
-              echo "";
-            }?>" >
+            <input placeholder="(99)99999-9999" id="telefone" name="telefone" type="tel" required value="<?php
+                                                                                                          if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                                                                                            print_r($_SESSION["CLI-TEL"]);
+                                                                                                          } else {
+                                                                                                            echo "";
+                                                                                                          } ?>">
           </div>
         </div>
       </div>
@@ -58,60 +67,60 @@
         <div>
           <div class="campos">
             <h4>CEP</h4>
-            <input type="text" value="<?php 
-            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-              print_r($_SESSION["CLI-CEP"]);
-            }else{
-              echo "";
-            }?>" >
+            <input type="text" value="<?php
+                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                        print_r($_SESSION["CLI-CEP"]);
+                                      } else {
+                                        echo "";
+                                      } ?>">
           </div>
           <div class="campos">
             <h4>Cidade</h4>
-            <input type="text" value="<?php 
-            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-              print_r($_SESSION["CLI-CIDADE"]);
-            }else{
-              echo "";
-            }?>">
+            <input type="text" value="<?php
+                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                        print_r($_SESSION["CLI-CIDADE"]);
+                                      } else {
+                                        echo "";
+                                      } ?>">
           </div>
           <div class="campos">
             <h4>Bairro</h4>
-            <input type="text" value="<?php 
-            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-              print_r($_SESSION["CLI-BAIRRO"]);
-            }else{
-              echo "";
-            }?>">
+            <input type="text" value="<?php
+                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                        print_r($_SESSION["CLI-BAIRRO"]);
+                                      } else {
+                                        echo "";
+                                      } ?>">
           </div>
         </div>
 
         <div>
           <div class="campos">
             <h4>Número</h4>
-            <input type="text" value="<?php 
-            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-              print_r($_SESSION["CLI-NUMERO"]);
-            }else{
-              echo "";
-            }?>" >
+            <input type="text" value="<?php
+                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                        print_r($_SESSION["CLI-NUMERO"]);
+                                      } else {
+                                        echo "";
+                                      } ?>">
           </div>
           <div class="camposRua">
             <h4>Rua</h4>
-            <input type="text" value="<?php 
-            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-              print_r($_SESSION["CLI-LOGRADOURO"]);
-            }else{
-              echo "";
-            }?>">
+            <input type="text" value="<?php
+                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                        print_r($_SESSION["CLI-LOGRADOURO"]);
+                                      } else {
+                                        echo "";
+                                      } ?>">
           </div>
           <div class="camposRua">
             <h4>Complemento</h4>
-            <input type="text" value="<?php 
-            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-              print_r($_SESSION["CLI-COMPLEMENTO"]);
-            }else{
-              echo "";
-            }?>">
+            <input type="text" value="<?php
+                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                        print_r($_SESSION["CLI-COMPLEMENTO"]);
+                                      } else {
+                                        echo "";
+                                      } ?>">
           </div>
         </div>
       </div>
@@ -120,19 +129,20 @@
         <h3> Formas de pagamento</h3>
         <div class="inputBox">
           <?php
-            require_once "model/Pagamento.class.php";
-            $pagamento = new Pagamento();
-            $info = $pagamento->tiposPagamento();
+          require_once "model/Pagamento.class.php";
+          $pagamento = new Pagamento();
+          $info = $pagamento->tiposPagamento();
 
           for ($i = 0; $i < count($info); $i++) {
           ?>
-           <div class="opcoesPagamento">
-          <input type="radio" value="<?=$info[$i]["Id_Pagamento"];?>" class="inputPagamento" name="Pagamento"> <p><?php echo $info[$i]["Nome_Pagamento"] ?></p>
+            <div class="opcoesPagamento">
+              <input type="radio" value="<?= $info[$i]["Id_Pagamento"]; ?>" class="inputPagamento" name="Pagamento">
+              <p><?php echo $info[$i]["Nome_Pagamento"] ?></p>
 
-        </div>
-        <?php 
-        }
-        ?>
+            </div>
+          <?php
+          }
+          ?>
 
         </div>
       </div>
@@ -143,24 +153,40 @@
     </div>
 
 
+
     <div class="pedidos">
       <div class="resumo">
         <h4>Resumo do pedido</h4>
 
-        <div class="pizzaName">
-          <p>$nome da pizza$</p>
-        </div>
-        <div class="pizzaInfo">
-          <p>$quantidade$</p>
-          <p>$valor$</p>
-        </div>
+        <?php
+        for ($i = 0; $i < count($infoProduto); $i++) {
+
+        ?>
+          <div class="pizzaName">
+            <p><?php
+                print_r($infoProduto[$i]["Nome_Produto"]);
+                ?>
+            </p>
+          </div>
+          <div class="pizzaInfo">
+            <p><?php
+                print_r($infoProduto[$i]["Quantidade"]);
+                ?>
+              X</p>
+            <p>R$<?php
+                  print_r($infoProduto[$i]["Valor_Unitario"]);
+                  ?></p>
+          </div>
 
 
 
-
+        <?php
+          $total = $total + $infoProduto[$i]["Valor_Unitario"];
+        }
+        ?>
 
       </div>
-      <p>$Valor total$</p>
+      <p>R$<?= $total ?></p>
 
       <button class="botaoComprar">Confirmar compra</button>
 
@@ -241,15 +267,15 @@
 </div>
 </div> -->
 
-<script src="assets/js/bibliotecaj/jquery-3.6.4.min.js"></script>
-    <script src="assets/js/bibliotecaj/jQuery-Mask-Plugin-master/src/jquery.mask.js"></script>
-  
+  <script src="assets/js/bibliotecaj/jquery-3.6.4.min.js"></script>
+  <script src="assets/js/bibliotecaj/jQuery-Mask-Plugin-master/src/jquery.mask.js"></script>
 
 
-<script>
-          $('#telefone').mask('(00) 00000-0000');
-          $('#cep').mask('00000-000')
-    </script>
+
+  <script>
+    $('#telefone').mask('(00) 00000-0000');
+    $('#cep').mask('00000-000')
+  </script>
 
 </body>
 
