@@ -48,6 +48,34 @@ if(isset($_REQUEST["addCarrinho"])){
     }
 }
 
+
+if(isset($_REQUEST["confirmarDados"])){
+    $cliente["nome"] = $_REQUEST["nome"];
+    $cliente["email"] = $_REQUEST["email"];
+    $cliente["telefone"] = $_REQUEST["telefone"];
+    $cliente["id"] = $_REQUEST["Id_Usuario"];
+    $cliente["cep"] = $_REQUEST["cep"];
+    $cliente["complemento"] = $_REQUEST["complemento"];
+    $cliente["numero"] = $_REQUEST["numero"];
+    require_once "../model/manager.php";
+    $resp = atualizarCliente($cliente);
+
+    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+        header('Location:../perfil.php');
+        exit;
+        } else { //erro no insert
+        ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="BD03">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+        <?php
+        }
+}
+
+
 if (isset($_REQUEST["item_delete"])) {
     $id = $_REQUEST["id"];
     require_once "../model/manager.php";
@@ -237,4 +265,19 @@ if (isset($_REQUEST["add_cliente"])) {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

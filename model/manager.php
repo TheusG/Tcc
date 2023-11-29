@@ -142,4 +142,20 @@ function dadosCliente($email, $senha)
     }
    }
 
+
+   function atualizarCliente($cliente){
+    require_once "../adm/model/Conexao.php";
+    $sql = "UPDATE usuario SET Nome_Usuario = '{$cliente["nome"]}', Cep = '{$cliente["cep"]}', Complemento = '{$cliente["complemento"]}', Telefone ='{$cliente["telefone"]}',  Numero = '{$cliente["numero"]}', Email = '{$cliente["email"]}' WHERE Id_Usuario = '{$cliente["id"]}'";
+    $result = $conn->query($sql);
+
+    if ($result == true) {
+        $conn->close();
+        return 1;
+    } else {
+        $conn->close();
+        return 0;
+    }
+
+   }
+
 ?>
