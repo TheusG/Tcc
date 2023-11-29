@@ -209,14 +209,19 @@ nav{
     width: 100%;
     text-align: center; 
     color: #ffc800;
+    background-color: black;
+    transition: 0.5s;
     font-size: 18px;
     padding: 2px 10px;
+    border-radius: 10px;  
 }
 
 .nav-links li a:hover{
     background-color: darkorange;
     color: black;
     border-radius: 10px;  
+    transition: 0.5s;
+    scale: 1.1;
    
    
 }

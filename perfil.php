@@ -148,6 +148,12 @@ session_start();
 
   <div class="divPerfil">
     <div class="conteinerPerfil">
+          <div class="menuHorizontal">
+        <a href="" target="screen">Pedidos</a>
+        <a href="dadosCliente2.php" target="screen">Configurações</a>
+        <a href="" target="screen">Ajuda</a>
+
+      </div>
       <div class="conteinerFoto">
         <div class="imagePerfil">
           <img src="image/semfoto-removebg-preview.png" alt="">
@@ -165,12 +171,12 @@ session_start();
           ?></h2>
         </div>
       </div>
-      <div class="menuHorizontal">
+      <!-- <div class="menuHorizontal">
         <a href="" target="screen">Pedidos</a>
         <a href="dadosCliente2.php" target="screen">Configurações</a>
         <a href="" target="screen">Ajuda</a>
 
-      </div>
+      </div> -->
       <div class="divFrame">
         <iframe name="screen" id="screen" width="100%" height="100%" src="dadosCliente2.php" style="border: 0px;"></iframe>
       </div>

@@ -32,6 +32,11 @@ h4{
     flex-direction: column;
 
 }
+.formInfo{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
 
  .nome{
      width: 98%;

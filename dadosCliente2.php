@@ -37,7 +37,7 @@ session_start();
       <div class="nome">
         <h3> Identificação</h3>
         <div>
-          <form action="controller/controller.php" method="post">
+          <form action="controller/controller.php" method="post" class="formInfo">
             <input type="hidden" name="confirmarDados">
             <input type="hidden" name="Id_Usuario" value="<?=$_SESSION["CLI-ID"]?>">
             <div class="campos">
