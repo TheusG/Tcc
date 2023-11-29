@@ -93,9 +93,9 @@
           
           <?php 
 
-            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] == 1 ){
               // echo "<a href=\"perfil.php\">".print_r($_SESSION["CLI-EMAIL"]). "</a>";
-              echo "<a href=\"perfil.php\">Convidado</a>";
+              echo "<a href=\"perfil.php\">".$_SESSION["ID-CLIENTE"]."</a>";
               echo  "<button class=\"sair\" onclick=\"ExecutaLogout();\">Sair</button>";
             }else{
               echo "<button id=\"abrirLogin\">Login</button>";
@@ -125,7 +125,7 @@
                 
                 <br>
                 <form action="controller/controller.php">
-                <input type="hidden" name="validaCliente" value="1">
+                <input type="hidden" name="validaCliente" >
                     <h3>Email</h3>
                     <input type="email" name="email">
                     <br><br>

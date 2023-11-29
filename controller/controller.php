@@ -98,7 +98,7 @@ if (isset($_REQUEST["item_delete"])) {
 
 }
 
-
+// --------------------------------------------------------//-------------------------------------------------
 if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 
     if (isset($_REQUEST["validaCliente"])) {
