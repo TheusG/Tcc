@@ -157,11 +157,32 @@ session_start();
           <?php
           }
           ?>
-
+          
         </div>
+     
       </div>
 
-
+      <div class="endereco">
+        <h3>Forma de entrega</h3>
+        <div class="inputBox">
+      
+            <div class="opcoesPagamento">
+              <input type="radio" value="" class="inputPagamento" name="entrega">
+              <p>Delivery</p>
+             
+            </div>
+            <div class="opcoesPagamento">
+            <input type="radio" value="" class="inputPagamento" name="entrega">
+              <p>Retirar no local</p>
+             
+            </div>
+        
+        
+          
+        </div>
+     
+      </div>
+    
 
 
     </div>
