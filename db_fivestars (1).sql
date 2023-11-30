@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Nov-2023 às 23:27
+-- Tempo de geração: 30-Nov-2023 às 23:38
 -- Versão do servidor: 10.4.21-MariaDB
 -- versão do PHP: 8.0.10
 
@@ -85,8 +85,7 @@ INSERT INTO `categoria` (`Id_Categoria`, `Nome_Categoria`, `Comentario`, `Imagem
 (2, 'Pizza Doce', 'A pizza doce é um convite irresistível para os amantes de sabores ousados', 'pizzadoce.jpg'),
 (3, 'Esfiha', ' As esfihas são uma explosão de sabores.', 'Esfiha.jpg'),
 (4, 'Esfiha Doce', 'As esfihas doces são como abraços açucarados em forma de comida.', 'esfihadoce.png'),
-(5, 'Bebidas', 'A parceria entre bebida e pizza é um casamento delicioso.', 'bebidas.jpeg'),
-(17, 'Bolos', 'Bolo bom', '');
+(5, 'Bebidas', 'A parceria entre bebida e pizza é um casamento delicioso.', 'bebidas.jpeg');
 
 -- --------------------------------------------------------
 
@@ -388,8 +387,7 @@ INSERT INTO `produto` (`Id_Produto`, `Cod_Produto`, `Nome_Produto`, `Desc_Produt
 (67, '5067', 'Pepsi Zero 350ml    ', 'Pepsi Zero 350ml                                                    ', 0, 0, 0, 9, '1', 'PepsiZero.png', 5),
 (68, '5068', 'Água Mineral 350ml  ', 'Água Mineral 350ml                                                  ', 0, 0, 0, 5, '1', 'aguaMineral.png', 5),
 (69, '5069', 'Água com Gás 350ml  ', 'Água com Gás 350ml                                                  ', 0, 0, 0, 6, '1', 'AguacomGas.png               ', 5),
-(70, '5070', 'Água Tônica Schweppes 350ml       ', 'Água Tônica Schweppes 350ml                                         ', 0, 0, 0, 7, '1', 'AguaTonica.jpg               ', 5),
-(123, '45666', 'Bolo de Chocolate', 'Bolo de Chocolate', 0, 0, 0, 32, '1', 'BOlo.png', 17);
+(70, '5070', 'Água Tônica Schweppes 350ml       ', 'Água Tônica Schweppes 350ml                                         ', 0, 0, 0, 7, '1', 'AguaTonica.jpg               ', 5);
 
 -- --------------------------------------------------------
 
@@ -589,7 +587,7 @@ ALTER TABLE `cargo`
 -- AUTO_INCREMENT de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
-  MODIFY `Id_Carrinho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `Id_Carrinho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de tabela `categoria`
