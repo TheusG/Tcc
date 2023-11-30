@@ -324,7 +324,7 @@ session_start();
             ?>
           </p>
 
-          <p id="prodDesc">R$
+          <p id="prodDesc" class="valor">R$
             <?php
             
             $valor = $produto[$i]["Valor"];

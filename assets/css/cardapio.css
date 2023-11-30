@@ -51,6 +51,9 @@
     color: black;
     height: 120px;
 }
+.valor{
+    font-size: 22px;
+}
 .conteinerPizza button{
  
     margin: 0 15px;
