@@ -124,12 +124,7 @@ session_start();
           </div>
           <div class="camposRua">
             <h4>Complemento</h4>
-            <input type="text" value="<?php
-                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-                                        print_r($_SESSION["CLI-COMPLEMENTO"]);
-                                      } else {
-                                        echo "";
-                                      } ?>">
+            <input type="text" value="Prédio laranja">
           </div>
         </div>
       </div>
