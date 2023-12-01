@@ -149,9 +149,9 @@ session_start();
   <div class="divPerfil">
     <div class="conteinerPerfil">
           <div class="menuHorizontal">
-        <a href="" target="screen">Pedidos</a>
+        <a href="dadosCliente2.php" target="screen">Pedidos</a>
         <a href="dadosCliente2.php" target="screen">Configurações</a>
-        <a href="" target="screen">Ajuda</a>
+        <a href="dadosCliente2.php" target="screen">Ajuda</a>
 
       </div>
       <div class="conteinerFoto">
