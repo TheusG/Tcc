@@ -98,6 +98,43 @@ if (isset($_REQUEST["item_delete"])) {
 
 }
 
+
+if(isset($_REQUEST["confirmarCompra"])){
+    $venda["pagamento"] = $_REQUEST["pagamento"];
+    $venda["entrega"] = $_REQUEST["entrega"];
+    $venda["total"] = $_REQUEST["total"];
+    require_once "../model/manager.php";
+    $resp = adicionarVenda($venda);
+
+        if($resp == 1){
+            ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR55">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+        <?php 
+         
+        }else{
+            ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR31">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+        <?php 
+        }
+
+
+
+
+
+
+
+}
+
 // --------------------------------------------------------//-------------------------------------------------
 if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 

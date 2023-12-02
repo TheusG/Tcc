@@ -158,4 +158,29 @@ function dadosCliente($email, $senha)
 
    }
 
+   function adicionarVenda($venda){
+    
+    require_once "../adm/model/Conexao.php";
+    $sql = "INSERT INTO venda (Nro_Venda,Cliente, Data_Venda,Entregador, Status, Valor_Venda, Desconto_Venda,Adicional_Venda,Pagamento) VALUES (1,3,now(),'{$venda["entrega"]}',1,'{$venda["total"]}',0,0,'{$venda["pagamento"]}')";
+    $result = $conn->query($sql);
+
+
+    if ($result == true) { //tudo certo
+        $sql = "DELETE FROM carrinho WHERE cliente = 3";
+        $result = $conn->query($sql);
+
+        if ($result == true) {
+            $conn->close();
+            return 1;
+        } else {
+            return 0;
+        }
+    } else {
+        $conn->close();
+        return 0;
+    }
+
+
+    }
+
 ?>

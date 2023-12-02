@@ -199,7 +199,8 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                       print_r($infoProduto[$i]["Nome_Produto"]);
                     ?></div>
                     <div class="valorPedido">R$<?php
-                      print_r($infoProduto[$i]["Valor_Unitario"]);
+                      $valor = $infoProduto[$i]["Valor_Unitario"];
+                      print_r(number_format($valor, 2, ",", "."));
                     ?></div>
                     <div class="quantidade">
                     <button><i class="fa-solid fa-minus"></i> </button>
@@ -219,7 +220,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
             ?>
             
             <div class="divValorTotal">
-                  <p>R$<?=$total?></p>
+            <p>R$<?php echo number_format($total, 2, ",", ".");?></p>
               </div>
            <a href="pagamento.php"><button id="botaoConfirmarCompra">Confirmar compra</button></a>
         <?php 

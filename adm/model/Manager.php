@@ -594,7 +594,7 @@ function editarEmpresa($empresa)
 function listarEntregador()
 {
     require_once "Conexao.php";
-    $sql = "SELECT usuario.* , entregador.* FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario";
+    $sql = "SELECT usuario.* , entregador.* FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario WHERE Id_Entregador != 4 ";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -1066,6 +1066,7 @@ function listarVenda(){
             $venda[$i]["Desconto_Venda"] = $row["Desconto_Venda"];
             $venda[$i]["Adicional_Venda"] = $row["Adicional_Venda"];
             $venda[$i]["Pagamento"] = $row["Pagamento"];
+            $venda[$i]["Nome_Pagamento"] = $row["Nome_Pagamento"];
             $i++;
         }
         $conn->close();

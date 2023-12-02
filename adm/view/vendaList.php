@@ -36,26 +36,12 @@ require_once "admVerifSession.php";
             require_once "../model/Manager.php";
             $venda = listarVenda();
         ?>
-        <table class = "admAdd">
-            <tr>
-                <td style="text-align: left;">
-                <form name="formNew" action="vendaNew.php" method="">
-                        <input type="hidden" name="new" value="1">
-                        <input type="submit" name="sbmt" value="Adicionar Venda" style="background-color:forestgreen; color:white;cursor:pointer;">
-                </form>
-                </td>
-            </tr>
         
-        </table>
-
-        <?php  
-     
-        ?>
 
         <table class = "tabelaAdm">
             <?php 
                 if ($venda["result"] == 0) {
-                    echo "<tr><td>Nenhuma venda encontrado...</tr></td>";
+                    echo "<tr><td>Nenhuma venda encontrada...</tr></td>";
                 }else{
 
                 
@@ -64,47 +50,37 @@ require_once "admVerifSession.php";
 
             <tr>
                 <!-- <th class="tabelaAdmTh">Id_Venda</th> -->
-                <th class="tabelaAdmTh">Nro_Venda</th>
+                <th class="tabelaAdmTh">Número da venda</th>
                 <!-- <th class="tabelaAdmTh">Cliente</th> -->
-                <th class="tabelaAdmTh">Data_Venda</th>
-                <!-- <th class="tabelaAdmTh">Entregador</th> -->
+                <th class="tabelaAdmTh">Data da venda</th>
+                <th class="tabelaAdmTh">Entrega</th>
                 <th class="tabelaAdmTh">Status</th>
-                <th class="tabelaAdmTh">Valor_Venda</th>
+                <th class="tabelaAdmTh">Valor da venda</th>
                 <!-- <th class="tabelaAdmTh">Desconto_Venda</th>
                 <th class="tabelaAdmTh">Adicional_Venda</th> -->
-                <th class="tabelaAdmTh">Pagamento</th>
-                <th class="tabelaAdmTh">&nbsp;</th>
-                <th class="tabelaAdmTh">&nbsp;</th>
+                <th class="tabelaAdmTh">Forma de pagamento</th>
+                
             </tr>
             <?php 
              for($i = 1;$i<= $venda["num"];$i++){
                 echo "<tr>";
                     // echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Id_Venda"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Nro_Venda"]."</td>";
+                    echo "<td class=\"tabelaAdmTd\">".$i."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Cliente"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Data_Venda"]."</td>";
-                    // echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Entregador"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Status"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Valor_Venda"]."</td>";
+                    $dataFormatada = date('d/m/Y', strtotime($venda[$i]["Data_Venda"]));
+                    echo "<td class=\"tabelaAdmTd\">".$dataFormatada."</td>";
+                    if($venda[$i]["Entregador"] == 4){
+                        echo "<td class=\"tabelaAdmTd\">Local</td>"; 
+                    }else{
+                        echo "<td class=\"tabelaAdmTd\">Delivery</td>";
+                    }
+                    echo "<td class=\"tabelaAdmTd\">Aceita</td>";
+                    $valor = $venda[$i]["Valor_Venda"];
+                    echo "<td class=\"tabelaAdmTd\">R$" . number_format($valor, 2, ",", ".") . "</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Desconto_Venda"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Adicional_Venda"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Pagamento"]."</td>";
-                    echo "<td>"
-                    ?>
-                    <form name="formEdit" action="vendaEdit.php" method="">
-                        <input type="hidden" name="Id_Venda" value="<?=$venda[$i]["Id_Venda"];?>">
-                        <input class="editButton" type="submit" name="sbmt" value="Ver Mais" style="cursor:pointer">
-                    </form>
-                    <?php
-                    echo "</td>";
-                    echo "<td>";
-                    ?>
-                    
-                    <button class="deleteButton" onclick="confirmDelete(<?=$venda[$i]['Id_Venda'];?>)" style="cursor:pointer;">Deletar</button>
-                    
-                    <?php
-                    echo "</td>";
-                
+                    echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Nome_Pagamento"]."</td>";
+        
                 echo "</tr>";
              } 
 
