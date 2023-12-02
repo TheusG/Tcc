@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Nov-2023 às 23:38
--- Versão do servidor: 10.4.21-MariaDB
--- versão do PHP: 8.0.10
+-- Tempo de geração: 03/12/2023 às 00:42
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,16 +24,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cargo`
+-- Estrutura para tabela `cargo`
 --
 
 CREATE TABLE `cargo` (
   `Id_Cargo` int(11) NOT NULL,
-  `Nome_Cargo` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Nome_Cargo` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `cargo`
+-- Despejando dados para a tabela `cargo`
 --
 
 INSERT INTO `cargo` (`Id_Cargo`, `Nome_Cargo`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `cargo` (`Id_Cargo`, `Nome_Cargo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `carrinho`
+-- Estrutura para tabela `carrinho`
 --
 
 CREATE TABLE `carrinho` (
@@ -66,18 +66,18 @@ CREATE TABLE `carrinho` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categoria`
+-- Estrutura para tabela `categoria`
 --
 
 CREATE TABLE `categoria` (
   `Id_Categoria` int(11) NOT NULL,
-  `Nome_Categoria` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Comentario` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Imagem` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Nome_Categoria` varchar(20) DEFAULT NULL,
+  `Comentario` varchar(100) DEFAULT NULL,
+  `Imagem` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `categoria`
+-- Despejando dados para a tabela `categoria`
 --
 
 INSERT INTO `categoria` (`Id_Categoria`, `Nome_Categoria`, `Comentario`, `Imagem`) VALUES
@@ -90,20 +90,20 @@ INSERT INTO `categoria` (`Id_Categoria`, `Nome_Categoria`, `Comentario`, `Imagem
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cep`
+-- Estrutura para tabela `cep`
 --
 
 CREATE TABLE `cep` (
   `Id` int(11) NOT NULL,
-  `Cep` varchar(9) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Cidade` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Logradouro` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Bairro` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Tipo` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Cep` varchar(9) DEFAULT NULL,
+  `Cidade` varchar(30) DEFAULT NULL,
+  `Logradouro` varchar(30) DEFAULT NULL,
+  `Bairro` varchar(30) DEFAULT NULL,
+  `Tipo` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `cep`
+-- Despejando dados para a tabela `cep`
 --
 
 INSERT INTO `cep` (`Id`, `Cep`, `Cidade`, `Logradouro`, `Bairro`, `Tipo`) VALUES
@@ -113,17 +113,17 @@ INSERT INTO `cep` (`Id`, `Cep`, `Cidade`, `Logradouro`, `Bairro`, `Tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cliente`
+-- Estrutura para tabela `cliente`
 --
 
 CREATE TABLE `cliente` (
   `Id_Cliente` int(11) NOT NULL,
-  `Referencia` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Referencia` varchar(40) DEFAULT NULL,
   `Usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `cliente`
+-- Despejando dados para a tabela `cliente`
 --
 
 INSERT INTO `cliente` (`Id_Cliente`, `Referencia`, `Usuario`) VALUES
@@ -138,7 +138,7 @@ INSERT INTO `cliente` (`Id_Cliente`, `Referencia`, `Usuario`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `configuracao`
+-- Estrutura para tabela `configuracao`
 --
 
 CREATE TABLE `configuracao` (
@@ -147,11 +147,11 @@ CREATE TABLE `configuracao` (
   `Abre` time DEFAULT NULL,
   `Fecha` time DEFAULT NULL,
   `NrPedido` int(11) DEFAULT NULL,
-  `Mensagem` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Mensagem` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `configuracao`
+-- Despejando dados para a tabela `configuracao`
 --
 
 INSERT INTO `configuracao` (`Id_Config`, `Data`, `Abre`, `Fecha`, `NrPedido`, `Mensagem`) VALUES
@@ -160,7 +160,7 @@ INSERT INTO `configuracao` (`Id_Config`, `Data`, `Abre`, `Fecha`, `NrPedido`, `M
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `detalhe_venda`
+-- Estrutura para tabela `detalhe_venda`
 --
 
 CREATE TABLE `detalhe_venda` (
@@ -175,29 +175,29 @@ CREATE TABLE `detalhe_venda` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `empresa`
+-- Estrutura para tabela `empresa`
 --
 
 CREATE TABLE `empresa` (
   `Id_Empresa` int(11) NOT NULL,
-  `Nome_Empresa` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Fantasia` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Cnpj` varchar(18) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Ie` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Cep` varchar(9) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Endereco` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Numero` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Bairro` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Cidade` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Uf` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Telefone` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Site` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Nome_Empresa` varchar(60) DEFAULT NULL,
+  `Fantasia` varchar(20) DEFAULT NULL,
+  `Cnpj` varchar(18) DEFAULT NULL,
+  `Ie` varchar(15) DEFAULT NULL,
+  `Cep` varchar(9) DEFAULT NULL,
+  `Endereco` varchar(50) DEFAULT NULL,
+  `Numero` varchar(10) DEFAULT NULL,
+  `Bairro` varchar(40) DEFAULT NULL,
+  `Cidade` varchar(40) DEFAULT NULL,
+  `Uf` varchar(2) DEFAULT NULL,
+  `Telefone` varchar(15) DEFAULT NULL,
+  `Site` varchar(50) DEFAULT NULL,
   `Data` date DEFAULT NULL,
-  `Logo` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Logo` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `empresa`
+-- Despejando dados para a tabela `empresa`
 --
 
 INSERT INTO `empresa` (`Id_Empresa`, `Nome_Empresa`, `Fantasia`, `Cnpj`, `Ie`, `Cep`, `Endereco`, `Numero`, `Bairro`, `Cidade`, `Uf`, `Telefone`, `Site`, `Data`, `Logo`) VALUES
@@ -206,27 +206,28 @@ INSERT INTO `empresa` (`Id_Empresa`, `Nome_Empresa`, `Fantasia`, `Cnpj`, `Ie`, `
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `entregador`
+-- Estrutura para tabela `entregador`
 --
 
 CREATE TABLE `entregador` (
   `Id_Entregador` int(11) NOT NULL,
-  `Veiculo` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Identificacao` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Veiculo` varchar(10) DEFAULT NULL,
+  `Identificacao` varchar(45) DEFAULT NULL,
   `Usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `entregador`
+-- Despejando dados para a tabela `entregador`
 --
 
 INSERT INTO `entregador` (`Id_Entregador`, `Veiculo`, `Identificacao`, `Usuario`) VALUES
-(1, 'Carro', 'BRA2A23', 20);
+(1, 'Carro', 'BRA2A23', 20),
+(4, '', NULL, 63);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `funcionario`
+-- Estrutura para tabela `funcionario`
 --
 
 CREATE TABLE `funcionario` (
@@ -238,7 +239,7 @@ CREATE TABLE `funcionario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `funcionario`
+-- Despejando dados para a tabela `funcionario`
 --
 
 INSERT INTO `funcionario` (`Id_Funcionario`, `Cargo`, `Perfil`, `Salario`, `Usuario`) VALUES
@@ -249,18 +250,18 @@ INSERT INTO `funcionario` (`Id_Funcionario`, `Cargo`, `Perfil`, `Salario`, `Usua
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pagamento`
+-- Estrutura para tabela `pagamento`
 --
 
 CREATE TABLE `pagamento` (
   `Id_Pagamento` int(11) NOT NULL,
-  `Nome_Pagamento` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Nome_Pagamento` varchar(20) DEFAULT NULL,
   `Troco` tinyint(1) DEFAULT NULL,
-  `Foto` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Foto` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `pagamento`
+-- Despejando dados para a tabela `pagamento`
 --
 
 INSERT INTO `pagamento` (`Id_Pagamento`, `Nome_Pagamento`, `Troco`, `Foto`) VALUES
@@ -271,7 +272,7 @@ INSERT INTO `pagamento` (`Id_Pagamento`, `Nome_Pagamento`, `Troco`, `Foto`) VALU
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `perfil`
+-- Estrutura para tabela `perfil`
 --
 
 CREATE TABLE `perfil` (
@@ -286,7 +287,7 @@ CREATE TABLE `perfil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `perfil`
+-- Despejando dados para a tabela `perfil`
 --
 
 INSERT INTO `perfil` (`Id_Perfil`, `Acessa_Cliente`, `Acessa_Funcionario`, `Acessa_Produto`, `Acessa_Entregador`, `Acessa_Status`, `Acessa_Venda`, `Acessa_Carrinho`) VALUES
@@ -297,25 +298,25 @@ INSERT INTO `perfil` (`Id_Perfil`, `Acessa_Cliente`, `Acessa_Funcionario`, `Aces
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produto`
+-- Estrutura para tabela `produto`
 --
 
 CREATE TABLE `produto` (
   `Id_Produto` int(11) NOT NULL,
-  `Cod_Produto` varchar(13) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Nome_Produto` varchar(35) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Desc_Produto` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Cod_Produto` varchar(13) DEFAULT NULL,
+  `Nome_Produto` varchar(35) DEFAULT NULL,
+  `Desc_Produto` varchar(100) DEFAULT NULL,
   `Estoque` int(11) DEFAULT NULL,
   `Estoque_Min` int(11) DEFAULT NULL,
   `Estoque_Max` int(11) DEFAULT NULL,
   `Valor` float DEFAULT NULL,
-  `Status_Produto` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Imagem` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Status_Produto` varchar(1) DEFAULT NULL,
+  `Imagem` varchar(50) DEFAULT NULL,
   `Categoria` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `produto`
+-- Despejando dados para a tabela `produto`
 --
 
 INSERT INTO `produto` (`Id_Produto`, `Cod_Produto`, `Nome_Produto`, `Desc_Produto`, `Estoque`, `Estoque_Min`, `Estoque_Max`, `Valor`, `Status_Produto`, `Imagem`, `Categoria`) VALUES
@@ -392,36 +393,43 @@ INSERT INTO `produto` (`Id_Produto`, `Cod_Produto`, `Nome_Produto`, `Desc_Produt
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `status`
+-- Estrutura para tabela `status`
 --
 
 CREATE TABLE `status` (
   `Id_Status` int(11) NOT NULL,
-  `Nome_Status` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Nome_Status` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `status`
+--
+
+INSERT INTO `status` (`Id_Status`, `Nome_Status`) VALUES
+(1, 'Concluída');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura para tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
   `Id_Usuario` int(11) NOT NULL,
-  `Nome_Usuario` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Senha` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Sexo` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Nome_Usuario` varchar(45) DEFAULT NULL,
+  `Senha` varchar(100) DEFAULT NULL,
+  `Sexo` varchar(1) DEFAULT NULL,
   `Cep` int(11) DEFAULT NULL,
-  `Numero` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Complemento` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Telefone` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Email` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Numero` varchar(10) DEFAULT NULL,
+  `Complemento` varchar(45) DEFAULT NULL,
+  `Telefone` varchar(15) DEFAULT NULL,
+  `Email` varchar(60) DEFAULT NULL,
   `Nascimento` date DEFAULT NULL,
-  `Foto` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Foto` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Despejando dados para a tabela `usuario`
 --
 
 INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Numero`, `Complemento`, `Telefone`, `Email`, `Nascimento`, `Foto`) VALUES
@@ -436,12 +444,13 @@ INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Nu
 (58, 'Julia', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'f', 1, '1', '1', '(11) 11111-1111', 'julia@pizza.com', '2023-10-10', ''),
 (60, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 2, NULL, NULL, NULL, 'Jonas@gmail.com', NULL, NULL),
 (61, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 2, NULL, NULL, NULL, 'Vinicius@gmail.com', NULL, NULL),
-(62, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 2, NULL, NULL, NULL, 'Gabriel@gmail.com', NULL, NULL);
+(62, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 2, NULL, NULL, NULL, 'Gabriel@gmail.com', NULL, NULL),
+(63, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `venda`
+-- Estrutura para tabela `venda`
 --
 
 CREATE TABLE `venda` (
@@ -462,14 +471,14 @@ CREATE TABLE `venda` (
 --
 
 --
--- Índices para tabela `cargo`
+-- Índices de tabela `cargo`
 --
 ALTER TABLE `cargo`
   ADD PRIMARY KEY (`Id_Cargo`),
   ADD UNIQUE KEY `Nome_Cargo` (`Nome_Cargo`);
 
 --
--- Índices para tabela `carrinho`
+-- Índices de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
   ADD PRIMARY KEY (`Id_Carrinho`),
@@ -478,51 +487,51 @@ ALTER TABLE `carrinho`
   ADD KEY `Cod_Produto` (`Cod_Produto`);
 
 --
--- Índices para tabela `categoria`
+-- Índices de tabela `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`Id_Categoria`);
 
 --
--- Índices para tabela `cep`
+-- Índices de tabela `cep`
 --
 ALTER TABLE `cep`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Índices para tabela `cliente`
+-- Índices de tabela `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`Id_Cliente`),
   ADD KEY `Usuario` (`Usuario`);
 
 --
--- Índices para tabela `configuracao`
+-- Índices de tabela `configuracao`
 --
 ALTER TABLE `configuracao`
   ADD PRIMARY KEY (`Id_Config`);
 
 --
--- Índices para tabela `detalhe_venda`
+-- Índices de tabela `detalhe_venda`
 --
 ALTER TABLE `detalhe_venda`
   ADD KEY `Id_Venda` (`Id_Venda`);
 
 --
--- Índices para tabela `empresa`
+-- Índices de tabela `empresa`
 --
 ALTER TABLE `empresa`
   ADD PRIMARY KEY (`Id_Empresa`);
 
 --
--- Índices para tabela `entregador`
+-- Índices de tabela `entregador`
 --
 ALTER TABLE `entregador`
   ADD PRIMARY KEY (`Id_Entregador`),
   ADD KEY `Usuario` (`Usuario`);
 
 --
--- Índices para tabela `funcionario`
+-- Índices de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
   ADD PRIMARY KEY (`Id_Funcionario`),
@@ -531,19 +540,19 @@ ALTER TABLE `funcionario`
   ADD KEY `Usuario` (`Usuario`);
 
 --
--- Índices para tabela `pagamento`
+-- Índices de tabela `pagamento`
 --
 ALTER TABLE `pagamento`
   ADD PRIMARY KEY (`Id_Pagamento`);
 
 --
--- Índices para tabela `perfil`
+-- Índices de tabela `perfil`
 --
 ALTER TABLE `perfil`
   ADD PRIMARY KEY (`Id_Perfil`);
 
 --
--- Índices para tabela `produto`
+-- Índices de tabela `produto`
 --
 ALTER TABLE `produto`
   ADD PRIMARY KEY (`Id_Produto`),
@@ -551,13 +560,13 @@ ALTER TABLE `produto`
   ADD KEY `Categoria` (`Categoria`);
 
 --
--- Índices para tabela `status`
+-- Índices de tabela `status`
 --
 ALTER TABLE `status`
   ADD PRIMARY KEY (`Id_Status`);
 
 --
--- Índices para tabela `usuario`
+-- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`Id_Usuario`),
@@ -565,7 +574,7 @@ ALTER TABLE `usuario`
   ADD KEY `Cep` (`Cep`);
 
 --
--- Índices para tabela `venda`
+-- Índices de tabela `venda`
 --
 ALTER TABLE `venda`
   ADD PRIMARY KEY (`Id_Venda`),
@@ -574,7 +583,7 @@ ALTER TABLE `venda`
   ADD KEY `Pagamento` (`Pagamento`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -587,7 +596,7 @@ ALTER TABLE `cargo`
 -- AUTO_INCREMENT de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
-  MODIFY `Id_Carrinho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `Id_Carrinho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de tabela `categoria`
@@ -623,7 +632,7 @@ ALTER TABLE `empresa`
 -- AUTO_INCREMENT de tabela `entregador`
 --
 ALTER TABLE `entregador`
-  MODIFY `Id_Entregador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_Entregador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `funcionario`
@@ -653,26 +662,26 @@ ALTER TABLE `produto`
 -- AUTO_INCREMENT de tabela `status`
 --
 ALTER TABLE `status`
-  MODIFY `Id_Status` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT de tabela `venda`
 --
 ALTER TABLE `venda`
-  MODIFY `Id_Venda` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Venda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `carrinho`
+-- Restrições para tabelas `carrinho`
 --
 ALTER TABLE `carrinho`
   ADD CONSTRAINT `carrinho_ibfk_1` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Id_Cliente`),
@@ -680,25 +689,25 @@ ALTER TABLE `carrinho`
   ADD CONSTRAINT `carrinho_ibfk_3` FOREIGN KEY (`Cod_Produto`) REFERENCES `produto` (`Id_Produto`);
 
 --
--- Limitadores para a tabela `cliente`
+-- Restrições para tabelas `cliente`
 --
 ALTER TABLE `cliente`
   ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`Usuario`) REFERENCES `usuario` (`Id_Usuario`);
 
 --
--- Limitadores para a tabela `detalhe_venda`
+-- Restrições para tabelas `detalhe_venda`
 --
 ALTER TABLE `detalhe_venda`
   ADD CONSTRAINT `detalhe_venda_ibfk_1` FOREIGN KEY (`Id_Venda`) REFERENCES `venda` (`Id_Venda`);
 
 --
--- Limitadores para a tabela `entregador`
+-- Restrições para tabelas `entregador`
 --
 ALTER TABLE `entregador`
   ADD CONSTRAINT `entregador_ibfk_1` FOREIGN KEY (`Usuario`) REFERENCES `usuario` (`Id_Usuario`);
 
 --
--- Limitadores para a tabela `funcionario`
+-- Restrições para tabelas `funcionario`
 --
 ALTER TABLE `funcionario`
   ADD CONSTRAINT `funcionario_ibfk_1` FOREIGN KEY (`Cargo`) REFERENCES `cargo` (`Id_Cargo`),
@@ -706,19 +715,19 @@ ALTER TABLE `funcionario`
   ADD CONSTRAINT `funcionario_ibfk_3` FOREIGN KEY (`Usuario`) REFERENCES `usuario` (`Id_Usuario`);
 
 --
--- Limitadores para a tabela `produto`
+-- Restrições para tabelas `produto`
 --
 ALTER TABLE `produto`
   ADD CONSTRAINT `produto_ibfk_1` FOREIGN KEY (`Categoria`) REFERENCES `categoria` (`Id_Categoria`);
 
 --
--- Limitadores para a tabela `usuario`
+-- Restrições para tabelas `usuario`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`Cep`) REFERENCES `cep` (`Id`);
 
 --
--- Limitadores para a tabela `venda`
+-- Restrições para tabelas `venda`
 --
 ALTER TABLE `venda`
   ADD CONSTRAINT `venda_ibfk_1` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`Id_Cliente`),
