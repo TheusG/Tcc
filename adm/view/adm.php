@@ -83,7 +83,7 @@ require_once "admVerifSession.php";
                 echo "<a href=\"clienteList.php\" target=\"screen\">Clientes</a>";
                 echo "<a href=\"configEdit2.php\" target=\"screen\">Configurações</a>";
                 echo "<a href=\"empresaEdit2.php\" target=\"screen\">Empresa</a>";
-                
+                echo "<a href=\"vendaList.php\" target=\"screen\">Vendas</a>";                
             }
 
             
