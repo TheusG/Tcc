@@ -1041,3 +1041,39 @@ function excluirCliente($id)
     }
 }
 
+// --------------------------------------------------------//-----------------------------------------------------//
+
+function listarVenda(){
+    require_once "../model/Conexao.php";
+    $sql = "SELECT cliente.*,venda.*,entregador.*,pagamento.* FROM venda JOIN entregador on venda.Entregador = entregador.Id_Entregador JOIN pagamento on venda.Pagamento = pagamento.Id_Pagamento JOIN cliente on venda.Cliente = cliente.Id_Cliente";
+    $result = $conn->query($sql);
+
+
+    if ($result->num_rows > 0) {
+        $num = $result->num_rows;
+        $venda = array();
+        $venda["result"] = 1;
+        $venda["num"] = $num;
+        $i = 1;
+        while ($row = $result->fetch_assoc()) {
+            $venda[$i]["Id_Venda"] = $row["Id_Venda"];
+            $venda[$i]["Nro_Venda"] = $row["Nro_Venda"];
+            $venda[$i]["Cliente"] = $row["Cliente"];
+            $venda[$i]["Data_Venda"] = $row["Data_Venda"];
+            $venda[$i]["Entregador"] = $row["Entregador"];
+            $venda[$i]["Status"] = $row["Status"];
+            $venda[$i]["Valor_Venda"] = $row["Valor_Venda"];
+            $venda[$i]["Desconto_Venda"] = $row["Desconto_Venda"];
+            $venda[$i]["Adicional_Venda"] = $row["Adicional_Venda"];
+            $venda[$i]["Pagamento"] = $row["Pagamento"];
+            $i++;
+        }
+        $conn->close();
+        return $venda;
+    } else {
+        $venda["result"] = 0;
+        $conn->close();
+        return $venda;
+    }
+
+}
