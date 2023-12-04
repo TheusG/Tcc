@@ -50,7 +50,7 @@ session_start();
                                                             } ?>">
             </div>
             <div class="campos">
-              <h4>email</h4>
+              <h4>Email</h4>
               <input type="text" name="email" required value="<?php
                                                             if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                                                               print_r($_SESSION["CLI-EMAIL"]);
