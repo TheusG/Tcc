@@ -613,6 +613,7 @@ function listarEntregador()
             $entregador[$i]["Veiculo"] = $row["Veiculo"];
             $entregador[$i]["Identificacao"] = $row["Identificacao"];
             $entregador[$i]["Usuario"] = $row["Usuario"];
+            
             $i++;
         }
         $conn->close();
@@ -650,7 +651,9 @@ function adicionarEntregador($entregador)
 function pegaEntregador($id)
 {
     require_once "Conexao.php";
-    $sql = "SELECT usuario.* , entregador.* FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario WHERE Id_Usuario = {$id}";
+    $sql = "SELECT usuario.* , entregador.*,cep.* 
+    FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario
+    INNER JOIN Cep on usuario.Cep = cep.Id_Cep WHERE usuario.Id_Usuario = {$id}";
     $result = $conn->query($sql);
 
     //Se selecionou algum funcionario
@@ -661,7 +664,6 @@ function pegaEntregador($id)
             $entregador["Id_Usuario"] = $row["Id_Usuario"];
             $entregador["Nome_Usuario"] = $row["Nome_Usuario"];
             $entregador["Sexo"] = $row["Sexo"];
-            $entregador["Cep"] = $row["Cep"];
             $entregador["Numero"] = $row["Numero"];
             $entregador["Complemento"] = $row["Complemento"];
             $entregador["Telefone"] = $row["Telefone"];
@@ -671,6 +673,12 @@ function pegaEntregador($id)
             $entregador["Veiculo"] = $row["Veiculo"];
             $entregador["Identificacao"] = $row["Identificacao"];
             $entregador["Usuario"] = $row["Usuario"];
+            $entregador["Id_Cep"] = $row["Id_Cep"];
+            $entregador["Cidade"] = $row["Cidade"];
+            $entregador["Logradouro"] = $row["Logradouro"];
+            $entregador["Bairro"] = $row["Bairro"];
+            $entregador["Cep"] = $row["Cep"];
+            $entregador["Tipo"] = $row["Tipo"];
         }
         $conn->close();
         return $entregador;

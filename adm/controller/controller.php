@@ -79,7 +79,7 @@ if (!isset($_SESSION["FUNC-ID"]) || empty($_SESSION["FUNC-ID"])) {
                 <script>
                     document.getElementById('myForm').submit()
                 </script>
-            <?php
+                <?php
             }
         }
     }
@@ -105,7 +105,7 @@ if (!isset($_SESSION["FUNC-ID"]) || empty($_SESSION["FUNC-ID"])) {
         require_once "../model/Cep.class.php";
         $codCep = new Cep;
         $infoCep = $codCep->TodosCep();
-        
+
 
         for ($i = 0; $i < count($infoCep); $i++) {
             if ($infoCep[$i]["Cep"] == $dados["cep"]) {
@@ -114,9 +114,9 @@ if (!isset($_SESSION["FUNC-ID"]) || empty($_SESSION["FUNC-ID"])) {
                 $dados["cep"] = $infoCep[$i]["Id_Cep"];
                 require_once "../model/Manager.php";
                 $resp = adicionarFuncionario($dados);
-        
+
                 if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
-                    ?>
+                ?>
                     <form action="../view/admList.php" name="form" id="myForm" method="post">
                         <input type="hidden" name="msg" value="BD52">
                     </form>
@@ -132,23 +132,22 @@ if (!isset($_SESSION["FUNC-ID"]) || empty($_SESSION["FUNC-ID"])) {
                     <script>
                         document.getElementById('myForm').submit()
                     </script>
-                <?php
+            <?php
 
                 }
             }
         }
 
-        if($valida != 1){
+        if ($valida != 1) {
             ?>
-                <form action="../view/admList.php" name="form" id="myForm" method="post">
-                    <input type="hidden" name="msg" value="FR100">
-                </form>
-                <script>
-                    document.getElementById('myForm').submit()
-                </script>
-                <?php
+            <form action="../view/admList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR100">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+            <?php
         }
-
     }
 
     if (isset($_REQUEST["adm_edit"])) {
@@ -165,7 +164,7 @@ if (!isset($_SESSION["FUNC-ID"]) || empty($_SESSION["FUNC-ID"])) {
         }
         $dados["telefone"] = $_REQUEST["telefone"];
         $dados["dataNascimento"] = $_REQUEST["dataNascimento"];
-        
+
         $dados["numero"] = $_REQUEST["numero"];
         $dados["complemento"] = $_REQUEST["complemento"];
         $dados["salario"] = $_REQUEST["salario"];
@@ -181,14 +180,14 @@ if (!isset($_SESSION["FUNC-ID"]) || empty($_SESSION["FUNC-ID"])) {
         $infoCep = $verificaCep->TodosCep();
 
         for ($i = 0; $i < count($infoCep); $i++) {
-            if ($infoCep[$i]["Cep"] == $dados["cep"]) {        
+            if ($infoCep[$i]["Cep"] == $dados["cep"]) {
                 $valida = "1";
                 $dados["cep"] = $infoCep[$i]["Id_Cep"];
                 require_once "../model/Manager.php";
                 $resp = editarFuncionario($dados);
-        
+
                 if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
-                ?>
+            ?>
                     <form action="../view/admList.php" name="form" id="myForm" method="post">
                         <input type="hidden" name="msg" value="BD53">
                     </form>
@@ -204,26 +203,21 @@ if (!isset($_SESSION["FUNC-ID"]) || empty($_SESSION["FUNC-ID"])) {
                     <script>
                         document.getElementById('myForm').submit()
                     </script>
-                <?php
+            <?php
                 }
             }
         }
 
-        if($valida != 1){
+        if ($valida != 1) {
             ?>
-                <form action="../view/admList.php" name="form" id="myForm" method="post">
-                    <input type="hidden" name="msg" value="FR100">
-                </form>
-                <script>
-                    document.getElementById('myForm').submit()
-                </script>
-                <?php
+            <form action="../view/admList.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR100">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+        <?php
         }
-
-
-
-
-       
     }
 
     if (isset($_REQUEST["adm_delete"])) {
@@ -363,7 +357,7 @@ if (isset($_REQUEST["verificar_cod"])) {
         ?>
         <form action="../view/produtoNew2.php" name="form" id="myForm" method="post">
             <input type="hidden" name="add_Prod" value="value">
-            <input type="hidden" name="Codigo_Produto" value="<?=$Cod_Produto?>">
+            <input type="hidden" name="Codigo_Produto" value="<?= $Cod_Produto ?>">
         </form>
         <script>
             document.getElementById('myForm').submit()
@@ -389,7 +383,7 @@ if (isset($_REQUEST["produto_new"])) {
     $resp = adicionarProduto($produto);
 
     if ($resp == 1) { //tudo certo ao adicionar um novo produt
-        ?>
+    ?>
         <form action="../view/produtoList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD52">
         </form>
@@ -405,7 +399,7 @@ if (isset($_REQUEST["produto_new"])) {
         <script>
             document.getElementById('myForm').submit()
         </script>
-    <?php
+<?php
     }
 }
 
@@ -529,7 +523,7 @@ if (isset($_REQUEST["empresa_edit"])) {
         <script>
             document.getElementById('myForm').submit()
         </script>
-    <?php
+        <?php
     }
 }
 
@@ -555,19 +549,19 @@ if (isset($_REQUEST["entregador_new"])) {
     $valida = "0";
 
     require_once "../model/Cep.class.php";
-    $verificaCep = new Cep();
-    $infoCep = $verificaCep->TodosCep();
+    $verificacaoCep = new Cep();
+    $infoCep = $verificacaoCep->TodosCep();
 
     for ($i = 0; $i < count($infoCep); $i++) {
-        if ($infoCep[$i]["Cep"] == $entregador["cep"]) { 
+        if ($infoCep[$i]["Cep"] == $entregador["cep"]) {
+
             $valida = "1";
             $entregador["cep"] = $infoCep[$i]["Id_Cep"];
-
             require_once "../model/Manager.php";
             $resp = adicionarEntregador($entregador);
-        
+
             if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
-            ?>
+        ?>
                 <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
                     <input type="hidden" name="msg" value="BD52">
                 </form>
@@ -583,23 +577,22 @@ if (isset($_REQUEST["entregador_new"])) {
                 <script>
                     document.getElementById('myForm').submit()
                 </script>
-            <?php
+        <?php
             }
         }
     }
 
-    if($valida != 1){
+    if ($valida != 1) {
         ?>
-            <form action="../view/admList.php" name="form" id="myForm" method="post">
-                <input type="hidden" name="msg" value="FR100">
-            </form>
-            <script>
-                document.getElementById('myForm').submit()
-            </script>
+        <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="FR100">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
         <?php
 
     }
-
 }
 
 if (isset($_REQUEST["entregador_edit"])) {
@@ -616,35 +609,62 @@ if (isset($_REQUEST["entregador_edit"])) {
     }
     $entregador["telefone"] = $_REQUEST["telefone"];
     $entregador["dataNascimento"] = $_REQUEST["dataNascimento"];
-    $entregador["cep"] = $_REQUEST["cep"];
     $entregador["numero"] = $_REQUEST["numero"];
     $entregador["complemento"] = $_REQUEST["complemento"];
     $entregador["veiculo"] = $_REQUEST["veiculo"];
     $entregador["identificacao"] = $_REQUEST["identificacao"];
     $entregador["foto"] = $_REQUEST["foto"];
     $entregador["idEntregador"] = $_REQUEST["idEntregador"];
-    require_once "../model/Manager.php";
-    $resp = editarEntregador($entregador);
 
-    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
-    ?>
-        <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="BD53">
-        </form>
-        <script>
-            document.getElementById('myForm').submit()
-        </script>
-    <?php
-    } else { //erro no insert
-    ?>
-        <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="BD03">
-        </form>
-        <script>
-            document.getElementById('myForm').submit()
-        </script>
-    <?php
+    $entregador["cep"] = $_REQUEST["cep"];
+    $valida = "0";
+    require_once "../model/Cep.class.php";
+    $verifCepEntregador = new Cep();
+    $infoCep = $verifCepEntregador->TodosCep();
+
+    for ($i = 0; $i < count($infoCep); $i++) {
+        if ($infoCep[$i]["Cep"] == $entregador["cep"]) {
+            $valida = "1";
+            $entregador["cep"] = $infoCep[$i]["Id_Cep"];
+
+            require_once "../model/Manager.php";
+            $resp = editarEntregador($entregador);
+
+            if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+        ?>
+                <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD53">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+            <?php
+            } else { //erro no insert
+            ?>
+                <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD03">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+        <?php
+            }
+        }
     }
+
+    if ($valida != 1) {
+        ?>
+        <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="FR100">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+        <?php
+
+    }
+
+
 }
 
 if (isset($_REQUEST["entregador_delete"])) {
@@ -652,7 +672,7 @@ if (isset($_REQUEST["entregador_delete"])) {
     require_once "../model/Manager.php";
     $result = excluirEntregador($id);
     if ($result == 1) { //conseguir excluir
-    ?>
+        ?>
         <form action="../view/entregadorList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD54">
         </form>
@@ -783,7 +803,7 @@ if (isset($_REQUEST["config_edit"])) {
         <script>
             document.getElementById('myForm').submit()
         </script>
-<?php
+    <?php
     }
 }
 
@@ -807,7 +827,7 @@ if (isset($_REQUEST["cliente_new"])) {
     $resp = adicionarCliente($cliente);
 
     if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
-        ?>
+    ?>
         <form action="../view/clienteList.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="BD52">
         </form>
@@ -892,7 +912,7 @@ if (isset($_REQUEST["cliente_delete"])) {
         <script>
             document.getElementById('myForm').submit()
         </script>
-    <?php
+<?php
     }
 }
 
