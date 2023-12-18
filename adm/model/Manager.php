@@ -34,19 +34,7 @@ function listarFuncionario()
     $sql = "SELECT usuario.* , funcionario.* FROM usuario INNER JOIN funcionario on usuario.Id_Usuario = funcionario.Usuario";
     $result = $conn->query($sql);
 
-    // $sql = "SELECT * FROM funcionario";
-    // $resposta =$conn->query($sql);
 
-    // if($resposta->num_rows > 0){
-    //     $num1 = $resposta->num_rows;
-    //     $dadosf = array();
-    //     $dadosf["result"] = 1;
-    //     $dados["num1"] = $num1;
-    //     $ii = 1;
-    //     while($linha = $resposta->fetch_assoc()){
-    //         $dados[$ii][""]
-    //     }
-    // }
     if ($result->num_rows > 0) {
         $num = $result->num_rows;
         $dados = array();
@@ -105,7 +93,9 @@ function adicionarFuncionario($dados)
 function pegaFuncionario($id)
 {
     require_once "Conexao.php";
-    $sql = "SELECT usuario.* , funcionario.* FROM usuario INNER JOIN funcionario on usuario.Id_Usuario = funcionario.Usuario WHERE Id_Usuario = {$id}";
+    $sql = "SELECT usuario.* , funcionario.*,cep.* 
+    FROM usuario INNER JOIN funcionario on usuario.Id_Usuario = funcionario.Usuario
+    INNER JOIN Cep on usuario.Cep = cep.Id_Cep WHERE usuario.Id_Usuario = {$id}";
     $result = $conn->query($sql);
 
     //Se selecionou algum funcionario
@@ -116,7 +106,6 @@ function pegaFuncionario($id)
             $dados["Id_Usuario"] = $row["Id_Usuario"];
             $dados["Nome_Usuario"] = $row["Nome_Usuario"];
             $dados["Sexo"] = $row["Sexo"];
-            $dados["Cep"] = $row["Cep"];
             $dados["Numero"] = $row["Numero"];
             $dados["Complemento"] = $row["Complemento"];
             $dados["Telefone"] = $row["Telefone"];
@@ -127,6 +116,13 @@ function pegaFuncionario($id)
             $dados["Perfil"] = $row["Perfil"];
             $dados["Salario"] = $row["Salario"];
             $dados["Usuario"] = $row["Usuario"];
+            $dados["Id_Cep"] = $row["Id_Cep"];
+            $dados["Cidade"] = $row["Cidade"];
+            $dados["Logradouro"] = $row["Logradouro"];
+            $dados["Bairro"] = $row["Bairro"];
+            $dados["Cep"] = $row["Cep"];
+            $dados["Tipo"] = $row["Tipo"];
+           
         }
         $conn->close();
         return $dados;
