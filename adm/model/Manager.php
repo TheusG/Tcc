@@ -967,7 +967,9 @@ function adicionarCliente($cliente)
 function pegaCliente($id)
 {
     require_once "Conexao.php";
-    $sql = "SELECT usuario.* , cliente.* FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario WHERE Id_Usuario = {$id}";
+    $sql = "SELECT usuario.* , cliente.*,cep.* 
+    FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario
+    INNER JOIN Cep on usuario.Cep = cep.Id_Cep WHERE usuario.Id_Usuario = {$id}";
     $result = $conn->query($sql);
 
 
@@ -978,7 +980,6 @@ function pegaCliente($id)
             $cliente["Id_Usuario"] = $row["Id_Usuario"];
             $cliente["Nome_Usuario"] = $row["Nome_Usuario"];
             $cliente["Sexo"] = $row["Sexo"];
-            $cliente["Cep"] = $row["Cep"];
             $cliente["Numero"] = $row["Numero"];
             $cliente["Complemento"] = $row["Complemento"];
             $cliente["Telefone"] = $row["Telefone"];
@@ -987,6 +988,12 @@ function pegaCliente($id)
             $cliente["Foto"] = $row["Foto"];
             $cliente["Referencia"] = $row["Referencia"];
             $cliente["Usuario"] = $row["Usuario"];
+            $cliente["Id_Cep"] = $row["Id_Cep"];
+            $cliente["Cidade"] = $row["Cidade"];
+            $cliente["Logradouro"] = $row["Logradouro"];
+            $cliente["Bairro"] = $row["Bairro"];
+            $cliente["Cep"] = $row["Cep"];
+            $cliente["Tipo"] = $row["Tipo"];
         }
         $conn->close();
         return $cliente;

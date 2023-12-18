@@ -818,33 +818,61 @@ if (isset($_REQUEST["cliente_new"])) {
     $cliente["senha"] = hash256($_REQUEST["senha"]);
     $cliente["telefone"] = $_REQUEST["telefone"];
     $cliente["dataNascimento"] = $_REQUEST["dataNascimento"];
-    $cliente["cep"] = $_REQUEST["cep"];
     $cliente["numero"] = $_REQUEST["numero"];
     $cliente["complemento"] = $_REQUEST["complemento"];
     $cliente["foto"] = $_REQUEST["foto"];
     $cliente["referencia"] = $_REQUEST["referencia"];
-    require_once "../model/Manager.php";
-    $resp = adicionarCliente($cliente);
 
-    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
-    ?>
-        <form action="../view/clienteList.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="BD52">
-        </form>
-        <script>
-            document.getElementById('myForm').submit()
-        </script>
-    <?php
-    } else { //erro no insert
-    ?>
-        <form action="../view/clienteList.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="BD02">
-        </form>
-        <script>
-            document.getElementById('myForm').submit()
-        </script>
-    <?php
+    $cliente["cep"] = $_REQUEST["cep"];
+    $valida = "0";
+
+    require_once "../model/Cep.class.php";
+    $verifClienteCep = new Cep();
+    $infoCep = $verifClienteCep->TodosCep();
+
+    for ($i = 0; $i < count($infoCep); $i++) {
+        if ($infoCep[$i]["Cep"] == $cliente["cep"]) {
+            $valida = "1";
+            $cliente["cep"] = $infoCep[$i]["Id_Cep"];
+
+            require_once "../model/Manager.php";
+            $resp = adicionarCliente($cliente);
+        
+            if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+            ?>
+                <form action="../view/clienteList.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD52">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+            <?php
+            } else { //erro no insert
+            ?>
+                <form action="../view/clienteList.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD02">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+            <?php
+            }
+
+        }
     }
+
+    if ($valida != 1) {
+        ?>
+        <form action="../view/clienteList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="FR100">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+        <?php
+
+    }
+   
 }
 
 if (isset($_REQUEST["cliente_edit"])) {
@@ -861,34 +889,62 @@ if (isset($_REQUEST["cliente_edit"])) {
     }
     $cliente["telefone"] = $_REQUEST["telefone"];
     $cliente["dataNascimento"] = $_REQUEST["dataNascimento"];
-    $cliente["cep"] = $_REQUEST["cep"];
     $cliente["numero"] = $_REQUEST["numero"];
     $cliente["complemento"] = $_REQUEST["complemento"];
     $cliente["referencia"] = $_REQUEST["referencia"];
     $cliente["foto"] = $_REQUEST["foto"];
     $cliente["idCliente"] = $_REQUEST["idCliente"];
-    require_once "../model/Manager.php";
-    $resp = editarCliente($cliente);
 
-    if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
-    ?>
-        <form action="../view/clienteList.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="BD53">
-        </form>
-        <script>
-            document.getElementById('myForm').submit()
-        </script>
-    <?php
-    } else { //erro no insert
-    ?>
-        <form action="../view/clienteList.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="BD03">
-        </form>
-        <script>
-            document.getElementById('myForm').submit()
-        </script>
-    <?php
+    $cliente["cep"] = $_REQUEST["cep"];
+    $valida = "0";
+    require_once "../model/Cep.class.php";
+    $ClienteCep = new Cep();
+    $infoCep = $ClienteCep->TodosCep();
+
+    for ($i = 0; $i < count($infoCep); $i++) {
+        if ($infoCep[$i]["Cep"] == $cliente["cep"]) {
+            $valida = "1";
+            $cliente["cep"] = $infoCep[$i]["Id_Cep"];
+
+            require_once "../model/Manager.php";
+            $resp = editarCliente($cliente);
+        
+            if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+            ?>
+                <form action="../view/clienteList.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD53">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+            <?php
+            } else { //erro no insert
+            ?>
+                <form action="../view/clienteList.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD03">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+            <?php
+            }
+
+        }
     }
+
+    if ($valida != 1) {
+        ?>
+        <form action="../view/clienteList.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="FR100">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+        <?php
+
+    }
+
+   
 }
 
 if (isset($_REQUEST["cliente_delete"])) {
