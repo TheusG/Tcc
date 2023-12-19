@@ -191,7 +191,7 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
                 $_SESSION["CLI-CEP"] = $cliente["Cep"];
                 $_SESSION["ID-CLIENTE"] = $cliente["Id_Cliente"];
                 $_SESSION["LOGADO"] = 1;
-
+                
 
             ?>
                 <form action="../index.php" name="form" id="myForm" method="post">
@@ -276,32 +276,73 @@ if (isset($_REQUEST["add_cliente"])) {
         <?php
 
     } else if ($controle != 0) {
-        require_once "../model/Ferramentas.php";
-        $cliente["senha"] = hash256($_REQUEST["senha"]);
-        require_once "../model/manager.php";
-        $resp = adicionarCliente($cliente);
+            require_once "../model/Ferramentas.php";
+            $respEmail = antiInjection($cliente["email"]);
+            $respSenha = antiInjection($_REQUEST["senha"]);
+            $respConfSenha = antiInjection($_REQUEST["confSenha"]);
 
-        if ($resp == 1) {
-        ?>
-            <form action="../index.php" name="form" id="myForm" method="post">
-                <input type="hidden" name="msg" value="FR53">
-            </form>
-            <script>
-                document.getElementById('myForm').submit()
-            </script>
-        <?php
-        } else { //erro no insert
-        ?>
-            <form action="../index.php" name="form" id="myForm" method="post">
-                <input type="hidden" name="msg" value="FR27">
-            </form>
-            <script>
-                document.getElementById('myForm').submit()
-            </script>
-<?php
+            if ($respEmail == 0 || $respSenha == 0 || $respConfSenha == 0) {
+                session_destroy();
+                $_SESSION["LOGADO"] = 0;
+            ?>
+                <form action="../index.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="FR11">
+                    <!-- "FR11" => "Informação incorreta.", -->
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+            <?php
+            }
+
+            require_once "../model/Ferramentas.php";
+            $cliente["senha"] = hash256($_REQUEST["senha"]);
+            require_once "../model/manager.php";
+            $resp = adicionarCliente($cliente);
+
+            if ($resp == 1) {
+
+                $_SESSION["LOGADO"] = 1;
+                $cliente = infoCliente($cliente["email"], $cliente["senha"]);
+            
+                if ($cliente["result"] == 1) {
+                    $_SESSION["CLI-ID"] = $cliente["Id_Usuario"];
+                    $_SESSION["CLI-NOME"] = $cliente["Nome_Usuario"];
+                    $_SESSION["CLI-EMAIL"] = $cliente["Email"];
+                    $_SESSION["CLI-TEL"] = $cliente["Telefone"];
+                    $_SESSION["CLI-ID-CEP"] = $cliente["Id_Cep"];
+                    $_SESSION["CLI-NUMERO"] = $cliente["Numero"];
+                    $_SESSION["CLI-BAIRRO"] = $cliente["Bairro"];
+                    $_SESSION["CLI-CIDADE"] = $cliente["Cidade"];
+                    $_SESSION["CLI-COMPLEMENTO"] = $cliente["Complemento"];
+                    $_SESSION["CLI-LOGRADOURO"] = $cliente["Logradouro"];
+                    $_SESSION["CLI-CEP"] = $cliente["Cep"];
+                    $_SESSION["ID-CLIENTE"] = $cliente["Id_Cliente"];
+                    $_SESSION["LOGADO"] = 1;
+                    
+                }
+                ?>
+
+            
+                <form action="../index.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="FR53">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+            <?php
+            } else { //erro no insert
+            ?>
+                <form action="../index.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="FR27">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+    <?php
+            }
         }
     }
-}
 
 
 
