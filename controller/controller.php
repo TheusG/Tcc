@@ -182,13 +182,13 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
                 $_SESSION["CLI-NOME"] = $cliente["Nome_Usuario"];
                 $_SESSION["CLI-EMAIL"] = $cliente["Email"];
                 $_SESSION["CLI-TEL"] = $cliente["Telefone"];
-                $_SESSION["CLI-CEP"] = $cliente["Id"];
+                $_SESSION["CLI-ID-CEP"] = $cliente["Id_Cep"];
                 $_SESSION["CLI-NUMERO"] = $cliente["Numero"];
                 $_SESSION["CLI-BAIRRO"] = $cliente["Bairro"];
                 $_SESSION["CLI-CIDADE"] = $cliente["Cidade"];
                 $_SESSION["CLI-COMPLEMENTO"] = $cliente["Complemento"];
                 $_SESSION["CLI-LOGRADOURO"] = $cliente["Logradouro"];
-                $_SESSION["CLI-CEP"] = $cliente["Id"];
+                $_SESSION["CLI-CEP"] = $cliente["Cep"];
                 $_SESSION["ID-CLIENTE"] = $cliente["Id_Cliente"];
                 $_SESSION["LOGADO"] = 1;
 

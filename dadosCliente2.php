@@ -75,7 +75,12 @@ session_start();
           <div>
             <div class="campos">
               <h4>CEP</h4>
-              <input type="text" name="cep" id="cep" value="08253-000">
+              <input type="text" name="cep" id="cep" value="<?php
+                                                            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                                              print_r($_SESSION["CLI-CEP"]);
+                                                            } else {
+                                                              echo "5";
+                                                            } ?>">
             </div>
             <div class="campos">
               <h4>Cidade</h4>
@@ -108,7 +113,7 @@ session_start();
                                       } ?>">
             </div>
             <div class="camposRua">
-              <h4>Rua</h4>
+              <h4>Logradouro</h4>
               <input type="text" name="rua" value="<?php
                                       if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                                         print_r($_SESSION["CLI-LOGRADOURO"]);
@@ -118,7 +123,12 @@ session_start();
             </div>
             <div class="camposRua">
               <h4>Complemento</h4>
-              <input type="text" name="complemento" value="Prédio laranja">
+              <input type="text" name="complemento" value="<?php
+                                                            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                                              print_r($_SESSION["CLI-COMPLEMENTO"]);
+                                                            } else {
+                                                              echo "";
+                                                            } ?>">
             </div>
           </div>
         </div>

@@ -7,8 +7,9 @@ function dadosCliente($email, $senha)
     //         FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario
     //         WHERE usuario.Email = '$email' AND usuario.Senha = '$senha'";
     $sql = "SELECT usuario.* , cliente.*,cep.* 
-            FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario
-            INNER JOIN Cep on usuario.Cep = Cep.id WHERE usuario.Email = '$email' AND usuario.Senha = '$senha'";
+    FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario
+    INNER JOIN Cep on usuario.Cep = cep.Id_Cep WHERE usuario.Email = '$email' AND usuario.Senha = '$senha'";
+            
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         require_once "../adm/model/Conexao.php";
@@ -20,13 +21,15 @@ function dadosCliente($email, $senha)
             $cliente["Senha"] = $row["Senha"];
             $cliente["Email"] = $row["Email"];
             $cliente["Telefone"] = $row["Telefone"];
-            $cliente["Id"] = $row["Id"];
-            $cliente["Bairro"] = $row["Bairro"];
-            $cliente["Logradouro"] = $row["Logradouro"];
-            $cliente["Cidade"] = $row["Cidade"];
             $cliente["Numero"] = $row["Numero"];
             $cliente["Complemento"] = $row["Complemento"];
             $cliente["Id_Cliente"] = $row["Id_Cliente"];
+            $cliente["Id_Cep"] = $row["Id_Cep"];
+            $cliente["Cidade"] = $row["Cidade"];
+            $cliente["Logradouro"] = $row["Tipo"];
+            $cliente["Bairro"] = $row["Bairro"];
+            $cliente["Cep"] = $row["Cep"];
+            
             
            
         }
@@ -42,7 +45,7 @@ function dadosCliente($email, $senha)
     function adicionarCliente($cliente){
     
     require_once "../adm/model/Conexao.php";
-    $sql = "INSERT INTO usuario (Senha,Cep, Email) VALUES ('{$cliente["senha"]}',2,'{$cliente["email"]}')";
+    $sql = "INSERT INTO usuario (Senha,Cep, Email) VALUES ('{$cliente["senha"]}',69690,'{$cliente["email"]}')";
     $result = $conn->query($sql);
     $ultimoid = mysqli_insert_id($conn);
 
@@ -95,7 +98,7 @@ function dadosCliente($email, $senha)
 
     function adicionarCarrinho($id,$Valor){
         require_once "../adm/model/Conexao.php";
-        $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(3,'{$id}', 1,'{$Valor}','{$Valor}','{$Valor}',0,0,1)";
+        $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(7,'{$id}', 1,'{$Valor}','{$Valor}','{$Valor}',0,0,1)";
         $result = $conn->query($sql);
 
         if ($result == true) {
@@ -161,12 +164,12 @@ function dadosCliente($email, $senha)
    function adicionarVenda($venda){
     
     require_once "../adm/model/Conexao.php";
-    $sql = "INSERT INTO venda (Nro_Venda,Cliente, Data_Venda,Entregador, Status, Valor_Venda, Desconto_Venda,Adicional_Venda,Pagamento) VALUES (1,3,now(),'{$venda["entrega"]}',1,'{$venda["total"]}',0,0,'{$venda["pagamento"]}')";
+    $sql = "INSERT INTO venda (Nro_Venda,Cliente, Data_Venda,Entregador, Status, Valor_Venda, Desconto_Venda,Adicional_Venda,Pagamento) VALUES (1,7,now(),'{$venda["entrega"]}',1,'{$venda["total"]}',0,0,'{$venda["pagamento"]}')";
     $result = $conn->query($sql);
 
 
     if ($result == true) { //tudo certo
-        $sql = "DELETE FROM carrinho WHERE cliente = 3";
+        $sql = "DELETE FROM carrinho WHERE cliente = 7";
         $result = $conn->query($sql);
 
         if ($result == true) {

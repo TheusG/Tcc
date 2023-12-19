@@ -19,7 +19,7 @@ class Pagamento{
 
     public function tiposPagamento(){
         $result = array();
-        $cmd = $this->pdo->query("SELECT * FROM pagamento");
+        $cmd = $this->pdo->query("SELECT * FROM pagamento WHERE Id_Pagamento != 1");
         $result = $cmd->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
