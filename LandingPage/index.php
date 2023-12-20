@@ -52,6 +52,9 @@
           <img src="image/priemiraImagem.jpg" alt="">
           <div class="container">
             <div class="carousel-caption text-start">
+              <!-- <a href="../index.php" id="linkSite">Visite nosso site</a> -->
+              <!-- <button class="glow-on-hover" type="button"><a href="../index.php">Visite nosso site</a></button> -->
+              
               <h1>Melhor pizza da região</h1>
               <p class="opacity-75">Uma pizza irresistível, feita com ingredientes de alta qualidade. A melhor da região.</p>
               <!-- <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p> -->
@@ -62,6 +65,9 @@
           <img src="image/segundaImagem.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
+              
+              <!-- <button class="glow-on-hover" type="button"><a href="../index.php">Visite nosso site</a></button> -->
+
               <h1>Variedade de sabores para todos os gostos</h1>
               <p>Diversos sabores para agradar toda a família, preparados com carinho e dedicação.</p>
               <!-- <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p> -->
@@ -72,6 +78,8 @@
           <img src="image/terceiraImagem.jpg" alt="">
           <div class="container">
             <div class="carousel-caption text-end">
+              <!-- <a href="../index.php" id="linkSite">Ir para nosso Site</a> -->
+              <!-- <button class="glow-on-hover" type="button"><a href="../index.php">Visite nosso site</a></button> -->
               <h1>Experiência gastronômica com ingredientes de excelência </h1>
               <p>Qualidade nos produtos e funcionários para uma experiência gastronômica excepcional.</p>
               <!-- <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p> -->
@@ -97,6 +105,8 @@
           </div>
           <form action="">
             <h3>Nome</h3>
+            
+            
             <input type="text" name="" id="Nome" class="campo">
             <br><br>
             <h3>Email</h3>
