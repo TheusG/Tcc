@@ -297,33 +297,37 @@ if (isset($_REQUEST["add_cliente"])) {
 
             require_once "../model/Ferramentas.php";
             $cliente["senha"] = hash256($_REQUEST["senha"]);
+            require_once "../model/Cliente.class.php";
             require_once "../model/manager.php";
             $resp = adicionarCliente($cliente);
 
             if ($resp == 1) {
 
-                $_SESSION["LOGADO"] = 1;
-                $cliente = infoCliente($cliente["email"], $cliente["senha"]);
+                
+                // require_once "../model/manager.php";
+                // $cliente = InfoCliente($cliente["email"], $cliente["senha"]);
+                require_once "../model/Cliente.class.php";
+                $infoCliente = new Cliente();
+                $info = $infoCliente->InfoCliente($cliente["email"],$cliente["senha"]); 
             
-                if ($cliente["result"] == 1) {
-                    $_SESSION["CLI-ID"] = $cliente["Id_Usuario"];
-                    $_SESSION["CLI-NOME"] = $cliente["Nome_Usuario"];
-                    $_SESSION["CLI-EMAIL"] = $cliente["Email"];
-                    $_SESSION["CLI-TEL"] = $cliente["Telefone"];
-                    $_SESSION["CLI-ID-CEP"] = $cliente["Id_Cep"];
-                    $_SESSION["CLI-NUMERO"] = $cliente["Numero"];
-                    $_SESSION["CLI-BAIRRO"] = $cliente["Bairro"];
-                    $_SESSION["CLI-CIDADE"] = $cliente["Cidade"];
-                    $_SESSION["CLI-COMPLEMENTO"] = $cliente["Complemento"];
-                    $_SESSION["CLI-LOGRADOURO"] = $cliente["Logradouro"];
-                    $_SESSION["CLI-CEP"] = $cliente["Cep"];
-                    $_SESSION["ID-CLIENTE"] = $cliente["Id_Cliente"];
-                    $_SESSION["LOGADO"] = 1;
-                    
+            for($i=0; $i < count($info); $i++){
+                
+                    $_SESSION["CLI-ID"] = $info[$i]["Id_Usuario"];
+                    $_SESSION["CLI-NOME"] = $info[$i]["Nome_Usuario"];
+                    $_SESSION["CLI-EMAIL"] = $info[$i]["Email"];
+                    $_SESSION["CLI-TEL"] = $info[$i]["Telefone"];
+                    $_SESSION["CLI-ID-CEP"] = $info[$i]["Id_Cep"];
+                    $_SESSION["CLI-NUMERO"] = $info[$i]["Numero"];
+                    $_SESSION["CLI-BAIRRO"] = $info[$i]["Bairro"];
+                    $_SESSION["CLI-CIDADE"] = $info[$i]["Cidade"];
+                    $_SESSION["CLI-COMPLEMENTO"] = $info[$i]["Complemento"];
+                    $_SESSION["CLI-LOGRADOURO"] = $info[$i]["Logradouro"];
+                    $_SESSION["CLI-CEP"] = $info[$i]["Cep"];
+                    $_SESSION["ID-CLIENTE"] = $info[$i]["Id_Cliente"];
+                    $_SESSION["LOGADO"] = 1;  
                 }
                 ?>
 
-            
                 <form action="../index.php" name="form" id="myForm" method="post">
                     <input type="hidden" name="msg" value="FR53">
                 </form>

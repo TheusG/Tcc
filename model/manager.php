@@ -39,44 +39,6 @@ function dadosCliente($email, $senha)
     }
 }
 
-function infocliente($email, $senha)
-{
-    require_once "../adm/model/Conexao.php";
-    $sql = "SELECT usuario.* , cliente.*,cep.* 
-    FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario
-    INNER JOIN Cep on usuario.Cep = cep.Id_Cep WHERE usuario.Email = '$email' AND usuario.Senha = '$senha'";       
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        require_once "../adm/model/Conexao.php";
-        $cliente = array();
-        $cliente["result"] = 1; // 1 tem dados 0 não tem dados
-        while ($row = $result->fetch_assoc()) {
-            $cliente["Id_Usuario"] = $row["Id_Usuario"];
-            $cliente["Nome_Usuario"] = $row["Nome_Usuario"];
-            $cliente["Senha"] = $row["Senha"];
-            $cliente["Email"] = $row["Email"];
-            $cliente["Telefone"] = $row["Telefone"];
-            $cliente["Numero"] = $row["Numero"];
-            $cliente["Complemento"] = $row["Complemento"];
-            $cliente["Id_Cliente"] = $row["Id_Cliente"];
-            $cliente["Id_Cep"] = $row["Id_Cep"];
-            $cliente["Cidade"] = $row["Cidade"];
-            $cliente["Logradouro"] = $row["Tipo"];
-            $cliente["Bairro"] = $row["Bairro"];
-            $cliente["Cep"] = $row["Cep"];
-            
-            
-           
-        }
-        $conn->close();
-        return $cliente;
-    } else {
-        $cliente["result"] = 0;
-        $conn->close();
-        return $cliente;
-    }
-}
-
     function adicionarCliente($cliente){
     
     require_once "../adm/model/Conexao.php";
