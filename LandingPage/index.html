@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Five Stars</title>
+    
+    <link href="assets/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="assets/css/carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="website icon" type="png" href="image/logoPizzaria1.png">
+<script src="assets/js/jquery-3.7.0.min.js"></script>
+<script src="assets/js/jquery.mask.js]"></script>
+<script src="assets/js/jquery.mask.min.js"></script>
+ 
+</head>
+<body>
+    
+    <header> 
+        
+        <div class="logo">
+            <img src="image/logoPizzaria1.png" alt="">
+            <p>Five Stars</p>
+            <i class="fa-solid fa-pizza-slice"></i>
+        </div>
+   
+        <nav>
+          <ul class="nav-links">
+            <li><a id="home" href="#">Home</a></li>
+            <li><a id="sobre" href="#idForm">Cadastro</a></li>
+            <li><a id="sobre" href="#idSessao">Sobre</a></li>
+            
+          </ul>
+        </nav>
+        <div class="burguer">
+            <div id="linha1"></div>
+            <div id="linha2"></div>
+            <div id="linha3"></div>
+        </div>
+    </header>
+
+   
+    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel" data-bs-theme="light">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="image/priemiraImagem.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption text-start">
+              <h1>Melhor pizza da região</h1>
+              <p class="opacity-75">Uma pizza irresistível, feita com ingredientes de alta qualidade. A melhor da região.</p>
+              <!-- <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p> -->
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="image/segundaImagem.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Variedade de sabores para todos os gostos</h1>
+              <p>Diversos sabores para agradar toda a família, preparados com carinho e dedicação.</p>
+              <!-- <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p> -->
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="image/terceiraImagem.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption text-end">
+              <h1>Experiência gastronômica com ingredientes de excelência </h1>
+              <p>Qualidade nos produtos e funcionários para uma experiência gastronômica excepcional.</p>
+              <!-- <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <div class="sessao" id="idForm">  
+        <div class="formulario" >
+          <div class="imagem-form">
+            <img src="image/logoPizzaria1.png" alt="">
+            <h2> <i class="fa-solid fa-star"></i> Five Stars <i class="fa-solid fa-star"></i></h2>
+            <br>
+          </div>
+          <form action="">
+            <h3>Nome</h3>
+            <input type="text" name="" id="Nome" class="campo">
+            <br><br>
+            <h3>Email</h3>
+            <input type="email" name="" id="Email" class="campo">
+            <br><br>
+            <h3>Telefone</h3>
+            <input type="tel" name="" id="Telefone" class="campo">
+            <br><br>
+            <input type="submit" id="enviar">
+
+
+          </form>
+
+        </div>
+       <script>
+       $("#Telefone").mask("(00)00000-0000");
+       $('#email').val();
+      
+      </script>
+
+
+
+    </div>
+         
+    
+
+   
+    <div class="sessao2" id="idSessao">   
+      <div>
+        <img src="image/Pizzazona.png" alt="">
+      </div>
+        <div>
+            
+            <h2>Sobre a Pizzaria Five Stars</h2>
+            
+            <p>Fundada em 2023 por um grupo de seis estudantes, a Pizzaria Five Stars é um website especializado no setor alimentício, com foco na venda de pizzas. Seu propósito é proporcionar uma experiência de alta qualidade e eficiência, visando alcançar a satisfação do cliente como resultado final.
+            </p>
+      </div>
+
+    </div>
+
+  <footer>
+        <div class="rodape">
+        
+           <div>
+            
+              <h5> Informações</h5>
+              
+              <a href="" target="_blank">Politica de privacidade</a>
+              <a href="https://theusg.github.io/CodeWave/" target="_blank">Empresa desenvolvedora</a>
+            
+     
+           </div>
+           <div>
+              <h5> Trabalhe conosco</h5>
+              
+              <a href="">Parceiras</a>
+              
+           </div>
+         
+           <div>
+              <h5>Conheça mais</h5>
+              
+              <a href="">Redes Sociais</a>
+             
+              
+           </div>
+          
+           </div>
+           <h2>©2023 copyright - Desenvolvedora CodeWave</h2>
+        
+        
+        </footer>
+        
+         <script src="scripts.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        
+    <script src="https://kit.fontawesome.com/5bb743cf48.js" crossorigin="anonymous"></script>
+    
+
+</body>
+</html>
+
+<!-- 
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="fundos/CARROSSEL 3.gif" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5></h5>
+          <p>.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="fundos/gif2222222222.gif" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5></h5>
+          <p>.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="fundos/black-dashboard.gif" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+      
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const carousel = new bootstrap.Carousel(document.querySelector('#carouselExampleCaptions'), {
+        interval: 5000 // Defina aqui o intervalo de tempo em milissegundos (por exemplo, 5000 para 5 segundos)
+      });
+    });
+  </script> -->
