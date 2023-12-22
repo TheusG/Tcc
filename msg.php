@@ -72,6 +72,7 @@ $MSG = array(
     "FR29" => "Você já está logado",
     "FR30" => "Faça login para adicionar itens ao carrinho",
     "FR31" => "Erro durante a compra",
+    "FR100" => "Cep não existente.",
     
 
 

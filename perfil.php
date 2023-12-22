@@ -181,7 +181,14 @@ session_start();
         <iframe name="screen" id="screen" width="100%" height="100%" src="dadosCliente2.php" style="border: 0px;"></iframe>
       </div>
 
+      <?php
+        if (isset($_REQUEST["msg"])) {
+            $cod = $_REQUEST["msg"];
+            require_once "msg.php";
+            echo "<script>alert('" . $MSG[$cod] . "');</script>";
+        }
 
+        ?>
 
 
     </div>

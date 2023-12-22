@@ -75,7 +75,7 @@ session_start();
           <div>
             <div class="campos">
               <h4>CEP</h4>
-              <input type="text" name="cep" id="cep" value="<?php
+              <input type="text" name="cep" id="cep" required value="<?php
                                                             if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                                                               print_r($_SESSION["CLI-CEP"]);
                                                             } else {
@@ -158,7 +158,14 @@ session_start();
 
  
 
+<?php
+        if (isset($_REQUEST["msg"])) {
+            $cod = $_REQUEST["msg"];
+            require_once "msg.php";
+            echo "<script>alert('" . $MSG[$cod] . "');</script>";
+        }
 
+        ?>
 
 </body>
 
