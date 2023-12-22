@@ -21,34 +21,35 @@ session_start();
   <link rel="stylesheet" href="assets/css/logar.css">
   <link rel="stylesheet" href="assets/css/confirmarProduto.css">
   <link rel="stylesheet" href="assets/css/miniCarrinho.css">
+  link
 
   <script src="assets/js/jquery-3.7.0.min.js"></script>
   <script src="assets/js/jquery.mask.js]"></script>
   <script src="assets/js/jquery.mask.min.js"></script>
 
   <script>
-        function ExecutaLogout() {
-            var resp = confirm('Deseja sair?');
-            if (resp == true) {
-                location.href = "clienteLogout.php";
-            } else {
-                return null;
-            }
-        }
-    </script>
+    function ExecutaLogout() {
+      var resp = confirm('Deseja sair?');
+      if (resp == true) {
+        location.href = "clienteLogout.php";
+      } else {
+        return null;
+      }
+    }
+  </script>
 
-<script>
-        function confirmDelete(id){
-            var resp = confirm("Tem certeza que deseja tirar esse item do carrinho?");
-            if(resp==true){
-                location.href = "controller/controller.php?item_delete=1&id=" + id;
-            }else{
-                return null;
-            }
-        }
-    </script>
+  <script>
+    function confirmDelete(id) {
+      var resp = confirm("Tem certeza que deseja tirar esse item do carrinho?");
+      if (resp == true) {
+        location.href = "controller/controller.php?item_delete=1&id=" + id;
+      } else {
+        return null;
+      }
+    }
+  </script>
 
- <!-- <style>
+  <!-- <style>
 #exibirProd{
     position:fixed;
     width: 100%;
@@ -64,9 +65,9 @@ session_start();
 
 <body>
   <div id="exibirProd">
-  
-    
-</div>   
+
+
+  </div>
   <?php
   require_once "adm/model/Empresa.class.php";
   $empresa = new Empresa();
@@ -109,7 +110,7 @@ session_start();
       <img src="image/semfoto-removebg-preview.png" class="imgMenuCheio" alt="">
       <?php
 
-      
+
 
       if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
         // echo "<a href=\"perfil.php\">".print_r($_SESSION["CLI-EMAIL"]). "</a>";
@@ -187,83 +188,82 @@ session_start();
     </div>
   </div>
 
-  <?php 
+  <?php
 
-    
+
   require_once "model/Carrinho.class.php";
   $carrinho = new Carrinho();
   $infoProduto = $carrinho->mostrarCarrinho();
   $total = 0;
   ?>
 
-<?php 
+  <?php
   require_once "model/Carrinho.class.php";
   $qtde = new Carrinho();
   $qtdeProduto = $qtde->quantidadeProduto();
-  
+
   ?>
 
   <div class="miniCarrinhoOf">
-  <?php 
-  if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+    <?php
+    if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
 
-    if($qtdeProduto[0]["total_linhas"] == 0){
-      echo "<button id=\"botaoConfirmarCompra\">Carrinho vazio</button>";
-    }else{
-      for ($i = 0; $i < count($infoProduto); $i++){
- 
-        ?>
-        <div class="divPedido">
-              
-              <div class="divImgPedido">
-                  <img src="imagensProdutos/<?php print_r($infoProduto[$i]["Imagem"]) ?>" alt="imagemProd">
-              </div>
-          
-              <div class="conteinerPedido">
-      
-                <button id="botaoFecharCarrinho" onclick="confirmDelete(<?=$infoProduto[$i]['Id_Produto'];?>)">X</button>
-                  <div class="divNomeProduto"><?php
-                    print_r($infoProduto[$i]["Nome_Produto"]);
-                  ?></div>
-                  <div class="valorPedido">R$<?php
-                    $valor = $infoProduto[$i]["Valor_Unitario"];
-                    print_r(number_format($valor, 2, ",", "."));
-                  ?></div>
-                  <div class="quantidade">
-                  <button><i class="fa-solid fa-minus"></i> </button>
-                  <p><?php
-                    print_r($infoProduto[$i]["Quantidade"]);
-                  ?></p>
-                  <button><i class="fa-solid fa-plus"></i> </button>
-                  </div>
-                
-              </div>
-          </div>
-          <?php 
-           
-            $total = $total + $infoProduto[$i]["Valor_Unitario"];
-            
-            }
-          ?>
-          
-          <div class="divValorTotal">
-          <p>R$<?php echo number_format($total, 2, ",", ".");?></p>
+      if ($qtdeProduto[0]["total_linhas"] == 0) {
+        echo "<button id=\"botaoConfirmarCompra\">Carrinho vazio</button>";
+      } else {
+        for ($i = 0; $i < count($infoProduto); $i++) {
+
+    ?>
+          <div class="divPedido">
+
+            <div class="divImgPedido">
+              <img src="imagensProdutos/<?php print_r($infoProduto[$i]["Imagem"]) ?>" alt="imagemProd">
             </div>
-         <a href="pagamento.php"><button id="botaoConfirmarCompra">Confirmar compra</button></a>
-      <?php 
+
+            <div class="conteinerPedido">
+
+              <button id="botaoFecharCarrinho" onclick="confirmDelete(<?= $infoProduto[$i]['Id_Produto']; ?>)">X</button>
+              <div class="divNomeProduto"><?php
+                                          print_r($infoProduto[$i]["Nome_Produto"]);
+                                          ?></div>
+              <div class="valorPedido">R$<?php
+                                          $valor = $infoProduto[$i]["Valor_Unitario"];
+                                          print_r(number_format($valor, 2, ",", "."));
+                                          ?></div>
+              <div class="quantidade">
+                <button><i class="fa-solid fa-minus"></i> </button>
+                <p><?php
+                    print_r($infoProduto[$i]["Quantidade"]);
+                    ?></p>
+                <button><i class="fa-solid fa-plus"></i> </button>
+              </div>
+
+            </div>
+          </div>
+        <?php
+
+          $total = $total + $infoProduto[$i]["Valor_Unitario"];
+        }
+        ?>
+
+        <div class="divValorTotal">
+          <p>R$<?php echo number_format($total, 2, ",", "."); ?></p>
+        </div>
+        <a href="pagamento.php"><button id="botaoConfirmarCompra">Confirmar compra</button></a>
+    <?php
+      }
+    } else {
+      echo "<button id=\"botaoConfirmarCompra\">Faça Login</button>";
     }
-    
-    }else {
-    echo "<button id=\"botaoConfirmarCompra\">Faça Login</button>";
-  }
-  
-  ?>
-  
-   
-    
+
+    ?>
 
 
-</div>
+
+
+
+  </div>
+
 
 
   <!-- Area de ediçao -->
@@ -327,7 +327,7 @@ session_start();
 
           <p id="prodDesc" class="valor">R$
             <?php
-            
+
             $valor = $produto[$i]["Valor"];
             print_r(number_format($valor, 2, ",", "."));
             ?>
@@ -335,29 +335,29 @@ session_start();
           <?php
           echo "<br>";
 
-          
+
 
           ?>
 
-          <form method="post" action="controller/controller.php" >
-          <input type="hidden" name="addCarrinho" value="">
+          <form method="post" action="controller/controller.php">
+            <input type="hidden" name="addCarrinho" value="">
             <input type="hidden" name="Cod_Produto" value="<?= $produto[$i]["Id_Produto"]; ?>">
-            <input type="hidden" name="Usuario" value="<?php 
-              if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0){
-                echo "1";
-              }else{
-                echo "0";
-              }  ?>">
-            <input type="hidden" name="Id_Cliente" value="<?php 
-              if (isset($_SESSION["ID-CLIENTE"]) && $_SESSION["ID-CLIENTE"] =! 0){
-                echo $_SESSION["ID-CLIENTE"];
-              }else{
-                echo "0";
-              }  ?>">
-              <input type="hidden" name="Valor" value="<?= $produto[$i]["Valor"]; ?>">
+            <input type="hidden" name="Usuario" value="<?php
+                                                        if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                                          echo "1";
+                                                        } else {
+                                                          echo "0";
+                                                        }  ?>">
+            <input type="hidden" name="Id_Cliente" value="<?php
+                                                          if (isset($_SESSION["ID-CLIENTE"]) && $_SESSION["ID-CLIENTE"] = !0) {
+                                                            echo $_SESSION["ID-CLIENTE"];
+                                                          } else {
+                                                            echo "0";
+                                                          }  ?>">
+            <input type="hidden" name="Valor" value="<?= $produto[$i]["Valor"]; ?>">
             <button class="botaodoscrias">Adicionar ao carrinho</button>
           </form>
-         
+
 
 
           <!-- <button  class="botaodoscrias">Pedir agora</button> -->
@@ -417,8 +417,8 @@ session_start();
 
 
   </footer>
-    
-   <!-- <script>
+
+  <!-- <script>
       
       $('#exibirProd').fadeOut(0);
       function exibirProduto(codigo){
@@ -444,7 +444,7 @@ session_start();
       
     </script>    -->
 
-    <?php
+  <?php
   if (isset($_REQUEST["msg"])) {
     $cod = $_REQUEST["msg"];
     require_once "view/msg.php";

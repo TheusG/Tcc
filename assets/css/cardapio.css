@@ -70,6 +70,8 @@
     background-color: darkorange;
 }
 
+
+
 @media (max-width:1050px) {
     .conteinerPizza{
         width: 350px;
