@@ -23,7 +23,6 @@ session_start();
   <link rel="stylesheet" href="assets/css/miniCarrinho.css">
   
 
-
   <script src="assets/js/jquery-3.7.0.min.js"></script>
   <script src="assets/js/jquery.mask.js]"></script>
   <script src="assets/js/jquery.mask.min.js"></script>
@@ -51,7 +50,17 @@ session_start();
     }
   </script>
 
-
+  <!-- <style>
+#exibirProd{
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px); /* Altere o valor para ajustar a intensidade do desfoque */
+    cursor:pointer;
+    top: 65px;
+    z-index: 999;
+  }
+  </style>  -->
 
 </head>
 
@@ -180,6 +189,9 @@ session_start();
     </div>
   </div>
 
+
+    
+
   <?php
 
 
@@ -256,17 +268,13 @@ session_start();
 
   </div>
 
-
-
   <!-- Area de ediçao -->
-
-
 
 
   <div class="divCardapio" id="divCardapio">
     <div class="conteinerCardapio">
-
-      <form action="controller/controller.php" name="PesquisaCardapio" id="formBuscar" method="post">
+      
+    <form action="controller/controller.php" name="PesquisaCardapio" id="formBuscar" method="post">
         <input type="text" name="pesquisa" id="pesquisa" placeholder="Pesquisar">
         <button type="submit">Pesquisar</button>
       </form>
@@ -288,7 +296,8 @@ session_start();
         });
       </script>
 
-        <?php
+      <!-- Div da categoria -->
+      <?php
         require_once "adm/model/Produto.class.php";
         if (isset($_REQUEST['campo'])) {
             $campo = $_REQUEST['campo'];
@@ -301,8 +310,6 @@ session_start();
         $produto = $prod->exibirProduto($campo);
 
         ?>
-      <!-- Div da categoria -->
-     
 
       <div class="conteinerCategoria">
 

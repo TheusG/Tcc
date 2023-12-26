@@ -154,6 +154,23 @@ if (isset($_REQUEST["confirmarCompra"])) {
     }
 }
 
+
+
+if (isset($_POST["PesquisaCardapio"])) {
+    $campo = $_REQUEST["pesquisa"];
+    require_once "../adm/model/Produto.class.php";
+    $produto = new Produto;
+    $cardapio = $produto->exibirProduto($campo);
+?>
+
+    <script>
+        console.log('teste');
+    </script>
+
+    <?php
+
+}
+
 // --------------------------------------------------------//-------------------------------------------------
 if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 
