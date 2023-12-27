@@ -193,24 +193,61 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                 </div>
             
                 <div class="conteinerPedido">
-        
-                  <button id="botaoFecharCarrinho" onclick="confirmDelete(<?=$infoProduto[$i]['Id_Produto'];?>)">X</button>
-                    <div class="divNomeProduto"><?php
-                      print_r($infoProduto[$i]["Nome_Produto"]);
-                    ?></div>
-                    <div class="valorPedido">R$<?php
-                      $valor = $infoProduto[$i]["Valor_Unitario"];
-                      print_r(number_format($valor, 2, ",", "."));
-                    ?></div>
-                    <div class="quantidade">
-                    <button><i class="fa-solid fa-minus"></i> </button>
-                    <p><?php
-                      print_r($infoProduto[$i]["Quantidade"]);
+
+              <button id="botaoFecharCarrinho" onclick="confirmDelete(<?= $infoProduto[$i]['Id_Produto']; ?>)">X</button>
+              <div class="divNomeProduto"><?php
+                                          print_r($infoProduto[$i]["Nome_Produto"]);
+                                          ?></div>
+              <div class="valorPedido">R$<?php
+                                          $valor = $infoProduto[$i]["Valor_Unitario"];
+                                          print_r(number_format($valor, 2, ",", "."));
+                                          ?></div>
+              <div class="quantidade">
+                <button id="minus_<?php echo $infoProduto[$i]["Id_Produto"];?>"><i class="fa-solid fa-minus"></i> </button>
+                <p id="value_<?php echo $infoProduto[$i]["Id_Produto"];?>"><?php
+                    print_r($infoProduto[$i]["Quantidade"]);
                     ?></p>
-                    <button><i class="fa-solid fa-plus"></i> </button>
-                    </div>
+                <button id="plus_<?php echo $infoProduto[$i]["Id_Produto"];?>"><i class="fa-solid fa-plus"></i> </button>
+              </div>
+
+            
+
+              <script>
+                 document.addEventListener('DOMContentLoaded', function () {
+                const valueElement_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('value_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
+                  const minusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('minus_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
+                  const plusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('plus_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
                   
-                </div>
+                  let count_<?php echo $infoProduto[$i]['Id_Produto']; ?> = 0;
+
+                  const updateValue_<?php echo $infoProduto[$i]['Id_Produto']; ?> = () =>{
+                    valueElement_<?php echo $infoProduto[$i]['Id_Produto']; ?>.innerHTML = count_<?php echo $infoProduto[$i]['Id_Produto']; ?>;
+                  };
+
+                  
+                  let intervalId = 0
+
+                  plusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?>.addEventListener('click', () =>{
+                    if(count_<?php echo $infoProduto[$i]['Id_Produto']; ?> < 99){
+                      count_<?php echo $infoProduto[$i]['Id_Produto']; ?> +=1;
+                      updateValue_<?php echo $infoProduto[$i]['Id_Produto']; ?>();
+                    }
+                  });
+
+                  minusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?>.addEventListener('click', () =>{
+                    if(count_<?php echo $infoProduto[$i]['Id_Produto']; ?> > 0){
+                      count_<?php echo $infoProduto[$i]['Id_Produto']; ?> -= 1;
+                      updateValue_<?php echo $infoProduto[$i]['Id_Produto']; ?>();
+                    }
+
+                  });
+
+                  document.addEventListener('mouseup' , () => clearInterval(intervalId));
+                
+                });
+              </script>
+
+            </div>
             </div>
             <?php 
              
