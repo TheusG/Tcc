@@ -92,10 +92,22 @@ function dadosCliente($email, $senha)
 
     }
 
-
-    function adicionarCarrinho($id,$Valor){
+    function adicionarCarrinho($id,$Valor,$quantidade,$subTotal,$total){
         require_once "../adm/model/Conexao.php";
-        $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(7,'{$id}', 1,'{$Valor}','{$Valor}','{$Valor}',0,0,1)";
+
+        if($quantidade == 1){
+            $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(7,'{$id}','{$quantidade}','{$Valor}','{$subTotal}','{$total}',0,0,1)";
+            $result = $conn->query($sql);
+    
+            if ($result == true) {
+                $conn->close();
+                return 1;
+            } else {
+                $conn->close();
+                return 0;
+            }
+        }else{
+            $sql = "UPDATE carrinho SET Quantidade = '{$quantidade}', SubTotal = '{$subTotal}',Total = '{$subTotal}' WHERE Cod_Produto = '{$id}' AND Cliente = 7";
         $result = $conn->query($sql);
 
         if ($result == true) {
@@ -104,8 +116,57 @@ function dadosCliente($email, $senha)
         } else {
             $conn->close();
             return 0;
-        }   
+        }
+        }
+
+        
+           
     }
+
+
+    // function adicionarCarrinho($id,$Valor,$quantidade){
+    //     $valida = 1;
+
+    //     require_once "Carrinho.class.php";
+    //     $produto = new Carrinho();
+    //     $carrinho = $produto->mostrarCarrinho();
+
+    //     for($i=0;$i < count($carrinho);$i++){
+    //         if($carrinho[$i]["Cod_Produto"] == $id && $carrinho[$i]["Quantidade"] >= 1){
+    //             $valida = 0;
+    //             $quantidade = $carrinho[$i]["Quantidade"] + 1;
+
+    //             require_once "../adm/model/Conexao.php";
+    //             $sql = "UPDATE carrinho SET Quantidade = '{$quantidade}' WHERE Cod_Produto = '{$id}' AND Cliente = 7)";
+    //             $result = $conn->query($sql);
+
+    //             if ($result == true) {
+    //                 $conn->close();
+    //                 return 1;
+    //             } else {
+    //                 $conn->close();
+    //                 return 0;
+    //             }
+
+    //         }
+    //     }
+
+
+    //     if($valida = 1){
+    //         require_once "../adm/model/Conexao.php";
+    //         $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(7,'{$id}','{$quantidade}','{$Valor}','{$Valor}','{$Valor}',0,0,1)";
+    //         $result = $conn->query($sql);
+
+    //         if ($result == true) {
+    //             $conn->close();
+    //             return 1;
+    //         } else {
+    //             $conn->close();
+    //             return 0;
+    //         }
+    //     }
+           
+    // }
 
     function itemDelete($id){
     

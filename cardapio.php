@@ -21,7 +21,7 @@ session_start();
   <link rel="stylesheet" href="assets/css/logar.css">
   <link rel="stylesheet" href="assets/css/confirmarProduto.css">
   <link rel="stylesheet" href="assets/css/miniCarrinho.css">
-  link
+  
 
   <script src="assets/js/jquery-3.7.0.min.js"></script>
   <script src="assets/js/jquery.mask.js]"></script>
@@ -268,7 +268,7 @@ session_start();
           </div>
         <?php
 
-          $total = $total + $infoProduto[$i]["Valor_Unitario"];
+          $total = $infoProduto[$i]["Total"];
         }
         ?>
 
