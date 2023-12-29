@@ -268,7 +268,7 @@ session_start();
           </div>
         <?php
 
-          $total = $infoProduto[$i]["Total"];
+          $total = $total + $infoProduto[$i]["SubTotal"];
         }
         ?>
 

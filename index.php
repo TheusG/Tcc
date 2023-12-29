@@ -264,7 +264,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
         </div>
         <?php 
          
-          $total = $total + $infoProduto[$i]["SubTotal"];
+         $total = $total + $infoProduto[$i]["SubTotal"];
           
           }
         ?>

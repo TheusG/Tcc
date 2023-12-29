@@ -76,19 +76,28 @@ if (isset($_REQUEST["addCarrinho"])) {
             $carrinho = $produto->mostrarCarrinho();
             $quantidade = 1;
             $subTotal = $Valor;
-
+            $valida = 0;
+            
     
             for($i=0;$i < count($carrinho);$i++){
                 if($carrinho[$i]["Cod_Produto"] == $id && $carrinho[$i]["Quantidade"] >= 1){
                     $quantidade = $carrinho[$i]["Quantidade"] + 1;
                     $subTotal = $Valor * $quantidade;
+                    $valida = 1;
+                    
                 }
 
-                $total = $total + $carrinho[$i]["SubTotal"];
+                
             }
+
+            
+            
+
+                
+                
         
                 require_once "../model/manager.php";
-                $resp = adicionarCarrinho($id, $Valor,$quantidade,$subTotal,$total);
+                $resp = adicionarCarrinho($id, $Valor,$quantidade,$subTotal);
         
                 if ($resp == 1) {
                     header('Location:../cardapio.php');

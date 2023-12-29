@@ -92,11 +92,11 @@ function dadosCliente($email, $senha)
 
     }
 
-    function adicionarCarrinho($id,$Valor,$quantidade,$subTotal,$total){
+    function adicionarCarrinho($id,$Valor,$quantidade,$subTotal){
         require_once "../adm/model/Conexao.php";
 
         if($quantidade == 1){
-            $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(7,'{$id}','{$quantidade}','{$Valor}','{$subTotal}','{$total}',0,0,1)";
+            $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(7,'{$id}','{$quantidade}','{$Valor}','{$subTotal}','{$subTotal}',0,0,1)";
             $result = $conn->query($sql);
     
             if ($result == true) {
