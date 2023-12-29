@@ -221,7 +221,7 @@ session_start();
 
 
         <?php
-          $total = $total + $infoProduto[$i]["Valor_Unitario"];
+          $total = $total + $infoProduto[$i]["SubTotal"];
         }
         ?>
 
