@@ -56,6 +56,18 @@
 
 
     ?>
+
+
+<?php 
+
+    
+require_once "model/Carrinho.class.php";
+$carrinho = new Carrinho();
+$infoProduto = $carrinho->mostrarCarrinho();
+$total = 0;
+$totalItens = 0;
+
+?>
     
     <header> 
         <a href="index.php">
@@ -79,6 +91,13 @@
           </ul>
         </nav>
        <button id="botaoCarrinho"><i class="fa-solid fa-cart-shopping" id="carrinho"></i></button>
+       <p><?php for ($i = 0; $i < count($infoProduto); $i++) {
+        $totalItens = $totalItens +  $infoProduto[$i]["Quantidade"];
+      
+      }
+      
+      echo $totalItens;
+      ?></p>
         <div class="burguer">
             <div id="linha1"></div>
             <div id="linha2"></div>
@@ -172,15 +191,7 @@
 
   
   
-    <?php 
 
-    
-require_once "model/Carrinho.class.php";
-$carrinho = new Carrinho();
-$infoProduto = $carrinho->mostrarCarrinho();
-$total = 0;
-
-?>
 
 <?php 
   require_once "model/Carrinho.class.php";
@@ -231,7 +242,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                   const minusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('minus_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
                   const plusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('plus_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
                   
-                  let count_<?php echo $infoProduto[$i]['Id_Produto']; ?> = 0;
+                  let count_<?php echo $infoProduto[$i]['Id_Produto']; ?> = <?php echo $infoProduto[$i]['Quantidade']; ?>;
 
                   const updateValue_<?php echo $infoProduto[$i]['Id_Produto']; ?> = () =>{
                     valueElement_<?php echo $infoProduto[$i]['Id_Produto']; ?>.innerHTML = count_<?php echo $infoProduto[$i]['Id_Produto']; ?>;
@@ -248,7 +259,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                   });
 
                   minusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?>.addEventListener('click', () =>{
-                    if(count_<?php echo $infoProduto[$i]['Id_Produto']; ?> > 0){
+                    if(count_<?php echo $infoProduto[$i]['Id_Produto']; ?> > 1){
                       count_<?php echo $infoProduto[$i]['Id_Produto']; ?> -= 1;
                       updateValue_<?php echo $infoProduto[$i]['Id_Produto']; ?>();
                     }

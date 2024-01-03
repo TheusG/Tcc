@@ -65,6 +65,18 @@ session_start();
 
   ?>
 
+<?php
+
+
+require_once "model/Carrinho.class.php";
+$carrinho = new Carrinho();
+$infoProduto = $carrinho->mostrarCarrinho();
+$total = 0;
+$totalItens = 0;
+?>
+
+
+
 
   <header>
     <a href="index.php">
@@ -90,6 +102,13 @@ session_start();
       </ul>
     </nav>
     <button id="botaoCarrinho"><i class="fa-solid fa-cart-shopping" id="carrinho"></i></button>
+    <p><?php for ($i = 0; $i < count($infoProduto); $i++) {
+        $totalItens = $totalItens +  $infoProduto[$i]["Quantidade"];
+      
+      }
+      
+      echo $totalItens;
+      ?></p>
     <div class="burguer">
       <div id="linha1"></div>
       <div id="linha2"></div>
@@ -177,14 +196,7 @@ session_start();
     </div>
   </div>
 
-  <?php
-
-
-  require_once "model/Carrinho.class.php";
-  $carrinho = new Carrinho();
-  $infoProduto = $carrinho->mostrarCarrinho();
-  $total = 0;
-  ?>
+  
 
   <?php
   require_once "model/Carrinho.class.php";
@@ -192,6 +204,8 @@ session_start();
   $qtdeProduto = $qtde->quantidadeProduto();
 
   ?>
+
+  
 
   <div class="miniCarrinhoOf">
     <?php
@@ -231,11 +245,11 @@ session_start();
 
               <script>
                  document.addEventListener('DOMContentLoaded', function () {
-                const valueElement_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('value_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
+                  const valueElement_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('value_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
                   const minusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('minus_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
                   const plusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('plus_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
                   
-                  let count_<?php echo $infoProduto[$i]['Id_Produto']; ?> = 0;
+                  let count_<?php echo $infoProduto[$i]['Id_Produto']; ?> = <?php echo $infoProduto[$i]['Quantidade']; ?>;
 
                   const updateValue_<?php echo $infoProduto[$i]['Id_Produto']; ?> = () =>{
                     valueElement_<?php echo $infoProduto[$i]['Id_Produto']; ?>.innerHTML = count_<?php echo $infoProduto[$i]['Id_Produto']; ?>;
@@ -252,7 +266,7 @@ session_start();
                   });
 
                   minusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?>.addEventListener('click', () =>{
-                    if(count_<?php echo $infoProduto[$i]['Id_Produto']; ?> > 0){
+                    if(count_<?php echo $infoProduto[$i]['Id_Produto']; ?> > 1){
                       count_<?php echo $infoProduto[$i]['Id_Produto']; ?> -= 1;
                       updateValue_<?php echo $infoProduto[$i]['Id_Produto']; ?>();
                     }
