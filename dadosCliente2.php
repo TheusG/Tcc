@@ -37,56 +37,104 @@ session_start();
       <div class="nome">
         <h3> Identificação</h3>
         <div>
-          <div class="campos">
-            <h4>Nome</h4>
-            <input type="text" name="nome" required value="">
-          </div>
-          <div class="campos">
-            <h4>email</h4>
-            <input type="text" name="nome" required value="">
-          </div>
-          <div class="campos">
-            <h4>Telefone</h4>
-            <input placeholder="(99)99999-9999" id="telefone" name="telefone" type="tel" required value="">
-          </div>
-        </div>
-      </div>
-
-      <div class="endereco">
-        <h3> Endereço</h3>
-        <div>
-          <div class="campos">
-            <h4>CEP</h4>
-            <input type="text" value="">
-          </div>
-          <div class="campos">
-            <h4>Cidade</h4>
-            <input type="text" value="">
-          </div>
-          <div class="campos">
-            <h4>Bairro</h4>
-            <input type="text" value="">
-          </div>
-        </div>
-
-        <div>
-          <div class="campos">
-            <h4>Número</h4>
-            <input type="text" value="">
-          </div>
-          <div class="camposRua">
-            <h4>Rua</h4>
-            <input type="text" value="">
-          </div>
-          <div class="camposRua">
-            <h4>Complemento</h4>
-            <input type="text" value="">
+          <form action="controller/controller.php" method="post" class="formInfo">
+            <input type="hidden" name="confirmarDados">
+            <input type="hidden" name="Id_Usuario" value="<?=$_SESSION["CLI-ID"]?>">
+            <div class="campos">
+              <h4>Nome</h4>
+              <input type="text" name="nome" required value="<?php
+                                                            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                                              print_r($_SESSION["CLI-NOME"]);
+                                                            } else {
+                                                              echo "";
+                                                            } ?>">
+            </div>
+            <div class="campos">
+              <h4>Email</h4>
+              <input type="text" name="email" required value="<?php
+                                                            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                                              print_r($_SESSION["CLI-EMAIL"]);
+                                                            } else {
+                                                              echo "";
+                                                            } ?>">
+            </div>
+            <div class="campos">
+              <h4>Telefone</h4>
+              <input placeholder="(99)99999-9999" id="telefone" name="telefone" type="tel" required value="<?php
+                                                                                                          if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                                                                                            print_r($_SESSION["CLI-TEL"]);
+                                                                                                          } else {
+                                                                                                            echo "";
+                                                                                                          } ?>">
+            </div>
           </div>
         </div>
-      </div>
 
-      <button class="botaoSalvar">Salvar</button>
+        <div class="endereco">
+          <h3> Endereço</h3>
+          <div>
+            <div class="campos">
+              <h4>CEP</h4>
+              <input type="text" name="cep" id="cep" required value="<?php
+                                                            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                                              print_r($_SESSION["CLI-CEP"]);
+                                                            } else {
+                                                              echo "5";
+                                                            } ?>">
+            </div>
+            <div class="campos">
+              <h4>Cidade</h4>
+              <input type="text" name="cidade" value="<?php
+                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                        print_r($_SESSION["CLI-CIDADE"]);
+                                      } else {
+                                        echo "";
+                                      } ?>">
+            </div>
+            <div class="campos">
+              <h4>Bairro</h4>
+              <input type="text" name="bairro" value="<?php
+                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                        print_r($_SESSION["CLI-BAIRRO"]);
+                                      } else {
+                                        echo "";
+                                      } ?>">
+            </div>
+          </div>
 
+          <div>
+            <div class="campos">
+              <h4>Número</h4>
+              <input type="text" name="numero" value="<?php
+                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                        print_r($_SESSION["CLI-NUMERO"]);
+                                      } else {
+                                        echo "";
+                                      } ?>">
+            </div>
+            <div class="camposRua">
+              <h4>Logradouro</h4>
+              <input type="text" name="rua" value="<?php
+                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                        print_r($_SESSION["CLI-LOGRADOURO"]);
+                                      } else {
+                                        echo "";
+                                      } ?>">
+            </div>
+            <div class="camposRua">
+              <h4>Complemento</h4>
+              <input type="text" name="complemento" value="<?php
+                                                            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                                              print_r($_SESSION["CLI-COMPLEMENTO"]);
+                                                            } else {
+                                                              echo "";
+                                                            } ?>">
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="botaoSalvar">Salvar</button>
+      </form>
 
 
     </div>
@@ -160,12 +208,25 @@ session_start();
   </div>
 
 
+  <script src="assets/js/bibliotecaj/jquery-3.6.4.min.js"></script>
+    <script src="assets/js/bibliotecaj/jQuery-Mask-Plugin-master/src/jquery.mask.js"></script>
 
+    <script>
+          $('#telefone').mask('(00) 00000-0000');
+          $('#cep').mask('00000-000')
+    </script>
 
 
  
 
+<?php
+        if (isset($_REQUEST["msg"])) {
+            $cod = $_REQUEST["msg"];
+            require_once "msg.php";
+            echo "<script>alert('" . $MSG[$cod] . "');</script>";
+        }
 
+        ?>
 
 </body>
 

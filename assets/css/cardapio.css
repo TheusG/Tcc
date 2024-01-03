@@ -51,6 +51,9 @@
     color: black;
     height: 120px;
 }
+.valor{
+    font-size: 22px;
+}
 .conteinerPizza button{
  
     margin: 0 15px;
@@ -66,6 +69,8 @@
     color: black;
     background-color: darkorange;
 }
+
+
 
 @media (max-width:1050px) {
     .conteinerPizza{

@@ -34,19 +34,7 @@ function listarFuncionario()
     $sql = "SELECT usuario.* , funcionario.* FROM usuario INNER JOIN funcionario on usuario.Id_Usuario = funcionario.Usuario";
     $result = $conn->query($sql);
 
-    // $sql = "SELECT * FROM funcionario";
-    // $resposta =$conn->query($sql);
 
-    // if($resposta->num_rows > 0){
-    //     $num1 = $resposta->num_rows;
-    //     $dadosf = array();
-    //     $dadosf["result"] = 1;
-    //     $dados["num1"] = $num1;
-    //     $ii = 1;
-    //     while($linha = $resposta->fetch_assoc()){
-    //         $dados[$ii][""]
-    //     }
-    // }
     if ($result->num_rows > 0) {
         $num = $result->num_rows;
         $dados = array();
@@ -105,7 +93,9 @@ function adicionarFuncionario($dados)
 function pegaFuncionario($id)
 {
     require_once "Conexao.php";
-    $sql = "SELECT usuario.* , funcionario.* FROM usuario INNER JOIN funcionario on usuario.Id_Usuario = funcionario.Usuario WHERE Id_Usuario = {$id}";
+    $sql = "SELECT usuario.* , funcionario.*,cep.* 
+    FROM usuario INNER JOIN funcionario on usuario.Id_Usuario = funcionario.Usuario
+    INNER JOIN Cep on usuario.Cep = cep.Id_Cep WHERE usuario.Id_Usuario = {$id}";
     $result = $conn->query($sql);
 
     //Se selecionou algum funcionario
@@ -116,7 +106,6 @@ function pegaFuncionario($id)
             $dados["Id_Usuario"] = $row["Id_Usuario"];
             $dados["Nome_Usuario"] = $row["Nome_Usuario"];
             $dados["Sexo"] = $row["Sexo"];
-            $dados["Cep"] = $row["Cep"];
             $dados["Numero"] = $row["Numero"];
             $dados["Complemento"] = $row["Complemento"];
             $dados["Telefone"] = $row["Telefone"];
@@ -127,6 +116,13 @@ function pegaFuncionario($id)
             $dados["Perfil"] = $row["Perfil"];
             $dados["Salario"] = $row["Salario"];
             $dados["Usuario"] = $row["Usuario"];
+            $dados["Id_Cep"] = $row["Id_Cep"];
+            $dados["Cidade"] = $row["Cidade"];
+            $dados["Logradouro"] = $row["Logradouro"];
+            $dados["Bairro"] = $row["Bairro"];
+            $dados["Cep"] = $row["Cep"];
+            $dados["Tipo"] = $row["Tipo"];
+           
         }
         $conn->close();
         return $dados;
@@ -594,7 +590,7 @@ function editarEmpresa($empresa)
 function listarEntregador()
 {
     require_once "Conexao.php";
-    $sql = "SELECT usuario.* , entregador.* FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario";
+    $sql = "SELECT usuario.* , entregador.* FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario WHERE Id_Entregador != 4 ";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -617,6 +613,7 @@ function listarEntregador()
             $entregador[$i]["Veiculo"] = $row["Veiculo"];
             $entregador[$i]["Identificacao"] = $row["Identificacao"];
             $entregador[$i]["Usuario"] = $row["Usuario"];
+            
             $i++;
         }
         $conn->close();
@@ -654,7 +651,9 @@ function adicionarEntregador($entregador)
 function pegaEntregador($id)
 {
     require_once "Conexao.php";
-    $sql = "SELECT usuario.* , entregador.* FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario WHERE Id_Usuario = {$id}";
+    $sql = "SELECT usuario.* , entregador.*,cep.* 
+    FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario
+    INNER JOIN Cep on usuario.Cep = cep.Id_Cep WHERE usuario.Id_Usuario = {$id}";
     $result = $conn->query($sql);
 
     //Se selecionou algum funcionario
@@ -665,7 +664,6 @@ function pegaEntregador($id)
             $entregador["Id_Usuario"] = $row["Id_Usuario"];
             $entregador["Nome_Usuario"] = $row["Nome_Usuario"];
             $entregador["Sexo"] = $row["Sexo"];
-            $entregador["Cep"] = $row["Cep"];
             $entregador["Numero"] = $row["Numero"];
             $entregador["Complemento"] = $row["Complemento"];
             $entregador["Telefone"] = $row["Telefone"];
@@ -675,6 +673,12 @@ function pegaEntregador($id)
             $entregador["Veiculo"] = $row["Veiculo"];
             $entregador["Identificacao"] = $row["Identificacao"];
             $entregador["Usuario"] = $row["Usuario"];
+            $entregador["Id_Cep"] = $row["Id_Cep"];
+            $entregador["Cidade"] = $row["Cidade"];
+            $entregador["Logradouro"] = $row["Logradouro"];
+            $entregador["Bairro"] = $row["Bairro"];
+            $entregador["Cep"] = $row["Cep"];
+            $entregador["Tipo"] = $row["Tipo"];
         }
         $conn->close();
         return $entregador;
@@ -963,7 +967,9 @@ function adicionarCliente($cliente)
 function pegaCliente($id)
 {
     require_once "Conexao.php";
-    $sql = "SELECT usuario.* , cliente.* FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario WHERE Id_Usuario = {$id}";
+    $sql = "SELECT usuario.* , cliente.*,cep.* 
+    FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario
+    INNER JOIN Cep on usuario.Cep = cep.Id_Cep WHERE usuario.Id_Usuario = {$id}";
     $result = $conn->query($sql);
 
 
@@ -974,7 +980,6 @@ function pegaCliente($id)
             $cliente["Id_Usuario"] = $row["Id_Usuario"];
             $cliente["Nome_Usuario"] = $row["Nome_Usuario"];
             $cliente["Sexo"] = $row["Sexo"];
-            $cliente["Cep"] = $row["Cep"];
             $cliente["Numero"] = $row["Numero"];
             $cliente["Complemento"] = $row["Complemento"];
             $cliente["Telefone"] = $row["Telefone"];
@@ -983,6 +988,12 @@ function pegaCliente($id)
             $cliente["Foto"] = $row["Foto"];
             $cliente["Referencia"] = $row["Referencia"];
             $cliente["Usuario"] = $row["Usuario"];
+            $cliente["Id_Cep"] = $row["Id_Cep"];
+            $cliente["Cidade"] = $row["Cidade"];
+            $cliente["Logradouro"] = $row["Logradouro"];
+            $cliente["Bairro"] = $row["Bairro"];
+            $cliente["Cep"] = $row["Cep"];
+            $cliente["Tipo"] = $row["Tipo"];
         }
         $conn->close();
         return $cliente;
@@ -1041,3 +1052,40 @@ function excluirCliente($id)
     }
 }
 
+// --------------------------------------------------------//-----------------------------------------------------//
+
+function listarVenda(){
+    require_once "../model/Conexao.php";
+    $sql = "SELECT cliente.*,venda.*,entregador.*,pagamento.* FROM venda JOIN entregador on venda.Entregador = entregador.Id_Entregador JOIN pagamento on venda.Pagamento = pagamento.Id_Pagamento JOIN cliente on venda.Cliente = cliente.Id_Cliente";
+    $result = $conn->query($sql);
+
+
+    if ($result->num_rows > 0) {
+        $num = $result->num_rows;
+        $venda = array();
+        $venda["result"] = 1;
+        $venda["num"] = $num;
+        $i = 1;
+        while ($row = $result->fetch_assoc()) {
+            $venda[$i]["Id_Venda"] = $row["Id_Venda"];
+            $venda[$i]["Nro_Venda"] = $row["Nro_Venda"];
+            $venda[$i]["Cliente"] = $row["Cliente"];
+            $venda[$i]["Data_Venda"] = $row["Data_Venda"];
+            $venda[$i]["Entregador"] = $row["Entregador"];
+            $venda[$i]["Status"] = $row["Status"];
+            $venda[$i]["Valor_Venda"] = $row["Valor_Venda"];
+            $venda[$i]["Desconto_Venda"] = $row["Desconto_Venda"];
+            $venda[$i]["Adicional_Venda"] = $row["Adicional_Venda"];
+            $venda[$i]["Pagamento"] = $row["Pagamento"];
+            $venda[$i]["Nome_Pagamento"] = $row["Nome_Pagamento"];
+            $i++;
+        }
+        $conn->close();
+        return $venda;
+    } else {
+        $venda["result"] = 0;
+        $conn->close();
+        return $venda;
+    }
+
+}

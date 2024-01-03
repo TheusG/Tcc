@@ -93,9 +93,9 @@
           
           <?php 
 
-            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] =! 0){
+            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] == 1 ){
               // echo "<a href=\"perfil.php\">".print_r($_SESSION["CLI-EMAIL"]). "</a>";
-              echo "<a href=\"perfil.php\">Convidado</a>";
+              echo "<a href=\"perfil.php\">Perfil</a>";
               echo  "<button class=\"sair\" onclick=\"ExecutaLogout();\">Sair</button>";
             }else{
               echo "<button id=\"abrirLogin\">Login</button>";
@@ -125,7 +125,7 @@
                 
                 <br>
                 <form action="controller/controller.php">
-                <input type="hidden" name="validaCliente" value="1">
+                <input type="hidden" name="validaCliente" >
                     <h3>Email</h3>
                     <input type="email" name="email">
                     <br><br>
@@ -212,7 +212,9 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                   print_r($infoProduto[$i]["Nome_Produto"]);
                 ?></div>
                 <div class="valorPedido">R$<?php
-                  print_r($infoProduto[$i]["Valor_Unitario"]);
+                $valor = $infoProduto[$i]["Valor_Unitario"];
+                print_r(number_format($valor, 2, ",", "."));
+                
                 ?></div>
                 <div class="quantidade">
                 <button><i class="fa-solid fa-minus"></i> </button>
@@ -232,7 +234,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
         ?>
         
         <div class="divValorTotal">
-              <p>R$<?=$total?></p>
+              <p>R$<?php echo number_format($total, 2, ",", ".");?></p>
           </div>
        <a href="pagamento.php"><button id="botaoConfirmarCompra">Confirmar compra</button></a>
     <?php 

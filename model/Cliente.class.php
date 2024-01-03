@@ -24,4 +24,17 @@ class Cliente{
         return $result;
     }
 
+    public function InfoCliente ($email,$senha){
+        $result = array();
+        $cmd = $this->pdo->query("SELECT usuario.* , cliente.*,cep.* 
+        FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario
+        INNER JOIN Cep on usuario.Cep = cep.Id_Cep WHERE usuario.Email = '$email' AND usuario.Senha = '$senha'");
+        $result = $cmd->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+
+
+    
+
 }

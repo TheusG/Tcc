@@ -71,7 +71,8 @@ $MSG = array(
     "FR28" => "Email já cadastrado.",
     "FR29" => "Você já está logado",
     "FR30" => "Faça login para adicionar itens ao carrinho",
-    
+    "FR31" => "Erro durante a compra",
+    "FR100" => "Cep não existente.",
     
 
 
@@ -81,6 +82,7 @@ $MSG = array(
     "FR52" => "Preencha os campos...",
     "FR53" => "Usuário cadastrado com sucesso",
     "FR54" => "Seja bem-vindo(a) a Five Stars",
+    "FR55" => "Compra realizada com sucesso",
     
     
  

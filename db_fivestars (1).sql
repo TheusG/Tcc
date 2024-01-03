@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27/11/2023 às 19:15
+-- Tempo de geração: 03/12/2023 às 00:42
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -131,7 +131,9 @@ INSERT INTO `cliente` (`Id_Cliente`, `Referencia`, `Usuario`) VALUES
 (7, NULL, 31),
 (8, NULL, 32),
 (31, 'Lado da Escola', 55),
-(35, NULL, 60);
+(35, NULL, 60),
+(36, NULL, 61),
+(37, NULL, 62);
 
 -- --------------------------------------------------------
 
@@ -219,7 +221,8 @@ CREATE TABLE `entregador` (
 --
 
 INSERT INTO `entregador` (`Id_Entregador`, `Veiculo`, `Identificacao`, `Usuario`) VALUES
-(1, 'Carro', 'BRA2A23', 20);
+(1, 'Carro', 'BRA2A23', 20),
+(4, '', NULL, 63);
 
 -- --------------------------------------------------------
 
@@ -262,7 +265,9 @@ CREATE TABLE `pagamento` (
 --
 
 INSERT INTO `pagamento` (`Id_Pagamento`, `Nome_Pagamento`, `Troco`, `Foto`) VALUES
-(1, 'Di0nheiro', 0, NULL);
+(1, 'Dinheiro', 1, NULL),
+(2, 'Pix', 0, NULL),
+(3, 'Cartão de crédito', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -396,6 +401,13 @@ CREATE TABLE `status` (
   `Nome_Status` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Despejando dados para a tabela `status`
+--
+
+INSERT INTO `status` (`Id_Status`, `Nome_Status`) VALUES
+(1, 'Concluída');
+
 -- --------------------------------------------------------
 
 --
@@ -425,12 +437,15 @@ INSERT INTO `usuario` (`Id_Usuario`, `Nome_Usuario`, `Senha`, `Sexo`, `Cep`, `Nu
 (15, 'Ingrid Passos', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'f', 1, '400', 'Escola', '(11) 11111-1111', 'ingrid@fivestars.com', '2003-02-14', 'semfoto.jpg'),
 (20, 'Pedro Henrique', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'n', 1, '9', 'Escola', '(11) 11111-1111', 'pedro@pizza.com', '2023-09-07', NULL),
 (24, 'Matheus', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '07', '505', '(11) 11111-1111', 'matheus@fivestars.com', '2023-08-28', ''),
-(27, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, NULL, NULL, NULL, 'Lucas@gmail.com', NULL, NULL),
+(27, 'Lucas Silva', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, '55', 'Rua de Baixo', '(11) 11113-4533', 'Lucas@gmail.com', NULL, NULL),
 (31, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, NULL, NULL, NULL, 'Bruno@gmail.com', NULL, NULL),
 (32, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, NULL, NULL, NULL, 'Murilo@gmail.com', NULL, NULL),
 (55, 'Miguel', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'm', 1, '4', 'Escola', '(22) 22222-2222', 'Miguel@gmail.com', '2020-01-14', ''),
 (58, 'Julia', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'f', 1, '1', '1', '(11) 11111-1111', 'julia@pizza.com', '2023-10-10', ''),
-(60, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 2, NULL, NULL, NULL, 'Jonas@gmail.com', NULL, NULL);
+(60, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 2, NULL, NULL, NULL, 'Jonas@gmail.com', NULL, NULL),
+(61, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 2, NULL, NULL, NULL, 'Vinicius@gmail.com', NULL, NULL),
+(62, NULL, '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 2, NULL, NULL, NULL, 'Gabriel@gmail.com', NULL, NULL),
+(63, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -581,13 +596,13 @@ ALTER TABLE `cargo`
 -- AUTO_INCREMENT de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
-  MODIFY `Id_Carrinho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `Id_Carrinho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `Id_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `cep`
@@ -599,7 +614,7 @@ ALTER TABLE `cep`
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de tabela `configuracao`
@@ -617,7 +632,7 @@ ALTER TABLE `empresa`
 -- AUTO_INCREMENT de tabela `entregador`
 --
 ALTER TABLE `entregador`
-  MODIFY `Id_Entregador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_Entregador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `funcionario`
@@ -629,7 +644,7 @@ ALTER TABLE `funcionario`
 -- AUTO_INCREMENT de tabela `pagamento`
 --
 ALTER TABLE `pagamento`
-  MODIFY `Id_Pagamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id_Pagamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `perfil`
@@ -641,25 +656,25 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `Id_Produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `Id_Produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT de tabela `status`
 --
 ALTER TABLE `status`
-  MODIFY `Id_Status` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT de tabela `venda`
 --
 ALTER TABLE `venda`
-  MODIFY `Id_Venda` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Venda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restrições para tabelas despejadas

@@ -4,49 +4,105 @@ session_start();
 // session_destroy();
 // exit();
 
-if(isset($_REQUEST["addCarrinho"])){
+if (isset($_REQUEST["addCarrinho"])) {
     $login = $_REQUEST["Usuario"];
     $Valor = $_REQUEST["Valor"];
     $id = $_REQUEST["Cod_Produto"];
     $Id_Cliente = $_REQUEST["Id_Cliente"];
-    
 
-    
-    if($login == 0 ){
-        ?>
+
+
+    if ($login == 0) {
+?>
         <form action="../index.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="FR30">
         </form>
         <script>
             document.getElementById('myForm').submit()
         </script>
-<?php 
-    }else{
-        
-        require_once "../model/manager.php";
-        $resp = adicionarCarrinho($id,$Valor);
+        <?php
+    } else {
 
-        if($resp == 1){
+        require_once "../model/manager.php";
+        $resp = adicionarCarrinho($id, $Valor);
+
+        if ($resp == 1) {
             header('Location:../cardapio.php');
             exit;
-            
-         
-        }else{
-            ?>
+        } else {
+        ?>
             <form action="../cardapio.php" name="form" id="myForm" method="post">
                 <input type="hidden" name="msg" value="OP08">
             </form>
             <script>
                 document.getElementById('myForm').submit()
             </script>
-        <?php 
+            <?php
         }
-
-        
-
-
     }
 }
+
+
+if (isset($_REQUEST["confirmarDados"])) {
+    $cliente["nome"] = $_REQUEST["nome"];
+    $cliente["email"] = $_REQUEST["email"];
+    $cliente["telefone"] = $_REQUEST["telefone"];
+    $cliente["id"] = $_REQUEST["Id_Usuario"];
+    $cliente["complemento"] = $_REQUEST["complemento"];
+    $cliente["numero"] = $_REQUEST["numero"];
+
+    $cliente["cep"] = $_REQUEST["cep"];
+    $valida = "0";
+
+    require_once "../adm/model/Cep.class.php";
+    $verificaCep = new Cep();
+    $infoCep = $verificaCep->TodosCep();
+
+    for ($i = 0; $i < count($infoCep); $i++) {
+        if ($infoCep[$i]["Cep"] == $cliente["cep"]) {
+            $valida = "1";
+            $cliente["cep"] = $infoCep[$i]["Id_Cep"];
+
+            require_once "../model/manager.php";
+            $resp = atualizarCliente($cliente);
+
+            if ($resp == 1) { //tudo certo ao adicionar um novo funcionario
+            ?>
+                <form action="../index.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD53">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+            <?php
+            } else { //erro no insert
+            ?>
+                <form action="../index.php" name="form" id="myForm" method="post">
+                    <input type="hidden" name="msg" value="BD03">
+                </form>
+                <script>
+                    document.getElementById('myForm').submit()
+                </script>
+        <?php
+            }
+        }
+    }
+
+    if ($valida != 1) {
+        ?>
+        <form action="../index.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="FR100">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+        <?php
+
+    }
+
+  
+}
+
 
 if (isset($_REQUEST["item_delete"])) {
     $id = $_REQUEST["id"];
@@ -56,21 +112,49 @@ if (isset($_REQUEST["item_delete"])) {
     if ($result == 1) { //conseguir excluir
         header('Location:../cardapio.php');
         exit;
-        
-        } else { //algo deu de errado na deleção
-        ?>
-            <form action="../index.php" name="form" id="myForm" method="post">
-                <input type="hidden" name="msg" value="BD04">
-            </form>
-            <script>
-                document.getElementById('myForm').submit()
-            </script>
-        <?php
-        }
-
+    } else { //algo deu de errado na deleção
+    ?>
+        <form action="../index.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="BD04">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+    }
 }
 
 
+if (isset($_REQUEST["confirmarCompra"])) {
+    $venda["pagamento"] = $_REQUEST["pagamento"];
+    $venda["entrega"] = $_REQUEST["entrega"];
+    $venda["total"] = $_REQUEST["total"];
+    require_once "../model/manager.php";
+    $resp = adicionarVenda($venda);
+
+    if ($resp == 1) {
+    ?>
+        <form action="../index.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="FR55">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+
+    } else {
+    ?>
+        <form action="../index.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="FR31">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+        <?php
+    }
+}
+
+// --------------------------------------------------------//-------------------------------------------------
 if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 
     if (isset($_REQUEST["validaCliente"])) {
@@ -79,7 +163,7 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
             session_destroy();
             $_SESSION["LOGADO"] = 0;
 
-?>
+        ?>
             <form action="../index.php" name="form" id="myForm" method="post">
                 <input type="hidden" name="msg" value="FR01">
                 <!-- Dado(s) não preenchido(s) -->
@@ -117,13 +201,13 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
                 $_SESSION["CLI-NOME"] = $cliente["Nome_Usuario"];
                 $_SESSION["CLI-EMAIL"] = $cliente["Email"];
                 $_SESSION["CLI-TEL"] = $cliente["Telefone"];
-                $_SESSION["CLI-CEP"] = $cliente["Id"];
+                $_SESSION["CLI-ID-CEP"] = $cliente["Id_Cep"];
                 $_SESSION["CLI-NUMERO"] = $cliente["Numero"];
                 $_SESSION["CLI-BAIRRO"] = $cliente["Bairro"];
                 $_SESSION["CLI-CIDADE"] = $cliente["Cidade"];
                 $_SESSION["CLI-COMPLEMENTO"] = $cliente["Complemento"];
                 $_SESSION["CLI-LOGRADOURO"] = $cliente["Logradouro"];
-                $_SESSION["CLI-CEP"] = $cliente["Id"];
+                $_SESSION["CLI-CEP"] = $cliente["Cep"];
                 $_SESSION["ID-CLIENTE"] = $cliente["Id_Cliente"];
                 $_SESSION["LOGADO"] = 1;
 
@@ -155,13 +239,13 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
 } else {
     $_SESSION["LOGADO"] = 1;
     ?>
-    
-        <form action="../index.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="FR29">
-        </form>
-        <script>
-             document.getElementById('myForm').submit()
-        </script>
+
+    <form action="../index.php" name="form" id="myForm" method="post">
+        <input type="hidden" name="msg" value="FR29">
+    </form>
+    <script>
+        document.getElementById('myForm').submit()
+    </script>
     <?php
 }
 
@@ -212,12 +296,57 @@ if (isset($_REQUEST["add_cliente"])) {
 
     } else if ($controle != 0) {
         require_once "../model/Ferramentas.php";
+        $respEmail = antiInjection($cliente["email"]);
+        $respSenha = antiInjection($_REQUEST["senha"]);
+        $respConfSenha = antiInjection($_REQUEST["confSenha"]);
+
+        if ($respEmail == 0 || $respSenha == 0 || $respConfSenha == 0) {
+            session_destroy();
+            $_SESSION["LOGADO"] = 0;
+        ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR11">
+                <!-- "FR11" => "Informação incorreta.", -->
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+        <?php
+        }
+
+        require_once "../model/Ferramentas.php";
         $cliente["senha"] = hash256($_REQUEST["senha"]);
+        require_once "../model/Cliente.class.php";
         require_once "../model/manager.php";
         $resp = adicionarCliente($cliente);
 
         if ($resp == 1) {
+
+
+            // require_once "../model/manager.php";
+            // $cliente = InfoCliente($cliente["email"], $cliente["senha"]);
+            require_once "../model/Cliente.class.php";
+            $infoCliente = new Cliente();
+            $info = $infoCliente->InfoCliente($cliente["email"], $cliente["senha"]);
+
+            for ($i = 0; $i < count($info); $i++) {
+
+                $_SESSION["CLI-ID"] = $info[$i]["Id_Usuario"];
+                $_SESSION["CLI-NOME"] = $info[$i]["Nome_Usuario"];
+                $_SESSION["CLI-EMAIL"] = $info[$i]["Email"];
+                $_SESSION["CLI-TEL"] = $info[$i]["Telefone"];
+                $_SESSION["CLI-ID-CEP"] = $info[$i]["Id_Cep"];
+                $_SESSION["CLI-NUMERO"] = $info[$i]["Numero"];
+                $_SESSION["CLI-BAIRRO"] = $info[$i]["Bairro"];
+                $_SESSION["CLI-CIDADE"] = $info[$i]["Cidade"];
+                $_SESSION["CLI-COMPLEMENTO"] = $info[$i]["Complemento"];
+                $_SESSION["CLI-LOGRADOURO"] = $info[$i]["Logradouro"];
+                $_SESSION["CLI-CEP"] = $info[$i]["Cep"];
+                $_SESSION["ID-CLIENTE"] = $info[$i]["Id_Cliente"];
+                $_SESSION["LOGADO"] = 1;
+            }
         ?>
+
             <form action="../index.php" name="form" id="myForm" method="post">
                 <input type="hidden" name="msg" value="FR53">
             </form>
@@ -237,4 +366,3 @@ if (isset($_REQUEST["add_cliente"])) {
         }
     }
 }
-

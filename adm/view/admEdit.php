@@ -88,7 +88,7 @@
             <input type="tel" name="telefone" id="telefone" value="<?=$dados['Telefone']?>"><br>
                         </div>
                         <div>    
-            <label for="cep">cep</label><br>
+            <label for="cep">Cep</label><br>
             <input type="text" name="cep" id="cep" value="<?=$dados['Cep']?>"><br>
                         </div>
                         <div>

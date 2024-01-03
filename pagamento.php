@@ -39,6 +39,7 @@ session_start();
     <div class="logo">
       <img src="image/logoPizzaria1.png" alt="">
     </div>
+
     <div class="quantidadeItem">
       <h2>Quantidade de itens ( <?php 
       for ($i = 0; $i < count($qtdeProduto); $i++) {
@@ -82,11 +83,11 @@ session_start();
           <div class="campos">
             <h4>CEP</h4>
             <input type="text" value="<?php
-                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-                                        print_r($_SESSION["CLI-CEP"]);
-                                      } else {
-                                        echo "";
-                                      } ?>">
+                                          if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                            print_r($_SESSION["CLI-CEP"]);
+                                          } else {
+                                             echo "";
+                                          } ?>">
           </div>
           <div class="campos">
             <h4>Cidade</h4>
@@ -130,14 +131,17 @@ session_start();
           <div class="camposRua">
             <h4>Complemento</h4>
             <input type="text" value="<?php
-                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-                                        print_r($_SESSION["CLI-COMPLEMENTO"]);
-                                      } else {
-                                        echo "";
-                                      } ?>">
+                                        if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                          print_r($_SESSION["CLI-COMPLEMENTO"]);
+                                        } else {
+                                         echo "";
+                                        } ?>">
           </div>
         </div>
       </div>
+      
+      <form action="controller/controller.php" method="post">
+      <input type="hidden" name="confirmarCompra" >
 
       <div class="endereco">
         <h3> Formas de pagamento</h3>
@@ -150,18 +154,39 @@ session_start();
           for ($i = 0; $i < count($info); $i++) {
           ?>
             <div class="opcoesPagamento">
-              <input type="radio" value="<?= $info[$i]["Id_Pagamento"]; ?>" class="inputPagamento" name="Pagamento">
+              <input type="radio" value="<?= $info[$i]["Id_Pagamento"]; ?>" class="inputPagamento" name="pagamento" required >
               <p><?php echo $info[$i]["Nome_Pagamento"] ?></p>
 
             </div>
           <?php
           }
           ?>
-
+          
         </div>
+     
       </div>
 
-
+      <div class="endereco">
+        <h3>Forma de entrega</h3>
+        <div class="inputBox">
+      
+            <div class="opcoesPagamento">
+              <input type="radio" value="1" class="inputPagamento" name="entrega" required>
+              <p>Delivery</p>
+             
+            </div>
+            <div class="opcoesPagamento">
+            <input type="radio" value="4" class="inputPagamento" name="entrega" required>
+              <p>Retirar no local</p>
+             
+            </div>
+        
+        
+          
+        </div>
+     
+      </div>
+    
 
 
     </div>
@@ -188,7 +213,8 @@ session_start();
                 ?>
               X</p>
             <p>R$<?php
-                  print_r($infoProduto[$i]["Valor_Unitario"]);
+                  $valor = $infoProduto[$i]["Valor_Unitario"];
+                  print_r(number_format($valor, 2, ",", "."));
                   ?></p>
           </div>
 
@@ -200,10 +226,13 @@ session_start();
         ?>
 
       </div>
-      <p>R$<?= $total ?></p>
+      <p>R$<?php echo number_format($total, 2, ",", ".");?></p>
 
-      <button class="botaoComprar">Confirmar compra</button>
 
+      <input type="hidden" name="total" value="<?=$total?>">
+      <button class="botaoComprar" type="submit">Confirmar compra</button>
+
+      </form>
 
     </div>
 

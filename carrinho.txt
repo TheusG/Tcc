@@ -1,7 +1,0 @@
--->Após clicar no botão ele irá fazer um insert na tabela carrinho
-
---> Verificar quantos itens tem na tabela carrinho
-
---> E mudar a foto do carrinho conforme a quantidade de itens no carrinho
-
---> Após clique no carrinho ele vai mostrar o itens no carrinho, com um select na tabela com Where ID_CLiente
