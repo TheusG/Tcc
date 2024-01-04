@@ -90,6 +90,7 @@ $totalItens = 0;
             <li><a id="sobre" href="contatos.php">Contato</a></li>
           </ul>
         </nav>
+         <div class="classCarrinho">       
        <button id="botaoCarrinho"><i class="fa-solid fa-cart-shopping" id="carrinho"></i></button>
        <p><?php for ($i = 0; $i < count($infoProduto); $i++) {
         $totalItens = $totalItens +  $infoProduto[$i]["Quantidade"];
@@ -98,6 +99,8 @@ $totalItens = 0;
       
       echo $totalItens;
       ?></p>
+      </div>
+
         <div class="burguer">
             <div id="linha1"></div>
             <div id="linha2"></div>

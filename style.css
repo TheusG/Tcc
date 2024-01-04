@@ -119,6 +119,27 @@ header #abrirLogin2:hover, header #abrirLogin:hover {
     margin: 2px 0;
     border-radius: 3px;
 }
+.classCarrinho{
+    display: flex;
+    transition: 1s;
+}
+.classCarrinho:hover{
+    scale: 1.2;
+    transition: 0.5s;
+    
+}
+.classCarrinho p{
+    background-color: red;
+    color: yellow;
+    position: relative;
+    font-size: 12px;
+    height: 16px;
+    width: 15px;
+    text-align: center;
+    border-radius: 100%;
+    right: 13px;
+    bottom: 5px;
+}
 #botaoCarrinho{
    background-color: black;
    border: none;
@@ -126,7 +147,7 @@ header #abrirLogin2:hover, header #abrirLogin:hover {
 }
 #carrinho{
     font-size: 25px;
-    transition: 0.5s;  
+ 
 }
 header .sair{
     background-color: black;
@@ -144,11 +165,11 @@ header .sair:hover{
     scale: 1.1;
 
 }
-#carrinho:hover{
+/* #carrinho:hover{
     scale: 1.2;
     transition: 0.5s;
    
-}
+} */
 .login{
     width: 101px;
     height: 45px;
