@@ -4,6 +4,54 @@ session_start();
 // session_destroy();
 // exit();
 
+// if (isset($_REQUEST["addCarrinho"])) {
+//     $login = $_REQUEST["Usuario"];
+//     $Valor = $_REQUEST["Valor"];
+//     $id = $_REQUEST["Cod_Produto"];
+//     $Id_Cliente = $_REQUEST["Id_Cliente"];
+
+
+
+//     if ($login == 0) {
+
+
+//         require "../model/Carrinho.class.php";
+//         $produto = new Carrinho();
+//         $carrinho = $produto->mostrarCarrinho();
+
+//         for($i=0;$i < count($carrinho);$i++){
+//             if($carrinho[$i]["Cod_Produto"] == $id && $carrinho[$i]["Quantidade"] >= 1){
+//                 $quantidade = $carrinho[$i]["Quantidade"] + 1;
+
+//                 require_once "../model/manager.php";
+//                 $resp = adicionarCarrinho($id, $Valor,$quantidade);
+        
+//                 if ($resp == 1) {
+//                     header('Location:../cardapio.php');
+//                     exit;
+//                 } else {
+//                 
+//                 }
+
+//             }else{
+//                 $quantidade = 1;
+
+//                 require_once "../model/manager.php";
+//                 $resp = adicionarCarrinho($id, $Valor,$quantidade);
+        
+//                 if ($resp == 1) {
+//                     header('Location:../cardapio.php');
+//                     exit;
+//                 } else {
+//                 
+//                 }
+//             }
+//         }
+
+       
+//     }
+// }
+
 if (isset($_REQUEST["addCarrinho"])) {
     $login = $_REQUEST["Usuario"];
     $Valor = $_REQUEST["Valor"];
@@ -23,24 +71,50 @@ if (isset($_REQUEST["addCarrinho"])) {
         <?php
     } else {
 
-        require_once "../model/manager.php";
-        $resp = adicionarCarrinho($id, $Valor);
+        require_once "../model/Carrinho.class.php";
+            $produto = new Carrinho();
+            $carrinho = $produto->mostrarCarrinho();
+            $quantidade = 1;
+            $subTotal = $Valor;
+            $valida = 0;
+            
+    
+            for($i=0;$i < count($carrinho);$i++){
+                if($carrinho[$i]["Cod_Produto"] == $id && $carrinho[$i]["Quantidade"] >= 1){
+                    $quantidade = $carrinho[$i]["Quantidade"] + 1;
+                    $subTotal = $Valor * $quantidade;
+                    $valida = 1;
+                    
+                }
 
-        if ($resp == 1) {
-            header('Location:../cardapio.php');
-            exit;
-        } else {
-        ?>
-            <form action="../cardapio.php" name="form" id="myForm" method="post">
-                <input type="hidden" name="msg" value="OP08">
-            </form>
-            <script>
-                document.getElementById('myForm').submit()
-            </script>
-            <?php
-        }
+                
+            }
+
+            
+            
+
+                
+                
+        
+                require_once "../model/manager.php";
+                $resp = adicionarCarrinho($id, $Valor,$quantidade,$subTotal);
+        
+                if ($resp == 1) {
+                    header('Location:../cardapio.php');
+                    exit;
+                } else {
+                ?>
+                    <form action="../cardapio.php" name="form" id="myForm" method="post">
+                        <input type="hidden" name="msg" value="OP08">
+                    </form>
+                    <script>
+                        document.getElementById('myForm').submit()
+                    </script>
+                    <?php
+                } 
+        }    
     }
-}
+
 
 
 if (isset($_REQUEST["confirmarDados"])) {

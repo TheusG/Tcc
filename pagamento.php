@@ -25,14 +25,11 @@ session_start();
   $carrinho = new Carrinho();
   $infoProduto = $carrinho->mostrarCarrinho();
   $total = 0;
+  $totalItens = 0;
  
   ?>
 
-  <?php 
-  require_once "model/Carrinho.class.php";
-  $qtde = new Carrinho();
-  $qtdeProduto = $qtde->quantidadeProduto();
-  ?>
+ 
 
 
   <header>
@@ -42,10 +39,13 @@ session_start();
 
     <div class="quantidadeItem">
       <h2>Quantidade de itens ( <?php 
-      for ($i = 0; $i < count($qtdeProduto); $i++) {
-        print_r($qtdeProduto[$i]["total_linhas"]);
+      for ($i = 0; $i < count($infoProduto); $i++) {
+        $totalItens = $totalItens +  $infoProduto[$i]["Quantidade"];
       
-      }?>
+      }
+      
+      echo $totalItens;
+      ?>
 
       
     )</h2>
@@ -221,7 +221,7 @@ session_start();
 
 
         <?php
-          $total = $total + $infoProduto[$i]["Valor_Unitario"];
+          $total = $total + $infoProduto[$i]["SubTotal"];
         }
         ?>
 

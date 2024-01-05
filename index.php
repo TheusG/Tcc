@@ -56,6 +56,18 @@
 
 
     ?>
+
+
+<?php 
+
+    
+require_once "model/Carrinho.class.php";
+$carrinho = new Carrinho();
+$infoProduto = $carrinho->mostrarCarrinho();
+$total = 0;
+$totalItens = 0;
+
+?>
     
     <header> 
         <a href="index.php">
@@ -78,7 +90,17 @@
             <li><a id="sobre" href="contatos.php">Contato</a></li>
           </ul>
         </nav>
+         <div class="classCarrinho">       
        <button id="botaoCarrinho"><i class="fa-solid fa-cart-shopping" id="carrinho"></i></button>
+       <p><?php for ($i = 0; $i < count($infoProduto); $i++) {
+        $totalItens = $totalItens +  $infoProduto[$i]["Quantidade"];
+      
+      }
+      
+      echo $totalItens;
+      ?></p>
+      </div>
+
         <div class="burguer">
             <div id="linha1"></div>
             <div id="linha2"></div>
@@ -172,15 +194,7 @@
 
   
   
-    <?php 
 
-    
-require_once "model/Carrinho.class.php";
-$carrinho = new Carrinho();
-$infoProduto = $carrinho->mostrarCarrinho();
-$total = 0;
-
-?>
 
 <?php 
   require_once "model/Carrinho.class.php";
@@ -206,29 +220,65 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
             </div>
         
             <div class="conteinerPedido">
-    
-              <button id="botaoFecharCarrinho" onclick="confirmDelete(<?=$infoProduto[$i]['Id_Produto'];?>)">X</button>
-                <div class="divNomeProduto"><?php
-                  print_r($infoProduto[$i]["Nome_Produto"]);
-                ?></div>
-                <div class="valorPedido">R$<?php
-                $valor = $infoProduto[$i]["Valor_Unitario"];
-                print_r(number_format($valor, 2, ",", "."));
+
+              <button id="botaoFecharCarrinho" onclick="confirmDelete(<?= $infoProduto[$i]['Id_Produto']; ?>)">X</button>
+              <div class="divNomeProduto"><?php
+                                          print_r($infoProduto[$i]["Nome_Produto"]);
+                                          ?></div>
+              <div class="valorPedido">R$<?php
+                                          $valor = $infoProduto[$i]["Valor_Unitario"];
+                                          print_r(number_format($valor, 2, ",", "."));
+                                          ?></div>
+              <div class="quantidade">
+                <button id="minus_<?php echo $infoProduto[$i]["Id_Produto"];?>"><i class="fa-solid fa-minus"></i> </button>
+                <p id="value_<?php echo $infoProduto[$i]["Id_Produto"];?>"><?php
+                    print_r($infoProduto[$i]["Quantidade"]);
+                    ?></p>
+                <button id="plus_<?php echo $infoProduto[$i]["Id_Produto"];?>"><i class="fa-solid fa-plus"></i> </button>
+              </div>
+
+            
+
+              <script>
+                 document.addEventListener('DOMContentLoaded', function () {
+                const valueElement_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('value_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
+                  const minusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('minus_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
+                  const plusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('plus_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
+                  
+                  let count_<?php echo $infoProduto[$i]['Id_Produto']; ?> = <?php echo $infoProduto[$i]['Quantidade']; ?>;
+
+                  const updateValue_<?php echo $infoProduto[$i]['Id_Produto']; ?> = () =>{
+                    valueElement_<?php echo $infoProduto[$i]['Id_Produto']; ?>.innerHTML = count_<?php echo $infoProduto[$i]['Id_Produto']; ?>;
+                  };
+
+                  
+                  let intervalId = 0
+
+                  plusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?>.addEventListener('click', () =>{
+                    if(count_<?php echo $infoProduto[$i]['Id_Produto']; ?> < 99){
+                      count_<?php echo $infoProduto[$i]['Id_Produto']; ?> +=1;
+                      updateValue_<?php echo $infoProduto[$i]['Id_Produto']; ?>();
+                    }
+                  });
+
+                  minusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?>.addEventListener('click', () =>{
+                    if(count_<?php echo $infoProduto[$i]['Id_Produto']; ?> > 1){
+                      count_<?php echo $infoProduto[$i]['Id_Produto']; ?> -= 1;
+                      updateValue_<?php echo $infoProduto[$i]['Id_Produto']; ?>();
+                    }
+
+                  });
+
+                  document.addEventListener('mouseup' , () => clearInterval(intervalId));
                 
-                ?></div>
-                <div class="quantidade">
-                <button><i class="fa-solid fa-minus"></i> </button>
-                <p><?php
-                  print_r($infoProduto[$i]["Quantidade"]);
-                ?></p>
-                <button><i class="fa-solid fa-plus"></i> </button>
-                </div>
-              
+                });
+              </script>
+
             </div>
         </div>
         <?php 
          
-          $total = $total + $infoProduto[$i]["Valor_Unitario"];
+         $total = $total + $infoProduto[$i]["SubTotal"];
           
           }
         ?>

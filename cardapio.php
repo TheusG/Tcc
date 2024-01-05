@@ -21,7 +21,7 @@ session_start();
   <link rel="stylesheet" href="assets/css/logar.css">
   <link rel="stylesheet" href="assets/css/confirmarProduto.css">
   <link rel="stylesheet" href="assets/css/miniCarrinho.css">
-  link
+  
 
   <script src="assets/js/jquery-3.7.0.min.js"></script>
   <script src="assets/js/jquery.mask.js]"></script>
@@ -49,17 +49,6 @@ session_start();
     }
   </script>
 
-  <!-- <style>
-#exibirProd{
-    position:fixed;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(5px); /* Altere o valor para ajustar a intensidade do desfoque */
-    cursor:pointer;
-    top: 65px;
-    z-index: 999;
-  }
-  </style>  -->
 
 </head>
 
@@ -75,6 +64,18 @@ session_start();
 
 
   ?>
+
+<?php
+
+
+require_once "model/Carrinho.class.php";
+$carrinho = new Carrinho();
+$infoProduto = $carrinho->mostrarCarrinho();
+$total = 0;
+$totalItens = 0;
+?>
+
+
 
 
   <header>
@@ -101,6 +102,13 @@ session_start();
       </ul>
     </nav>
     <button id="botaoCarrinho"><i class="fa-solid fa-cart-shopping" id="carrinho"></i></button>
+    <p><?php for ($i = 0; $i < count($infoProduto); $i++) {
+        $totalItens = $totalItens +  $infoProduto[$i]["Quantidade"];
+      
+      }
+      
+      echo $totalItens;
+      ?></p>
     <div class="burguer">
       <div id="linha1"></div>
       <div id="linha2"></div>
@@ -188,14 +196,7 @@ session_start();
     </div>
   </div>
 
-  <?php
-
-
-  require_once "model/Carrinho.class.php";
-  $carrinho = new Carrinho();
-  $infoProduto = $carrinho->mostrarCarrinho();
-  $total = 0;
-  ?>
+  
 
   <?php
   require_once "model/Carrinho.class.php";
@@ -203,6 +204,8 @@ session_start();
   $qtdeProduto = $qtde->quantidadeProduto();
 
   ?>
+
+  
 
   <div class="miniCarrinhoOf">
     <?php
@@ -231,18 +234,55 @@ session_start();
                                           print_r(number_format($valor, 2, ",", "."));
                                           ?></div>
               <div class="quantidade">
-                <button><i class="fa-solid fa-minus"></i> </button>
-                <p><?php
+                <button id="minus_<?php echo $infoProduto[$i]["Id_Produto"];?>"><i class="fa-solid fa-minus"></i> </button>
+                <p id="value_<?php echo $infoProduto[$i]["Id_Produto"];?>"><?php
                     print_r($infoProduto[$i]["Quantidade"]);
                     ?></p>
-                <button><i class="fa-solid fa-plus"></i> </button>
+                <button id="plus_<?php echo $infoProduto[$i]["Id_Produto"];?>"><i class="fa-solid fa-plus"></i> </button>
               </div>
+
+            
+
+              <script>
+                 document.addEventListener('DOMContentLoaded', function () {
+                  const valueElement_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('value_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
+                  const minusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('minus_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
+                  const plusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?> = document.getElementById('plus_<?php echo $infoProduto[$i]['Id_Produto']; ?>');
+                  
+                  let count_<?php echo $infoProduto[$i]['Id_Produto']; ?> = <?php echo $infoProduto[$i]['Quantidade']; ?>;
+
+                  const updateValue_<?php echo $infoProduto[$i]['Id_Produto']; ?> = () =>{
+                    valueElement_<?php echo $infoProduto[$i]['Id_Produto']; ?>.innerHTML = count_<?php echo $infoProduto[$i]['Id_Produto']; ?>;
+                  };
+
+                  
+                  let intervalId = 0
+
+                  plusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?>.addEventListener('click', () =>{
+                    if(count_<?php echo $infoProduto[$i]['Id_Produto']; ?> < 99){
+                      count_<?php echo $infoProduto[$i]['Id_Produto']; ?> +=1;
+                      updateValue_<?php echo $infoProduto[$i]['Id_Produto']; ?>();
+                    }
+                  });
+
+                  minusButton_<?php echo $infoProduto[$i]['Id_Produto']; ?>.addEventListener('click', () =>{
+                    if(count_<?php echo $infoProduto[$i]['Id_Produto']; ?> > 1){
+                      count_<?php echo $infoProduto[$i]['Id_Produto']; ?> -= 1;
+                      updateValue_<?php echo $infoProduto[$i]['Id_Produto']; ?>();
+                    }
+
+                  });
+
+                  document.addEventListener('mouseup' , () => clearInterval(intervalId));
+                
+                });
+              </script>
 
             </div>
           </div>
         <?php
 
-          $total = $total + $infoProduto[$i]["Valor_Unitario"];
+          $total = $total + $infoProduto[$i]["SubTotal"];
         }
         ?>
 
