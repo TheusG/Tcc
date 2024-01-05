@@ -171,12 +171,12 @@ session_start();
         <div class="inputBox">
       
             <div class="opcoesPagamento">
-              <input type="radio" value="1" class="inputPagamento" name="entrega" required>
+              <input type="radio" value="17" class="inputPagamento" name="entrega" required>
               <p>Delivery</p>
              
             </div>
             <div class="opcoesPagamento">
-            <input type="radio" value="4" class="inputPagamento" name="entrega" required>
+            <input type="radio" value="63" class="inputPagamento" name="entrega" required>
               <p>Retirar no local</p>
              
             </div>
@@ -230,6 +230,7 @@ session_start();
 
 
       <input type="hidden" name="total" value="<?=$total?>">
+
       <button class="botaoComprar" type="submit">Confirmar compra</button>
 
       </form>

@@ -69,7 +69,7 @@ require_once "admVerifSession.php";
                     // echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Cliente"]."</td>";
                     $dataFormatada = date('d/m/Y', strtotime($venda[$i]["Data_Venda"]));
                     echo "<td class=\"tabelaAdmTd\">".$dataFormatada."</td>";
-                    if($venda[$i]["Entregador"] == 4){
+                    if($venda[$i]["Entregador"] == 63){
                         echo "<td class=\"tabelaAdmTd\">Local</td>"; 
                     }else{
                         echo "<td class=\"tabelaAdmTd\">Delivery</td>";

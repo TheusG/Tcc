@@ -590,7 +590,7 @@ function editarEmpresa($empresa)
 function listarEntregador()
 {
     require_once "Conexao.php";
-    $sql = "SELECT usuario.* , entregador.* FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario WHERE Id_Entregador != 4 ";
+    $sql = "SELECT usuario.* , entregador.* FROM usuario INNER JOIN entregador on usuario.Id_Usuario = entregador.Usuario WHERE Id_Entregador != 63 ";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {

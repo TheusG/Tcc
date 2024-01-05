@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function dadosCliente($email, $senha)
 {
@@ -6,7 +6,7 @@ function dadosCliente($email, $senha)
     $sql = "SELECT usuario.* , cliente.*,cep.* 
     FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario
     INNER JOIN Cep on usuario.Cep = cep.Id_Cep WHERE usuario.Email = '$email' AND usuario.Senha = '$senha'";
-            
+
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         require_once "../adm/model/Conexao.php";
@@ -26,9 +26,6 @@ function dadosCliente($email, $senha)
             $cliente["Logradouro"] = $row["Tipo"];
             $cliente["Bairro"] = $row["Bairro"];
             $cliente["Cep"] = $row["Cep"];
-            
-            
-           
         }
         $conn->close();
         return $cliente;
@@ -39,8 +36,9 @@ function dadosCliente($email, $senha)
     }
 }
 
-    function adicionarCliente($cliente){
-    
+function adicionarCliente($cliente)
+{
+
     require_once "../adm/model/Conexao.php";
     $sql = "INSERT INTO usuario (Senha,Cep, Email) VALUES ('{$cliente["senha"]}',69690,'{$cliente["email"]}')";
     $result = $conn->query($sql);
@@ -60,54 +58,42 @@ function dadosCliente($email, $senha)
         $conn->close();
         return 0;
     }
+}
 
 
-    }
+function todosEmails()
+{
+    require_once "../adm/model/Conexao.php";
+    $sql = "SELECT usuario.Email FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario";
+    $result = $conn->query($sql);
 
+    if ($result->num_rows > 0) {
+        $num = $result->num_rows;
+        $verifEmail = array();
+        $verifEmail["result"] = 1;
+        $verifEmail["num"] = $num;
+        $i = 1;
+        while ($row = $result->fetch_assoc()) {
 
-    function todosEmails(){
-        require_once "../adm/model/Conexao.php";
-        $sql = "SELECT usuario.Email FROM usuario INNER JOIN cliente on usuario.Id_Usuario = cliente.Usuario";
-        $result = $conn->query($sql);
+            $verifEmail[$i]["Email"] = $row["Email"];
 
-        if ($result->num_rows > 0) {
-            $num = $result->num_rows;
-            $verifEmail = array();
-            $verifEmail["result"] = 1;
-            $verifEmail["num"] = $num;
-            $i = 1;
-            while ($row = $result->fetch_assoc()) {
-
-                $verifEmail[$i]["Email"] = $row["Email"];
-
-                $i++;
-            }
-            $conn->close();
-            return $verifEmail;
-        } else {
-            $verifEmail["result"] = 0;
-            $conn->close();
-            return $verifEmail;
+            $i++;
         }
-
+        $conn->close();
+        return $verifEmail;
+    } else {
+        $verifEmail["result"] = 0;
+        $conn->close();
+        return $verifEmail;
     }
+}
 
-    function adicionarCarrinho($id,$Valor,$quantidade,$subTotal){
-        require_once "../adm/model/Conexao.php";
+function adicionarCarrinho($id, $Valor, $quantidade, $subTotal)
+{
+    require_once "../adm/model/Conexao.php";
 
-        if($quantidade == 1){
-            $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(7,'{$id}','{$quantidade}','{$Valor}','{$subTotal}','{$subTotal}',0,0,1)";
-            $result = $conn->query($sql);
-    
-            if ($result == true) {
-                $conn->close();
-                return 1;
-            } else {
-                $conn->close();
-                return 0;
-            }
-        }else{
-            $sql = "UPDATE carrinho SET Quantidade = '{$quantidade}', SubTotal = '{$subTotal}',Total = '{$subTotal}' WHERE Cod_Produto = '{$id}' AND Cliente = 7";
+    if ($quantidade == 1) {
+        $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(7,'{$id}','{$quantidade}','{$Valor}','{$subTotal}','{$subTotal}',0,0,1)";
         $result = $conn->query($sql);
 
         if ($result == true) {
@@ -117,59 +103,68 @@ function dadosCliente($email, $senha)
             $conn->close();
             return 0;
         }
+    } else {
+        $sql = "UPDATE carrinho SET Quantidade = '{$quantidade}', SubTotal = '{$subTotal}',Total = '{$subTotal}' WHERE Cod_Produto = '{$id}' AND Cliente = 7";
+        $result = $conn->query($sql);
+
+        if ($result == true) {
+            $conn->close();
+            return 1;
+        } else {
+            $conn->close();
+            return 0;
         }
-
-        
-           
     }
+}
 
 
-    // function adicionarCarrinho($id,$Valor,$quantidade){
-    //     $valida = 1;
+// function adicionarCarrinho($id,$Valor,$quantidade){
+//     $valida = 1;
 
-    //     require_once "Carrinho.class.php";
-    //     $produto = new Carrinho();
-    //     $carrinho = $produto->mostrarCarrinho();
+//     require_once "Carrinho.class.php";
+//     $produto = new Carrinho();
+//     $carrinho = $produto->mostrarCarrinho();
 
-    //     for($i=0;$i < count($carrinho);$i++){
-    //         if($carrinho[$i]["Cod_Produto"] == $id && $carrinho[$i]["Quantidade"] >= 1){
-    //             $valida = 0;
-    //             $quantidade = $carrinho[$i]["Quantidade"] + 1;
+//     for($i=0;$i < count($carrinho);$i++){
+//         if($carrinho[$i]["Cod_Produto"] == $id && $carrinho[$i]["Quantidade"] >= 1){
+//             $valida = 0;
+//             $quantidade = $carrinho[$i]["Quantidade"] + 1;
 
-    //             require_once "../adm/model/Conexao.php";
-    //             $sql = "UPDATE carrinho SET Quantidade = '{$quantidade}' WHERE Cod_Produto = '{$id}' AND Cliente = 7)";
-    //             $result = $conn->query($sql);
+//             require_once "../adm/model/Conexao.php";
+//             $sql = "UPDATE carrinho SET Quantidade = '{$quantidade}' WHERE Cod_Produto = '{$id}' AND Cliente = 7)";
+//             $result = $conn->query($sql);
 
-    //             if ($result == true) {
-    //                 $conn->close();
-    //                 return 1;
-    //             } else {
-    //                 $conn->close();
-    //                 return 0;
-    //             }
+//             if ($result == true) {
+//                 $conn->close();
+//                 return 1;
+//             } else {
+//                 $conn->close();
+//                 return 0;
+//             }
 
-    //         }
-    //     }
+//         }
+//     }
 
 
-    //     if($valida = 1){
-    //         require_once "../adm/model/Conexao.php";
-    //         $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(7,'{$id}','{$quantidade}','{$Valor}','{$Valor}','{$Valor}',0,0,1)";
-    //         $result = $conn->query($sql);
+//     if($valida = 1){
+//         require_once "../adm/model/Conexao.php";
+//         $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(7,'{$id}','{$quantidade}','{$Valor}','{$Valor}','{$Valor}',0,0,1)";
+//         $result = $conn->query($sql);
 
-    //         if ($result == true) {
-    //             $conn->close();
-    //             return 1;
-    //         } else {
-    //             $conn->close();
-    //             return 0;
-    //         }
-    //     }
-           
-    // }
+//         if ($result == true) {
+//             $conn->close();
+//             return 1;
+//         } else {
+//             $conn->close();
+//             return 0;
+//         }
+//     }
 
-    function itemDelete($id){
-    
+// }
+
+function itemDelete($id)
+{
+
     require_once "../adm/model/Conexao.php";
     $sql = "DELETE FROM carrinho WHERE Cod_Produto = {$id}";
     $result = $conn->query($sql);
@@ -177,8 +172,9 @@ function dadosCliente($email, $senha)
     return $result;
 }
 
-   function formasPagamento(){
-    
+function formasPagamento()
+{
+
     require_once "../adm/model/Conexao.php";
     $sql = "SELECT * FROM pagamento";
     $result = $conn->query($sql);
@@ -201,10 +197,11 @@ function dadosCliente($email, $senha)
         $conn->close();
         return $pagamento;
     }
-   }
+}
 
 
-   function atualizarCliente($cliente){
+function atualizarCliente($cliente)
+{
     require_once "../adm/model/Conexao.php";
     $sql = "UPDATE usuario SET Nome_Usuario = '{$cliente["nome"]}', Cep = '{$cliente["cep"]}', Complemento = '{$cliente["complemento"]}', Telefone ='{$cliente["telefone"]}',  Numero = '{$cliente["numero"]}', Email = '{$cliente["email"]}' WHERE Id_Usuario = '{$cliente["id"]}'";
     $result = $conn->query($sql);
@@ -216,32 +213,64 @@ function dadosCliente($email, $senha)
         $conn->close();
         return 0;
     }
+}
 
-   }
+// function adicionarVenda($venda, $carrinho){
 
-   function adicionarVenda($venda){
-    
+//     require_once "../adm/model/Conexao.php";
+//     $sql = "INSERT INTO venda (Nro_Venda,Cliente, Data_Venda,Entregador, Status, Valor_Venda, Desconto_Venda,Adicional_Venda,Pagamento) VALUES (1,7,now(),'{$venda["entrega"]}',1,'{$venda["total"]}',0,0,'{$venda["pagamento"]}')";
+//     $result = $conn->query($sql);
+
+
+//         if ($result == true) {
+//             $sql = "DELETE FROM carrinho WHERE cliente = 7";
+//             $result = $conn->query($sql);
+
+//             if ($result == true) {
+//                 $conn->close();
+//                 return 1;
+//             } else {
+//                 return 0;
+//             }
+//         } else {
+//             $conn->close();
+//             return 0;
+//         }
+   
+// }
+
+function adicionarVenda($venda, $carrinho)
+{
+
     require_once "../adm/model/Conexao.php";
     $sql = "INSERT INTO venda (Nro_Venda,Cliente, Data_Venda,Entregador, Status, Valor_Venda, Desconto_Venda,Adicional_Venda,Pagamento) VALUES (1,7,now(),'{$venda["entrega"]}',1,'{$venda["total"]}',0,0,'{$venda["pagamento"]}')";
     $result = $conn->query($sql);
+    $ultimoid = mysqli_insert_id($conn);
 
 
-    if ($result == true) { //tudo certo
-        $sql = "DELETE FROM carrinho WHERE cliente = 7";
-        $result = $conn->query($sql);
+    if ($result == true) {
+
+        for ($i = 0; $i < count($carrinho); $i++) {
+            $sql = "INSERT INTO detalhe_venda (Id_Venda, Nro_Venda, Cod_Produto, Quantidade, Val_Unitario, Val_Total) VALUES ('{$ultimoid}', 1, '{$carrinho[$i]["Cod_Produto"]}', '{$carrinho[$i]["Quantidade"]}', '{$carrinho[$i]["Valor_Unitario"]}', '{$carrinho[$i]["SubTotal"]}')";
+            $result = $conn->query($sql);
+        }
 
         if ($result == true) {
-            $conn->close();
-            return 1;
+            $sql = "DELETE FROM carrinho WHERE cliente = 7";
+            $result = $conn->query($sql);
+
+            if ($result == true) {
+                $conn->close();
+                return 1;
+            } else {
+                return 0;
+            }
         } else {
+            $conn->close();
             return 0;
         }
     } else {
         $conn->close();
         return 0;
     }
-
-
-    }
-
-?>
+}
