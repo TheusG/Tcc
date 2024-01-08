@@ -55,10 +55,12 @@
                 <div>
             <label for="nome">Nome dos Produtos</label><br>
             <input class="inputnome" type="text" name="nome" value="<?=$detalhe[1]['Nome_Produto']?>"><br>
+            <input class="inputnome" type="text" name="nome" value="<?=$detalhe[2]['Nome_Produto']?>"><br>
                 </div>
                 <div>
-            <label for="dataNascimento">Data de Nascimento</label><br>
-            <input type="date" name="dataNascimento" value="<?=$detalhe['Nome_Produto']?>"><br>
+            <label for="dataNascimento">Quantidade</label><br>
+            <input type="number" name="dataNascimento" value="<?=$detalhe[1]['Quantidade']?>"><br>
+            <input type="number" name="dataNascimento" value="<?=$detalhe[2]['Quantidade']?>"><br>
                 </div>
             </div>
                 <div class="div3">
