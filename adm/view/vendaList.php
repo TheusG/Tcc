@@ -82,9 +82,9 @@ require_once "admVerifSession.php";
                     echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Nome_Pagamento"]."</td>";
                     echo "<td>"
                     ?>
-                        <form name="formEdit" action="#" method="">
-                            <input type="hidden" name="Id_Produto" value="<?= $venda[$i]["Id_Venda"]; ?>">
-                            <input class="editButton" type="submit" name="sbmt" value="Ver mais" style="cursor:pointer">
+                        <form name="formEdit" action="detalheVenda.php" method="">
+                            <input type="hidden" name="Id_Venda" value="<?= $venda[$i]["Id_Venda"]; ?>">
+                            <input class="editButton" type="submit" name="sbmt" value="Detalhes" style="cursor:pointer">
                         </form>
                         <?php
                         echo "</td>";

@@ -92,13 +92,22 @@ $totalItens = 0;
         </nav>
          <div class="classCarrinho">       
        <button id="botaoCarrinho"><i class="fa-solid fa-cart-shopping" id="carrinho"></i></button>
-       <p><?php for ($i = 0; $i < count($infoProduto); $i++) {
+       
+       <?php 
+        if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] == 1 ){
+        ?>
+         <p><?php for ($i = 0; $i < count($infoProduto); $i++) {
         $totalItens = $totalItens +  $infoProduto[$i]["Quantidade"];
-      
+          
       }
-      
-      echo $totalItens;
+        echo $totalItens;
       ?></p>
+      
+        <?php 
+      }else{
+        echo "";
+      }
+       ?>
       </div>
 
         <div class="burguer">

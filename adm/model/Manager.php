@@ -1089,3 +1089,70 @@ function listarVenda(){
     }
 
 }
+
+function detalheVenda($id){
+    require_once "Conexao.php";
+    
+    $sql = "SELECT venda.*, detalhe_venda.*,produto.*
+    FROM venda INNER  JOIN detalhe_venda ON detalhe_venda.Id_Venda = venda.Id_Venda
+    INNER JOIN produto ON detalhe_venda.Cod_Produto = produto.Id_Produto
+    WHERE venda.Id_Venda = {$id};";
+
+
+    //NÂO FINALIZADO
+    // SELECT venda.*, detalhe_venda.*,produto.* FROM venda INNER JOIN detalhe_venda ON detalhe_venda.Id_Venda = venda.Id_Venda INNER JOIN produto ON detalhe_venda.Cod_Produto = produto.Id_Produto WHERE venda.Id_Venda = 11;
+    
+    $result = $conn->query($sql);
+
+
+    if ($result->num_rows > 0) {
+        $num = $result->num_rows;
+        $detalhe = array();
+        $detalhe["result"] = 1;
+        $venda["num"] = $num;
+        $i = 1;
+        
+        while ($row = $result->fetch_assoc()) {
+// ----------------------------VENDA---------------------------------------------        
+            $detalhe[$i]["Id_Venda"] = $row["Id_Venda"];
+            $detalhe[$i]["Nro_Venda"] = $row["Nro_Venda"];
+            $detalhe[$i]["Cliente"] = $row["Cliente"];
+            $detalhe[$i]["Data_Venda"] = $row["Data_Venda"];
+            $detalhe[$i]["Entregador"] = $row["Entregador"];
+            $detalhe[$i]["Status"] = $row["Status"];
+            $detalhe[$i]["Valor_Venda"] = $row["Valor_Venda"];
+            $detalhe[$i]["Desconto_Venda"] = $row["Desconto_Venda"];
+            $detalhe[$i]["Adicional_Venda"] = $row["Adicional_Venda"];
+            $detalhe[$i]["Pagamento"] = $row["Pagamento"];
+// -----------------------------DETALHE VENDA--------------------------------------------
+            $detalhe[$i]["Id_Venda"] = $row["Id_Venda"];
+            $detalhe[$i]["Nro_Venda"] = $row["Nro_Venda"];
+            $detalhe[$i]["Cod_Produto"] = $row["Cod_Produto"];
+            $detalhe[$i]["Quantidade"] = $row["Quantidade"];
+            $detalhe[$i]["Val_Unitario"] = $row["Val_Unitario"];
+            $detalhe[$i]["Val_Total"] = $row["Val_Total"];
+            
+// -----------------------------PRODUTO--------------------------------------------
+
+            $detalhe[$i]["Id_Produto"] = $row["Id_Produto"];
+            $detalhe[$i]["Cod_Produto"] = $row["Cod_Produto"];
+            $detalhe[$i]["Nome_Produto"] = $row["Nome_Produto"];
+            $detalhe[$i]["Desc_Produto"] = $row["Desc_Produto"];
+            $detalhe[$i]["Estoque"] = $row["Estoque"];
+            $detalhe[$i]["Estoque_Min"] = $row["Estoque_Min"];
+            $detalhe[$i]["Estoque_Max"] = $row["Estoque_Max"];
+            $detalhe[$i]["Valor"] = $row["Valor"];
+            $detalhe[$i]["Status_Produto"] = $row["Status_Produto"];
+            $detalhe[$i]["Imagem"] = $row["Imagem"];
+            $detalhe[$i]["Categoria"] = $row["Categoria"];
+            $i++;
+        }
+        $conn->close();
+        return $detalhe;
+    } else {
+        $detalhe["result"] = 0;
+        $conn->close();
+        return $detalhe;
+}
+
+}
