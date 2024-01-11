@@ -196,11 +196,24 @@ if (isset($_REQUEST["confirmarCompra"])) {
     $carrinho = $produto->mostrarCarrinho();
 
 
+    require_once "../adm/model/Config.class.php";
+    $config = new Config();
+    $nrPedido = $config->numeroPedido();
+    
+
+    // for($i = 1;$i < count($nrPedido); $i++){
+    //     $pedido = $nrPedido[$i]["NrPedido"];
+    // }
+    
+    $pedido = $nrPedido[0]["NrPedido"] + 1;
+    
+
+
     $venda["pagamento"] = $_REQUEST["pagamento"];
     $venda["entrega"] = $_REQUEST["entrega"];
     $venda["total"] = $_REQUEST["total"];
     require_once "../model/manager.php";
-    $resp = adicionarVenda($venda,$carrinho);
+    $resp = adicionarVenda($venda,$carrinho,$pedido);
 
     if ($resp == 1) {
     ?>
@@ -278,7 +291,21 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
                 $_SESSION["CLI-COMPLEMENTO"] = $cliente["Complemento"];
                 $_SESSION["CLI-LOGRADOURO"] = $cliente["Logradouro"];
                 $_SESSION["CLI-CEP"] = $cliente["Cep"];
-                $_SESSION["ID-CLIENTE"] = $cliente["Id_Cliente"];
+                $_SESSION["ID-CLI"] = "KKKKKKK";
+
+                require_once "../model/Cliente.class.php";
+                $todosCliente = new Cliente();
+                $cliente = $todosCliente->todosClientes();
+
+                for($i = 1;$i < count($cliente); $i++){
+                    if($_SESSION["CLI-ID"] == $cliente[$i]["Usuario"]){
+                        $_SESSION["ID-CLI"] = $cliente[$i]["Id_Cliente"];
+                    }
+
+                }
+
+
+               
                 $_SESSION["LOGADO"] = 1;
 
 
@@ -412,7 +439,19 @@ if (isset($_REQUEST["add_cliente"])) {
                 $_SESSION["CLI-COMPLEMENTO"] = $info[$i]["Complemento"];
                 $_SESSION["CLI-LOGRADOURO"] = $info[$i]["Logradouro"];
                 $_SESSION["CLI-CEP"] = $info[$i]["Cep"];
-                $_SESSION["ID-CLIENTE"] = $info[$i]["Id_Cliente"];
+                $_SESSION["ID-CLI"] = "";
+
+                require_once "../model/Cliente.class.php";
+                $todosCliente2 = new Cliente();
+                $cliente = $todosCliente2->todosClientes();
+
+                for($i = 1;$i < count($cliente); $i++){
+                    if($_SESSION["CLI-ID"] == $cliente[$i]["Usuario"]){
+                        $_SESSION["ID-CLI"] = $cliente[$i]["Id_Cliente"];
+                    }
+
+                }
+               
                 $_SESSION["LOGADO"] = 1;
             }
         ?>

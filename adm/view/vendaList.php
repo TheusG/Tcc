@@ -65,7 +65,7 @@ require_once "admVerifSession.php";
              for($i = 1;$i<= $venda["num"];$i++){
                 echo "<tr>";
                     // echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Id_Venda"]."</td>";
-                    echo "<td class=\"tabelaAdmTd\">".$i."</td>";
+                    echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Nro_Venda"]."</td>";
                     // echo "<td class=\"tabelaAdmTd\">".$venda[$i]["Cliente"]."</td>";
                     $dataFormatada = date('d/m/Y', strtotime($venda[$i]["Data_Venda"]));
                     echo "<td class=\"tabelaAdmTd\">".$dataFormatada."</td>";

@@ -239,29 +239,37 @@ function atualizarCliente($cliente)
    
 // }
 
-function adicionarVenda($venda, $carrinho)
+function adicionarVenda($venda, $carrinho,$pedido)
 {
 
     require_once "../adm/model/Conexao.php";
-    $sql = "INSERT INTO venda (Nro_Venda,Cliente, Data_Venda,Entregador, Status, Valor_Venda, Desconto_Venda,Adicional_Venda,Pagamento) VALUES (1,7,now(),'{$venda["entrega"]}',1,'{$venda["total"]}',0,0,'{$venda["pagamento"]}')";
+    $sql = "INSERT INTO venda (Nro_Venda,Cliente, Data_Venda,Entregador, Status, Valor_Venda, Desconto_Venda,Adicional_Venda,Pagamento) VALUES ('{$pedido}',7,now(),'{$venda["entrega"]}',1,'{$venda["total"]}',0,0,'{$venda["pagamento"]}')";
     $result = $conn->query($sql);
     $ultimoid = mysqli_insert_id($conn);
 
 
     if ($result == true) {
-
+//------------------------------------------DETALHE VENDA----------------------------------
         for ($i = 0; $i < count($carrinho); $i++) {
-            $sql = "INSERT INTO detalhe_venda (Id_Venda, Nro_Venda, Cod_Produto, Quantidade, Val_Unitario, Val_Total) VALUES ('{$ultimoid}', 1, '{$carrinho[$i]["Cod_Produto"]}', '{$carrinho[$i]["Quantidade"]}', '{$carrinho[$i]["Valor_Unitario"]}', '{$carrinho[$i]["SubTotal"]}')";
+            $sql = "INSERT INTO detalhe_venda (Id_Venda, Nro_Venda, Cod_Produto, Quantidade, Val_Unitario, Val_Total) VALUES ('{$ultimoid}', '{$pedido}', '{$carrinho[$i]["Cod_Produto"]}', '{$carrinho[$i]["Quantidade"]}', '{$carrinho[$i]["Valor_Unitario"]}', '{$carrinho[$i]["SubTotal"]}')";
             $result = $conn->query($sql);
         }
-
+//-------------------------------------------CARRINHO--------------------------------------
         if ($result == true) {
             $sql = "DELETE FROM carrinho WHERE cliente = 7";
             $result = $conn->query($sql);
 
+// -------------------------------------------CONFIGURACAO-----------------------------------            
             if ($result == true) {
-                $conn->close();
-                return 1;
+                $sql = "UPDATE configuracao SET NrPedido = '{$pedido}'";
+                $result = $conn->query($sql);
+
+                if($result == true){
+                    $conn->close();
+                    return 1;  
+                }else{
+                    return 0;
+                }
             } else {
                 return 0;
             }

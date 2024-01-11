@@ -33,6 +33,15 @@ class Cliente{
         return $result;
     }
 
+    public function todosClientes(){
+        $result = array();
+        $cmd = $this->pdo->query("SELECT Id_Cliente, Usuario FROM cliente");
+        $result = $cmd->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    
+
 
 
     
