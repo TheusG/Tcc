@@ -228,6 +228,12 @@ session_start();
       </div>
       <p>R$<?php echo number_format($total, 2, ",", ".");?></p>
 
+      <input type="hidden" name="Id_Cliente" value="<?php
+                                                          if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                                            echo $_SESSION["ID-CLI"];
+                                                          } else {
+                                                            echo "0";
+                                                          }  ?>">
 
       <input type="hidden" name="total" value="<?=$total?>">
 

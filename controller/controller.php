@@ -56,7 +56,7 @@ if (isset($_REQUEST["addCarrinho"])) {
     $login = $_REQUEST["Usuario"];
     $Valor = $_REQUEST["Valor"];
     $id = $_REQUEST["Cod_Produto"];
-    $Id_Cliente = $_REQUEST["Id_Cliente"];
+    $cliente = $_REQUEST["Id_Cliente"];
 
 
 
@@ -89,7 +89,7 @@ if (isset($_REQUEST["addCarrinho"])) {
 
 
         require_once "../model/manager.php";
-        $resp = adicionarCarrinho($id, $Valor, $quantidade, $subTotal);
+        $resp = adicionarCarrinho($id, $Valor, $quantidade, $subTotal,$cliente);
 
         if ($resp == 1) {
             header('Location:../cardapio.php');
@@ -212,8 +212,10 @@ if (isset($_REQUEST["confirmarCompra"])) {
     $venda["pagamento"] = $_REQUEST["pagamento"];
     $venda["entrega"] = $_REQUEST["entrega"];
     $venda["total"] = $_REQUEST["total"];
+    $cliente = $_REQUEST["Id_Cliente"];
+    
     require_once "../model/manager.php";
-    $resp = adicionarVenda($venda,$carrinho,$pedido);
+    $resp = adicionarVenda($venda,$carrinho,$pedido,$cliente);
 
     if ($resp == 1) {
     ?>

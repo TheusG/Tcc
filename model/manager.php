@@ -88,12 +88,12 @@ function todosEmails()
     }
 }
 
-function adicionarCarrinho($id, $Valor, $quantidade, $subTotal)
+function adicionarCarrinho($id, $Valor, $quantidade, $subTotal,$cliente)
 {
     require_once "../adm/model/Conexao.php";
 
     if ($quantidade == 1) {
-        $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES(7,'{$id}','{$quantidade}','{$Valor}','{$subTotal}','{$subTotal}',0,0,1)";
+        $sql = "INSERT INTO carrinho(Cliente,Cod_Produto,Quantidade,Valor_Unitario,SubTotal,Total,Desconto,Adicional,Pagamento) VALUES('{$cliente}','{$id}','{$quantidade}','{$Valor}','{$subTotal}','{$subTotal}',0,0,1)";
         $result = $conn->query($sql);
 
         if ($result == true) {
@@ -104,7 +104,7 @@ function adicionarCarrinho($id, $Valor, $quantidade, $subTotal)
             return 0;
         }
     } else {
-        $sql = "UPDATE carrinho SET Quantidade = '{$quantidade}', SubTotal = '{$subTotal}',Total = '{$subTotal}' WHERE Cod_Produto = '{$id}' AND Cliente = 7";
+        $sql = "UPDATE carrinho SET Quantidade = '{$quantidade}', SubTotal = '{$subTotal}',Total = '{$subTotal}' WHERE Cod_Produto = '{$id}' AND Cliente = '{$cliente}'";
         $result = $conn->query($sql);
 
         if ($result == true) {
@@ -239,11 +239,11 @@ function atualizarCliente($cliente)
    
 // }
 
-function adicionarVenda($venda, $carrinho,$pedido)
+function adicionarVenda($venda, $carrinho,$pedido,$cliente)
 {
 
     require_once "../adm/model/Conexao.php";
-    $sql = "INSERT INTO venda (Nro_Venda,Cliente, Data_Venda,Entregador, Status, Valor_Venda, Desconto_Venda,Adicional_Venda,Pagamento) VALUES ('{$pedido}',7,now(),'{$venda["entrega"]}',1,'{$venda["total"]}',0,0,'{$venda["pagamento"]}')";
+    $sql = "INSERT INTO venda (Nro_Venda,Cliente, Data_Venda,Entregador, Status, Valor_Venda, Desconto_Venda,Adicional_Venda,Pagamento) VALUES ('{$pedido}','{$cliente}',now(),'{$venda["entrega"]}',1,'{$venda["total"]}',0,0,'{$venda["pagamento"]}')";
     $result = $conn->query($sql);
     $ultimoid = mysqli_insert_id($conn);
 
@@ -256,7 +256,7 @@ function adicionarVenda($venda, $carrinho,$pedido)
         }
 //-------------------------------------------CARRINHO--------------------------------------
         if ($result == true) {
-            $sql = "DELETE FROM carrinho WHERE cliente = 7";
+            $sql = "DELETE FROM carrinho WHERE cliente = '{$cliente}'";
             $result = $conn->query($sql);
 
 // -------------------------------------------CONFIGURACAO-----------------------------------            

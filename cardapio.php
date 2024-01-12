@@ -390,8 +390,8 @@ $totalItens = 0;
                                                           echo "0";
                                                         }  ?>">
             <input type="hidden" name="Id_Cliente" value="<?php
-                                                          if (isset($_SESSION["ID-CLIENTE"]) && $_SESSION["ID-CLIENTE"] = !0) {
-                                                            echo $_SESSION["ID-CLIENTE"];
+                                                          if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                                            echo $_SESSION["ID-CLI"];
                                                           } else {
                                                             echo "0";
                                                           }  ?>">

@@ -19,14 +19,14 @@ class Carrinho{
 
     public function mostrarCarrinho(){
         $result = array();
-        $cmd = $this->pdo->query("SELECT produto.*, carrinho.* FROM produto INNER JOIN carrinho on produto.Id_Produto = carrinho.Cod_Produto WHERE Cliente = 7");
+        $cmd = $this->pdo->query("SELECT produto.*, carrinho.* FROM produto INNER JOIN carrinho on produto.Id_Produto = carrinho.Cod_Produto WHERE Cliente = 9");
         $result = $cmd->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 
     public function quantidadeProduto(){
         $result = array();
-        $cmd = $this->pdo->query("SELECT COUNT(*) AS total_linhas FROM carrinho WHERE Cliente = 7");
+        $cmd = $this->pdo->query("SELECT COUNT(*) AS total_linhas FROM carrinho WHERE Cliente = 9");
         $result = $cmd->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
