@@ -48,57 +48,13 @@
         <h4>Editar Registro do Cliente</h4>
     </div>
 
-    <div id="admForm"><!-- esta no adm.css -->
+ <div id="admForm">    <!---------------------------------------Fazer aqui ---------------------------->
         
-            <div class="div3">
             
-                <div>
-            <label for="nome">Nome dos Produtos</label><br>
-            <input class="inputnome" type="text" name="nome" value="<?=$detalhe[1]['Nome_Produto']?>"><br>
-            <input class="inputnome" type="text" name="nome" value="<?=$detalhe[2]['Nome_Produto']?>"><br>
-                </div>
-                <div>
-            <label for="dataNascimento">Quantidade</label><br>
-            <input type="number" name="dataNascimento" value="<?=$detalhe[1]['Quantidade']?>"><br>
-            <input type="number" name="dataNascimento" value="<?=$detalhe[2]['Quantidade']?>"><br>
-                </div>
-            </div>
-                <div class="div3">
-                    <div>
-            <label for="email">Email</label><br>
-            <input class="inputEmail" type="email" name="email" value="<?=$detalhe['Val_Total']?>" ><br>
-                    </div>
-                    
-                </div>
-                <div class="box">
-                    <div class="div2">
-                        <div>
-            <label for="telefone">Telefone</label><br>
-            <input type="tel" name="telefone" id="telefone" value="<?=$detalhe['Val_Unitario']?>"><br>
-                        </div>
-                        <div>    
-            <label for="cep">Cep</label><br>
-            <input type="text" name="cep" id="cep" value="<?=$detalhe['Quantidade']?>"><br>
-                        </div>
-                        <div>
-            <label for="Numero">Número</label><br>
-            <input class="inputNumero" type="number" name="numero" value="<?=$detalhe['Cliente']?>"><br>
-                        </div>
-                    </div>
-                    <div class="div1">
-            <label for="complemento">Complemento</label><br>
-            <input type="text" name="complemento" value="<?=$detalhe['Cod_Produto']?>"><br>
-                    </div>
-                    <div class="div1">
-                    <label for="referencia">Ponto de Referência</label><br>
-            <textarea class="descricao" name="referencia"  id="descricao" cols="30" rows="10" style="resize: none;" ><?=$detalhe['Quantidade']?></textarea><br>
-            <br>
-                    </div>
-                <br>
-            
-        </form>
            
     </div>
+
+    <!---------------------------------------Fazer aqui ---------------------------->
     <button class="voltar" id="btnVoltar" onclick="voltar();">&larr;</button>
 
 

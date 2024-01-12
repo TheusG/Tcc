@@ -60,10 +60,16 @@
 
 <?php 
 
+$cliente = "";
+if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+   $cliente = $_SESSION["ID-CLI"];
+} else {
+  $cliente = "";
+}
     
 require_once "model/Carrinho.class.php";
 $carrinho = new Carrinho();
-$infoProduto = $carrinho->mostrarCarrinho();
+$infoProduto = $carrinho->mostrarCarrinho($cliente);
 $total = 0;
 $totalItens = 0;
 
@@ -126,8 +132,8 @@ $totalItens = 0;
 
             if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] == 1 ){
               // echo "<a href=\"perfil.php\">".print_r($_SESSION["CLI-EMAIL"]). "</a>";
-              echo "<a href=\"perfil.php\">".$_SESSION["ID-CLI"]."</a>";
-              // echo "<a href=\"perfil.php\">Perfil</a>";
+              // echo "<a href=\"perfil.php\">".$_SESSION["ID-CLI"]."</a>";
+              echo "<a href=\"perfil.php\">Perfil</a>";
               echo  "<button class=\"sair\" onclick=\"ExecutaLogout();\">Sair</button>";
             }else{
               echo "<button id=\"abrirLogin\">Login</button>";
@@ -209,7 +215,7 @@ $totalItens = 0;
 <?php 
   require_once "model/Carrinho.class.php";
   $qtde = new Carrinho();
-  $qtdeProduto = $qtde->quantidadeProduto();
+  $qtdeProduto = $qtde->quantidadeProduto($cliente);
   
   ?>
 

@@ -21,9 +21,16 @@ session_start();
 <body>
   <?php
 
+$cliente = "";
+if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+   $cliente = $_SESSION["ID-CLI"];
+} else {
+  $cliente = "";
+}
+
   require_once "model/Carrinho.class.php";
   $carrinho = new Carrinho();
-  $infoProduto = $carrinho->mostrarCarrinho();
+  $infoProduto = $carrinho->mostrarCarrinho($cliente);
   $total = 0;
   $totalItens = 0;
  

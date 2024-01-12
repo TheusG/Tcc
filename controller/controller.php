@@ -73,7 +73,7 @@ if (isset($_REQUEST["addCarrinho"])) {
 
         require_once "../model/Carrinho.class.php";
         $produto = new Carrinho();
-        $carrinho = $produto->mostrarCarrinho();
+        $carrinho = $produto->mostrarCarrinho($cliente);
         $quantidade = 1;
         $subTotal = $Valor;
         $valida = 0;
@@ -191,9 +191,11 @@ if (isset($_REQUEST["item_delete"])) {
 
 if (isset($_REQUEST["confirmarCompra"])) {
 
+    $cliente = $_REQUEST["Id_Cliente"];
+
     require_once "../model/Carrinho.class.php";
     $produto = new Carrinho();
-    $carrinho = $produto->mostrarCarrinho();
+    $carrinho = $produto->mostrarCarrinho($cliente);
 
 
     require_once "../adm/model/Config.class.php";
@@ -212,8 +214,8 @@ if (isset($_REQUEST["confirmarCompra"])) {
     $venda["pagamento"] = $_REQUEST["pagamento"];
     $venda["entrega"] = $_REQUEST["entrega"];
     $venda["total"] = $_REQUEST["total"];
-    $cliente = $_REQUEST["Id_Cliente"];
     
+
     require_once "../model/manager.php";
     $resp = adicionarVenda($venda,$carrinho,$pedido,$cliente);
 
