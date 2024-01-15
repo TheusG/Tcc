@@ -170,8 +170,9 @@ if (isset($_REQUEST["confirmarDados"])) {
 
 if (isset($_REQUEST["item_delete"])) {
     $id = $_REQUEST["id"];
+    $cliente = $_REQUEST["cliente"];
     require_once "../model/manager.php";
-    $result = itemDelete($id);
+    $result = itemDelete($id,$cliente);
 
     if ($result == 1) { //conseguir excluir
         header('Location:../cardapio.php');

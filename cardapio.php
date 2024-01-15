@@ -39,10 +39,10 @@ session_start();
   </script>
 
   <script>
-    function confirmDelete(id) {
+    function confirmDelete(id,cliente) {
       var resp = confirm("Tem certeza que deseja tirar esse item do carrinho?");
       if (resp == true) {
-        location.href = "controller/controller.php?item_delete=1&id=" + id;
+        location.href = "controller/controller.php?item_delete=1&id=" + id + "&cliente=" + cliente;
       } else {
         return null;
       }
@@ -233,7 +233,7 @@ $totalItens = 0;
 
             <div class="conteinerPedido">
 
-              <button id="botaoFecharCarrinho" onclick="confirmDelete(<?= $infoProduto[$i]['Id_Produto']; ?>)">X</button>
+              <button id="botaoFecharCarrinho" onclick="confirmDelete(<?= $infoProduto[$i]['Id_Produto']; ?>,<?= $infoProduto[$i]['Cliente']; ?>)">X</button>
               <div class="divNomeProduto"><?php
                                           print_r($infoProduto[$i]["Nome_Produto"]);
                                           ?></div>

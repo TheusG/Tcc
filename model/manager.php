@@ -162,11 +162,11 @@ function adicionarCarrinho($id, $Valor, $quantidade, $subTotal,$cliente)
 
 // }
 
-function itemDelete($id)
+function itemDelete($id,$cliente)
 {
 
     require_once "../adm/model/Conexao.php";
-    $sql = "DELETE FROM carrinho WHERE Cod_Produto = {$id}";
+    $sql = "DELETE FROM carrinho WHERE Cod_Produto = {$id} AND Cliente = '{$cliente}'";
     $result = $conn->query($sql);
     $conn->close();
     return $result;
@@ -215,29 +215,7 @@ function atualizarCliente($cliente)
     }
 }
 
-// function adicionarVenda($venda, $carrinho){
 
-//     require_once "../adm/model/Conexao.php";
-//     $sql = "INSERT INTO venda (Nro_Venda,Cliente, Data_Venda,Entregador, Status, Valor_Venda, Desconto_Venda,Adicional_Venda,Pagamento) VALUES (1,7,now(),'{$venda["entrega"]}',1,'{$venda["total"]}',0,0,'{$venda["pagamento"]}')";
-//     $result = $conn->query($sql);
-
-
-//         if ($result == true) {
-//             $sql = "DELETE FROM carrinho WHERE cliente = 7";
-//             $result = $conn->query($sql);
-
-//             if ($result == true) {
-//                 $conn->close();
-//                 return 1;
-//             } else {
-//                 return 0;
-//             }
-//         } else {
-//             $conn->close();
-//             return 0;
-//         }
-   
-// }
 
 function adicionarVenda($venda, $carrinho,$pedido,$cliente)
 {
