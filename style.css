@@ -122,6 +122,8 @@ header #abrirLogin2:hover, header #abrirLogin:hover {
 .classCarrinho{
     display: flex;
     transition: 1s;
+
+      
 }
 .classCarrinho:hover{
     scale: 1.2;
@@ -317,6 +319,7 @@ footer > h2{
         display: none;
     }
     
+    
 }
 
 @media (max-width:936px){
@@ -341,10 +344,7 @@ footer > h2{
         justify-content: space-between;
     }
     #carrinho{
-        position: absolute;
-        right: 50%;
-        top: 30%;
-        font-size: 25px;
+      
     
     }
     .login{
@@ -360,7 +360,11 @@ footer > h2{
     .nav-links .lioff{
         display: flex;
     }
-    
+    .classCarrinho{
+        position: absolute;
+        right: 50%;
+        top: 30%;
+    }
 }
 
 @media (max-width:740px){
