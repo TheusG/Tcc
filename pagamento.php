@@ -63,14 +63,17 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
       <div class="nome">
         <h3> Identificação</h3>
         <div>
+        <form action="controller/controller.php" method="post">
           <div class="campos">
             <h4>Nome</h4>
+            
             <input type="text" name="nome" required value="<?php
-                                                            if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-                                                              print_r($_SESSION["CLI-NOME"]);
-                                                            } else {
+                                                              if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                                                print_r($_SESSION["CLI-NOME"]);
+                                                              } else {
                                                               echo "";
-                                                            } ?>">
+                                                            } ?>">                                                 
+                              
           </div>
           <div class="campos">
             <h4>Telefone</h4>
@@ -147,7 +150,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
         </div>
       </div>
       
-      <form action="controller/controller.php" method="post">
+      
       <input type="hidden" name="confirmarCompra" >
 
       <div class="endereco">
