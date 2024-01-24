@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap');
+/* font-family: 'Prompt', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+/* font-family: 'Lobster', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+/*  */
+
+body{
+    font-family: 'Prompt', sans-serif;
+}
+p{
+    font-size: 22px;
+    
+}
+h1{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 32px;
+}
+.divInfos{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.divInfos > div{
+    display: flex;
+}
+h2{
+    text-align: center;
+    font-size: 32px;
+}
+.divDescricao{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.textDescricao{
+    max-width: 200px;
+}
+.textDescricao2{
+    max-width: 350px;
+}
+.divValor{
+    display: flex;
+    justify-content: space-evenly;
+}
+.divValor2{
+    display: flex;
+}
+.DivConteinerValor{
+    display: flex;
+}
+.valor{
+    margin-left: 20px;
+}
