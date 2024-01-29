@@ -120,6 +120,8 @@ if (isset($_REQUEST["confirmarDados"])) {
     $cliente["cep"] = $_REQUEST["cep"];
     $valida = "0";
 
+
+
     require_once "../adm/model/Cep.class.php";
     $verificaCep = new Cep();
     $infoCep = $verificaCep->TodosCep();
@@ -211,37 +213,43 @@ if (isset($_REQUEST["confirmarCompra"])) {
     $infoCliente["telefone"] = $_REQUEST["telefone"];
     $infoCliente["nome"] = $_REQUEST["nome"];
 
-    
 
 
     $venda["pagamento"] = $_REQUEST["pagamento"];
     $venda["entrega"] = $_REQUEST["entrega"];
     $venda["total"] = $_REQUEST["total"];
+
+    if($venda["entrega"] == 63){
+        require_once "../model/manager.php";
+        $resp = adicionarVenda($venda,$carrinho,$pedido,$cliente,$infoCliente);
+
+        if ($resp == 1) {
+        ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR55">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+        <?php
+
+        } else {
+        ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR31">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+            <?php
+        }
+    }else{
+        header('Location:../cep.php');
+        exit;
+    }
     
 
-    require_once "../model/manager.php";
-    $resp = adicionarVenda($venda,$carrinho,$pedido,$cliente,$infoCliente);
-
-    if ($resp == 1) {
-    ?>
-        <form action="../index.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="FR55">
-        </form>
-        <script>
-            document.getElementById('myForm').submit()
-        </script>
-    <?php
-
-    } else {
-    ?>
-        <form action="../index.php" name="form" id="myForm" method="post">
-            <input type="hidden" name="msg" value="FR31">
-        </form>
-        <script>
-            document.getElementById('myForm').submit()
-        </script>
-        <?php
-    }
+    
 }
 
 // --------------------------------------------------------//-------------------------------------------------
