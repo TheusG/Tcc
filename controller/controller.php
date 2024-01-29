@@ -204,11 +204,13 @@ if (isset($_REQUEST["confirmarCompra"])) {
     $nrPedido = $config->numeroPedido();
     
 
-    // for($i = 1;$i < count($nrPedido); $i++){
-    //     $pedido = $nrPedido[$i]["NrPedido"];
-    // }
     
     $pedido = $nrPedido[0]["NrPedido"] + 1;
+    
+    $infoCliente["usuario"] = $_REQUEST["Id_Usuario"];
+    $infoCliente["telefone"] = $_REQUEST["telefone"];
+    $infoCliente["nome"] = $_REQUEST["nome"];
+
     
 
 
@@ -218,7 +220,7 @@ if (isset($_REQUEST["confirmarCompra"])) {
     
 
     require_once "../model/manager.php";
-    $resp = adicionarVenda($venda,$carrinho,$pedido,$cliente);
+    $resp = adicionarVenda($venda,$carrinho,$pedido,$cliente,$infoCliente);
 
     if ($resp == 1) {
     ?>
