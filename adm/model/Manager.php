@@ -1056,7 +1056,7 @@ function excluirCliente($id)
 
 function listarVenda(){
     require_once "../model/Conexao.php";
-    $sql = "SELECT cliente.*,venda.*,entregador.*,pagamento.* FROM venda JOIN entregador on venda.Entregador = entregador.Id_Entregador JOIN pagamento on venda.Pagamento = pagamento.Id_Pagamento JOIN cliente on venda.Cliente = cliente.Id_Cliente";
+    $sql = "SELECT cliente.*,venda.*,entregador.*,pagamento.* FROM venda JOIN entregador on venda.Entregador = entregador.Id_Entregador JOIN pagamento on venda.Pagamento = pagamento.Id_Pagamento JOIN cliente on venda.Cliente = cliente.Id_Cliente ORDER BY Nro_Venda ASC";
     $result = $conn->query($sql);
 
 
