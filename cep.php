@@ -61,13 +61,15 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
   <div class="conteinerPagamento">
     <div class="informacoes">
       
+    <form action="controller/controller.php">
+    <input type="hidden" name="validaCep">
       
       <div class="endereco">
-        <h3> Informe do Endereço de Entrega</h3>
+        <h3> Informe o Endereço de Entrega</h3>
         <div>
           <div class="campos">
             <h4>CEP</h4>
-            <input type="text" value="<?php
+            <input type="text" required name="cep" value="<?php
                                           if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                                             print_r($_SESSION["CLI-CEP"]);
                                           } else {
@@ -76,7 +78,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
           </div>
           <div class="campos">
             <h4>Cidade</h4>
-            <input type="text" value="<?php
+            <input type="text" readonly value="<?php
                                       if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                                         print_r($_SESSION["CLI-CIDADE"]);
                                       } else {
@@ -85,7 +87,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
           </div>
           <div class="campos">
             <h4>Bairro</h4>
-            <input type="text" value="<?php
+            <input type="text" readonly value="<?php
                                       if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                                         print_r($_SESSION["CLI-BAIRRO"]);
                                       } else {
@@ -97,25 +99,17 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
         <div>
           <div class="campos">
             <h4>Número</h4>
-            <input type="text" value="<?php
+            <input type="text" required name="numero" value="<?php
                                       if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                                         print_r($_SESSION["CLI-NUMERO"]);
                                       } else {
                                         echo "";
                                       } ?>">
           </div>
+          
           <div class="camposRua">
-            <h4>Rua</h4>
-            <input type="text" value="<?php
-                                      if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
-                                        print_r($_SESSION["CLI-LOGRADOURO"]);
-                                      } else {
-                                        echo "";
-                                      } ?>">
-          </div>
-          <div class="camposRua">
-            <h4>Complemento</h4>
-            <input type="text" value="<?php
+            <h4>Referência</h4>
+            <input type="text" required name="complemento" value="<?php
                                         if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
                                           print_r($_SESSION["CLI-COMPLEMENTO"]);
                                         } else {
@@ -125,7 +119,7 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
         </div>
       </div>
       
-      <input type="hidden" name="confirmarCompra" >
+      <!-- <input type="hidden" name="confirmarCompra" > -->
 
 
     </div>

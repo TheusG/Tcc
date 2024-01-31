@@ -88,7 +88,7 @@ function todosEmails()
     }
 }
 
-function adicionarCarrinho($id, $Valor, $quantidade, $subTotal,$cliente)
+function adicionarCarrinho($id, $Valor, $quantidade, $subTotal, $cliente)
 {
     require_once "../adm/model/Conexao.php";
 
@@ -119,7 +119,7 @@ function adicionarCarrinho($id, $Valor, $quantidade, $subTotal,$cliente)
 
 
 
-function itemDelete($id,$cliente)
+function itemDelete($id, $cliente)
 {
 
     require_once "../adm/model/Conexao.php";
@@ -174,38 +174,38 @@ function atualizarCliente($cliente)
 
 
 
-function adicionarVenda($venda, $carrinho,$pedido,$cliente,$infoCliente)
+function adicionarVenda($venda, $carrinho, $pedido, $cliente, $infoCliente)
 {
 
     require_once "../adm/model/Conexao.php";
     $sql = "UPDATE usuario SET Nome_Usuario = '{$infoCliente["nome"]}', Telefone = '{$infoCliente["telefone"]}' WHERE Id_Usuario = '{$infoCliente["usuario"]}'";
     $result = $conn->query($sql);
 
-    if($result == true){
+    if ($result == true) {
         $sql = "INSERT INTO venda (Nro_Venda,Cliente, Data_Venda,Entregador, Status, Valor_Venda, Desconto_Venda,Adicional_Venda,Pagamento) VALUES ('{$pedido}','{$cliente}',now(),'{$venda["entrega"]}',1,'{$venda["total"]}',0,0,'{$venda["pagamento"]}')";
         $result = $conn->query($sql);
         $ultimoid = mysqli_insert_id($conn);
 
         if ($result == true) {
-    //------------------------------------------DETALHE VENDA----------------------------------
+            //------------------------------------------DETALHE VENDA----------------------------------
             for ($i = 0; $i < count($carrinho); $i++) {
                 $sql = "INSERT INTO detalhe_venda (Id_Venda, Nro_Venda, Cod_Produto, Quantidade, Val_Unitario, Val_Total) VALUES ('{$ultimoid}', '{$pedido}', '{$carrinho[$i]["Cod_Produto"]}', '{$carrinho[$i]["Quantidade"]}', '{$carrinho[$i]["Valor_Unitario"]}', '{$carrinho[$i]["SubTotal"]}')";
                 $result = $conn->query($sql);
             }
-    //-------------------------------------------CARRINHO--------------------------------------
+            //-------------------------------------------CARRINHO--------------------------------------
             if ($result == true) {
                 $sql = "DELETE FROM carrinho WHERE cliente = '{$cliente}'";
                 $result = $conn->query($sql);
 
-    // -------------------------------------------CONFIGURACAO-----------------------------------            
+                // -------------------------------------------CONFIGURACAO-----------------------------------            
                 if ($result == true) {
                     $sql = "UPDATE configuracao SET NrPedido = '{$pedido}'";
                     $result = $conn->query($sql);
 
-                    if($result == true){
+                    if ($result == true) {
                         $conn->close();
-                        return 1;  
-                    }else{
+                        return 1;
+                    } else {
                         return 0;
                     }
                 } else {
@@ -219,8 +219,58 @@ function adicionarVenda($venda, $carrinho,$pedido,$cliente,$infoCliente)
             $conn->close();
             return 0;
         }
+    } else {
+        $conn->close();
+        return 0;
+    }
+}
 
-    }else{
+function confirmaCompraCep($cliente, $numero, $complemento, $venda, $infoCliente, $pedido,$carrinho)
+{
+
+    require_once "../adm/model/Conexao.php";
+    $sql = "UPDATE usuario SET Nome_Usuario = '{$infoCliente["nome"]}', Telefone = '{$infoCliente["telefone"]}', Cep = '{$cliente["cep"]}' , Numero = '{$numero}', Complemento = '{$complemento}' WHERE Id_Usuario = '{$infoCliente["usuario"]}'";
+    $result = $conn->query($sql);
+
+    if ($result == true) {
+        $sql = "INSERT INTO venda (Nro_Venda,Cliente, Data_Venda,Entregador, Status, Valor_Venda, Desconto_Venda,Adicional_Venda,Pagamento) VALUES ('{$pedido}','{$infoCliente["id"]}',now(),'{$venda["entrega"]}',1,'{$venda["total"]}',0,0,'{$venda["pagamento"]}')";
+        $result = $conn->query($sql);
+        $ultimoid = mysqli_insert_id($conn);
+
+        if ($result == true) {
+            //------------------------------------------DETALHE VENDA----------------------------------
+            for ($i = 0; $i < count($carrinho); $i++) {
+                $sql = "INSERT INTO detalhe_venda (Id_Venda, Nro_Venda, Cod_Produto, Quantidade, Val_Unitario, Val_Total) VALUES ('{$ultimoid}', '{$pedido}', '{$carrinho[$i]["Cod_Produto"]}', '{$carrinho[$i]["Quantidade"]}', '{$carrinho[$i]["Valor_Unitario"]}', '{$carrinho[$i]["SubTotal"]}')";
+                $result = $conn->query($sql);
+            }
+
+            if ($result == true) {
+                $sql = "DELETE FROM carrinho WHERE cliente = '{$infoCliente["id"]}'";
+                $result = $conn->query($sql);
+
+                // -------------------------------------------CONFIGURACAO-----------------------------------            
+                if ($result == true) {
+                    $sql = "UPDATE configuracao SET NrPedido = '{$pedido}'";
+                    $result = $conn->query($sql);
+
+                    if ($result == true) {
+                        $conn->close();
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                } else {
+                    return 0;
+                }
+            } else {
+                $conn->close();
+                return 0;
+            }
+        } else {
+            $conn->close();
+            return 0;
+        }
+    } else {
         $conn->close();
         return 0;
     }

@@ -89,7 +89,7 @@ if (isset($_REQUEST["addCarrinho"])) {
 
 
         require_once "../model/manager.php";
-        $resp = adicionarCarrinho($id, $Valor, $quantidade, $subTotal,$cliente);
+        $resp = adicionarCarrinho($id, $Valor, $quantidade, $subTotal, $cliente);
 
         if ($resp == 1) {
             header('Location:../cardapio.php');
@@ -174,7 +174,7 @@ if (isset($_REQUEST["item_delete"])) {
     $id = $_REQUEST["id"];
     $cliente = $_REQUEST["cliente"];
     require_once "../model/manager.php";
-    $result = itemDelete($id,$cliente);
+    $result = itemDelete($id, $cliente);
 
     if ($result == 1) { //conseguir excluir
         header('Location:../cardapio.php');
@@ -187,7 +187,7 @@ if (isset($_REQUEST["item_delete"])) {
         <script>
             document.getElementById('myForm').submit()
         </script>
-    <?php
+        <?php
     }
 }
 
@@ -200,28 +200,32 @@ if (isset($_REQUEST["confirmarCompra"])) {
     $produto = new Carrinho();
     $carrinho = $produto->mostrarCarrinho($cliente);
 
-
-    require_once "../adm/model/Config.class.php";
-    $config = new Config();
-    $nrPedido = $config->numeroPedido();
-    
-
-    
-    $pedido = $nrPedido[0]["NrPedido"] + 1;
-    
     $infoCliente["usuario"] = $_REQUEST["Id_Usuario"];
     $infoCliente["telefone"] = $_REQUEST["telefone"];
     $infoCliente["nome"] = $_REQUEST["nome"];
 
 
+    //Caso for Delivery--------------------//
+    $_SESSION["NOME"] = $_REQUEST["nome"];
+    $_SESSION["TELEFONE"] = $_REQUEST["telefone"];
+    $_SESSION["PAGAMENTO"] = $_REQUEST["pagamento"];
+    $_SESSION["ENTREGA"] = $_REQUEST["entrega"];
+    //----------------------------------------//
 
     $venda["pagamento"] = $_REQUEST["pagamento"];
     $venda["entrega"] = $_REQUEST["entrega"];
     $venda["total"] = $_REQUEST["total"];
 
-    if($venda["entrega"] == 63){
+    if ($venda["entrega"] == 63) {
+
+        require_once "../adm/model/Config.class.php";
+        $config = new Config();
+        $nrPedido = $config->numeroPedido();
+
+        $pedido = $nrPedido[0]["NrPedido"] + 1;
+
         require_once "../model/manager.php";
-        $resp = adicionarVenda($venda,$carrinho,$pedido,$cliente,$infoCliente);
+        $resp = adicionarVenda($venda, $carrinho, $pedido, $cliente, $infoCliente);
 
         if ($resp == 1) {
         ?>
@@ -241,15 +245,99 @@ if (isset($_REQUEST["confirmarCompra"])) {
             <script>
                 document.getElementById('myForm').submit()
             </script>
-            <?php
+        <?php
         }
-    }else{
+    } else {
         header('Location:../cep.php');
         exit;
     }
+}
+
+if (isset($_REQUEST["validaCep"])) {
+
+    // ---Info do Cliente--
+    $infoCliente["id"] = $_REQUEST["Id_Cliente"];
+    $infoCliente["usuario"] = $_REQUEST["Id_Usuario"];
+    $infoCliente["telefone"] = $_SESSION["TELEFONE"];
+    $infoCliente["nome"] = $_SESSION["NOME"];
     
+    //----Info da Venda
+    $venda["pagamento"] = $_SESSION["PAGAMENTO"];
+    $venda["entrega"] = $_SESSION["ENTREGA"];
+    $venda["total"] = $_REQUEST["total"];
+
+    //-----Carrinho do Cliente
+    require_once "../model/Carrinho.class.php";
+    $produto = new Carrinho();
+    $carrinho = $produto->mostrarCarrinho($infoCliente["id"]);
+
+    //--PEDIDO----------------------
+    require_once "../adm/model/Config.class.php";
+    $config = new Config();
+    $nrPedido = $config->numeroPedido();
+    $pedido = $nrPedido[0]["NrPedido"] + 1;
+   
+    //----Verificação do Cep informado
+    $cep = $_REQUEST["cep"];
+    $numero = $_REQUEST["numero"];
+    $complemento = $_REQUEST["complemento"];
+    $valida = "0";
+
 
     
+    
+    require_once "../adm/model/Cep.class.php";
+    $verificaCep = new Cep();
+    $infoCep = $verificaCep->TodosCep();
+
+    for ($i = 0; $i < count($infoCep); $i++) {
+        if($cep == $infoCep[$i]["Cep"]){
+            $cliente["cep"] = $infoCep[$i]["Id_Cep"];
+            $valida = 1;
+
+            require_once "../model/manager.php";
+            $resp = confirmaCompraCep($cliente,$numero,$complemento,$venda,$infoCliente,$pedido, $carrinho);
+
+            if ($resp == 1) {
+             ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR55">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+             <?php
+
+             }else{
+                ?>
+            <form action="../index.php" name="form" id="myForm" method="post">
+                <input type="hidden" name="msg" value="FR31">
+            </form>
+            <script>
+                document.getElementById('myForm').submit()
+            </script>
+        <?php
+             }
+
+        }
+
+    }
+
+    if ($valida != 1) {
+        ?>
+        <form action="../index.php" name="form" id="myForm" method="post">
+            <input type="hidden" name="msg" value="FR100">
+        </form>
+        <script>
+            document.getElementById('myForm').submit()
+        </script>
+    <?php
+
+    }
+
+    
+
+
 }
 
 // --------------------------------------------------------//-------------------------------------------------
@@ -312,15 +400,14 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
                 $todosCliente = new Cliente();
                 $cliente = $todosCliente->todosClientes();
 
-                for($i = 1;$i < count($cliente); $i++){
-                    if($_SESSION["CLI-ID"] == $cliente[$i]["Usuario"]){
+                for ($i = 1; $i < count($cliente); $i++) {
+                    if ($_SESSION["CLI-ID"] == $cliente[$i]["Usuario"]) {
                         $_SESSION["ID-CLI"] = $cliente[$i]["Id_Cliente"];
                     }
-
                 }
 
 
-               
+
                 $_SESSION["LOGADO"] = 1;
 
 
@@ -460,13 +547,12 @@ if (isset($_REQUEST["add_cliente"])) {
                 $todosCliente2 = new Cliente();
                 $cliente = $todosCliente2->todosClientes();
 
-                for($i = 1;$i < count($cliente); $i++){
-                    if($_SESSION["CLI-ID"] == $cliente[$i]["Usuario"]){
+                for ($i = 1; $i < count($cliente); $i++) {
+                    if ($_SESSION["CLI-ID"] == $cliente[$i]["Usuario"]) {
                         $_SESSION["ID-CLI"] = $cliente[$i]["Id_Cliente"];
                     }
-
                 }
-               
+
                 $_SESSION["LOGADO"] = 1;
             }
         ?>
