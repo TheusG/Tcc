@@ -69,8 +69,9 @@ if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
         <div>
           <div class="campos">
             <h4>CEP</h4>
+            
             <input type="text" required name="cep" value="<?php
-                                          if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0) {
+                                          if (isset($_SESSION["LOGADO"]) && $_SESSION["LOGADO"] = !0 && $_SESSION["CLI-ID-CEP"] != "69690" ) {
                                             print_r($_SESSION["CLI-CEP"]);
                                           } else {
                                              echo "";

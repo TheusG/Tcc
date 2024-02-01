@@ -325,7 +325,7 @@ if (isset($_REQUEST["validaCep"])) {
 
     if ($valida != 1) {
         ?>
-        <form action="../index.php" name="form" id="myForm" method="post">
+        <form action="../cep.php" name="form" id="myForm" method="post">
             <input type="hidden" name="msg" value="FR100">
         </form>
         <script>
@@ -394,6 +394,7 @@ if (!isset($_SESSION["CLI-ID"]) || empty($_SESSION["CLI-ID"])) {
                 $_SESSION["CLI-COMPLEMENTO"] = $cliente["Complemento"];
                 $_SESSION["CLI-LOGRADOURO"] = $cliente["Logradouro"];
                 $_SESSION["CLI-CEP"] = $cliente["Cep"];
+                $_SESSION["CLI-CEP2"] = $cliente["Cep2"];
                 $_SESSION["ID-CLI"] = "KKKKKKK";
 
                 require_once "../model/Cliente.class.php";
